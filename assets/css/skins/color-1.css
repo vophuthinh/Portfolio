@@ -1,0 +1,11 @@
+:root {
+    --skin-color: #ec1839;
+    --skin-color-rgb: 236, 24, 57;
+    --skin-color-02: rgba(236, 24, 57, 0.2);
+    --skin-color-03: rgba(236, 24, 57, 0.3);
+    --skin-color-04: rgba(236, 24, 57, 0.4);
+    --skin-color-05: rgba(236, 24, 57, 0.5);
+    --skin-color-06: rgba(236, 24, 57, 0.6);
+    --skin-gradient: #ff6b9d;
+    --skin-gradient-light: rgba(255, 107, 157, 0.1);
+}

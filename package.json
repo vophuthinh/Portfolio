@@ -1,0 +1,37 @@
+{
+  "name": "vophuthinh-portfolio",
+  "version": "1.0.0",
+  "description": "AI Engineer Portfolio Website - Modern, responsive, and PWA-enabled",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx serve -l 3000",
+    "start": "npx serve -l 3000",
+    "lint:js": "npx eslint js/**/*.js",
+    "lint:css": "npx stylelint assets/css/**/*.css",
+    "format": "npx prettier --write \"**/*.{js,css,html,json,md}\"",
+    "lighthouse": "npx lighthouse http://localhost:3000 --view",
+    "test:lighthouse": "npx lighthouse http://localhost:3000 --output=json --output-path=./lighthouse-report.json",
+    "analyze": "npx bundle-buddy index.html"
+  },
+  "keywords": [
+    "portfolio",
+    "ai-engineer",
+    "ml-engineer",
+    "pwa",
+    "responsive",
+    "vanilla-js"
+  ],
+  "author": "Vo Phu Thinh <vophuthinhcm@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vophuthinh/vophuthinh.com.git"
+  },
+  "homepage": "https://vophuthinh.com",
+  "devDependencies": {},
+  "dependencies": {},
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  }
+}

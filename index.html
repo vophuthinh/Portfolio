@@ -1,0 +1,988 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; 
+                 script-src 'self' 'unsafe-inline' cdn.jsdelivr.net unpkg.com cdnjs.cloudflare.com; 
+                 style-src 'self' 'unsafe-inline' fonts.googleapis.com cdn.jsdelivr.net cdnjs.cloudflare.com unpkg.com;
+                 font-src 'self' fonts.gstatic.com cdnjs.cloudflare.com cdn.jsdelivr.net data:;
+                 img-src 'self' data: https: cdn.jsdelivr.net cdnjs.cloudflare.com;
+                 connect-src 'self' cdn.jsdelivr.net cdnjs.cloudflare.com api.emailjs.com;">
+
+    <title>Vo Phu Thinh - AI Engineer & ML Engineer | Portfolio</title>
+    <meta name="description"
+        content="AI Engineer and ML Engineer specializing in LLM applications, computer vision, and MLOps. Building production-ready AI systems with measurable impact." />
+    <meta name="keywords"
+        content="AI Engineer, ML Engineer, LLM, RAG, Computer Vision, MLOps, PyTorch, TensorFlow, LangChain" />
+    <meta name="author" content="Vo Phu Thinh" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vophuthinh.com/" />
+    <meta property="og:title" content="Vo Phu Thinh - AI Engineer & ML Engineer" />
+    <meta property="og:description"
+        content="AI Engineer specializing in LLM applications, computer vision, and MLOps. Building production-ready AI systems." />
+    <meta property="og:image" content="https://vophuthinh.com/assets/images/hero.png" />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://vophuthinh.com/" />
+    <meta property="twitter:title" content="Vo Phu Thinh - AI Engineer & ML Engineer" />
+    <meta property="twitter:description"
+        content="AI Engineer specializing in LLM applications, computer vision, and MLOps." />
+    <meta property="twitter:image" content="https://vophuthinh.com/assets/images/hero.png" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Vo Phu Thinh",
+      "jobTitle": "AI Engineer",
+      "url": "https://vophuthinh.com",
+      "sameAs": [
+        "https://www.linkedin.com/in/vophuthinh",
+        "https://github.com/vophuthinh"
+      ],
+      "email": "vophuthinhcm@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Ho Chi Minh City",
+        "addressCountry": "VN"
+      }
+    }
+    </script>
+    <link rel="apple-touch-icon" sizes="57x57" href="./assets/favicon/apple-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="60x60" href="./assets/favicon/apple-icon-60x60.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="./assets/favicon/apple-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="./assets/favicon/apple-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="./assets/favicon/apple-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="./assets/favicon/apple-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="./assets/favicon/apple-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="./assets/favicon/apple-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-icon-180x180.png" />
+    <link rel="icon" type="image/png" sizes="192x192" href="./assets/favicon/android-icon-192x192.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="./assets/favicon/favicon-96x96.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="msapplication-TileImage" content="./assets/favicon/ms-icon-144x144.png" />
+    <meta name="theme-color" content="#ec1839" />
+
+    <!-- Font Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Clicker+Script&family=Poppins:wght@200;300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Devicon - Tech Stack Icons (Latest) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <!-- CSS Files  -->
+    <link rel="stylesheet" href="./assets/css/style.css?v=20241217-2100" />
+    <!-- Style Switcher -->
+    <link rel="stylesheet" href="./assets/css/style-switcher.css?v=20241217-2100" />
+    <link rel="stylesheet" href="./assets/css/skins/color-1.css" class="alternate-style" title="color-1" />
+    <link rel="stylesheet" href="./assets/css/skins/color-2.css" class="alternate-style" title="color-2" disabled />
+    <link rel="stylesheet" href="./assets/css/skins/color-3.css" class="alternate-style" title="color-3" disabled />
+    <link rel="stylesheet" href="./assets/css/skins/color-4.css" class="alternate-style" title="color-4" disabled />
+    <link rel="stylesheet" href="./assets/css/skins/color-5.css" class="alternate-style" title="color-5" disabled />
+    <!-- Font Awesome - Latest Version -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- AOS Animation Library CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- EMERGENCY FIX: Force buttons to display -->
+    <style>
+        .project-card {
+            display: flex !important;
+            flex-direction: column !important;
+            height: 100% !important;
+        }
+        .project-card .project-content {
+            padding: 20px !important;
+            flex: 1 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+        }
+        .project-actions {
+            display: flex !important;
+            gap: 16px !important;
+            margin-top: auto !important;
+            padding-top: 24px !important;
+            border-top: 2px solid var(--skin-color-02) !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+        }
+        .project-actions .btn-card {
+            flex: 1 !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 12px !important;
+            padding: 16px 28px !important;
+            border-radius: 14px !important;
+            font-size: 15px !important;
+            font-weight: 800 !important;
+            text-transform: uppercase !important;
+            letter-spacing: 1px !important;
+            text-decoration: none !important;
+            border: 2px solid !important;
+            cursor: pointer !important;
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
+            white-space: nowrap !important;
+            position: relative !important;
+            overflow: hidden !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
+        }
+        .project-actions .btn-github-card {
+            background: linear-gradient(135deg, #1a1d23 0%, #24292e 50%, #0d1117 100%) !important;
+            border-color: #30363d !important;
+            color: #ffffff !important;
+        }
+        .project-actions .btn-demo-card {
+            background: linear-gradient(135deg, var(--skin-color) 0%, var(--skin-gradient) 25%, var(--skin-color) 50%, var(--skin-gradient) 75%, var(--skin-color) 100%) !important;
+            border-color: var(--skin-color-03) !important;
+            color: #ffffff !important;
+        }
+        .project-actions .btn-card:hover {
+            transform: translateY(-4px) scale(1.03) !important;
+        }
+    </style>
+</head>
+
+<body class="dark">
+    <!-- Main Container Start -->
+    <div class="main-container">
+        <!-- Aside Start -->
+        <div class="aside">
+            <div class="logo">
+                <a href="#"><span>P</span>ortfolio</a>
+            </div>
+            <div class="nav-toggler">
+                <span></span>
+            </div>
+            <ul class="nav">
+                <li>
+                    <a href="#home" class="active"><i class="fa fa-home"></i>Home</a>
+                </li>
+                <li>
+                    <a href="#about"><i class="fa fa-user"></i>About</a>
+                </li>
+                <li>
+                    <a href="#skills"><i class="fa fa-list"></i>Skills</a>
+                </li>
+                <li>
+                    <a href="#project"><i class="fa fa-briefcase"></i>Project</a>
+                </li>
+                <li>
+                    <a href="#certifications-awards"><i class="fa fa-certificate"></i>Certification</a>
+                </li>
+                <li>
+                    <a href="#interests"><i class="fa fa-heart"></i>Interests</a>
+                </li>
+                <li>
+                    <a href="#contact"><i class="fa fa-envelope"></i>Contact</a>
+                </li>
+            </ul>
+        </div>
+        <!-- Aside End -->
+        <!-- Main Content Start -->
+        <div class="main-content">
+            <!-- Home Section Start -->
+            <section class="home active section" id="home">
+                <div class="container">
+                    <div class="row">
+                        <div class="home-info padd-15">
+                            <h3 class="hello">Hello, my name is <span class="name">Vo Phu Thinh</span></h3>
+                            <h3 class="my-profession">I'm an <span class="typing">AI Engineer</span></h3>
+                            <p>
+                                I build production-ready AI systems that solve real business problems. From LLM
+                                applications
+                                to computer vision and MLOps pipelines, I deliver scalable solutions with measurable
+                                impact.
+                                My work spans the full ML lifecycle—from research and prototyping to deployment and
+                                monitoring.
+                            </p>
+                            <a href="./assets/CV.pdf" download="CV_VoPhuThinh" class="btn btn-download">Download CV <i
+                                    class="fa-solid fa-download"></i></a>
+                        </div>
+                        <div class="home-img padd-15">
+                            <div class="image-wrapper">
+                                <img src="./assets/images/hero.png" alt="Vo Phu Thinh - AI Engineer and ML Engineer" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Main Container End -->
+            <!-- About Section Start -->
+            <section class="about section" id="about" data-aos="fade-up" data-aos-duration="800">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title padd-15">
+                            <h2>About Me</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="about-content padd-15">
+                            <div class="row">
+                                <div class="about-text padd-15">
+                                    <h3>I'm Vo Phu Thinh and <span>AI Engineer</span></h3>
+
+                                    <!-- What I Build -->
+                                    <div class="about-section-card">
+                                        <h4 class="about-section-title">
+                                            <i class="fa fa-cube"
+                                                style="color: var(--skin-color); margin-right: 10px;"></i>
+                                            What I Build
+                                        </h4>
+                                        <ul class="about-bullet-list">
+                                            <li><strong>LLM Applications:</strong> RAG systems, chatbots, document Q&A
+                                                with retrieval-augmented generation</li>
+                                            <li><strong>Computer Vision:</strong> Object detection, image
+                                                classification, and video analysis pipelines</li>
+                                            <li><strong>MLOps Infrastructure:</strong> End-to-end pipelines from
+                                                training to production with monitoring</li>
+                                            <li><strong>Data Analytics:</strong> ETL pipelines, feature engineering, and
+                                                predictive models</li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- How I Build -->
+                                    <div class="about-section-card">
+                                        <h4 class="about-section-title">
+                                            <i class="fa fa-cogs"
+                                                style="color: var(--skin-color); margin-right: 10px;"></i>
+                                            How I Build
+                                        </h4>
+                                        <ul class="about-bullet-list">
+                                            <li><strong>Research & Prototyping:</strong> Rapid experimentation with
+                                                PyTorch/TensorFlow, HuggingFace models</li>
+                                            <li><strong>Production Engineering:</strong> Docker containerization,
+                                                Kubernetes orchestration, CI/CD automation</li>
+                                            <li><strong>Monitoring & Optimization:</strong> MLflow tracking, model
+                                                versioning, performance monitoring</li>
+                                            <li><strong>Collaboration:</strong> Git workflows, code reviews,
+                                                documentation, agile practices</li>
+                                        </ul>
+                                    </div>
+
+                                    <!-- Proof -->
+                                    <div class="about-section-card">
+                                        <h4 class="about-section-title">
+                                            <i class="fa fa-chart-line"
+                                                style="color: var(--skin-color); margin-right: 10px;"></i>
+                                            Proof
+                                        </h4>
+                                        <ul class="about-bullet-list">
+                                            <li>Deployed RAG system reducing query latency by <strong>40%</strong>
+                                                through optimized retrieval</li>
+                                            <li>Built CV pipeline processing <strong>10K+ images/day</strong> with 95%
+                                                accuracy</li>
+                                            <li>Reduced model deployment time by <strong>60%</strong> via automated
+                                                MLOps workflows</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="personal-info padd-15">
+                                    <div class="row">
+                                        <div class="info-item padd-15">
+                                            <p>Website: <span>vophuthinh.com</span></p>
+                                        </div>
+                                        <div class="info-item padd-15">
+                                            <p>Phone: <span>+84 86 8639 882</span></p>
+                                        </div>
+                                        <div class="info-item padd-15">
+                                            <p>City: <span>Ho Chi Minh City</span></p>
+                                        </div>
+                                        <div class="info-item padd-15">
+                                            <p>Email: <span>vophuthinhcm@gmail.com</span></p>
+                                        </div>
+                                    </div>
+                                    <div class="social-icons mb-4">
+                                        <a class="linkedin" target="_blank" rel="noopener noreferrer"
+                                            href="https://www.linkedin.com/in/vophuthinh" aria-label="LinkedIn profile">
+                                            <i class="fab fa-linkedin-in"></i>
+                                        </a>
+                                        <a class="github" target="_blank" rel="noopener noreferrer"
+                                            href="https://github.com/vophuthinh" aria-label="GitHub profile">
+                                            <i class="fab fa-github"></i>
+                                        </a>
+                                        <a class="facebook" target="_blank" rel="noopener noreferrer"
+                                            href="https://web.facebook.com/vox.phus.thijnh/"
+                                            aria-label="Facebook profile">
+                                            <i class="fab fa-facebook-f"></i>
+                                        </a>
+                                    </div>
+                                    <div class="row">
+                                        <div class="buttons padd-15">
+                                            <a href="#contact" data-section-index="1" class="btn hire-me">Hire Me</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="education padd-15">
+                                    <h3 class="title">Education</h3>
+                                    <div class="row">
+                                        <div class="timeline-box padd-15">
+                                            <div class="timeline shadow-dark">
+                                                <!-- Timeline Item -->
+                                                <div class="timeline-item">
+                                                    <div class="circle-dot"></div>
+                                                    <h3 class="timeline-date">
+                                                        <i class="fa fa-calendar"></i> Sept 2021 - Present
+                                                    </h3>
+                                                    <h4 class="timeline-title">
+                                                        HCM University Of Technology (HUTECH)
+                                                    </h4>
+                                                    <p class="timeline-text">
+                                                        I'm a formal university student in the Information
+                                                        Technology training program between Ho Chi Minh City
+                                                        University of Technology (HUTECH) and Malaysian Open
+                                                        University (OUM).
+                                                    </p>
+                                                </div>
+                                                <!-- Timeline Item -->
+                                                <div class="timeline-item">
+                                                    <div class="circle-dot"></div>
+                                                    <h3 class="timeline-date">
+                                                        <i class="fa fa-calendar"></i> Jun 2023 - Aug 2023
+                                                    </h3>
+                                                    <h4 class="timeline-title">
+                                                        Universiti Malaysia Sarawak (UNIMAS)
+                                                    </h4>
+                                                    <p class="timeline-text">
+                                                        Intensive English Language Mobility Programme (IELMP),
+                                                        English Language
+                                                    </p>
+                                                </div>
+                                                <!-- Timeline Item -->
+                                                <div class="timeline-item">
+                                                    <div class="circle-dot"></div>
+                                                    <h3 class="timeline-date">
+                                                        <i class="fa fa-calendar"></i> Mar 2022 - Aug 2023
+                                                    </h3>
+                                                    <h4 class="timeline-title">IronHack Viet Nam</h4>
+                                                    <p class="timeline-text">Course: Full Stack Web Developer</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="experience padd-15">
+                                    <h3 class="title">Experience</h3>
+                                    <div class="row">
+                                        <div class="timeline-box padd-15">
+                                            <div class="timeline shadow-dark">
+                                                <!-- Timeline Item -->
+                                                <div class="timeline-item">
+                                                    <div class="circle-dot"></div>
+                                                    <h3 class="timeline-date">
+                                                        <i class="fa fa-calendar"></i> Nov 2024 - Now (8mos)
+                                                    </h3>
+                                                    <h4 class="timeline-title">HPT Vietnam Corporation</h4>
+                                                    <p class="timeline-text">Website Management Support</p>
+                                                </div>
+                                                <div class="timeline-item">
+                                                    <div class="circle-dot"></div>
+                                                    <h3 class="timeline-date">
+                                                        <i class="fa fa-calendar"></i> Mar 2023 - Oct 2023 (8mos)
+                                                    </h3>
+                                                    <h4 class="timeline-title">
+                                                        Institute of Smart City and Management
+                                                    </h4>
+                                                    <p class="timeline-text">Website Management Support</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- About Section End -->
+            <!-- Skills Section Start -->
+            <section class="skills section" id="skills" data-aos="fade-up" data-aos-duration="800">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title padd-15">
+                            <h2>Skills</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- ML/LLM Stack -->
+                        <div class="skills-content padd-15">
+                            <div class="row">
+                                <div class="skills-text padd-15">
+                                    <h3><i class="fa fa-brain"
+                                            style="color: var(--skin-color); margin-right: 10px;"></i>ML/LLM</h3>
+                                    <div class="skills-icons">
+                                        <div class="skill-icon" title="PyTorch"><i
+                                                class="devicon-pytorch-original colored"></i><span>PyTorch</span></div>
+                                        <div class="skill-icon" title="TensorFlow"><i
+                                                class="devicon-tensorflow-original colored"></i><span>TensorFlow</span>
+                                        </div>
+                                        <div class="skill-icon" title="Python"><i
+                                                class="devicon-python-plain colored"></i><span>Python</span></div>
+                                        <div class="skill-icon" title="NumPy"><i
+                                                class="devicon-numpy-original colored"></i><span>NumPy</span></div>
+                                        <div class="skill-icon" title="Pandas"><i
+                                                class="devicon-pandas-original colored"></i><span>Pandas</span></div>
+                                        <div class="skill-icon" title="Jupyter"><i
+                                                class="devicon-jupyter-plain colored"></i><span>Jupyter</span></div>
+                                        <div class="skill-icon" title="scikit-learn"><i
+                                                class="devicon-scikitlearn-plain colored"></i><span>scikit-learn</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Retrieval -->
+                        <div class="skills-content padd-15">
+                            <div class="row">
+                                <div class="skills-text padd-15">
+                                    <h3><i class="fa fa-search"
+                                            style="color: var(--skin-color); margin-right: 10px;"></i>Retrieval</h3>
+                                    <div class="skills-icons">
+                                        <div class="skill-icon" title="MongoDB"><i
+                                                class="devicon-mongodb-plain colored"></i><span>MongoDB</span></div>
+                                        <div class="skill-icon" title="PostgreSQL"><i
+                                                class="devicon-postgresql-plain colored"></i><span>PostgreSQL</span>
+                                        </div>
+                                        <div class="skill-icon" title="Redis"><i
+                                                class="devicon-redis-plain colored"></i><span>Redis</span></div>
+                                        <div class="skill-icon" title="Elasticsearch"><i
+                                                class="devicon-elasticsearch-plain colored"></i><span>Elasticsearch</span>
+                                        </div>
+                                        <div class="skill-icon" title="Python"><i
+                                                class="devicon-python-plain colored"></i><span>FAISS</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- MLOps -->
+                        <div class="skills-content padd-15">
+                            <div class="row">
+                                <div class="skills-text padd-15">
+                                    <h3><i class="fa fa-server"
+                                            style="color: var(--skin-color); margin-right: 10px;"></i>MLOps</h3>
+                                    <div class="skills-icons">
+                                        <div class="skill-icon" title="Docker"><i
+                                                class="devicon-docker-plain colored"></i><span>Docker</span></div>
+                                        <div class="skill-icon" title="Kubernetes"><i
+                                                class="devicon-kubernetes-plain colored"></i><span>Kubernetes</span>
+                                        </div>
+                                        <div class="skill-icon" title="Git"><i
+                                                class="devicon-git-plain colored"></i><span>Git</span></div>
+                                        <div class="skill-icon" title="GitHub"><i
+                                                class="devicon-github-original"></i><span>GitHub</span></div>
+                                        <div class="skill-icon" title="GitLab"><i
+                                                class="devicon-gitlab-plain colored"></i><span>GitLab</span></div>
+                                        <div class="skill-icon" title="Jenkins"><i
+                                                class="devicon-jenkins-plain colored"></i><span>Jenkins</span></div>
+                                        <div class="skill-icon" title="Linux"><i
+                                                class="devicon-linux-plain"></i><span>Linux</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Data -->
+                        <div class="skills-content padd-15">
+                            <div class="row">
+                                <div class="skills-text padd-15">
+                                    <h3><i class="fa fa-database"
+                                            style="color: var(--skin-color); margin-right: 10px;"></i>Data</h3>
+                                    <div class="skills-icons">
+                                        <div class="skill-icon" title="MySQL"><i
+                                                class="devicon-mysql-plain colored"></i><span>MySQL</span></div>
+                                        <div class="skill-icon" title="PostgreSQL"><i
+                                                class="devicon-postgresql-plain colored"></i><span>PostgreSQL</span>
+                                        </div>
+                                        <div class="skill-icon" title="Apache Spark"><i
+                                                class="devicon-apachespark-original colored"></i><span>Spark</span>
+                                        </div>
+                                        <div class="skill-icon" title="Pandas"><i
+                                                class="devicon-pandas-original colored"></i><span>Pandas</span></div>
+                                        <div class="skill-icon" title="NumPy"><i
+                                                class="devicon-numpy-original colored"></i><span>NumPy</span></div>
+                                        <div class="skill-icon" title="Python"><i
+                                                class="devicon-python-plain colored"></i><span>Python</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Skills Section End -->
+            <!-- Project Section Start -->
+            <section class="project section" id="project" data-aos="fade-up" data-aos-duration="800">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title padd-15">
+                            <h2>Projects</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="project-filter">
+                            <button type="button" class="filter-btn active" data-filter="all"
+                                aria-label="Filter projects: Show all" aria-pressed="true">All</button>
+                            <button type="button" class="filter-btn" data-filter="llm"
+                                aria-label="Filter projects: LLM Applications" aria-pressed="false">LLM Apps</button>
+                            <button type="button" class="filter-btn" data-filter="cv"
+                                aria-label="Filter projects: Computer Vision" aria-pressed="false">Computer
+                                Vision</button>
+                            <button type="button" class="filter-btn" data-filter="mlops"
+                                aria-label="Filter projects: MLOps" aria-pressed="false">MLOps</button>
+                            <button type="button" class="filter-btn" data-filter="data"
+                                aria-label="Filter projects: Data Analytics"
+                                aria-pressed="false">Data/Analytics</button>
+                        </div>
+                    </div>
+                    <div id="projectsGrid" class="projects-grid">
+                        <!-- Projects will be dynamically rendered by JavaScript -->
+                    </div>
+                </div>
+            </section>
+            <!-- Project Section End -->
+            <!-- Certifications Section Start -->
+            <section class="certifications section" id="certifications-awards" data-aos="fade-up"
+                data-aos-duration="800">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title padd-15">
+                            <h2>Certifications & Awards</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="certification-item padd-15">
+                            <div class="certification-box shadow-dark">
+                                <div class="cert-badge">
+                                    <i class="fa fa-certificate"></i>
+                                </div>
+                                <div class="cert-header">
+                                    <h4>Full Stack Web Development</h4>
+                                    <span class="cert-type">Certificate</span>
+                                </div>
+                                <div class="cert-image-wrapper">
+                                    <img src="./assets/images/certifications/IRONHACK.jpg" alt="Full Stack Certificate"
+                                        class="certificate-img" loading="lazy" />
+                                </div>
+                                <div class="cert-footer">
+                                    <div class="cert-org">
+                                        <i class="fa fa-building"></i>
+                                        <span>IronHack Viet Nam</span>
+                                    </div>
+                                    <div class="cert-date">
+                                        <i class="fa fa-calendar"></i>
+                                        <span>Apr 2022 - Aug 2023</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="certification-item padd-15">
+                            <div class="certification-box shadow-dark">
+                                <div class="cert-badge">
+                                    <i class="fa fa-certificate"></i>
+                                </div>
+                                <div class="cert-header">
+                                    <h4>Intensive English Language Mobility Programme (IELMP)</h4>
+                                    <span class="cert-type">Certificate</span>
+                                </div>
+                                <div class="cert-image-wrapper">
+                                    <img src="./assets/images/certifications/UNIMAS.jpg" alt="IELMP Certificate"
+                                        class="certificate-img" loading="lazy" />
+                                </div>
+                                <div class="cert-footer">
+                                    <div class="cert-org">
+                                        <i class="fa fa-building"></i>
+                                        <span>Universiti Malaysia Sarawak</span>
+                                    </div>
+                                    <div class="cert-date">
+                                        <i class="fa fa-calendar"></i>
+                                        <span>Jul 2023 - Aug 2023</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="certification-item padd-15">
+                            <div class="certification-box shadow-dark cert-award">
+                                <div class="cert-badge award-badge">
+                                    <i class="fa fa-award"></i>
+                                </div>
+                                <div class="cert-header">
+                                    <h4>Recognition of your valuable contribution to I-HUTECH Admission campaign 2023 - 2024</h4>
+                                    <span class="cert-type award-type">Award</span>
+                                </div>
+                                <div class="cert-image-wrapper">
+                                    <img src="./assets/images/certifications/Recognition of your valuable contribution to I-HUTECH Admission campaign 2023 - 2024.jpg"
+                                        alt="Recognition of your valuable contribution to I-HUTECH Admission campaign 2023 - 2024"
+                                        class="certificate-img" loading="lazy" />
+                                </div>
+                                <div class="cert-footer">
+                                    <div class="cert-org">
+                                        <i class="fa fa-building"></i>
+                                        <span>HCM University Of Technology (HUTECH)</span>
+                                    </div>
+                                    <div class="cert-date">
+                                        <i class="fa fa-calendar"></i>
+                                        <span>2023 - 2024</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="certification-item padd-15">
+                            <div class="certification-box shadow-dark">
+                                <div class="cert-badge">
+                                    <i class="fa fa-certificate"></i>
+                                </div>
+                                <div class="cert-header">
+                                    <h4>Node.js (Intermediate)</h4>
+                                    <span class="cert-type">Certificate</span>
+                                </div>
+                                <div class="cert-image-wrapper">
+                                    <img src="./assets/images/certifications/NodeJS.png"
+                                        alt="NodeJS Intermediate Certificate" class="certificate-img" loading="lazy" />
+                                </div>
+                                <div class="cert-footer">
+                                    <div class="cert-org">
+                                        <i class="fa fa-building"></i>
+                                        <span>HackerRank</span>
+                                    </div>
+                                    <div class="cert-date">
+                                        <i class="fa fa-calendar"></i>
+                                        <span>Oct 2024</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="certification-item padd-15">
+                            <div class="certification-box shadow-dark">
+                                <div class="cert-badge">
+                                    <i class="fa fa-certificate"></i>
+                                </div>
+                                <div class="cert-header">
+                                    <h4>JavaScript (Intermediate)</h4>
+                                    <span class="cert-type">Certificate</span>
+                                </div>
+                                <div class="cert-image-wrapper">
+                                    <img src="./assets/images/certifications/javascript_intermediate certificate.png"
+                                        alt="JavaScript Intermediate Certificate" class="certificate-img" loading="lazy" />
+                                </div>
+                                <div class="cert-footer">
+                                    <div class="cert-org">
+                                        <i class="fa fa-building"></i>
+                                        <span>HackerRank</span>
+                                    </div>
+                                    <div class="cert-date">
+                                        <i class="fa fa-calendar"></i>
+                                        <span>May 2024</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="certification-item padd-15">
+                            <div class="certification-box shadow-dark">
+                                <div class="cert-badge">
+                                    <i class="fa fa-certificate"></i>
+                                </div>
+                                <div class="cert-header">
+                                    <h4>CSS</h4>
+                                    <span class="cert-type">Certificate</span>
+                                </div>
+                                <div class="cert-image-wrapper">
+                                    <img src="./assets/images/certifications/css certificate.png" alt="CSS Certificate"
+                                        class="certificate-img" loading="lazy" />
+                                </div>
+                                <div class="cert-footer">
+                                    <div class="cert-org">
+                                        <i class="fa fa-building"></i>
+                                        <span>HackerRank</span>
+                                    </div>
+                                    <div class="cert-date">
+                                        <i class="fa fa-calendar"></i>
+                                        <span>Apr 2023</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Certifications Section End -->
+
+            <!-- Interests Section Start -->
+            <section class="interests section" id="interests" data-aos="fade-up" data-aos-duration="800">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title padd-15">
+                            <h2>Interests</h2>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <!-- Interest 1: AI Research -->
+                        <div class="interest-item padd-15" data-aos="fade-up" data-aos-duration="600">
+                            <div class="interest-box shadow-dark" data-interest="ai-research">
+                                <div class="interest-image">
+                                    <div class="interest-icon-fallback"
+                                        style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                        <i class="fa fa-brain"></i>
+                                    </div>
+                                </div>
+                                <div class="interest-content">
+                                    <h4>AI Research</h4>
+                                    <p>Exploring latest LLM papers, experimenting with new architectures, and
+                                        contributing to open-source AI projects</p>
+                                    
+                                    <!-- Gallery Hint -->
+                                    <div class="interest-gallery-hint">
+                                        <i class="fas fa-images"></i>
+                                        <span>Click để xem ảnh</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Interest 2: Data Visualization -->
+                        <div class="interest-item padd-15" data-aos="fade-up" data-aos-duration="600"
+                            data-aos-delay="100">
+                            <div class="interest-box shadow-dark" data-interest="data-visualization">
+                                <div class="interest-image">
+                                    <div class="interest-icon-fallback"
+                                        style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                                        <i class="fa fa-chart-line"></i>
+                                    </div>
+                                </div>
+                                <div class="interest-content">
+                                    <h4>Data Visualization</h4>
+                                    <p>Creating insightful visualizations to communicate complex ML insights and model
+                                        performance metrics</p>
+                                    
+                                    <!-- Gallery Hint -->
+                                    <div class="interest-gallery-hint">
+                                        <i class="fas fa-images"></i>
+                                        <span>Click để xem ảnh</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Interest 3: Building Tools -->
+                        <div class="interest-item padd-15" data-aos="fade-up" data-aos-duration="600"
+                            data-aos-delay="200">
+                            <div class="interest-box shadow-dark" data-interest="building-tools">
+                                <div class="interest-image">
+                                    <div class="interest-icon-fallback"
+                                        style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                                        <i class="fa fa-tools"></i>
+                                    </div>
+                                </div>
+                                <div class="interest-content">
+                                    <h4>Building Tools</h4>
+                                    <p>Developing automation scripts, CLI tools, and productivity enhancers for ML
+                                        workflows and pipelines</p>
+                                    
+                                    <!-- Gallery Hint -->
+                                    <div class="interest-gallery-hint">
+                                        <i class="fas fa-images"></i>
+                                        <span>Click để xem ảnh</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Interest 4: Tech Community -->
+                        <div class="interest-item padd-15" data-aos="fade-up" data-aos-duration="600"
+                            data-aos-delay="300">
+                            <div class="interest-box shadow-dark" data-interest="tech-community">
+                                <div class="interest-image">
+                                    <div class="interest-icon-fallback"
+                                        style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                                        <i class="fa fa-users"></i>
+                                    </div>
+                                </div>
+                                <div class="interest-content">
+                                    <h4>Tech Community</h4>
+                                    <p>Writing technical blogs, mentoring aspiring ML engineers, and speaking at tech
+                                        meetups and conferences</p>
+                                    
+                                    <!-- Gallery Hint -->
+                                    <div class="interest-gallery-hint">
+                                        <i class="fas fa-images"></i>
+                                        <span>Click để xem ảnh</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Interests Section End -->
+            <!-- Contact Section Start -->
+            <section class="contact section" id="contact" data-aos="fade-up" data-aos-duration="800">
+                <div class="container">
+                    <div class="row">
+                        <div class="section-title padd-15">
+                            <h2>Contact Me</h2>
+                        </div>
+                    </div>
+                    <h3 class="contact-title padd-15">Have You Any Question ?</h3>
+                    <h4 class="contact-sub-title padd-15">I'M AT YOUR SERVICES</h4>
+                    <div class="row">
+                        <!-- Contact Info Item Start -->
+                        <div class="contact-info-item padd-15">
+                            <div class="icon"><i class="fa fa-phone"></i></div>
+                            <h4>Call Us On</h4>
+                            <p>+84 86 8639 882</p>
+                        </div>
+                        <!-- Contact Info Item End -->
+                        <!-- Contact Info Item Start -->
+                        <div class="contact-info-item padd-15">
+                            <div class="icon"><i class="fa fa-map-marker-alt"></i></div>
+                            <h4>Address</h4>
+                            <p>Ho Chi Minh City</p>
+                        </div>
+                        <!-- Contact Info Item End -->
+                        <!-- Contact Info Item Start -->
+                        <div class="contact-info-item padd-15">
+                            <div class="icon"><i class="fa fa-envelope"></i></div>
+                            <h4>Email</h4>
+                            <p>vophuthinhcm@gmail.com</p>
+                        </div>
+                        <!-- Contact Info Item End -->
+                        <!-- Contact Info Item Start -->
+                        <div class="contact-info-item padd-15">
+                            <div class="icon"><i class="fa fa-globe-europe"></i></div>
+                            <h4>Website</h4>
+                            <p>vophuthinh.com</p>
+                        </div>
+                        <!-- Contact Info Item End -->
+                    </div>
+                    <h3 class="contact-title padd-15">SEND ME AN EMAIL</h3>
+                    <h4 class="contact-sub-title padd-15">I'M VERY RESPONSIVE TO MESSAGES</h4>
+                    <!-- Contact Form -->
+                    <div class="row">
+                        <div class="contact-form padd-15">
+                            <div class="row">
+                                <div class="form-item col-6 padd-15">
+                                    <div class="form-group">
+                                        <input type="text" id="from_name" class="form-control"
+                                            placeholder="Enter Your Name" />
+                                    </div>
+                                </div>
+                                <div class="form-item col-6 padd-15">
+                                    <div class="form-group">
+                                        <input type="email" id="email_id" class="form-control"
+                                            placeholder="Enter Your Email" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-item col-12 padd-15">
+                                    <div class="form-group">
+                                        <textarea name="" id="message" class="form-control"
+                                            placeholder="Messages"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-item col-12 padd-15">
+                                    <button type="submit" class="btn" id="contact-submit-btn">
+                                        Send Message
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- Contact Section End -->
+        </div>
+    </div>
+    <!-- Style Switcher Start -->
+    <div class="style-switcher">
+        <div class="style-switcher-toggler s-icon">
+            <i class="fas fa-cog fa-spin"></i>
+        </div>
+        <div class="day-night s-icon">
+            <i class="fas"></i>
+        </div>
+        <h4>Theme Colors</h4>
+        <div class="colors">
+            <span class="color-1" data-color="color-1"></span>
+            <span class="color-2" data-color="color-2"></span>
+            <span class="color-3" data-color="color-3"></span>
+            <span class="color-4" data-color="color-4"></span>
+            <span class="color-5" data-color="color-5"></span>
+        </div>
+    </div>
+    <!-- Style Switcher End -->
+
+    <!-- JS Files -->
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js"
+        integrity="sha512-+2pW8xXU/rNr7VS+H62aqapfRpqFwnSQh9ap6THjsm41AxgA0MhFRtfrABS+Lx2KHJn82UOrnBKhjZOXpom2LQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+
+
+    <!-- Application Scripts -->
+    <script src="js/config.js" defer></script>
+    <script src="js/projects-data.js" defer></script>
+    <script src="js/image-optimizer.js" defer></script>
+    <script src="js/performance-monitor.js" defer></script>
+    <script src="js/script.js" defer></script>
+    <script src="js/style-switcher.js" defer></script>
+
+    <!-- Modals - Must be inside body, before closing tag -->
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal" role="dialog" aria-labelledby="projectModalTitle" aria-modal="true">
+        <div class="modal-content">
+            <span class="close" data-modal-close="projectModal" aria-label="Close modal">&times;</span>
+            <h2 id="projectModalTitle"></h2>
+            <div id="projectModalContent" class="project-modal-content">
+                <!-- Content will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Interest Gallery Modal -->
+    <div id="interestModal" class="modal" role="dialog" aria-labelledby="interestModalTitle" aria-modal="true">
+        <div class="modal-content interest-gallery">
+            <span class="close" data-modal-close="interestModal" aria-label="Close modal">&times;</span>
+            <h2 id="interestModalTitle"></h2>
+            <div id="interestModalImages" class="gallery-image-container">
+            </div>
+        </div>
+    </div>
+
+    <!-- Image Viewer Modal -->
+    <div id="imageViewerModal" class="modal image-viewer-modal" role="dialog" aria-label="Image viewer"
+        aria-modal="true">
+        <span class="close-image-viewer" data-modal-close="imageViewerModal"
+            aria-label="Close image viewer">&times;</span>
+        <div class="image-viewer-content">
+            <img id="viewerImage" src="" alt="Full size image" />
+            <button class="image-viewer-prev" data-image-nav="-1">&#10094;</button>
+            <button class="image-viewer-next" data-image-nav="1">&#10095;</button>
+        </div>
+    </div>
+</body>
+
+</html>
