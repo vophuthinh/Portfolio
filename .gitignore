@@ -1,54 +1,52 @@
-# Dependencies
+# Node modules
 node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
-# Environment variables
-.env
-.env.local
-.env.production
+# Build outputs
+dist/
+build/
+.vite/
+
+# Generated responsive images (keep originals only)
+*-320.jpg
+*-320.png
+*-320.webp
+*-320.avif
+*-640.jpg
+*-640.png
+*-640.webp
+*-640.avif
+*-960.jpg
+*-960.png
+*-960.webp
+*-960.avif
+*-1280.jpg
+*-1280.png
+*-1280.webp
+*-1280.avif
+*-1920.jpg
+*-1920.png
+*-1920.webp
+*-1920.avif
+
+# Backups
+*.backup
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
 
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
-*~
-.DS_Store
-
-# Build outputs
-dist/
-build/
-*.min.js
-*.min.css
-
-# Logs
-logs/
-*.log
 
 # Test coverage
 coverage/
 
-# Temporary files
-tmp/
-temp/
-*.tmp
-
-# Cache
-.cache/
-.parcel-cache/
-
-# Reports
-lighthouse-report.json
-lighthouse-report.html
-
-# Backup files
-*.backup
-*.bak
-assets/css/style.css.backup
-
-# OS files
-Thumbs.db
-.DS_Store
-desktop.ini
+# Lighthouse reports
+lighthouse-report.*

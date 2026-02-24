@@ -1,17 +1,24 @@
 {
   "name": "vophuthinh-portfolio",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "AI Engineer Portfolio Website - Modern, responsive, and PWA-enabled",
-  "main": "index.html",
+  "type": "module",
   "scripts": {
-    "dev": "npx serve -l 3000",
-    "start": "npx serve -l 3000",
-    "lint:js": "npx eslint js/**/*.js",
-    "lint:css": "npx stylelint assets/css/**/*.css",
-    "format": "npx prettier --write \"**/*.{js,css,html,json,md}\"",
-    "lighthouse": "npx lighthouse http://localhost:3000 --view",
-    "test:lighthouse": "npx lighthouse http://localhost:3000 --output=json --output-path=./lighthouse-report.json",
-    "analyze": "npx bundle-buddy index.html"
+    "dev": "vite",
+    "build": "vite build && npm run inject-nonce",
+    "build:full": "node scripts/build.bat",
+    "preview": "vite preview",
+    "serve": "node server.js",
+    "serve:prod": "node server.js",
+    "images": "node scripts/generate-responsive-images.js",
+    "optimize:css": "node scripts/optimize-css.js",
+    "inject-nonce": "node scripts/inject-nonce.js",
+    "lint:js": "eslint js/**/*.js",
+    "lint:css": "stylelint assets/css/**/*.css",
+    "format": "prettier --write \"**/*.{js,css,html,json,md}\"",
+    "lighthouse": "lighthouse http://localhost:3000 --view",
+    "test:lighthouse": "lighthouse http://localhost:3000 --output=json --output-path=./lighthouse-report.json",
+    "analyze": "vite-bundle-visualizer"
   },
   "keywords": [
     "portfolio",
@@ -19,7 +26,8 @@
     "ml-engineer",
     "pwa",
     "responsive",
-    "vanilla-js"
+    "vanilla-js",
+    "vite"
   ],
   "author": "Vo Phu Thinh <vophuthinhcm@gmail.com>",
   "license": "MIT",
@@ -28,10 +36,21 @@
     "url": "https://github.com/vophuthinh/vophuthinh.com.git"
   },
   "homepage": "https://vophuthinh.com",
-  "devDependencies": {},
-  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^8.56.0",
+    "lighthouse": "^11.5.0",
+    "prettier": "^3.1.1",
+    "rollup-plugin-visualizer": "^5.11.0",
+    "sharp": "^0.33.5",
+    "stylelint": "^16.1.0",
+    "terser": "^5.26.0",
+    "vite": "^5.0.0"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
   "engines": {
-    "node": ">=14.0.0",
-    "npm": ">=6.0.0"
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
   }
 }

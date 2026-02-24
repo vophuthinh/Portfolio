@@ -1,9 +1,6 @@
-
 const ImageOptimizer = {
-  // Check if browser supports WebP
   supportsWebP: null,
 
-  // Detect WebP support
   async detectWebPSupport() {
     if (this.supportsWebP !== null) {
       return this.supportsWebP;
@@ -19,10 +16,9 @@ const ImageOptimizer = {
     });
   },
 
-  // Convert image path to WebP if supported
   getOptimizedPath(imagePath) {
     if (!imagePath) return imagePath;
-    
+
     // Don't convert if already WebP or external URL
     if (imagePath.includes('.webp') || imagePath.startsWith('http')) {
       return imagePath;
@@ -34,16 +30,34 @@ const ImageOptimizer = {
     return imagePath;
   },
 
-  // Lazy load images with Intersection Observer
   lazyLoadImages() {
     const images = document.querySelectorAll('img[loading="lazy"]');
-    
+
+    if (false && this.supportsWebP) {
+      images.forEach(img => {
+        if (img.dataset.src) {
+          img.dataset.src = this.getOptimizedPath(img.dataset.src);
+        }
+        const src = img.getAttribute('src');
+        if (src && !src.startsWith('data:') && !src.startsWith('http')) {
+          const newSrc = this.getOptimizedPath(src);
+          if (newSrc !== src) {
+            img.src = newSrc;
+          }
+        }
+      });
+    }
+
     if ('loading' in HTMLImageElement.prototype) {
-      // Browser supports native lazy loading
+      images.forEach(img => {
+        if (img.dataset.src) {
+          img.src = img.dataset.src;
+          img.removeAttribute('data-src');
+        }
+      });
       return;
     }
 
-    // Fallback for browsers without native lazy loading
     const imageObserver = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -64,17 +78,15 @@ const ImageOptimizer = {
     });
   },
 
-  // Initialize image optimization
   async init() {
     await this.detectWebPSupport();
     this.lazyLoadImages();
-    
+
     const log = typeof Logger !== 'undefined' ? Logger.log : console.log;
     log(`Image Optimizer initialized. WebP support: ${this.supportsWebP}`);
   }
 };
 
-// Auto-initialize on DOM ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => ImageOptimizer.init());
 } else {

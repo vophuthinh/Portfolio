@@ -5,12 +5,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; 
-                 script-src 'self' 'unsafe-inline' cdn.jsdelivr.net unpkg.com cdnjs.cloudflare.com; 
-                 style-src 'self' 'unsafe-inline' fonts.googleapis.com cdn.jsdelivr.net cdnjs.cloudflare.com unpkg.com;
-                 font-src 'self' fonts.gstatic.com cdnjs.cloudflare.com cdn.jsdelivr.net data:;
-                 img-src 'self' data: https: cdn.jsdelivr.net cdnjs.cloudflare.com;
-                 connect-src 'self' cdn.jsdelivr.net cdnjs.cloudflare.com api.emailjs.com;">
+    <!-- CSP Nonce will be injected by server or build process -->
+    <!-- For development, use a permissive CSP. For production, use strict nonce-based CSP -->
+    <meta name="csp-nonce" content="NONCE_PLACEHOLDER">
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'self';
+        script-src 'self' 'nonce-NONCE_PLACEHOLDER' cdn.jsdelivr.net unpkg.com cdnjs.cloudflare.com;
+        style-src 'self' 'nonce-NONCE_PLACEHOLDER' fonts.googleapis.com cdn.jsdelivr.net cdnjs.cloudflare.com unpkg.com;
+        font-src 'self' fonts.gstatic.com cdnjs.cloudflare.com cdn.jsdelivr.net data:;
+        img-src 'self' data: https: cdn.jsdelivr.net cdnjs.cloudflare.com;
+        connect-src 'self' cdn.jsdelivr.net cdnjs.cloudflare.com api.emailjs.com;
+        base-uri 'self';
+        form-action 'self';
+        frame-ancestors 'none';
+        upgrade-insecure-requests;
+    ">
 
     <title>Vo Phu Thinh - AI Engineer & ML Engineer | Portfolio</title>
     <meta name="description"
@@ -68,20 +77,31 @@
     <meta name="msapplication-TileColor" content="#ffffff" />
     <meta name="msapplication-TileImage" content="./assets/favicon/ms-icon-144x144.png" />
     <meta name="theme-color" content="#ec1839" />
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="./assets/favicon/manifest.json">
 
     <!-- Font Preconnect for Performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- DNS Prefetch for CDN Performance -->
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    <link rel="dns-prefetch" href="https://unpkg.com">
+    <!-- Preload Critical Assets -->
+    <link rel="preload" href="./assets/css/style.css" as="style">
+    <link rel="preload" href="./assets/images/hero.png" as="image">
+    <link rel="preload" href="./assets/images/logo.png" as="image">
     <link
-        href="https://fonts.googleapis.com/css2?family=Clicker+Script&family=Poppins:wght@200;300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Poppins:wght@200;300;400;500;600;700&display=swap"
         rel="stylesheet">
 
     <!-- Devicon - Tech Stack Icons (Latest) -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
     <!-- CSS Files  -->
-    <link rel="stylesheet" href="./assets/css/style.css?v=20241217-2100" />
+    <link rel="stylesheet" href="./assets/css/style.css?v=20260109-0200" />
     <!-- Style Switcher -->
-    <link rel="stylesheet" href="./assets/css/style-switcher.css?v=20241217-2100" />
+    <link rel="stylesheet" href="./assets/css/style-switcher.css?v=20260109-0200" />
     <link rel="stylesheet" href="./assets/css/skins/color-1.css" class="alternate-style" title="color-1" />
     <link rel="stylesheet" href="./assets/css/skins/color-2.css" class="alternate-style" title="color-2" disabled />
     <link rel="stylesheet" href="./assets/css/skins/color-3.css" class="alternate-style" title="color-3" disabled />
@@ -93,70 +113,34 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- AOS Animation Library CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    
-    <!-- EMERGENCY FIX: Force buttons to display -->
-    <style>
-        .project-card {
-            display: flex !important;
-            flex-direction: column !important;
-            height: 100% !important;
-        }
-        .project-card .project-content {
-            padding: 20px !important;
-            flex: 1 !important;
-            display: flex !important;
-            flex-direction: column !important;
-            justify-content: space-between !important;
-        }
-        .project-actions {
-            display: flex !important;
-            gap: 16px !important;
-            margin-top: auto !important;
-            padding-top: 24px !important;
-            border-top: 2px solid var(--skin-color-02) !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-        }
-        .project-actions .btn-card {
-            flex: 1 !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            gap: 12px !important;
-            padding: 16px 28px !important;
-            border-radius: 14px !important;
-            font-size: 15px !important;
-            font-weight: 800 !important;
-            text-transform: uppercase !important;
-            letter-spacing: 1px !important;
-            text-decoration: none !important;
-            border: 2px solid !important;
-            cursor: pointer !important;
-            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) !important;
-            white-space: nowrap !important;
-            position: relative !important;
-            overflow: hidden !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1) !important;
-        }
-        .project-actions .btn-github-card {
-            background: linear-gradient(135deg, #1a1d23 0%, #24292e 50%, #0d1117 100%) !important;
-            border-color: #30363d !important;
-            color: #ffffff !important;
-        }
-        .project-actions .btn-demo-card {
-            background: linear-gradient(135deg, var(--skin-color) 0%, var(--skin-gradient) 25%, var(--skin-color) 50%, var(--skin-gradient) 75%, var(--skin-color) 100%) !important;
-            border-color: var(--skin-color-03) !important;
-            color: #ffffff !important;
-        }
-        .project-actions .btn-card:hover {
-            transform: translateY(-4px) scale(1.03) !important;
-        }
-    </style>
+
+
 </head>
 
 <body class="dark">
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader-content">
+            <div class="loader-circle"></div>
+            <div class="loader-line-mask">
+                <div class="loader-line"></div>
+            </div>
+            <span class="loader-text">INITIALIZING SYSTEM...</span>
+        </div>
+    </div>
+
+
+    <!-- Skip to Content Link (Accessibility) -->
+    <a href="#main-content" class="skip-to-content" aria-label="Skip to main content">Skip to Content</a>
+
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress-bar"></div>
+
+    <!-- Back To Top Button -->
+    <a href="#" class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
     <!-- Main Container Start -->
     <div class="main-container">
         <!-- Aside Start -->
@@ -193,9 +177,10 @@
         </div>
         <!-- Aside End -->
         <!-- Main Content Start -->
-        <div class="main-content">
+        <main class="main-content" id="main-content">
             <!-- Home Section Start -->
             <section class="home active section" id="home">
+                <canvas id="neural-canvas"></canvas>
                 <div class="container">
                     <div class="row">
                         <div class="home-info padd-15">
@@ -214,10 +199,21 @@
                         </div>
                         <div class="home-img padd-15">
                             <div class="image-wrapper">
-                                <img src="./assets/images/hero.png" alt="Vo Phu Thinh - AI Engineer and ML Engineer" />
+                                <img src="./assets/images/hero.png" 
+                                     alt="Vo Phu Thinh - AI Engineer and ML Engineer"
+                                     loading="eager"
+                                     decoding="async" />
                             </div>
                         </div>
                     </div>
+                </div>
+                <!-- Scroll Down Indicator -->
+                <div class="scroll-down">
+                    <a href="#about">
+                        <span class="mouse">
+                            <span class="wheel"></span>
+                        </span>
+                    </a>
                 </div>
             </section>
             <!-- Main Container End -->
@@ -238,8 +234,7 @@
                                     <!-- What I Build -->
                                     <div class="about-section-card">
                                         <h4 class="about-section-title">
-                                            <i class="fa fa-cube"
-                                                style="color: var(--skin-color); margin-right: 10px;"></i>
+                                            <i class="fa fa-cube"></i>
                                             What I Build
                                         </h4>
                                         <ul class="about-bullet-list">
@@ -257,8 +252,7 @@
                                     <!-- How I Build -->
                                     <div class="about-section-card">
                                         <h4 class="about-section-title">
-                                            <i class="fa fa-cogs"
-                                                style="color: var(--skin-color); margin-right: 10px;"></i>
+                                            <i class="fa fa-cogs"></i>
                                             How I Build
                                         </h4>
                                         <ul class="about-bullet-list">
@@ -276,8 +270,7 @@
                                     <!-- Proof -->
                                     <div class="about-section-card">
                                         <h4 class="about-section-title">
-                                            <i class="fa fa-chart-line"
-                                                style="color: var(--skin-color); margin-right: 10px;"></i>
+                                            <i class="fa fa-chart-line"></i>
                                             Proof
                                         </h4>
                                         <ul class="about-bullet-list">
@@ -418,6 +411,13 @@
                     <div class="row">
                         <div class="section-title padd-15">
                             <h2>Skills</h2>
+                        </div>
+                    </div>
+
+                    <!-- Neural 3D Skills Sphere -->
+                    <div class="row">
+                        <div class="skills-3d-container padd-15">
+                            <canvas id="skills-canvas"></canvas>
                         </div>
                     </div>
                     <div class="row">
@@ -625,11 +625,12 @@
                                     <i class="fa fa-award"></i>
                                 </div>
                                 <div class="cert-header">
-                                    <h4>Recognition of your valuable contribution to I-HUTECH Admission campaign 2023 - 2024</h4>
+                                    <h4>Recognition of your valuable contribution to I-HUTECH Admission campaign 2023 -
+                                        2024</h4>
                                     <span class="cert-type award-type">Award</span>
                                 </div>
                                 <div class="cert-image-wrapper">
-                                    <img src="./assets/images/certifications/Recognition of your valuable contribution to I-HUTECH Admission campaign 2023 - 2024.jpg"
+                                    <img src="./assets/images/certifications/recognition_ihutech_award_2023_2024.jpg"
                                         alt="Recognition of your valuable contribution to I-HUTECH Admission campaign 2023 - 2024"
                                         class="certificate-img" loading="lazy" />
                                 </div>
@@ -680,8 +681,9 @@
                                     <span class="cert-type">Certificate</span>
                                 </div>
                                 <div class="cert-image-wrapper">
-                                    <img src="./assets/images/certifications/javascript_intermediate certificate.png"
-                                        alt="JavaScript Intermediate Certificate" class="certificate-img" loading="lazy" />
+                                    <img src="./assets/images/certifications/javascript_intermediate_certificate.png"
+                                        alt="JavaScript Intermediate Certificate" class="certificate-img"
+                                        loading="lazy" />
                                 </div>
                                 <div class="cert-footer">
                                     <div class="cert-org">
@@ -705,7 +707,7 @@
                                     <span class="cert-type">Certificate</span>
                                 </div>
                                 <div class="cert-image-wrapper">
-                                    <img src="./assets/images/certifications/css certificate.png" alt="CSS Certificate"
+                                    <img src="./assets/images/certifications/css_certificate.png" alt="CSS Certificate"
                                         class="certificate-img" loading="lazy" />
                                 </div>
                                 <div class="cert-footer">
@@ -738,8 +740,7 @@
                         <div class="interest-item padd-15" data-aos="fade-up" data-aos-duration="600">
                             <div class="interest-box shadow-dark" data-interest="ai-research">
                                 <div class="interest-image">
-                                    <div class="interest-icon-fallback"
-                                        style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                                    <div class="interest-icon-fallback">
                                         <i class="fa fa-brain"></i>
                                     </div>
                                 </div>
@@ -747,7 +748,7 @@
                                     <h4>AI Research</h4>
                                     <p>Exploring latest LLM papers, experimenting with new architectures, and
                                         contributing to open-source AI projects</p>
-                                    
+
                                     <!-- Gallery Hint -->
                                     <div class="interest-gallery-hint">
                                         <i class="fas fa-images"></i>
@@ -762,8 +763,7 @@
                             data-aos-delay="100">
                             <div class="interest-box shadow-dark" data-interest="data-visualization">
                                 <div class="interest-image">
-                                    <div class="interest-icon-fallback"
-                                        style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);">
+                                    <div class="interest-icon-fallback">
                                         <i class="fa fa-chart-line"></i>
                                     </div>
                                 </div>
@@ -771,7 +771,7 @@
                                     <h4>Data Visualization</h4>
                                     <p>Creating insightful visualizations to communicate complex ML insights and model
                                         performance metrics</p>
-                                    
+
                                     <!-- Gallery Hint -->
                                     <div class="interest-gallery-hint">
                                         <i class="fas fa-images"></i>
@@ -786,8 +786,7 @@
                             data-aos-delay="200">
                             <div class="interest-box shadow-dark" data-interest="building-tools">
                                 <div class="interest-image">
-                                    <div class="interest-icon-fallback"
-                                        style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);">
+                                    <div class="interest-icon-fallback">
                                         <i class="fa fa-tools"></i>
                                     </div>
                                 </div>
@@ -795,7 +794,7 @@
                                     <h4>Building Tools</h4>
                                     <p>Developing automation scripts, CLI tools, and productivity enhancers for ML
                                         workflows and pipelines</p>
-                                    
+
                                     <!-- Gallery Hint -->
                                     <div class="interest-gallery-hint">
                                         <i class="fas fa-images"></i>
@@ -810,8 +809,7 @@
                             data-aos-delay="300">
                             <div class="interest-box shadow-dark" data-interest="tech-community">
                                 <div class="interest-image">
-                                    <div class="interest-icon-fallback"
-                                        style="background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);">
+                                    <div class="interest-icon-fallback">
                                         <i class="fa fa-users"></i>
                                     </div>
                                 </div>
@@ -819,7 +817,7 @@
                                     <h4>Tech Community</h4>
                                     <p>Writing technical blogs, mentoring aspiring ML engineers, and speaking at tech
                                         meetups and conferences</p>
-                                    
+
                                     <!-- Gallery Hint -->
                                     <div class="interest-gallery-hint">
                                         <i class="fas fa-images"></i>
@@ -876,42 +874,47 @@
                     <h4 class="contact-sub-title padd-15">I'M VERY RESPONSIVE TO MESSAGES</h4>
                     <!-- Contact Form -->
                     <div class="row">
-                        <div class="contact-form padd-15">
+                        <form id="contactForm" class="contact-form padd-15">
                             <div class="row">
                                 <div class="form-item col-6 padd-15">
                                     <div class="form-group">
-                                        <input type="text" id="from_name" class="form-control"
-                                            placeholder="Enter Your Name" />
+                                        <input type="text" name="from_name" id="from_name" class="form-control"
+                                            placeholder=" " required />
+                                        <label for="from_name" class="form-label">Name</label>
                                     </div>
                                 </div>
                                 <div class="form-item col-6 padd-15">
                                     <div class="form-group">
-                                        <input type="email" id="email_id" class="form-control"
-                                            placeholder="Enter Your Email" />
+                                        <input type="email" name="email_id" id="email_id" class="form-control"
+                                            placeholder=" " required />
+                                        <label for="email_id" class="form-label">Email</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-item col-12 padd-15">
                                     <div class="form-group">
-                                        <textarea name="" id="message" class="form-control"
-                                            placeholder="Messages"></textarea>
+                                        <textarea name="message" id="message" class="form-control" placeholder=" "
+                                            required></textarea>
+                                        <label for="message" class="form-label">Message</label>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="form-item col-12 padd-15">
                                     <button type="submit" class="btn" id="contact-submit-btn">
-                                        Send Message
+                                        <span>Send Message</span>
+                                        <i class="fas fa-paper-plane"></i>
                                     </button>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </section>
             <!-- Contact Section End -->
-        </div>
+        </main>
+        <!-- Main Content End -->
     </div>
     <!-- Style Switcher Start -->
     <div class="style-switcher">
@@ -937,17 +940,28 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js"
         integrity="sha512-+2pW8xXU/rNr7VS+H62aqapfRpqFwnSQh9ap6THjsm41AxgA0MhFRtfrABS+Lx2KHJn82UOrnBKhjZOXpom2LQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" defer></script>
+    <!-- AOS, particles, spotlight, tilt, magnetic will be lazy loaded -->
+    <script src="./js/particles.js" defer></script>
+    <script src="./js/skills-3d.js" defer></script>
+
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
 
 
     <!-- Application Scripts -->
-    <script src="js/config.js" defer></script>
-    <script src="js/projects-data.js" defer></script>
+    <!-- Global config and utilities (non-module) -->
+    <script src="js/config.js"></script>
+    <script src="js/utils.js"></script>
+    <script src="js/lazy-loader.js"></script>
+    <script src="js/projects-data.js"></script>
+    <script src="js/interests-data.js"></script>
     <script src="js/image-optimizer.js" defer></script>
     <script src="js/performance-monitor.js" defer></script>
-    <script src="js/script.js" defer></script>
+    
+    <!-- Main application (ES6 modules) -->
+    <script type="module" src="js/main.js"></script>
+    
+    <!-- Style switcher (standalone) -->
     <script src="js/style-switcher.js" defer></script>
 
     <!-- Modals - Must be inside body, before closing tag -->
@@ -975,12 +989,17 @@
     <!-- Image Viewer Modal -->
     <div id="imageViewerModal" class="modal image-viewer-modal" role="dialog" aria-label="Image viewer"
         aria-modal="true">
+        <!-- Ambient Backdrop -->
+        <div class="image-viewer-backdrop">
+            <img id="viewerBackdrop" src="" alt="" aria-hidden="true">
+        </div>
         <span class="close-image-viewer" data-modal-close="imageViewerModal"
             aria-label="Close image viewer">&times;</span>
         <div class="image-viewer-content">
             <img id="viewerImage" src="" alt="Full size image" />
             <button class="image-viewer-prev" data-image-nav="-1">&#10094;</button>
             <button class="image-viewer-next" data-image-nav="1">&#10095;</button>
+            <div id="viewerCaption" class="image-viewer-caption"></div>
         </div>
     </div>
 </body>

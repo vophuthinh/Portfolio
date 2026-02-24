@@ -13,22 +13,22 @@ const PerformanceMonitor = {
     return {
       // First Contentful Paint
       FCP: paint.find(entry => entry.name === 'first-contentful-paint')?.startTime || 0,
-      
+
       // Largest Contentful Paint (requires PerformanceObserver)
       LCP: this.metrics.LCP || 0,
-      
+
       // First Input Delay
       FID: this.metrics.FID || 0,
-      
+
       // Cumulative Layout Shift
       CLS: this.metrics.CLS || 0,
-      
-      // Time to Interactive
-      TTI: navigation ? navigation.domInteractive - navigation.fetchStart : 0,
-      
+
+      // DOM Interactive (custom metric often confused with TTI)
+      domInteractive: navigation ? navigation.domInteractive - navigation.fetchStart : 0,
+
       // Total Page Load Time
       loadTime: navigation ? navigation.loadEventEnd - navigation.fetchStart : 0,
-      
+
       // DOM Content Loaded
       DOMContentLoaded: navigation ? navigation.domContentLoadedEventEnd - navigation.fetchStart : 0
     };
@@ -105,7 +105,7 @@ const PerformanceMonitor = {
     log(`   LCP: ${vitals.LCP.toFixed(0)}ms ${vitals.LCP < 2500 ? '✅' : vitals.LCP < 4000 ? '⚠️' : '❌'}`);
     log(`   FID: ${vitals.FID.toFixed(0)}ms ${vitals.FID < 100 ? '✅' : vitals.FID < 300 ? '⚠️' : '❌'}`);
     log(`   CLS: ${vitals.CLS.toFixed(3)} ${vitals.CLS < 0.1 ? '✅' : vitals.CLS < 0.25 ? '⚠️' : '❌'}`);
-    log(`   TTI: ${vitals.TTI.toFixed(0)}ms`);
+    log(`   DOM Interactive: ${vitals.domInteractive.toFixed(0)}ms`);
     log(`   Load Time: ${vitals.loadTime.toFixed(0)}ms`);
     log(`   DOMContentLoaded: ${vitals.DOMContentLoaded.toFixed(0)}ms`);
   },
