@@ -12,7 +12,6 @@ export class ContactFormController {
     this.contactSubmitBtn = document.getElementById("contact-submit-btn");
     this.fromName = document.getElementById("from_name");
     this.emailId = document.getElementById("email_id");
-    this.subject = document.getElementById("subject");
     this.message = document.getElementById("message");
 
     this.init();
@@ -41,7 +40,7 @@ export class ContactFormController {
 
     const logger = this.getLogger();
 
-    if (!this.fromName || !this.emailId || !this.subject || !this.message) {
+    if (!this.fromName || !this.emailId || !this.message) {
       logger.warn("Contact form elements not found");
       return;
     }
@@ -58,7 +57,6 @@ export class ContactFormController {
     const params = {
       from_name: this.fromName.value.trim(),
       email_id: email,
-      subject: this.subject.value,
       message: this.message.value.trim(),
     };
 
@@ -90,7 +88,6 @@ export class ContactFormController {
         // Clear form
         this.fromName.value = "";
         this.emailId.value = "";
-        this.subject.selectedIndex = 0;
         this.message.value = "";
         this.emailId.classList.remove("is-invalid");
 
@@ -118,7 +115,6 @@ export class ContactFormController {
           // Clear form
           this.fromName.value = "";
           this.emailId.value = "";
-          this.subject.selectedIndex = 0;
           this.message.value = "";
           this.emailId.classList.remove("is-invalid");
 
