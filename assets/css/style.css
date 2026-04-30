@@ -1881,10 +1881,10 @@ body:not(.dark) .about .about-content .timeline {
 
 .modal-content {
   background: var(--bg-black-100);
-  padding: 30px;
+  padding: 0;
   text-align: center;
-  max-width: 650px;
-  width: 85%;
+  max-width: 780px;
+  width: 90%;
   max-height: 90vh;
   overflow-y: auto;
   border-radius: 16px;
@@ -1937,21 +1937,24 @@ body:not(.dark) .about .about-content .timeline {
 .modal-content img {
   max-width: 100%;
   border-radius: 10px;
-  margin: 20px 0;
+  margin: 0;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
 .modal-content h2 {
-  font-size: 24px;
+  font-size: 22px;
   color: var(--text-black-900);
-  margin-bottom: 15px;
+  margin: 0;
+  padding: 20px 50px 16px 24px;
+  text-align: left;
+  border-bottom: 1px solid var(--bg-black-50);
 }
 
 .modal-content p {
-  font-size: 18px;
+  font-size: 15px;
   color: var(--text-black-700);
-  margin-bottom: 20px;
-  line-height: 1.6;
+  margin-bottom: 0;
+  line-height: 1.7;
 }
 
 .case-study-content {
@@ -1968,7 +1971,182 @@ body:not(.dark) .about .about-content .timeline {
   position: relative;
 }
 
-/* Case Study Blocks in Modal */
+/* Project Modal — Hero Image */
+.modal-hero {
+  width: 100%;
+  max-height: 340px;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+  position: relative;
+}
+
+.modal-hero img {
+  width: 100%;
+  height: 340px;
+  object-fit: cover;
+  display: block;
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* Project Modal — Body */
+.modal-body {
+  padding: 24px;
+  text-align: left;
+}
+
+/* Project Modal — Section Layout */
+.modal-section {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 24px;
+  align-items: flex-start;
+}
+
+.modal-section:last-child {
+  margin-bottom: 0;
+}
+
+.modal-section-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  margin-top: 2px;
+}
+
+.modal-section-problem .modal-section-icon {
+  background: rgba(239, 68, 68, 0.12);
+  color: #ef4444;
+}
+
+.modal-section-solution .modal-section-icon {
+  background: rgba(34, 197, 94, 0.12);
+  color: #22c55e;
+}
+
+.modal-section-tech .modal-section-icon {
+  background: rgba(59, 130, 246, 0.12);
+  color: #3b82f6;
+}
+
+.modal-section-results .modal-section-icon {
+  background: rgba(245, 158, 11, 0.12);
+  color: #f59e0b;
+}
+
+.modal-section-outcome .modal-section-icon {
+  background: var(--skin-color-02);
+  color: var(--skin-color);
+}
+
+.modal-section-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.modal-section-content h3 {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--text-black-700);
+  margin-bottom: 8px;
+}
+
+.modal-section-content p {
+  font-size: 14.5px;
+  line-height: 1.7;
+  color: var(--text-black-700);
+  margin: 0;
+}
+
+/* Project Modal — Impact Grid */
+.modal-impact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.modal-impact-card {
+  background: var(--bg-black-900);
+  border: 1px solid var(--bg-black-50);
+  border-radius: 10px;
+  padding: 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: border-color 0.2s ease;
+}
+
+.modal-impact-card:hover {
+  border-color: var(--skin-color-03);
+}
+
+.modal-impact-card-label {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-black-700);
+  opacity: 0.7;
+}
+
+.modal-impact-card-value {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--skin-color);
+  line-height: 1.4;
+}
+
+/* Project Modal — Links */
+.modal-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--bg-black-50);
+}
+
+.modal-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+.modal-link-github {
+  background: #24292e;
+  color: #fff;
+}
+
+.modal-link-github:hover {
+  background: #333;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.modal-link-demo {
+  background: var(--skin-color);
+  color: #fff;
+}
+
+.modal-link-demo:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px var(--skin-color-03);
+}
+
+/* Legacy — kept for non-project modals */
 .case-study-block {
   margin-bottom: 25px;
   padding: 20px;
@@ -2131,12 +2309,20 @@ body:not(.dark) .about .about-content .timeline {
 
 .close {
   position: absolute;
-  right: 20px;
-  top: 15px;
+  right: 16px;
+  top: 12px;
   font-size: 28px;
   cursor: pointer;
   color: var(--text-black-700);
   transition: color 0.3s ease;
+  z-index: 10;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--bg-black-100);
 }
 
 .close:hover {
@@ -2208,15 +2394,34 @@ body:not(.dark) .about .about-content .timeline {
 }
 
 /* Responsive Modal Adjustments */
+
+/* Tablet landscape */
+@media (max-width: 991.98px) {
+  .modal-content {
+    max-width: 92%;
+    width: 92%;
+  }
+
+  .modal-hero {
+    max-height: 280px;
+  }
+
+  .modal-hero img {
+    height: 280px;
+  }
+}
+
+/* Tablet portrait & large phones */
 @media (max-width: 768px) {
   .modal-content {
-    padding: 20px;
+    padding: 0;
     max-width: 95%;
     width: 95%;
   }
 
   .modal-content h2 {
-    font-size: 22px;
+    font-size: 18px;
+    padding: 16px 44px 14px 16px;
   }
 
   .modal-content p {
@@ -2224,9 +2429,72 @@ body:not(.dark) .about .about-content .timeline {
   }
 
   .close {
-    right: 15px;
-    top: 15px;
-    font-size: 20px;
+    right: 10px;
+    top: 8px;
+    font-size: 22px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .modal-hero {
+    max-height: 200px;
+  }
+
+  .modal-hero img {
+    height: 200px;
+  }
+
+  .modal-body {
+    padding: 16px;
+  }
+
+  .modal-section {
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .modal-section-icon {
+    width: 30px;
+    height: 30px;
+    font-size: 13px;
+  }
+
+  .modal-section-content h3 {
+    font-size: 12px;
+  }
+
+  .modal-section-content p {
+    font-size: 13.5px;
+    word-break: break-word;
+  }
+
+  .modal-impact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-impact-card {
+    padding: 12px 14px;
+  }
+
+  .modal-impact-card-value {
+    word-break: break-word;
+  }
+
+  .modal-links {
+    flex-direction: column;
+  }
+
+  .modal-link-btn {
+    justify-content: center;
+  }
+
+  .stack-tags {
+    gap: 8px;
+  }
+
+  .stack-tag {
+    padding: 6px 12px;
+    font-size: 12px;
   }
 
   .modal-buttons {
@@ -2245,30 +2513,100 @@ body:not(.dark) .about .about-content .timeline {
   }
 
   .modal-content img {
-    margin: 10px 0;
+    margin: 0;
   }
 }
 
+/* Small phones (iPhone SE, Galaxy S8, etc.) */
 @media (max-width: 480px) {
   .modal-content {
-    width: 95%;
-    max-width: 90%;
-    position: relative;
+    width: 98%;
+    max-width: 98%;
+    max-height: 95vh;
+    border-radius: 12px;
   }
 
   .modal-content h2 {
-    font-size: 18px;
+    font-size: 16px;
+    padding: 14px 40px 12px 14px;
   }
 
   .modal-content p {
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .close {
-    right: 20px;
-    top: 15px;
-    font-size: 18px;
-    transform: none;
+    right: 8px;
+    top: 6px;
+    font-size: 20px;
+    width: 28px;
+    height: 28px;
+  }
+
+  .modal-hero {
+    max-height: 160px;
+    border-radius: 12px 12px 0 0;
+  }
+
+  .modal-hero img {
+    height: 160px;
+  }
+
+  .modal-body {
+    padding: 14px;
+  }
+
+  .modal-section {
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .modal-section-icon {
+    width: 26px;
+    height: 26px;
+    font-size: 12px;
+    border-radius: 8px;
+  }
+
+  .modal-section-content h3 {
+    font-size: 11px;
+    margin-bottom: 6px;
+  }
+
+  .modal-section-content p {
+    font-size: 12.5px;
+    line-height: 1.6;
+  }
+
+  .modal-impact-card {
+    padding: 10px 12px;
+  }
+
+  .modal-impact-card-label {
+    font-size: 10px;
+  }
+
+  .modal-impact-card-value {
+    font-size: 12.5px;
+  }
+
+  .stack-tags {
+    gap: 6px;
+  }
+
+  .stack-tag {
+    padding: 5px 10px;
+    font-size: 11px;
+  }
+
+  .modal-links {
+    margin-top: 16px;
+    padding-top: 14px;
+  }
+
+  .modal-link-btn {
+    padding: 8px 16px;
+    font-size: 13px;
   }
 
   .modal-buttons {
@@ -2285,7 +2623,30 @@ body:not(.dark) .about .about-content .timeline {
   }
 
   .modal-content img {
-    margin: 5px 0;
+    margin: 0;
+  }
+}
+
+/* Landscape phones — limit hero height */
+@media (max-height: 500px) and (orientation: landscape) {
+  .modal-content {
+    max-height: 95vh;
+  }
+
+  .modal-hero {
+    max-height: 120px;
+  }
+
+  .modal-hero img {
+    height: 120px;
+  }
+
+  .modal-body {
+    padding: 12px 16px;
+  }
+
+  .modal-section {
+    margin-bottom: 12px;
   }
 }
 
@@ -3129,6 +3490,15 @@ body:not(.dark) .cert-award:hover .cert-type {
   border-radius: 2px;
 }
 
+.contact-subtitle {
+  text-align: center;
+  color: var(--text-black-700);
+  font-size: 15px;
+  margin-top: 15px;
+  margin-bottom: 30px;
+  font-weight: 400;
+}
+
 .contact-sub-title {
   color: var(--text-black-900);
   text-align: center;
@@ -3236,9 +3606,26 @@ body:not(.dark) .cert-award:hover .cert-type {
   transition: all 0.4s ease;
 }
 
-.contact .contact-info-item:hover .icon .fa {
+.contact .contact-info-item .icon .fab {
+  font-size: 26px;
+  color: var(--skin-color);
+  transition: all 0.4s ease;
+}
+
+.contact .contact-info-item:hover .icon .fa,
+.contact .contact-info-item:hover .icon .fab {
   filter: drop-shadow(0 0 5px var(--skin-color));
   transform: scale(1.1);
+}
+
+.contact .contact-info-item p a {
+  color: var(--text-black-700);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact .contact-info-item p a:hover {
+  color: var(--skin-color);
 }
 
 .contact .contact-info-item h4 {
@@ -3330,6 +3717,35 @@ body.dark .contact .contact-form .form-control {
   /* Disable resize for layout stability */
   padding-top: 15px;
   /* Align text top */
+}
+
+.contact .contact-form select.form-control {
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23999' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 16px center;
+  padding-right: 40px;
+}
+
+.contact .contact-form select.form-control:invalid {
+  color: var(--text-black-700);
+}
+
+.contact .contact-form select.form-control option {
+  background: var(--bg-black-100);
+  color: var(--text-black-900);
+}
+
+/* Float label for select when a value is chosen */
+.contact .contact-form select.form-control:focus ~ .form-label,
+.contact .contact-form select.form-control:valid ~ .form-label {
+  top: -10px;
+  left: 15px;
+  font-size: 13px;
+  color: var(--skin-color);
+  font-weight: 600;
 }
 
 /* Focus States */

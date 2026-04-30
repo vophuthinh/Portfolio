@@ -219,6 +219,95 @@
         ]
       }
     </script>
+
+    <!-- BreadcrumbList Schema for Rich Results -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://vophuthinh.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "About",
+            "item": "https://vophuthinh.com/#about"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Skills",
+            "item": "https://vophuthinh.com/#skills"
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": "Projects",
+            "item": "https://vophuthinh.com/#project"
+          },
+          {
+            "@type": "ListItem",
+            "position": 5,
+            "name": "Certifications",
+            "item": "https://vophuthinh.com/#certifications"
+          },
+          {
+            "@type": "ListItem",
+            "position": 6,
+            "name": "Contact",
+            "item": "https://vophuthinh.com/#contact"
+          }
+        ]
+      }
+    </script>
+
+    <!-- FAQ Schema for GEO (Google SGE / AI Overviews) -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Who is Vo Phu Thinh?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Vo Phu Thinh (Võ Phú Thịnh) is an AI Engineer based in Ho Chi Minh City, Vietnam. He specializes in building and deploying production AI solutions including Large Language Models (LLM), Retrieval-Augmented Generation (RAG), AI Agents, and Machine Learning systems. He currently works at HPT Vietnam Corporation."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What AI projects has Vo Phu Thinh built?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Notable projects include: (1) HPT D-DAY 2025 Chatbot — a RAG-powered AI chatbot handling 850+ questions with zero hallucination; (2) Lyly — an enterprise AI assistant with real-time voice/text, hybrid search RAG, and multi-step reasoning (won 2nd Prize); (3) H.I.H — HotNews Intelligence Hub automating business intelligence for 76% of HPT employees (won 3rd Prize)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What technologies does Vo Phu Thinh work with?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Core stack includes Python, FastAPI, PyTorch, LangChain, OpenAI, Google AI, Qdrant, Next.js, and WebSocket. He has experience with RAG pipelines, vector databases, AI agent orchestration, MLOps (Docker, Kubernetes), and cloud platforms (AWS, Azure, Google Cloud)."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How to contact Vo Phu Thinh?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "You can reach Vo Phu Thinh via email at vophuthinhcm@gmail.com, phone at +84 868 639 882, or connect on LinkedIn at linkedin.com/in/vophuthinh and GitHub at github.com/vophuthinh."
+            }
+          }
+        ]
+      }
+    </script>
+
     <link
       rel="apple-touch-icon"
       sizes="57x57"
@@ -307,13 +396,16 @@
     <link rel="dns-prefetch" href="https://unpkg.com" />
     <!-- Preload Critical Assets -->
     <link rel="preload" href="./assets/css/style.css" as="style" />
-    <link rel="preload" href="./assets/images/hero.png" as="image" />
+    <link rel="preload" href="./assets/images/hero.webp" as="image" />
     <link rel="preload" href="./assets/images/logo.webp" as="image" />
     <link
       rel="preload"
       as="style"
       href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Poppins:wght@200;300;400;500;600;700&display=swap"
-      onload="this.onload=null;this.rel='stylesheet'"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
     />
     <noscript>
       <link
@@ -327,7 +419,10 @@
       rel="preload"
       as="style"
       href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
-      onload="this.onload=null;this.rel='stylesheet'"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
     />
     <noscript>
       <link
@@ -347,7 +442,10 @@
       integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
-      onload="this.onload=null;this.rel='stylesheet'"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
     />
     <noscript>
       <link
@@ -467,7 +565,7 @@
               <div class="home-img padd-15">
                 <div class="image-wrapper">
                   <img
-                    src="./assets/images/hero.png"
+                    src="./assets/images/hero.webp"
                     alt="Vo Phu Thinh - AI Engineer (Machine Learning)"
                     loading="eager"
                     fetchpriority="high"
@@ -504,26 +602,36 @@
               <div class="about-content padd-15">
                 <div class="row">
                   <div class="about-text padd-15">
-                    <h3>I'm Vo Phu Thinh and <span>AI Engineer</span></h3>
+                    <h3>I'm Vo Phu Thinh, an <span>AI Engineer</span></h3>
                     <p>
-                      I started as an intern at HPT Vietnam and grew into an AI
-                      Engineer within a year — now part of the AI Center of
-                      Excellence (CoE), where I build AI solutions that solve
-                      real business problems and deliver measurable results.
+                      I started my journey at HPT Vietnam as an AI Engineer
+                      Intern and have continued growing with the team at the AI
+                      Center of Excellence. During my first year, I had the
+                      opportunity to contribute to and ship 3 AI products to
+                      production, each designed to solve real business problems.
                     </p>
+                    <h4 style="margin-top: 18px; margin-bottom: 10px">
+                      Highlights
+                    </h4>
                     <ul class="about-bullet-list">
                       <li>
-                        Shipped an AI chatbot that handled
-                        <strong>850+ questions in one day</strong> at a company
-                        event
+                        Built and shipped
+                        <strong>3 AI products to production</strong> within my
+                        first year
                       </li>
                       <li>
-                        Won <strong>2 prizes</strong> in HPT's enterprise AI
-                        competition with AI Agent and news intelligence projects
+                        Developed an AI chatbot that handled
+                        <strong>850+ questions in a single day</strong> at a
+                        company event
                       </li>
                       <li>
-                        End-to-end capability: from prototyping and model
-                        development to production deployment and monitoring
+                        Won <strong>2 awards</strong> in HPT's enterprise AI
+                        competition with AI Agent and News Intelligence projects
+                      </li>
+                      <li>
+                        Experienced in
+                        <strong>chatbot, RAG, AI Agent</strong>, and workflow
+                        automation for enterprise use cases
                       </li>
                     </ul>
                     <h4 style="margin-top: 18px; margin-bottom: 10px">
@@ -531,16 +639,24 @@
                     </h4>
                     <ul class="about-bullet-list">
                       <li>
-                        Deploy a production-ready AI solution with clear KPI
-                        baseline and measurable improvement
+                        <strong>Weeks 1–2:</strong> Analyze business workflows,
+                        data sources, and pain points to identify the
+                        highest-impact AI use case
                       </li>
                       <li>
-                        Set up experiment tracking, model versioning, and
-                        automated evaluation workflows
+                        <strong>Weeks 3–6:</strong> Build and deploy a
+                        production-ready chatbot or RAG system integrated with
+                        existing tools
                       </li>
                       <li>
-                        Establish monitoring for quality, performance, and cost
-                        to support continuous iteration
+                        <strong>Weeks 7–10:</strong> Set up evaluation
+                        pipelines, experiment tracking, and model versioning for
+                        reliable AI development
+                      </li>
+                      <li>
+                        <strong>Weeks 11–12:</strong> Deliver monitoring
+                        dashboards for quality, latency, usage, and cost — plus
+                        a roadmap for the next phase
                       </li>
                     </ul>
                   </div>
@@ -673,13 +789,14 @@
                             </p>
                             <ul class="timeline-details">
                               <li>
-                                Designed and implemented automation workflows
-                                using n8n, Power Platform, and UiPath for
-                                internal operations
+                                Built 10+ automation workflows using n8n, Power
+                                Platform, and UiPath — cutting manual reporting
+                                time by ~60%
                               </li>
                               <li>
-                                Integrated AI capabilities into enterprise
-                                solutions, reducing manual processing time
+                                Integrated AI into enterprise solutions,
+                                enabling automated document processing for
+                                internal teams
                               </li>
                             </ul>
                           </div>
@@ -695,12 +812,12 @@
                             <p class="timeline-text">Intern</p>
                             <ul class="timeline-details">
                               <li>
-                                Researched and prototyped AI/ML solutions for
-                                enterprise use cases
+                                Prototyped an AI chatbot for internal Q&amp;A
+                                that later evolved into the D-DAY 2025 product
                               </li>
                               <li>
-                                Promoted to full-time after 6 months based on
-                                project delivery and technical growth
+                                Promoted to full-time after 6 months — fastest
+                                intern-to-engineer track in the team
                               </li>
                             </ul>
                           </div>
@@ -1278,7 +1395,7 @@
             <div class="row">
               <div class="certification-item padd-15">
                 <a
-                  href="./assets/images/certifications/Google AI.png"
+                  href="./assets/images/certifications/Google AI.webp"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="cert-link"
@@ -1286,7 +1403,7 @@
                   <div class="certification-box shadow-dark">
                     <div class="cert-preview">
                       <img
-                        src="./assets/images/certifications/Google AI.png"
+                        src="./assets/images/certifications/Google AI.webp"
                         alt="Google AI Specialization"
                         loading="lazy"
                       />
@@ -1619,18 +1736,22 @@
               </div>
             </div>
             <h3 class="contact-title padd-15">Get In Touch</h3>
+            <p class="contact-subtitle padd-15">
+              Whether it's a job opportunity, a collaboration, or just a
+              question — I'd love to hear from you.
+            </p>
             <div class="row">
               <!-- Contact Info Item Start -->
               <div class="contact-info-item padd-15">
                 <div class="icon"><i class="fa fa-phone"></i></div>
-                <h4>Call Us On</h4>
+                <h4>Phone</h4>
                 <p>+84 86 8639 882</p>
               </div>
               <!-- Contact Info Item End -->
               <!-- Contact Info Item Start -->
               <div class="contact-info-item padd-15">
                 <div class="icon"><i class="fa fa-map-marker-alt"></i></div>
-                <h4>Address</h4>
+                <h4>Location</h4>
                 <p>Ho Chi Minh City</p>
               </div>
               <!-- Contact Info Item End -->
@@ -1643,13 +1764,23 @@
               <!-- Contact Info Item End -->
               <!-- Contact Info Item Start -->
               <div class="contact-info-item padd-15">
-                <div class="icon"><i class="fa fa-globe-europe"></i></div>
-                <h4>Website</h4>
-                <p>vophuthinh.com</p>
+                <div class="icon"><i class="fab fa-linkedin-in"></i></div>
+                <h4>LinkedIn</h4>
+                <p>
+                  <a
+                    href="https://www.linkedin.com/in/vophuthinh"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >linkedin.com/in/vophuthinh</a
+                  >
+                </p>
               </div>
               <!-- Contact Info Item End -->
             </div>
             <h3 class="contact-title padd-15">Send Me A Message</h3>
+            <p class="contact-subtitle padd-15">
+              I typically reply within 24 hours.
+            </p>
             <!-- Contact Form -->
             <div class="row">
               <form id="contactForm" class="contact-form padd-15">
@@ -1678,6 +1809,29 @@
                         required
                       />
                       <label for="email_id" class="form-label">Email</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-item col-12 padd-15">
+                    <div class="form-group">
+                      <select
+                        name="subject"
+                        id="subject"
+                        class="form-control"
+                        required
+                      >
+                        <option value="" disabled selected></option>
+                        <option value="Job Opportunity">Job Opportunity</option>
+                        <option value="Freelance / Collaboration">
+                          Freelance / Collaboration
+                        </option>
+                        <option value="Technical Question">
+                          Technical Question
+                        </option>
+                        <option value="Other">Other</option>
+                      </select>
+                      <label for="subject" class="form-label">Subject</label>
                     </div>
                   </div>
                 </div>

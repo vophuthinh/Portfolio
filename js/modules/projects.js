@@ -251,40 +251,88 @@ export class ProjectsController {
     }
 
     if (this.projectModalContent) {
+      const imagePath =
+        project.image ||
+        `./assets/images/portfolio/portfolio-${project.id}.jpg`;
+
       const techStackTags = project.stack
         .map(
           (tech) => `<span class="stack-tag">${this.escapeHtml(tech)}</span>`,
         )
         .join("");
 
-      const impactChips = project.impact
+      const impactCards = project.impact
         .map(
           (imp) =>
-            `<span class="modal-impact-chip"><span class="impact-label">${this.escapeHtml(imp.label)}</span> <span class="impact-value">${this.escapeHtml(imp.value)}</span></span>`,
+            `<div class="modal-impact-card">
+              <span class="modal-impact-card-label">${this.escapeHtml(imp.label)}</span>
+              <span class="modal-impact-card-value">${this.escapeHtml(imp.value)}</span>
+            </div>`,
         )
         .join("");
 
+      const hasGithub = project.github && project.github !== "#";
+      const hasLink = project.link && project.link !== "#";
+
+      let linksHtml = "";
+      if (hasGithub || hasLink) {
+        linksHtml = `<div class="modal-links">`;
+        if (hasGithub) {
+          linksHtml += `<a href="${this.escapeHtml(project.github)}" target="_blank" rel="noopener noreferrer" class="modal-link-btn modal-link-github"><i class="fab fa-github"></i> View on GitHub</a>`;
+        }
+        if (hasLink) {
+          linksHtml += `<a href="${this.escapeHtml(project.link)}" target="_blank" rel="noopener noreferrer" class="modal-link-btn modal-link-demo"><i class="fas fa-external-link-alt"></i> Live Demo</a>`;
+        }
+        linksHtml += `</div>`;
+      }
+
       this.projectModalContent.innerHTML = `
-        <div class="case-study-block">
-          <h3><i class="fa fa-exclamation-circle"></i> Problem</h3>
-          <p>${this.escapeHtml(project.problem)}</p>
+        <div class="modal-hero">
+          <img src="${imagePath}" alt="${this.escapeHtml(project.title)}" loading="lazy" />
         </div>
-        <div class="case-study-block">
-          <h3><i class="fa fa-lightbulb"></i> Solution / Approach</h3>
-          <p>${this.escapeHtml(project.solution)}</p>
-        </div>
-        <div class="case-study-block">
-          <h3><i class="fa fa-code"></i> Tech Stack</h3>
-          <div class="stack-tags">
-            ${techStackTags}
+
+        <div class="modal-body">
+          <div class="modal-section modal-section-problem">
+            <div class="modal-section-icon"><i class="fa fa-exclamation-circle"></i></div>
+            <div class="modal-section-content">
+              <h3>Problem</h3>
+              <p>${this.escapeHtml(project.problem)}</p>
+            </div>
           </div>
-        </div>
-        <div class="case-study-block">
-          <h3><i class="fa fa-chart-line"></i> Results</h3>
-          <div class="modal-impact-chips">
-            ${impactChips}
+
+          <div class="modal-section modal-section-solution">
+            <div class="modal-section-icon"><i class="fa fa-lightbulb"></i></div>
+            <div class="modal-section-content">
+              <h3>Solution</h3>
+              <p>${this.escapeHtml(project.solution)}</p>
+            </div>
           </div>
-          <p>${this.escapeHtml(project.results)}</p>
+
+          <div class="modal-section modal-section-tech">
+            <div class="modal-section-icon"><i class="fa fa-code"></i></div>
+            <div class="modal-section-content">
+              <h3>Tech Stack</h3>
+              <div class="stack-tags">${techStackTags}</div>
+            </div>
+          </div>
+
+          <div class="modal-section modal-section-results">
+            <div class="modal-section-icon"><i class="fa fa-chart-line"></i></div>
+            <div class="modal-section-content">
+              <h3>Key Metrics</h3>
+              <div class="modal-impact-grid">${impactCards}</div>
+            </div>
+          </div>
+
+          <div class="modal-section modal-section-outcome">
+            <div class="modal-section-icon"><i class="fa fa-trophy"></i></div>
+            <div class="modal-section-content">
+              <h3>Outcome</h3>
+              <p>${this.escapeHtml(project.results)}</p>
+            </div>
+          </div>
+
+          ${linksHtml}
         </div>
       `;
     }
