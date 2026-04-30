@@ -1,7 +1,7 @@
 /**
  * WebMCP - Snippet to add MCP functionality to any website
  *
- * Shows as a small blue square in bottom right corner
+ * Shows as a small assistant widget in bottom right corner
  * On click, expands to allow connection with token
  * Auto-disconnects after 5 minutes of inactivity
  */
@@ -14,6 +14,7 @@ class WebMCP {
             position: 'bottom-right',
             size: '30px',
             padding: '20px',
+            triggerLabel: 'AI Assistant',
             inactivityTimeout: 5 * 60 * 1000, // 5 minutes in milliseconds
             ...options
         };
@@ -298,37 +299,63 @@ class WebMCP {
         // Set position based on option
         this._setWidgetPosition(container);
 
-        // Create trigger button (blue square)
-        const triggerButton = document.createElement('div');
+        // Create trigger button with explicit label so users understand the purpose
+        const triggerButton = document.createElement('button');
         triggerButton.className = 'webmcp-trigger';
+        triggerButton.type = 'button';
+        triggerButton.setAttribute('aria-label', 'Open AI Assistant connection panel');
+        triggerButton.title = 'Connect AI assistant';
         Object.assign(triggerButton.style, {
-            width: this.options.size,
-            height: this.options.size,
+            minHeight: this.options.size,
+            padding: '0 12px',
             backgroundColor: this.options.color,
-            borderRadius: '4px',
+            border: 'none',
+            borderRadius: '999px',
             cursor: 'pointer',
-            boxShadow: '0 2px 10px rgba(0,0,0,0.2)',
+            boxShadow: '0 8px 20px rgba(0,0,0,0.25)',
             display: 'flex',
-            justifyContent: 'center',
             alignItems: 'center',
-            alignSelf: 'flex-end'
+            gap: '8px',
+            alignSelf: 'flex-end',
+            color: '#fff',
+            fontSize: '12px',
+            fontWeight: '600',
+            letterSpacing: '0.2px'
         });
 
-        // Create content panel (initially hidden) - positioned above the trigger
+        const triggerDot = document.createElement('span');
+        triggerDot.className = 'webmcp-trigger-dot';
+        Object.assign(triggerDot.style, {
+            width: '8px',
+            height: '8px',
+            borderRadius: '50%',
+            backgroundColor: '#ffd6de',
+            boxShadow: '0 0 0 2px rgba(255,255,255,0.24)'
+        });
+
+        const triggerLabel = document.createElement('span');
+        triggerLabel.className = 'webmcp-trigger-label';
+        triggerLabel.textContent = this.options.triggerLabel;
+
+        triggerButton.appendChild(triggerDot);
+        triggerButton.appendChild(triggerLabel);
+
+        // Create content panel (initially hidden) - positioned above trigger
         const contentPanel = document.createElement('div');
         contentPanel.className = 'webmcp-content';
         Object.assign(contentPanel.style, {
             backgroundColor: '#ffffff',
-            border: '1px solid #e1e1e1',
-            borderRadius: '5px',
-            padding: '15px',
-            marginBottom: '10px',
-            boxShadow: '0 5px 15px rgba(0,0,0,0.1)',
-            width: '250px',
+            border: '1px solid #ececec',
+            borderRadius: '12px',
+            padding: '16px',
+            marginBottom: '12px',
+            boxShadow: '0 20px 45px rgba(0,0,0,0.18)',
+            width: '320px',
+            maxWidth: 'min(92vw, 360px)',
             display: 'none',
             overflow: 'hidden',
             position: 'absolute',
-            bottom: '40px'
+            bottom: `calc(${this.options.size} + 14px)`
         });
 
         // Add header with title and close button
@@ -337,14 +364,15 @@ class WebMCP {
             display: 'flex',
             justifyContent: 'space-between',
             alignItems: 'center',
-            marginBottom: '15px'
+            marginBottom: '8px'
         });
 
         const title = document.createElement('div');
-        title.textContent = 'WebMCP';
+        title.textContent = 'AI Assistant Access';
         Object.assign(title.style, {
             fontWeight: 'bold',
-            fontSize: '16px'
+            fontSize: '16px',
+            color: '#111827'
         });
 
         const closeButton = document.createElement('button');
@@ -364,20 +392,71 @@ class WebMCP {
         header.appendChild(closeButton);
         contentPanel.appendChild(header);
 
+        const subtitle = document.createElement('p');
+        subtitle.textContent = 'For advanced users: connect an MCP client so AI can read structured portfolio data.';
+        Object.assign(subtitle.style, {
+            margin: '0 0 12px 0',
+            color: '#4b5563',
+            fontSize: '12px',
+            lineHeight: '1.45'
+        });
+        contentPanel.appendChild(subtitle);
+
+        const quickGuide = document.createElement('div');
+        Object.assign(quickGuide.style, {
+            border: '1px solid #f1f5f9',
+            backgroundColor: '#f8fafc',
+            borderRadius: '8px',
+            padding: '10px',
+            marginBottom: '12px'
+        });
+
+        const quickGuideTitle = document.createElement('div');
+        quickGuideTitle.textContent = 'Quick steps';
+        Object.assign(quickGuideTitle.style, {
+            fontSize: '11px',
+            fontWeight: '700',
+            color: '#334155',
+            marginBottom: '6px',
+            textTransform: 'uppercase',
+            letterSpacing: '0.04em'
+        });
+
+        const steps = document.createElement('ol');
+        Object.assign(steps.style, {
+            margin: '0',
+            paddingLeft: '18px',
+            color: '#475569',
+            fontSize: '11px',
+            lineHeight: '1.45'
+        });
+
+        ['Get a WebMCP token in your AI client', 'Paste token and click Connect AI', 'Use your assistant with this portfolio'].forEach((text) => {
+            const step = document.createElement('li');
+            step.textContent = text;
+            steps.appendChild(step);
+        });
+
+        quickGuide.appendChild(quickGuideTitle);
+        quickGuide.appendChild(steps);
+        contentPanel.appendChild(quickGuide);
+
         // Add connection form
         this._createConnectionForm(contentPanel);
 
         // Add status indicator
         const statusIndicator = document.createElement('div');
         statusIndicator.className = 'webmcp-status';
-        statusIndicator.textContent = 'Disconnected';
+        statusIndicator.textContent = 'Not connected';
+        statusIndicator.setAttribute('aria-live', 'polite');
         Object.assign(statusIndicator.style, {
-            padding: '8px',
-            borderRadius: '3px',
-            backgroundColor: '#f8d7da',
-            color: '#721c24',
+            padding: '10px',
+            borderRadius: '8px',
+            backgroundColor: '#fef2f2',
+            color: '#991b1b',
+            border: '1px solid #fecaca',
             textAlign: 'center',
-            marginBottom: '10px',
+            marginBottom: '12px',
             fontSize: '12px'
         });
         contentPanel.appendChild(statusIndicator);
@@ -394,10 +473,11 @@ class WebMCP {
             marginTop: '15px',
             fontSize: '12px',
             display: 'none',
-            maxHeight: '200px',
+            maxHeight: '260px',
             overflow: 'auto',
-            border: '1px solid #eee',
-            borderRadius: '4px'
+            border: '1px solid #e5e7eb',
+            borderRadius: '8px',
+            backgroundColor: '#ffffff'
         });
         contentPanel.appendChild(registeredItemsContainer);
 
@@ -411,7 +491,7 @@ class WebMCP {
         });
 
         const toolsHeader = document.createElement('div');
-        toolsHeader.textContent = 'Registered Tools:';
+        toolsHeader.textContent = 'Available Tools';
         Object.assign(toolsHeader.style, {
             fontWeight: 'bold',
             marginBottom: '5px'
@@ -438,7 +518,7 @@ class WebMCP {
         });
 
         const promptsHeader = document.createElement('div');
-        promptsHeader.textContent = 'Registered Prompts:';
+        promptsHeader.textContent = 'Available Prompts';
         Object.assign(promptsHeader.style, {
             fontWeight: 'bold',
             marginBottom: '5px'
@@ -464,7 +544,7 @@ class WebMCP {
         });
 
         const resourcesHeader = document.createElement('div');
-        resourcesHeader.textContent = 'Registered Resources:';
+        resourcesHeader.textContent = 'Available Resources';
         Object.assign(resourcesHeader.style, {
             fontWeight: 'bold',
             marginBottom: '5px'
@@ -541,39 +621,43 @@ class WebMCP {
     _createConnectionForm(container) {
         const form = document.createElement('div');
         Object.assign(form.style, {
-            marginBottom: '8px',
+            marginBottom: '10px',
         });
 
         // Token input field
         const inputGroup = document.createElement('div');
         Object.assign(inputGroup.style, {
             display: 'flex',
-            marginBottom: '8px',
+            marginBottom: '10px',
         });
 
         const tokenInput = document.createElement('input');
         tokenInput.type = 'text';
         tokenInput.className = 'webmcp-token-input';
-        tokenInput.placeholder = 'Paste connection token';
+        tokenInput.placeholder = 'Paste WebMCP token';
+        tokenInput.setAttribute('aria-label', 'WebMCP connection token');
+        tokenInput.autocomplete = 'off';
         Object.assign(tokenInput.style, {
             flex: '1',
-            padding: '8px',
-            border: '1px solid #ccc',
-            borderRadius: '4px 0 0 4px',
+            padding: '10px',
+            border: '1px solid #cbd5e1',
+            borderRadius: '8px 0 0 8px',
             fontSize: '12px'
         });
 
         const connectButton = document.createElement('button');
         connectButton.className = 'webmcp-connect-btn';
-        connectButton.textContent = 'Connect';
+        connectButton.textContent = 'Connect AI';
+        connectButton.type = 'button';
         Object.assign(connectButton.style, {
-            padding: '8px 12px',
+            padding: '10px 12px',
             backgroundColor: this.options.color,
             color: 'white',
             border: 'none',
-            borderRadius: '0 4px 4px 0',
+            borderRadius: '0 8px 8px 0',
             cursor: 'pointer',
-            fontSize: '12px'
+            fontSize: '12px',
+            fontWeight: '600'
         });
 
         inputGroup.appendChild(tokenInput);
@@ -581,15 +665,17 @@ class WebMCP {
 
         const disconnectButton = document.createElement('button');
         disconnectButton.className = 'webmcp-disconnect-btn';
-        disconnectButton.textContent = 'Disconnect';
+        disconnectButton.textContent = 'Disconnect AI';
+        disconnectButton.type = 'button';
         Object.assign(disconnectButton.style, {
-            padding: '8px 12px',
+            padding: '10px 12px',
             backgroundColor: '#dc3545',
             color: 'white',
             border: 'none',
-            borderRadius: '4px',
+            borderRadius: '8px',
             cursor: 'pointer',
             fontSize: '12px',
+            fontWeight: '600',
             width: '100%',
             display: 'none'
         });
@@ -621,9 +707,17 @@ class WebMCP {
 
         // Connect button click
         const connectBtn = container.querySelector('.webmcp-connect-btn');
+        const tokenInput = container.querySelector('.webmcp-token-input');
         connectBtn.addEventListener('click', () => {
-            const tokenInput = container.querySelector('.webmcp-token-input');
             this.connect(tokenInput.value);
+        });
+
+        // Connect when users press Enter in token input
+        tokenInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+                this.connect(tokenInput.value);
+            }
         });
 
         // Disconnect button click
@@ -673,33 +767,44 @@ class WebMCP {
         // Clear existing classes
         statusIndicator.classList.remove('connected', 'disconnected', 'connecting', 'pending-auth');
 
+        const defaultMessages = {
+            connected: 'Connected to AI client',
+            disconnected: 'Not connected',
+            connecting: 'Connecting...',
+            'pending-auth': 'Authorizing...'
+        };
+
         // Set new status
-        statusIndicator.textContent = message || status;
+        statusIndicator.textContent = message || defaultMessages[status] || status;
 
         // Apply styling based on status
         switch (status) {
             case 'connected':
                 Object.assign(statusIndicator.style, {
-                    backgroundColor: '#d4edda',
-                    color: '#155724'
+                    backgroundColor: '#ecfdf5',
+                    color: '#065f46',
+                    borderColor: '#a7f3d0'
                 });
                 break;
             case 'disconnected':
                 Object.assign(statusIndicator.style, {
-                    backgroundColor: '#f8d7da',
-                    color: '#721c24'
+                    backgroundColor: '#fef2f2',
+                    color: '#991b1b',
+                    borderColor: '#fecaca'
                 });
                 break;
             case 'connecting':
                 Object.assign(statusIndicator.style, {
-                    backgroundColor: '#fff3cd',
-                    color: '#856404'
+                    backgroundColor: '#fffbeb',
+                    color: '#92400e',
+                    borderColor: '#fde68a'
                 });
                 break;
             case 'pending-auth':
                 Object.assign(statusIndicator.style, {
-                    backgroundColor: '#d1ecf1',
-                    color: '#0c5460'
+                    backgroundColor: '#eff6ff',
+                    color: '#1e3a8a',
+                    borderColor: '#bfdbfe'
                 });
                 break;
         }
@@ -717,6 +822,8 @@ class WebMCP {
         const connectBtn = container.querySelector('.webmcp-connect-btn');
         const disconnectBtn = container.querySelector('.webmcp-disconnect-btn');
         const registeredItemsContainer = container.querySelector('.webmcp-registered-items');
+        const triggerDot = container.querySelector('.webmcp-trigger-dot');
+        const triggerLabel = container.querySelector('.webmcp-trigger-label');
 
         if (isConnected) {
             tokenInput.style.display = 'none';
@@ -724,20 +831,28 @@ class WebMCP {
             disconnectBtn.style.display = 'block';
             registeredItemsContainer.style.display = 'block';
 
-            // Update the trigger button to show connected state
-            const trigger = container.querySelector('.webmcp-trigger');
-            trigger.innerHTML = '✓';
-            trigger.style.color = 'white';
-            trigger.style.fontWeight = 'bold';
+            // Update trigger button to show connected state
+            if (triggerDot) {
+                triggerDot.style.backgroundColor = '#22c55e';
+                triggerDot.style.boxShadow = '0 0 0 2px rgba(255,255,255,0.24), 0 0 0 6px rgba(34,197,94,0.2)';
+            }
+            if (triggerLabel) {
+                triggerLabel.textContent = 'AI Connected';
+            }
         } else {
             tokenInput.style.display = 'block';
             connectBtn.style.display = 'block';
             disconnectBtn.style.display = 'none';
             registeredItemsContainer.style.display = 'none';
 
-            // Reset the trigger button
-            const trigger = container.querySelector('.webmcp-trigger');
-            trigger.innerHTML = '';
+            // Reset trigger button
+            if (triggerDot) {
+                triggerDot.style.backgroundColor = '#ffd6de';
+                triggerDot.style.boxShadow = '0 0 0 2px rgba(255,255,255,0.24)';
+            }
+            if (triggerLabel) {
+                triggerLabel.textContent = this.options.triggerLabel;
+            }
         }
     }
 

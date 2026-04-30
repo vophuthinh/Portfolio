@@ -250,6 +250,7 @@
     function () {
       return fetch("/llms-full.txt")
         .then(function (r) {
+          if (!r.ok) throw new Error("Failed to fetch llms-full.txt: " + r.status);
           return r.text();
         })
         .then(function (text) {
@@ -258,6 +259,17 @@
               {
                 uri: "https://vophuthinh.com/llms-full.txt",
                 text: text,
+                mimeType: "text/plain",
+              },
+            ],
+          };
+        })
+        .catch(function (err) {
+          return {
+            contents: [
+              {
+                uri: "https://vophuthinh.com/llms-full.txt",
+                text: "Error loading profile: " + err.message,
                 mimeType: "text/plain",
               },
             ],
