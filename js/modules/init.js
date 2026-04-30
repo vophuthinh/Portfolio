@@ -1,3 +1,5 @@
+import { Utils } from "../utils.js";
+
 /**
  * Initialization Module
  * Handles app initialization, typing animation, preloader, and misc features
@@ -11,32 +13,28 @@ export class AppInitializer {
   init() {
     this.setupTypingAnimation();
     this.updateExperienceDuration();
-    this.initSkillsSphere();
+    this.setupThemeToggle();
   }
 
   getLogger() {
-    return typeof Utils !== "undefined" && Utils.getLogger
-      ? Utils.getLogger()
-      : {
-          log: console.log.bind(console),
-          warn: console.warn.bind(console),
-          error: console.error.bind(console),
-        };
+    return Utils.getLogger();
   }
 
   setupTypingAnimation() {
     const typingElement = document.querySelector(".typing");
     if (!typingElement) return;
+    typingElement.textContent = "AI Engineer";
 
-    if (typeof Typed !== "undefined") {
+    const initTyped = () => {
+      if (typeof Typed === "undefined") return;
       try {
         new Typed(".typing", {
           strings: [
             "",
             "AI Engineer",
-            "ML Engineer",
-            "LLM Application Engineer",
-            "MLOps Practitioner",
+            "Software Solutions Engineer",
+            "LLM Application Developer",
+            "AI Agent Builder",
           ],
           typeSpeed: 100,
           backSpeed: 60,
@@ -45,13 +43,32 @@ export class AppInitializer {
       } catch (error) {
         const logger = this.getLogger();
         logger.error("Typed.js initialization error:", error);
-        typingElement.textContent = "AI Engineer";
       }
-    } else {
-      const logger = this.getLogger();
-      logger.warn("Typed.js library not loaded - using fallback");
-      typingElement.textContent = "AI Engineer";
-    }
+    };
+
+    const loadTypedScript = () =>
+      new Promise((resolve) => {
+        if (typeof Typed !== "undefined") {
+          resolve();
+          return;
+        }
+        const script = document.createElement("script");
+        script.src =
+          "https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js";
+        script.async = true;
+        script.onload = () => resolve();
+        script.onerror = () => resolve();
+        document.head.appendChild(script);
+      });
+
+    const runWhenIdle = window.requestIdleCallback
+      ? window.requestIdleCallback.bind(window)
+      : (cb) => setTimeout(cb, 300);
+
+    runWhenIdle(async () => {
+      await loadTypedScript();
+      initTyped();
+    });
   }
 
   updateExperienceDuration() {
@@ -106,81 +123,50 @@ export class AppInitializer {
     });
   }
 
-  initSkillsSphere() {
-    if (typeof SkillsSphere3D === "undefined") {
-      setTimeout(() => this.initSkillsSphere(), 500);
-      return;
+  setupThemeToggle() {
+    const toggle = document.querySelector(".theme-toggle");
+    if (!toggle) return;
+
+    // Restore saved theme
+    const saved = localStorage.getItem("theme");
+    if (saved === "light") {
+      document.body.classList.remove("dark");
+    } else {
+      document.body.classList.add("dark");
     }
 
-    const skills = [
-      "PyTorch",
-      "TensorFlow",
-      "Python",
-      "OpenCV",
-      "LLM",
-      "RAG",
-      "LangChain",
-      "HuggingFace",
-      "Docker",
-      "Kubernetes",
-      "MLOps",
-      "Git",
-      "GitHub",
-      "PostgreSQL",
-      "MongoDB",
-      "Redis",
-      "Elasticsearch",
-      "Spark",
-      "Pandas",
-      "NumPy",
-      "FastAPI",
-      "Linux",
-      "Jenkins",
-      "AWS",
-      "GCP",
-      "SQL",
-    ];
-
-    const logger = this.getLogger();
-
-    try {
-      new SkillsSphere3D("skills-canvas", skills);
-      logger.log("Neural Skills Sphere initialized");
-    } catch (e) {
-      logger.error("Sphere init error:", e);
-    }
+    toggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      const isDark = document.body.classList.contains("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    });
   }
 }
 
 // Preloader and AOS initialization
 export function initPreloaderAndAnimations() {
-  window.addEventListener("load", () => {
-    // Hide Preloader
+  const hidePreloader = () => {
     const preloader = document.querySelector(".preloader");
-    if (preloader) {
-      preloader.classList.add("fade-out");
-      setTimeout(() => {
-        preloader.style.display = "none";
-      }, 500);
-    }
+    if (!preloader || preloader.classList.contains("fade-out")) return;
+    preloader.classList.add("fade-out");
+    setTimeout(() => {
+      preloader.style.display = "none";
+    }, 300);
+  };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    hidePreloader();
+    setTimeout(hidePreloader, 1200);
 
     // Ensure active section is visible
     const activeSection = document.querySelector(".section.active");
     if (activeSection) {
-      activeSection.style.opacity = "1";
-      activeSection.style.visibility = "visible";
+      // Force reflow to ensure CSS transition applies correctly
+      activeSection.classList.add("active");
     }
 
-    // Init AOS Animation
-    if (typeof LazyLoader !== "undefined") {
-      LazyLoader.loadAOS().catch((err) => {
-        const logger =
-          typeof Utils !== "undefined" && Utils.getLogger
-            ? Utils.getLogger()
-            : { warn: console.warn.bind(console) };
-        logger.warn("AOS lazy load failed:", err);
-      });
-    } else if (typeof AOS !== "undefined") {
+    // Init AOS Animation if library is available
+    if (typeof AOS !== "undefined") {
       AOS.init({
         duration: 1000,
         once: true,

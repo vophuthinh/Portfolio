@@ -1,101 +1,78 @@
-import { defineConfig } from 'vite';
-import { resolve } from 'path';
+import { defineConfig } from "vite";
+import { resolve } from "path";
 
 export default defineConfig({
-  root: '.',
-  base: './',
-  
+  root: ".",
+  base: "./",
+
   build: {
-    outDir: 'dist',
-    assetsDir: 'assets',
-    
+    outDir: "dist",
+    assetsDir: "assets",
+
     // Minification settings
-    minify: 'terser',
+    minify: "terser",
     terserOptions: {
       compress: {
         drop_console: true,
         drop_debugger: true,
-        pure_funcs: ['console.log', 'console.info']
+        pure_funcs: ["console.log", "console.info"],
       },
       format: {
-        comments: false
-      }
+        comments: false,
+      },
     },
-    
+
     // Code splitting
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'index.html'),
-        offline: resolve(__dirname, 'offline.html')
+        main: resolve(__dirname, "index.html"),
+        offline: resolve(__dirname, "offline.html"),
       },
       output: {
-        // Manual chunks for better caching
-        manualChunks: {
-          'vendor': [
-            // External libraries will be bundled separately
-          ],
-          'navigation': [
-            './js/modules/navigation.js'
-          ],
-          'projects': [
-            './js/modules/projects.js'
-          ],
-          'modals': [
-            './js/modules/modals.js',
-            './js/modules/interests.js'
-          ],
-          'forms': [
-            './js/modules/contact-form.js'
-          ],
-          'ui': [
-            './js/modules/scroll.js',
-            './js/modules/responsive-images.js'
-          ]
-        },
         // Asset file naming
-        chunkFileNames: 'js/[name]-[hash].js',
-        entryFileNames: 'js/[name]-[hash].js',
-        assetFileNames: 'assets/[name]-[hash][extname]'
-      }
+        chunkFileNames: "js/[name]-[hash].js",
+        entryFileNames: "js/[name]-[hash].js",
+        assetFileNames: "assets/[name]-[hash][extname]",
+      },
     },
-    
+
     // CSS code splitting
     cssCodeSplit: true,
-    
+
     // Source maps for production debugging
     sourcemap: false,
-    
+
     // Asset inlining threshold (10kb)
     assetsInlineLimit: 10240,
-    
+
     // Report compressed size
     reportCompressedSize: true,
-    
+
     // Chunk size warnings
-    chunkSizeWarningLimit: 500
+    chunkSizeWarningLimit: 500,
   },
-  
+
   // Optimization settings
   optimizeDeps: {
-    include: []
+    include: [],
   },
-  
+
   // Server settings for development
   server: {
     port: 3000,
     open: true,
-    cors: true
+    cors: true,
   },
-  
+
   // Preview settings
   preview: {
     port: 4173,
-    open: true
+    open: true,
   },
-  
+
   // CSS settings
   css: {
     devSourcemap: true,
-    preprocessorOptions: {}
-  }
+    preprocessorOptions: {},
+  },
 });

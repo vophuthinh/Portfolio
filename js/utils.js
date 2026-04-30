@@ -10,8 +10,8 @@ const Utils = {
    * @returns {string} Escaped HTML string
    */
   escapeHtml(text) {
-    if (typeof text !== 'string') return '';
-    const div = document.createElement('div');
+    if (typeof text !== "string") return "";
+    const div = document.createElement("div");
     div.textContent = text;
     return div.innerHTML;
   },
@@ -38,18 +38,19 @@ const Utils = {
    * @returns {Object} Logger object with log, warn, error methods
    */
   getLogger() {
-    if (typeof Logger !== 'undefined') {
+    if (typeof Logger !== "undefined") {
       return Logger;
     }
     return {
       log: console.log.bind(console),
       warn: console.warn.bind(console),
-      error: console.error.bind(console)
+      error: console.error.bind(console),
     };
-  }
+  },
 };
 
-// Export for use in other scripts
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = Utils;
-}
+// Assign to window for non-module scripts
+window.Utils = Utils;
+
+export default Utils;
+export { Utils };

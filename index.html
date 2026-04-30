@@ -1,17 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- CSP Nonce will be injected by server or build process -->
-    <!-- For development, use a permissive CSP. For production, use strict nonce-based CSP -->
-    <meta name="csp-nonce" content="NONCE_PLACEHOLDER">
-    <meta http-equiv="Content-Security-Policy" content="
+    <!-- CSP: Static hosting uses 'strict-dynamic' with hash. Express server overrides with per-request nonce. -->
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="
         default-src 'self';
-        script-src 'self' 'nonce-NONCE_PLACEHOLDER' cdn.jsdelivr.net unpkg.com cdnjs.cloudflare.com;
-        style-src 'self' 'nonce-NONCE_PLACEHOLDER' fonts.googleapis.com cdn.jsdelivr.net cdnjs.cloudflare.com unpkg.com;
+        script-src 'self' 'unsafe-inline' cdn.jsdelivr.net unpkg.com cdnjs.cloudflare.com;
+        style-src 'self' 'unsafe-inline' fonts.googleapis.com cdn.jsdelivr.net cdnjs.cloudflare.com unpkg.com;
         font-src 'self' fonts.gstatic.com cdnjs.cloudflare.com cdn.jsdelivr.net data:;
         img-src 'self' data: https: cdn.jsdelivr.net cdnjs.cloudflare.com;
         connect-src 'self' cdn.jsdelivr.net cdnjs.cloudflare.com api.emailjs.com;
@@ -19,989 +18,1758 @@
         form-action 'self';
         frame-ancestors 'none';
         upgrade-insecure-requests;
-    ">
+    "
+    />
 
-    <title>Vo Phu Thinh - AI Engineer & ML Engineer | Portfolio</title>
-    <meta name="description"
-        content="AI Engineer and ML Engineer specializing in LLM applications, computer vision, and MLOps. Building production-ready AI systems with measurable impact." />
-    <meta name="keywords"
-        content="AI Engineer, ML Engineer, LLM, RAG, Computer Vision, MLOps, PyTorch, TensorFlow, LangChain" />
+    <title>
+      Vo Phu Thinh | AI Engineer & Machine Learning Specialist in Ho Chi Minh
+      City
+    </title>
+    <meta
+      name="description"
+      content="Vo Phu Thinh — AI Engineer tại Ho Chi Minh City chuyên Machine Learning, LLM, RAG, AI Agent. Kinh nghiệm triển khai giải pháp AI thực tế với Python, PyTorch, LangChain, OpenAI, Azure OpenAI tại HPT Vietnam Corporation."
+    />
+    <meta
+      name="keywords"
+      content="Vo Phu Thinh, AI Engineer, Machine Learning Engineer, LLM, NLP, RAG, AI Agent, LangChain, OpenAI, Azure OpenAI, GenAI, Python, PyTorch, TensorFlow, scikit-learn, NumPy, Pandas, SQL, Power BI, MLOps, Docker, Kubernetes, AWS, Azure, Google Cloud, Ho Chi Minh City, Vietnam, HPT Vietnam, kỹ sư AI, học máy"
+    />
     <meta name="author" content="Vo Phu Thinh" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+    />
+    <link rel="canonical" href="https://vophuthinh.com/" />
 
-    <meta property="og:type" content="website" />
+    <!-- Geo Targeting -->
+    <meta name="geo.region" content="VN-SG" />
+    <meta name="geo.placename" content="Ho Chi Minh City" />
+    <meta name="geo.position" content="10.8231;106.6297" />
+    <meta name="ICBM" content="10.8231, 106.6297" />
+    <meta name="language" content="en" />
+    <link rel="alternate" hreflang="en" href="https://vophuthinh.com/" />
+    <link rel="alternate" hreflang="vi" href="https://vophuthinh.com/" />
+    <link rel="alternate" hreflang="x-default" href="https://vophuthinh.com/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="profile" />
     <meta property="og:url" content="https://vophuthinh.com/" />
-    <meta property="og:title" content="Vo Phu Thinh - AI Engineer & ML Engineer" />
-    <meta property="og:description"
-        content="AI Engineer specializing in LLM applications, computer vision, and MLOps. Building production-ready AI systems." />
-    <meta property="og:image" content="https://vophuthinh.com/assets/images/hero.png" />
+    <meta
+      property="og:title"
+      content="Vo Phu Thinh | AI Engineer & Machine Learning Specialist"
+    />
+    <meta
+      property="og:description"
+      content="AI Engineer chuyên LLM, RAG, AI Agent, Machine Learning. Triển khai giải pháp AI thực tế tại HPT Vietnam Corporation, Ho Chi Minh City."
+    />
+    <meta
+      property="og:image"
+      content="https://vophuthinh.com/assets/images/hero.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+      property="og:image:alt"
+      content="Vo Phu Thinh - AI Engineer Portfolio"
+    />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="vi_VN" />
+    <meta property="og:site_name" content="Vo Phu Thinh Portfolio" />
+    <meta property="profile:first_name" content="Thinh" />
+    <meta property="profile:last_name" content="Vo Phu" />
 
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://vophuthinh.com/" />
-    <meta property="twitter:title" content="Vo Phu Thinh - AI Engineer & ML Engineer" />
-    <meta property="twitter:description"
-        content="AI Engineer specializing in LLM applications, computer vision, and MLOps." />
-    <meta property="twitter:image" content="https://vophuthinh.com/assets/images/hero.png" />
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://vophuthinh.com/" />
+    <meta
+      name="twitter:title"
+      content="Vo Phu Thinh | AI Engineer & Machine Learning Specialist"
+    />
+    <meta
+      name="twitter:description"
+      content="AI Engineer chuyên LLM, RAG, AI Agent, Machine Learning. Triển khai giải pháp AI thực tế tại Ho Chi Minh City."
+    />
+    <meta
+      name="twitter:image"
+      content="https://vophuthinh.com/assets/images/hero.png"
+    />
+    <meta
+      name="twitter:image:alt"
+      content="Vo Phu Thinh - AI Engineer Portfolio"
+    />
 
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Vo Phu Thinh",
-      "jobTitle": "AI Engineer",
-      "url": "https://vophuthinh.com",
-      "sameAs": [
-        "https://www.linkedin.com/in/vophuthinh",
-        "https://github.com/vophuthinh"
-      ],
-      "email": "vophuthinhcm@gmail.com",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Ho Chi Minh City",
-        "addressCountry": "VN"
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://vophuthinh.com/#website",
+            "url": "https://vophuthinh.com",
+            "name": "Vo Phu Thinh Portfolio",
+            "description": "AI Engineer & Machine Learning Specialist Portfolio",
+            "inLanguage": ["en", "vi"]
+          },
+          {
+            "@type": "ProfilePage",
+            "@id": "https://vophuthinh.com/#profilepage",
+            "url": "https://vophuthinh.com",
+            "isPartOf": { "@id": "https://vophuthinh.com/#website" },
+            "mainEntity": { "@id": "https://vophuthinh.com/#person" },
+            "dateCreated": "2024-01-01",
+            "dateModified": "2026-04-30"
+          },
+          {
+            "@type": "Person",
+            "@id": "https://vophuthinh.com/#person",
+            "name": "Vo Phu Thinh",
+            "givenName": "Thinh",
+            "familyName": "Vo",
+            "additionalName": "Phu",
+            "alternateName": ["Võ Phú Thịnh", "vophuthinh"],
+            "jobTitle": "AI Engineer",
+            "url": "https://vophuthinh.com",
+            "image": "https://vophuthinh.com/assets/images/hero.png",
+            "sameAs": [
+              "https://www.linkedin.com/in/vophuthinh",
+              "https://github.com/vophuthinh",
+              "https://www.facebook.com/vox.phus.thijnh"
+            ],
+            "email": "vophuthinhcm@gmail.com",
+            "telephone": "+84868639882",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Ho Chi Minh City",
+              "addressRegion": "Ho Chi Minh",
+              "addressCountry": "VN"
+            },
+            "nationality": {
+              "@type": "Country",
+              "name": "Vietnam"
+            },
+            "worksFor": {
+              "@type": "Organization",
+              "name": "HPT Vietnam Corporation",
+              "url": "https://www.hpt.vn"
+            },
+            "alumniOf": [
+              {
+                "@type": "CollegeOrUniversity",
+                "name": "HUTECH Institute of International Education"
+              },
+              {
+                "@type": "CollegeOrUniversity",
+                "name": "Open University Malaysia"
+              }
+            ],
+            "knowsAbout": [
+              "Artificial Intelligence",
+              "Machine Learning",
+              "Deep Learning",
+              "Large Language Models",
+              "LLM Applications",
+              "AI Agents",
+              "Agentic AI",
+              "Multi-Agent Systems",
+              "Retrieval-Augmented Generation",
+              "RAG",
+              "Natural Language Processing",
+              "NLP",
+              "Generative AI",
+              "GenAI",
+              "Prompt Engineering",
+              "LLM Fine-Tuning",
+              "Vector Databases",
+              "Semantic Search",
+              "Embeddings",
+              "Computer Vision",
+              "Transformer Architecture",
+              "OpenAI",
+              "Azure OpenAI",
+              "LangChain",
+              "LangGraph",
+              "Python",
+              "PyTorch",
+              "TensorFlow",
+              "scikit-learn",
+              "NumPy",
+              "Pandas",
+              "Hugging Face",
+              "FastAPI",
+              "Docker",
+              "Kubernetes",
+              "MLOps",
+              "SQL",
+              "MySQL",
+              "SQL Server",
+              "Power BI",
+              "Data Analytics",
+              "AWS",
+              "Google Cloud",
+              "Azure",
+              "Git",
+              "GitHub"
+            ],
+            "knowsLanguage": ["vi", "en"],
+            "award": [
+              "2nd Prize - AI in Business Competition (HPT, 2025)",
+              "3rd Prize - AI in Business Competition (HPT, 2025)"
+            ],
+            "description": "AI Engineer tại Ho Chi Minh City, Vietnam. Chuyên xây dựng và triển khai giải pháp AI/ML thực tế bao gồm LLM, RAG, AI Agent, NLP với Python, PyTorch, LangChain. Hiện đang làm việc tại HPT Vietnam Corporation."
+          }
+        ]
       }
-    }
     </script>
-    <link rel="apple-touch-icon" sizes="57x57" href="./assets/favicon/apple-icon-57x57.png" />
-    <link rel="apple-touch-icon" sizes="60x60" href="./assets/favicon/apple-icon-60x60.png" />
-    <link rel="apple-touch-icon" sizes="72x72" href="./assets/favicon/apple-icon-72x72.png" />
-    <link rel="apple-touch-icon" sizes="76x76" href="./assets/favicon/apple-icon-76x76.png" />
-    <link rel="apple-touch-icon" sizes="114x114" href="./assets/favicon/apple-icon-114x114.png" />
-    <link rel="apple-touch-icon" sizes="120x120" href="./assets/favicon/apple-icon-120x120.png" />
-    <link rel="apple-touch-icon" sizes="144x144" href="./assets/favicon/apple-icon-144x144.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="./assets/favicon/apple-icon-152x152.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-icon-180x180.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="./assets/favicon/android-icon-192x192.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="96x96" href="./assets/favicon/favicon-96x96.png" />
-    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="57x57"
+      href="./assets/favicon/apple-icon-57x57.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="60x60"
+      href="./assets/favicon/apple-icon-60x60.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="72x72"
+      href="./assets/favicon/apple-icon-72x72.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="76x76"
+      href="./assets/favicon/apple-icon-76x76.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="114x114"
+      href="./assets/favicon/apple-icon-114x114.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="120x120"
+      href="./assets/favicon/apple-icon-120x120.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="144x144"
+      href="./assets/favicon/apple-icon-144x144.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="152x152"
+      href="./assets/favicon/apple-icon-152x152.png"
+    />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./assets/favicon/apple-icon-180x180.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="./assets/favicon/android-icon-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="96x96"
+      href="./assets/favicon/favicon-96x96.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./assets/favicon/favicon-16x16.png"
+    />
     <meta name="msapplication-TileColor" content="#ffffff" />
-    <meta name="msapplication-TileImage" content="./assets/favicon/ms-icon-144x144.png" />
+    <meta
+      name="msapplication-TileImage"
+      content="./assets/favicon/ms-icon-144x144.png"
+    />
     <meta name="theme-color" content="#ec1839" />
-    
+
     <!-- PWA Manifest -->
-    <link rel="manifest" href="./assets/favicon/manifest.json">
+    <link rel="manifest" href="./assets/favicon/manifest.json" />
 
     <!-- Font Preconnect for Performance -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <!-- DNS Prefetch for CDN Performance -->
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com">
-    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
-    <link rel="dns-prefetch" href="https://unpkg.com">
+    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
+    <link rel="dns-prefetch" href="https://unpkg.com" />
     <!-- Preload Critical Assets -->
-    <link rel="preload" href="./assets/css/style.css" as="style">
-    <link rel="preload" href="./assets/images/hero.png" as="image">
-    <link rel="preload" href="./assets/images/logo.png" as="image">
+    <link rel="preload" href="./assets/css/style.css" as="style" />
+    <link rel="preload" href="./assets/images/hero.png" as="image" />
+    <link rel="preload" href="./assets/images/logo.webp" as="image" />
     <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Poppins:wght@200;300;400;500;600;700&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
         href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Poppins:wght@200;300;400;500;600;700&display=swap"
-        rel="stylesheet">
+        rel="stylesheet"
+      />
+    </noscript>
 
     <!-- Devicon - Tech Stack Icons (Latest) -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+    <link
+      rel="preload"
+      as="style"
+      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+      />
+    </noscript>
     <!-- CSS Files  -->
-    <link rel="stylesheet" href="./assets/css/style.css?v=20260109-0200" />
-    <!-- Style Switcher -->
-    <link rel="stylesheet" href="./assets/css/style-switcher.css?v=20260109-0200" />
-    <link rel="stylesheet" href="./assets/css/skins/color-1.css" class="alternate-style" title="color-1" />
-    <link rel="stylesheet" href="./assets/css/skins/color-2.css" class="alternate-style" title="color-2" disabled />
-    <link rel="stylesheet" href="./assets/css/skins/color-3.css" class="alternate-style" title="color-3" disabled />
-    <link rel="stylesheet" href="./assets/css/skins/color-4.css" class="alternate-style" title="color-4" disabled />
-    <link rel="stylesheet" href="./assets/css/skins/color-5.css" class="alternate-style" title="color-5" disabled />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <!-- Default skin color -->
+    <link rel="stylesheet" href="./assets/css/skins/color-1.css" />
     <!-- Font Awesome - Latest Version -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    <link
+      rel="preload"
+      as="style"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- AOS Animation Library CSS -->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+      />
+    </noscript>
+    <!-- AOS CSS removed to reduce render-blocking third-party requests -->
+  </head>
 
-
-</head>
-
-<body class="dark">
+  <body class="dark">
+    <script>
+      // Apply saved theme instantly to prevent flash
+      if (localStorage.getItem("theme") === "light")
+        document.body.classList.remove("dark");
+    </script>
     <!-- Preloader -->
     <div class="preloader">
-        <div class="loader-content">
-            <div class="loader-circle"></div>
-            <div class="loader-line-mask">
-                <div class="loader-line"></div>
-            </div>
-            <span class="loader-text">INITIALIZING SYSTEM...</span>
+      <div class="loader-content">
+        <div class="loader-circle"></div>
+        <div class="loader-line-mask">
+          <div class="loader-line"></div>
         </div>
+        <span class="loader-text">Loading...</span>
+      </div>
     </div>
 
-
     <!-- Skip to Content Link (Accessibility) -->
-    <a href="#main-content" class="skip-to-content" aria-label="Skip to main content">Skip to Content</a>
+    <a
+      href="#main-content"
+      class="skip-to-content"
+      aria-label="Skip to main content"
+      >Skip to Content</a
+    >
 
     <!-- Scroll Progress Bar -->
     <div class="scroll-progress-bar"></div>
 
     <!-- Back To Top Button -->
-    <a href="#" class="back-to-top" aria-label="Back to top">
-        <i class="fas fa-arrow-up"></i>
+    <a href="#home" class="back-to-top" aria-label="Back to top">
+      <i class="fas fa-arrow-up"></i>
     </a>
+
+    <!-- Theme Toggle Button -->
+    <button
+      class="theme-toggle"
+      aria-label="Toggle light/dark mode"
+      title="Toggle light/dark mode"
+    >
+      <i class="fas fa-sun"></i>
+      <i class="fas fa-moon"></i>
+    </button>
 
     <!-- Main Container Start -->
     <div class="main-container">
-        <!-- Aside Start -->
-        <div class="aside">
-            <div class="logo">
-                <a href="#"><span>P</span>ortfolio</a>
-            </div>
-            <div class="nav-toggler">
-                <span></span>
-            </div>
-            <ul class="nav">
-                <li>
-                    <a href="#home" class="active"><i class="fa fa-home"></i>Home</a>
-                </li>
-                <li>
-                    <a href="#about"><i class="fa fa-user"></i>About</a>
-                </li>
-                <li>
-                    <a href="#skills"><i class="fa fa-list"></i>Skills</a>
-                </li>
-                <li>
-                    <a href="#project"><i class="fa fa-briefcase"></i>Project</a>
-                </li>
-                <li>
-                    <a href="#certifications-awards"><i class="fa fa-certificate"></i>Certification</a>
-                </li>
-                <li>
-                    <a href="#interests"><i class="fa fa-heart"></i>Interests</a>
-                </li>
-                <li>
-                    <a href="#contact"><i class="fa fa-envelope"></i>Contact</a>
-                </li>
-            </ul>
+      <!-- Aside Start -->
+      <div class="aside">
+        <div class="logo">
+          <a href="#home"><span>P</span>ortfolio</a>
         </div>
-        <!-- Aside End -->
-        <!-- Main Content Start -->
-        <main class="main-content" id="main-content">
-            <!-- Home Section Start -->
-            <section class="home active section" id="home">
-                <canvas id="neural-canvas"></canvas>
-                <div class="container">
+        <div class="nav-toggler">
+          <span></span>
+        </div>
+        <ul class="nav">
+          <li>
+            <a href="#home" class="active"><i class="fa fa-home"></i>Home</a>
+          </li>
+          <li>
+            <a href="#about"><i class="fa fa-user"></i>About</a>
+          </li>
+          <li>
+            <a href="#skills"><i class="fa fa-list"></i>Skills</a>
+          </li>
+          <li>
+            <a href="#project"><i class="fa fa-briefcase"></i>Project</a>
+          </li>
+          <li>
+            <a href="#certifications-awards"
+              ><i class="fa fa-certificate"></i>Certification</a
+            >
+          </li>
+          <li>
+            <a href="#contact"><i class="fa fa-envelope"></i>Contact</a>
+          </li>
+        </ul>
+      </div>
+      <!-- Aside End -->
+      <!-- Main Content Start -->
+      <main class="main-content" id="main-content">
+        <!-- Home Section Start -->
+        <section class="home active section" id="home">
+          <canvas id="neural-canvas"></canvas>
+          <div class="container">
+            <div class="row">
+              <div class="home-info padd-15">
+                <h1 class="hello">
+                  Hello, my name is <span class="name">Vo Phu Thinh</span>
+                </h1>
+                <h2 class="my-profession">
+                  I'm an <span class="typing">AI Engineer (ML)</span>
+                </h2>
+                <p>
+                  AI Engineer at HPT Vietnam's Center of Excellence (CoE),
+                  passionate about building and deploying ML systems that
+                  deliver real business impact.
+                </p>
+                <a
+                  href="./assets/CV - Võ Phú Thịnh.pdf"
+                  download="CV_VoPhuThinh.pdf"
+                  class="btn btn-download"
+                  >Download CV <i class="fa-solid fa-download"></i
+                ></a>
+              </div>
+              <div class="home-img padd-15">
+                <div class="image-wrapper">
+                  <img
+                    src="./assets/images/hero.png"
+                    alt="Vo Phu Thinh - AI Engineer (Machine Learning)"
+                    loading="eager"
+                    fetchpriority="high"
+                    decoding="async"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Scroll Down Indicator -->
+          <div class="scroll-down">
+            <a href="#about">
+              <span class="mouse">
+                <span class="wheel"></span>
+              </span>
+            </a>
+          </div>
+        </section>
+        <!-- Main Container End -->
+        <!-- About Section Start -->
+        <section
+          class="about section"
+          id="about"
+          data-aos="fade-up"
+          data-aos-duration="800"
+        >
+          <div class="container">
+            <div class="row">
+              <div class="section-title padd-15">
+                <h2>About Me</h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="about-content padd-15">
+                <div class="row">
+                  <div class="about-text padd-15">
+                    <h3>I'm Vo Phu Thinh and <span>AI Engineer</span></h3>
+                    <p>
+                      I started as an intern at HPT Vietnam and grew into an AI
+                      Engineer within a year — now part of the AI Center of
+                      Excellence (CoE), where I build AI solutions that solve
+                      real business problems and deliver measurable results.
+                    </p>
+                    <ul class="about-bullet-list">
+                      <li>
+                        Shipped an AI chatbot that handled
+                        <strong>850+ questions in one day</strong> at a company
+                        event
+                      </li>
+                      <li>
+                        Won <strong>2 prizes</strong> in HPT's enterprise AI
+                        competition with AI Agent and news intelligence projects
+                      </li>
+                      <li>
+                        End-to-end capability: from prototyping and model
+                        development to production deployment and monitoring
+                      </li>
+                    </ul>
+                    <h4 style="margin-top: 18px; margin-bottom: 10px">
+                      What I Can Deliver In 90 Days
+                    </h4>
+                    <ul class="about-bullet-list">
+                      <li>
+                        Deploy a production-ready AI solution with clear KPI
+                        baseline and measurable improvement
+                      </li>
+                      <li>
+                        Set up experiment tracking, model versioning, and
+                        automated evaluation workflows
+                      </li>
+                      <li>
+                        Establish monitoring for quality, performance, and cost
+                        to support continuous iteration
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="personal-info padd-15">
                     <div class="row">
-                        <div class="home-info padd-15">
-                            <h3 class="hello">Hello, my name is <span class="name">Vo Phu Thinh</span></h3>
-                            <h3 class="my-profession">I'm an <span class="typing">AI Engineer</span></h3>
-                            <p>
-                                I build production-ready AI systems that solve real business problems. From LLM
-                                applications
-                                to computer vision and MLOps pipelines, I deliver scalable solutions with measurable
-                                impact.
-                                My work spans the full ML lifecycle—from research and prototyping to deployment and
-                                monitoring.
+                      <div class="info-item padd-15">
+                        <p>Website: <span>vophuthinh.com</span></p>
+                      </div>
+                      <div class="info-item padd-15">
+                        <p>Phone: <span>+84 86 8639 882</span></p>
+                      </div>
+                      <div class="info-item padd-15">
+                        <p>City: <span>Ho Chi Minh City</span></p>
+                      </div>
+                      <div class="info-item padd-15">
+                        <p>Email: <span>vophuthinhcm@gmail.com</span></p>
+                      </div>
+                    </div>
+                    <div class="social-icons mb-4">
+                      <a
+                        class="linkedin"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://www.linkedin.com/in/vophuthinh"
+                        aria-label="LinkedIn profile"
+                      >
+                        <i class="fab fa-linkedin-in"></i>
+                      </a>
+                      <a
+                        class="github"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://github.com/vophuthinh"
+                        aria-label="GitHub profile"
+                      >
+                        <i class="fab fa-github"></i>
+                      </a>
+                      <a
+                        class="facebook"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        href="https://web.facebook.com/vox.phus.thijnh/"
+                        aria-label="Facebook profile"
+                      >
+                        <i class="fab fa-facebook-f"></i>
+                      </a>
+                    </div>
+                    <div class="row">
+                      <div class="buttons padd-15">
+                        <a
+                          href="#contact"
+                          data-section-index="1"
+                          class="btn hire-me"
+                          >Hire Me</a
+                        >
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="education padd-15">
+                    <h3 class="title">Education</h3>
+                    <div class="row">
+                      <div class="timeline-box padd-15">
+                        <div class="timeline shadow-dark">
+                          <!-- Timeline Item -->
+                          <div class="timeline-item">
+                            <div class="circle-dot"></div>
+                            <h3 class="timeline-date">
+                              <i class="fa fa-calendar"></i> Sep 2021 - May 2025
+                            </h3>
+                            <h4 class="timeline-title">
+                              HUTECH &amp; Open University Malaysia
+                            </h4>
+                            <p class="timeline-text">
+                              Bachelor's degree, Information Technology (Joint
+                              program)
                             </p>
-                            <a href="./assets/CV.pdf" download="CV_VoPhuThinh" class="btn btn-download">Download CV <i
-                                    class="fa-solid fa-download"></i></a>
+                          </div>
                         </div>
-                        <div class="home-img padd-15">
-                            <div class="image-wrapper">
-                                <img src="./assets/images/hero.png" 
-                                     alt="Vo Phu Thinh - AI Engineer and ML Engineer"
-                                     loading="eager"
-                                     decoding="async" />
-                            </div>
-                        </div>
+                      </div>
                     </div>
+                  </div>
+                  <div class="experience padd-15">
+                    <h3 class="title">Experience</h3>
+                    <div class="row">
+                      <div class="timeline-box padd-15">
+                        <div class="timeline shadow-dark">
+                          <!-- Timeline Item -->
+                          <div class="timeline-item">
+                            <div class="circle-dot"></div>
+                            <h3 class="timeline-date">
+                              <i class="fa fa-calendar"></i> Oct 2025 - Present
+                            </h3>
+                            <h4 class="timeline-title">
+                              HPT Vietnam Corporation – AI Center of Excellence
+                              (CoE)
+                            </h4>
+                            <p class="timeline-text">AI Engineer</p>
+                            <ul class="timeline-details">
+                              <li>
+                                Built and deployed AI chatbot handling 850+
+                                questions/day at HPT D-DAY event using n8n +
+                                GPT-4o
+                              </li>
+                              <li>
+                                Won 2nd &amp; 3rd prizes in "AI in Business"
+                                competition with AI Agent and news intelligence
+                                projects
+                              </li>
+                              <li>
+                                Developed LLM-powered solutions for executive
+                                decision support and automated content
+                                processing
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="timeline-item">
+                            <div class="circle-dot"></div>
+                            <h3 class="timeline-date">
+                              <i class="fa fa-calendar"></i> Apr 2025 - Oct 2025
+                            </h3>
+                            <h4 class="timeline-title">
+                              HPT Vietnam Corporation
+                            </h4>
+                            <p class="timeline-text">
+                              Software Solutions Engineer
+                            </p>
+                            <ul class="timeline-details">
+                              <li>
+                                Designed and implemented automation workflows
+                                using n8n, Power Platform, and UiPath for
+                                internal operations
+                              </li>
+                              <li>
+                                Integrated AI capabilities into enterprise
+                                solutions, reducing manual processing time
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="timeline-item">
+                            <div class="circle-dot"></div>
+                            <h3 class="timeline-date">
+                              <i class="fa fa-calendar"></i> Nov 2024 - Apr 2025
+                              (6mos)
+                            </h3>
+                            <h4 class="timeline-title">
+                              HPT Vietnam Corporation
+                            </h4>
+                            <p class="timeline-text">Intern</p>
+                            <ul class="timeline-details">
+                              <li>
+                                Researched and prototyped AI/ML solutions for
+                                enterprise use cases
+                              </li>
+                              <li>
+                                Promoted to full-time after 6 months based on
+                                project delivery and technical growth
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="timeline-item">
+                            <div class="circle-dot"></div>
+                            <h3 class="timeline-date">
+                              <i class="fa fa-calendar"></i> Mar 2023 - Oct 2023
+                              (8mos)
+                            </h3>
+                            <h4 class="timeline-title">
+                              Institute of Smart City and Management
+                            </h4>
+                            <p class="timeline-text">
+                              Website Management Support
+                            </p>
+                            <ul class="timeline-details">
+                              <li>
+                                Managed and maintained organizational website
+                                content, SEO, and analytics
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <!-- Scroll Down Indicator -->
-                <div class="scroll-down">
-                    <a href="#about">
-                        <span class="mouse">
-                            <span class="wheel"></span>
-                        </span>
-                    </a>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- About Section End -->
+        <!-- Skills Section Start -->
+        <section
+          class="skills section"
+          id="skills"
+          data-aos="fade-up"
+          data-aos-duration="800"
+        >
+          <div class="container">
+            <div class="row">
+              <div class="section-title padd-15">
+                <h2>Skills</h2>
+              </div>
+            </div>
+            <div class="row">
+              <!-- Programming & Data Science -->
+              <div class="skills-content padd-15">
+                <div class="row">
+                  <div class="skills-text padd-15">
+                    <h3>
+                      <i
+                        class="fa fa-code"
+                        style="color: var(--skin-color); margin-right: 10px"
+                      ></i
+                      >Programming & Data Science
+                    </h3>
+                    <div class="skills-icons">
+                      <div
+                        class="skill-icon"
+                        title="Python"
+                        style="--skill-accent: #3776ab"
+                      >
+                        <i class="devicon-python-plain colored"></i
+                        ><span>Python</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="OOP Concepts"
+                        style="--skill-accent: #8b5cf6"
+                      >
+                        <i class="fa fa-cubes"></i><span>OOP</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="NumPy"
+                        style="--skill-accent: #4dabcf"
+                      >
+                        <i class="devicon-numpy-plain colored"></i
+                        ><span>NumPy</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="Pandas"
+                        style="--skill-accent: #6366f1"
+                      >
+                        <i class="devicon-pandas-plain colored"></i
+                        ><span>Pandas</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="Statistics"
+                        style="--skill-accent: #22c55e"
+                      >
+                        <i class="fa fa-chart-bar"></i><span>Statistics</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-            </section>
-            <!-- Main Container End -->
-            <!-- About Section Start -->
-            <section class="about section" id="about" data-aos="fade-up" data-aos-duration="800">
-                <div class="container">
-                    <div class="row">
-                        <div class="section-title padd-15">
-                            <h2>About Me</h2>
-                        </div>
+              </div>
+
+              <!-- Data Analytics & BI -->
+              <div class="skills-content padd-15">
+                <div class="row">
+                  <div class="skills-text padd-15">
+                    <h3>
+                      <i
+                        class="fa fa-database"
+                        style="color: var(--skin-color); margin-right: 10px"
+                      ></i
+                      >Data Analytics & BI
+                    </h3>
+                    <div class="skills-icons">
+                      <div
+                        class="skill-icon"
+                        title="SQL"
+                        style="--skill-accent: #336791"
+                      >
+                        <i class="devicon-azuresqldatabase-plain colored"></i
+                        ><span>SQL</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="MySQL"
+                        style="--skill-accent: #4479a1"
+                      >
+                        <i class="devicon-mysql-plain colored"></i
+                        ><span>MySQL</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="SQL Server"
+                        style="--skill-accent: #cc2927"
+                      >
+                        <i class="devicon-microsoftsqlserver-plain colored"></i
+                        ><span>SQL Server</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="Advanced Excel"
+                        style="--skill-accent: #217346"
+                      >
+                        <i class="fa fa-file-excel"></i
+                        ><span>Advanced Excel</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="Power BI"
+                        style="--skill-accent: #f2c811"
+                      >
+                        <i class="fa fa-chart-pie"></i><span>Power BI</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="Data Cleaning"
+                        style="--skill-accent: #06b6d4"
+                      >
+                        <i class="fa fa-broom"></i><span>Data Cleaning</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="Data Preprocessing"
+                        style="--skill-accent: #a855f7"
+                      >
+                        <i class="fa fa-filter"></i><span>Preprocessing</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="Exploratory Data Analysis"
+                        style="--skill-accent: #f59e0b"
+                      >
+                        <i class="fa fa-magnifying-glass-chart"></i
+                        ><span>EDA</span>
+                      </div>
                     </div>
-                    <div class="row">
-                        <div class="about-content padd-15">
-                            <div class="row">
-                                <div class="about-text padd-15">
-                                    <h3>I'm Vo Phu Thinh and <span>AI Engineer</span></h3>
-
-                                    <!-- What I Build -->
-                                    <div class="about-section-card">
-                                        <h4 class="about-section-title">
-                                            <i class="fa fa-cube"></i>
-                                            What I Build
-                                        </h4>
-                                        <ul class="about-bullet-list">
-                                            <li><strong>LLM Applications:</strong> RAG systems, chatbots, document Q&A
-                                                with retrieval-augmented generation</li>
-                                            <li><strong>Computer Vision:</strong> Object detection, image
-                                                classification, and video analysis pipelines</li>
-                                            <li><strong>MLOps Infrastructure:</strong> End-to-end pipelines from
-                                                training to production with monitoring</li>
-                                            <li><strong>Data Analytics:</strong> ETL pipelines, feature engineering, and
-                                                predictive models</li>
-                                        </ul>
-                                    </div>
-
-                                    <!-- How I Build -->
-                                    <div class="about-section-card">
-                                        <h4 class="about-section-title">
-                                            <i class="fa fa-cogs"></i>
-                                            How I Build
-                                        </h4>
-                                        <ul class="about-bullet-list">
-                                            <li><strong>Research & Prototyping:</strong> Rapid experimentation with
-                                                PyTorch/TensorFlow, HuggingFace models</li>
-                                            <li><strong>Production Engineering:</strong> Docker containerization,
-                                                Kubernetes orchestration, CI/CD automation</li>
-                                            <li><strong>Monitoring & Optimization:</strong> MLflow tracking, model
-                                                versioning, performance monitoring</li>
-                                            <li><strong>Collaboration:</strong> Git workflows, code reviews,
-                                                documentation, agile practices</li>
-                                        </ul>
-                                    </div>
-
-                                    <!-- Proof -->
-                                    <div class="about-section-card">
-                                        <h4 class="about-section-title">
-                                            <i class="fa fa-chart-line"></i>
-                                            Proof
-                                        </h4>
-                                        <ul class="about-bullet-list">
-                                            <li>Deployed RAG system reducing query latency by <strong>40%</strong>
-                                                through optimized retrieval</li>
-                                            <li>Built CV pipeline processing <strong>10K+ images/day</strong> with 95%
-                                                accuracy</li>
-                                            <li>Reduced model deployment time by <strong>60%</strong> via automated
-                                                MLOps workflows</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="personal-info padd-15">
-                                    <div class="row">
-                                        <div class="info-item padd-15">
-                                            <p>Website: <span>vophuthinh.com</span></p>
-                                        </div>
-                                        <div class="info-item padd-15">
-                                            <p>Phone: <span>+84 86 8639 882</span></p>
-                                        </div>
-                                        <div class="info-item padd-15">
-                                            <p>City: <span>Ho Chi Minh City</span></p>
-                                        </div>
-                                        <div class="info-item padd-15">
-                                            <p>Email: <span>vophuthinhcm@gmail.com</span></p>
-                                        </div>
-                                    </div>
-                                    <div class="social-icons mb-4">
-                                        <a class="linkedin" target="_blank" rel="noopener noreferrer"
-                                            href="https://www.linkedin.com/in/vophuthinh" aria-label="LinkedIn profile">
-                                            <i class="fab fa-linkedin-in"></i>
-                                        </a>
-                                        <a class="github" target="_blank" rel="noopener noreferrer"
-                                            href="https://github.com/vophuthinh" aria-label="GitHub profile">
-                                            <i class="fab fa-github"></i>
-                                        </a>
-                                        <a class="facebook" target="_blank" rel="noopener noreferrer"
-                                            href="https://web.facebook.com/vox.phus.thijnh/"
-                                            aria-label="Facebook profile">
-                                            <i class="fab fa-facebook-f"></i>
-                                        </a>
-                                    </div>
-                                    <div class="row">
-                                        <div class="buttons padd-15">
-                                            <a href="#contact" data-section-index="1" class="btn hire-me">Hire Me</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="education padd-15">
-                                    <h3 class="title">Education</h3>
-                                    <div class="row">
-                                        <div class="timeline-box padd-15">
-                                            <div class="timeline shadow-dark">
-                                                <!-- Timeline Item -->
-                                                <div class="timeline-item">
-                                                    <div class="circle-dot"></div>
-                                                    <h3 class="timeline-date">
-                                                        <i class="fa fa-calendar"></i> Sept 2021 - Present
-                                                    </h3>
-                                                    <h4 class="timeline-title">
-                                                        HCM University Of Technology (HUTECH)
-                                                    </h4>
-                                                    <p class="timeline-text">
-                                                        I'm a formal university student in the Information
-                                                        Technology training program between Ho Chi Minh City
-                                                        University of Technology (HUTECH) and Malaysian Open
-                                                        University (OUM).
-                                                    </p>
-                                                </div>
-                                                <!-- Timeline Item -->
-                                                <div class="timeline-item">
-                                                    <div class="circle-dot"></div>
-                                                    <h3 class="timeline-date">
-                                                        <i class="fa fa-calendar"></i> Jun 2023 - Aug 2023
-                                                    </h3>
-                                                    <h4 class="timeline-title">
-                                                        Universiti Malaysia Sarawak (UNIMAS)
-                                                    </h4>
-                                                    <p class="timeline-text">
-                                                        Intensive English Language Mobility Programme (IELMP),
-                                                        English Language
-                                                    </p>
-                                                </div>
-                                                <!-- Timeline Item -->
-                                                <div class="timeline-item">
-                                                    <div class="circle-dot"></div>
-                                                    <h3 class="timeline-date">
-                                                        <i class="fa fa-calendar"></i> Mar 2022 - Aug 2023
-                                                    </h3>
-                                                    <h4 class="timeline-title">IronHack Viet Nam</h4>
-                                                    <p class="timeline-text">Course: Full Stack Web Developer</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="experience padd-15">
-                                    <h3 class="title">Experience</h3>
-                                    <div class="row">
-                                        <div class="timeline-box padd-15">
-                                            <div class="timeline shadow-dark">
-                                                <!-- Timeline Item -->
-                                                <div class="timeline-item">
-                                                    <div class="circle-dot"></div>
-                                                    <h3 class="timeline-date">
-                                                        <i class="fa fa-calendar"></i> Nov 2024 - Now (8mos)
-                                                    </h3>
-                                                    <h4 class="timeline-title">HPT Vietnam Corporation</h4>
-                                                    <p class="timeline-text">Website Management Support</p>
-                                                </div>
-                                                <div class="timeline-item">
-                                                    <div class="circle-dot"></div>
-                                                    <h3 class="timeline-date">
-                                                        <i class="fa fa-calendar"></i> Mar 2023 - Oct 2023 (8mos)
-                                                    </h3>
-                                                    <h4 class="timeline-title">
-                                                        Institute of Smart City and Management
-                                                    </h4>
-                                                    <p class="timeline-text">Website Management Support</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                  </div>
                 </div>
-            </section>
-            <!-- About Section End -->
-            <!-- Skills Section Start -->
-            <section class="skills section" id="skills" data-aos="fade-up" data-aos-duration="800">
-                <div class="container">
-                    <div class="row">
-                        <div class="section-title padd-15">
-                            <h2>Skills</h2>
-                        </div>
+              </div>
+
+              <!-- Machine Learning -->
+              <div class="skills-content padd-15">
+                <div class="row">
+                  <div class="skills-text padd-15">
+                    <h3>
+                      <i
+                        class="fa fa-brain"
+                        style="color: var(--skin-color); margin-right: 10px"
+                      ></i
+                      >Machine Learning
+                    </h3>
+                    <div class="skills-icons">
+                      <div
+                        class="skill-icon"
+                        title="scikit-learn"
+                        style="--skill-accent: #f7931e"
+                      >
+                        <i class="devicon-scikitlearn-plain colored"></i
+                        ><span>scikit-learn</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="PyTorch"
+                        style="--skill-accent: #ee4c2c"
+                      >
+                        <i class="devicon-pytorch-original colored"></i
+                        ><span>PyTorch</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="TensorFlow"
+                        style="--skill-accent: #ff6f00"
+                      >
+                        <i class="devicon-tensorflow-original colored"></i
+                        ><span>TensorFlow</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="NLP - Natural Language Processing"
+                        style="--skill-accent: #22c55e"
+                      >
+                        <i class="fa fa-language"></i><span>NLP</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="Feature Engineering"
+                        style="--skill-accent: #8b5cf6"
+                      >
+                        <i class="fa fa-sliders"></i><span>Feature Eng</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="Model Testing & Deployment"
+                        style="--skill-accent: #06b6d4"
+                      >
+                        <i class="fa fa-rocket"></i><span>Model Deploy</span>
+                      </div>
                     </div>
-
-                    <!-- Neural 3D Skills Sphere -->
-                    <div class="row">
-                        <div class="skills-3d-container padd-15">
-                            <canvas id="skills-canvas"></canvas>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <!-- ML/LLM Stack -->
-                        <div class="skills-content padd-15">
-                            <div class="row">
-                                <div class="skills-text padd-15">
-                                    <h3><i class="fa fa-brain"
-                                            style="color: var(--skin-color); margin-right: 10px;"></i>ML/LLM</h3>
-                                    <div class="skills-icons">
-                                        <div class="skill-icon" title="PyTorch"><i
-                                                class="devicon-pytorch-original colored"></i><span>PyTorch</span></div>
-                                        <div class="skill-icon" title="TensorFlow"><i
-                                                class="devicon-tensorflow-original colored"></i><span>TensorFlow</span>
-                                        </div>
-                                        <div class="skill-icon" title="Python"><i
-                                                class="devicon-python-plain colored"></i><span>Python</span></div>
-                                        <div class="skill-icon" title="NumPy"><i
-                                                class="devicon-numpy-original colored"></i><span>NumPy</span></div>
-                                        <div class="skill-icon" title="Pandas"><i
-                                                class="devicon-pandas-original colored"></i><span>Pandas</span></div>
-                                        <div class="skill-icon" title="Jupyter"><i
-                                                class="devicon-jupyter-plain colored"></i><span>Jupyter</span></div>
-                                        <div class="skill-icon" title="scikit-learn"><i
-                                                class="devicon-scikitlearn-plain colored"></i><span>scikit-learn</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Retrieval -->
-                        <div class="skills-content padd-15">
-                            <div class="row">
-                                <div class="skills-text padd-15">
-                                    <h3><i class="fa fa-search"
-                                            style="color: var(--skin-color); margin-right: 10px;"></i>Retrieval</h3>
-                                    <div class="skills-icons">
-                                        <div class="skill-icon" title="MongoDB"><i
-                                                class="devicon-mongodb-plain colored"></i><span>MongoDB</span></div>
-                                        <div class="skill-icon" title="PostgreSQL"><i
-                                                class="devicon-postgresql-plain colored"></i><span>PostgreSQL</span>
-                                        </div>
-                                        <div class="skill-icon" title="Redis"><i
-                                                class="devicon-redis-plain colored"></i><span>Redis</span></div>
-                                        <div class="skill-icon" title="Elasticsearch"><i
-                                                class="devicon-elasticsearch-plain colored"></i><span>Elasticsearch</span>
-                                        </div>
-                                        <div class="skill-icon" title="Python"><i
-                                                class="devicon-python-plain colored"></i><span>FAISS</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MLOps -->
-                        <div class="skills-content padd-15">
-                            <div class="row">
-                                <div class="skills-text padd-15">
-                                    <h3><i class="fa fa-server"
-                                            style="color: var(--skin-color); margin-right: 10px;"></i>MLOps</h3>
-                                    <div class="skills-icons">
-                                        <div class="skill-icon" title="Docker"><i
-                                                class="devicon-docker-plain colored"></i><span>Docker</span></div>
-                                        <div class="skill-icon" title="Kubernetes"><i
-                                                class="devicon-kubernetes-plain colored"></i><span>Kubernetes</span>
-                                        </div>
-                                        <div class="skill-icon" title="Git"><i
-                                                class="devicon-git-plain colored"></i><span>Git</span></div>
-                                        <div class="skill-icon" title="GitHub"><i
-                                                class="devicon-github-original"></i><span>GitHub</span></div>
-                                        <div class="skill-icon" title="GitLab"><i
-                                                class="devicon-gitlab-plain colored"></i><span>GitLab</span></div>
-                                        <div class="skill-icon" title="Jenkins"><i
-                                                class="devicon-jenkins-plain colored"></i><span>Jenkins</span></div>
-                                        <div class="skill-icon" title="Linux"><i
-                                                class="devicon-linux-plain"></i><span>Linux</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Data -->
-                        <div class="skills-content padd-15">
-                            <div class="row">
-                                <div class="skills-text padd-15">
-                                    <h3><i class="fa fa-database"
-                                            style="color: var(--skin-color); margin-right: 10px;"></i>Data</h3>
-                                    <div class="skills-icons">
-                                        <div class="skill-icon" title="MySQL"><i
-                                                class="devicon-mysql-plain colored"></i><span>MySQL</span></div>
-                                        <div class="skill-icon" title="PostgreSQL"><i
-                                                class="devicon-postgresql-plain colored"></i><span>PostgreSQL</span>
-                                        </div>
-                                        <div class="skill-icon" title="Apache Spark"><i
-                                                class="devicon-apachespark-original colored"></i><span>Spark</span>
-                                        </div>
-                                        <div class="skill-icon" title="Pandas"><i
-                                                class="devicon-pandas-original colored"></i><span>Pandas</span></div>
-                                        <div class="skill-icon" title="NumPy"><i
-                                                class="devicon-numpy-original colored"></i><span>NumPy</span></div>
-                                        <div class="skill-icon" title="Python"><i
-                                                class="devicon-python-plain colored"></i><span>Python</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                  </div>
                 </div>
-            </section>
-            <!-- Skills Section End -->
-            <!-- Project Section Start -->
-            <section class="project section" id="project" data-aos="fade-up" data-aos-duration="800">
-                <div class="container">
-                    <div class="row">
-                        <div class="section-title padd-15">
-                            <h2>Projects</h2>
-                        </div>
+              </div>
+
+              <!-- GenAI & LLM -->
+              <div class="skills-content padd-15">
+                <div class="row">
+                  <div class="skills-text padd-15">
+                    <h3>
+                      <i
+                        class="fa fa-robot"
+                        style="color: var(--skin-color); margin-right: 10px"
+                      ></i
+                      >GenAI & LLM
+                    </h3>
+                    <div class="skills-icons">
+                      <div
+                        class="skill-icon"
+                        title="Large Language Models"
+                        style="--skill-accent: #8b5cf6"
+                      >
+                        <i class="fa fa-comments"></i><span>LLM</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="OpenAI"
+                        style="--skill-accent: #10a37f"
+                      >
+                        <i class="fa fa-bolt"></i><span>OpenAI</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="Azure OpenAI"
+                        style="--skill-accent: #0089d6"
+                      >
+                        <i class="devicon-azure-plain colored"></i
+                        ><span>Azure OpenAI</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="Generative AI"
+                        style="--skill-accent: #f59e0b"
+                      >
+                        <i class="fa fa-wand-magic-sparkles"></i
+                        ><span>GenAI</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="LangChain"
+                        style="--skill-accent: #2dd4bf"
+                      >
+                        <i class="fa fa-link"></i><span>LangChain</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="Retrieval-Augmented Generation"
+                        style="--skill-accent: #22c55e"
+                      >
+                        <i class="fa fa-layer-group"></i><span>RAG</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="Vector Database"
+                        style="--skill-accent: #06b6d4"
+                      >
+                        <i class="fa fa-database"></i><span>Vector DB</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="AI Agent"
+                        style="--skill-accent: #ef4444"
+                      >
+                        <i class="fa fa-microchip"></i><span>AI Agent</span>
+                      </div>
                     </div>
-                    <div class="row">
-                        <div class="project-filter">
-                            <button type="button" class="filter-btn active" data-filter="all"
-                                aria-label="Filter projects: Show all" aria-pressed="true">All</button>
-                            <button type="button" class="filter-btn" data-filter="llm"
-                                aria-label="Filter projects: LLM Applications" aria-pressed="false">LLM Apps</button>
-                            <button type="button" class="filter-btn" data-filter="cv"
-                                aria-label="Filter projects: Computer Vision" aria-pressed="false">Computer
-                                Vision</button>
-                            <button type="button" class="filter-btn" data-filter="mlops"
-                                aria-label="Filter projects: MLOps" aria-pressed="false">MLOps</button>
-                            <button type="button" class="filter-btn" data-filter="data"
-                                aria-label="Filter projects: Data Analytics"
-                                aria-pressed="false">Data/Analytics</button>
-                        </div>
-                    </div>
-                    <div id="projectsGrid" class="projects-grid">
-                        <!-- Projects will be dynamically rendered by JavaScript -->
-                    </div>
+                  </div>
                 </div>
-            </section>
-            <!-- Project Section End -->
-            <!-- Certifications Section Start -->
-            <section class="certifications section" id="certifications-awards" data-aos="fade-up"
-                data-aos-duration="800">
-                <div class="container">
-                    <div class="row">
-                        <div class="section-title padd-15">
-                            <h2>Certifications & Awards</h2>
-                        </div>
+              </div>
+
+              <!-- Cloud & DevOps -->
+              <div class="skills-content padd-15">
+                <div class="row">
+                  <div class="skills-text padd-15">
+                    <h3>
+                      <i
+                        class="fa fa-cloud"
+                        style="color: var(--skin-color); margin-right: 10px"
+                      ></i
+                      >Cloud & DevOps
+                    </h3>
+                    <div class="skills-icons">
+                      <div
+                        class="skill-icon"
+                        title="AWS"
+                        style="--skill-accent: #ff9900"
+                      >
+                        <i
+                          class="devicon-amazonwebservices-plain-wordmark colored"
+                        ></i
+                        ><span>AWS</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="Google Cloud"
+                        style="--skill-accent: #4285f4"
+                      >
+                        <i class="devicon-googlecloud-plain colored"></i
+                        ><span>Google Cloud</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="Azure"
+                        style="--skill-accent: #0089d6"
+                      >
+                        <i class="devicon-azure-plain colored"></i
+                        ><span>Azure</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="Docker"
+                        style="--skill-accent: #2496ed"
+                      >
+                        <i class="devicon-docker-plain colored"></i
+                        ><span>Docker</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="Git"
+                        style="--skill-accent: #f05032"
+                      >
+                        <i class="devicon-git-plain colored"></i
+                        ><span>Git</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="GitHub"
+                        style="--skill-accent: #6e5494"
+                      >
+                        <i class="devicon-github-original"></i
+                        ><span>GitHub</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="Linux"
+                        style="--skill-accent: #fcc624"
+                      >
+                        <i class="devicon-linux-plain"></i><span>Linux</span>
+                      </div>
                     </div>
-                    <div class="row">
-                        <div class="certification-item padd-15">
-                            <div class="certification-box shadow-dark">
-                                <div class="cert-badge">
-                                    <i class="fa fa-certificate"></i>
-                                </div>
-                                <div class="cert-header">
-                                    <h4>Full Stack Web Development</h4>
-                                    <span class="cert-type">Certificate</span>
-                                </div>
-                                <div class="cert-image-wrapper">
-                                    <img src="./assets/images/certifications/IRONHACK.jpg" alt="Full Stack Certificate"
-                                        class="certificate-img" loading="lazy" />
-                                </div>
-                                <div class="cert-footer">
-                                    <div class="cert-org">
-                                        <i class="fa fa-building"></i>
-                                        <span>IronHack Viet Nam</span>
-                                    </div>
-                                    <div class="cert-date">
-                                        <i class="fa fa-calendar"></i>
-                                        <span>Apr 2022 - Aug 2023</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="certification-item padd-15">
-                            <div class="certification-box shadow-dark">
-                                <div class="cert-badge">
-                                    <i class="fa fa-certificate"></i>
-                                </div>
-                                <div class="cert-header">
-                                    <h4>Intensive English Language Mobility Programme (IELMP)</h4>
-                                    <span class="cert-type">Certificate</span>
-                                </div>
-                                <div class="cert-image-wrapper">
-                                    <img src="./assets/images/certifications/UNIMAS.jpg" alt="IELMP Certificate"
-                                        class="certificate-img" loading="lazy" />
-                                </div>
-                                <div class="cert-footer">
-                                    <div class="cert-org">
-                                        <i class="fa fa-building"></i>
-                                        <span>Universiti Malaysia Sarawak</span>
-                                    </div>
-                                    <div class="cert-date">
-                                        <i class="fa fa-calendar"></i>
-                                        <span>Jul 2023 - Aug 2023</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="certification-item padd-15">
-                            <div class="certification-box shadow-dark cert-award">
-                                <div class="cert-badge award-badge">
-                                    <i class="fa fa-award"></i>
-                                </div>
-                                <div class="cert-header">
-                                    <h4>Recognition of your valuable contribution to I-HUTECH Admission campaign 2023 -
-                                        2024</h4>
-                                    <span class="cert-type award-type">Award</span>
-                                </div>
-                                <div class="cert-image-wrapper">
-                                    <img src="./assets/images/certifications/recognition_ihutech_award_2023_2024.jpg"
-                                        alt="Recognition of your valuable contribution to I-HUTECH Admission campaign 2023 - 2024"
-                                        class="certificate-img" loading="lazy" />
-                                </div>
-                                <div class="cert-footer">
-                                    <div class="cert-org">
-                                        <i class="fa fa-building"></i>
-                                        <span>HCM University Of Technology (HUTECH)</span>
-                                    </div>
-                                    <div class="cert-date">
-                                        <i class="fa fa-calendar"></i>
-                                        <span>2023 - 2024</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="certification-item padd-15">
-                            <div class="certification-box shadow-dark">
-                                <div class="cert-badge">
-                                    <i class="fa fa-certificate"></i>
-                                </div>
-                                <div class="cert-header">
-                                    <h4>Node.js (Intermediate)</h4>
-                                    <span class="cert-type">Certificate</span>
-                                </div>
-                                <div class="cert-image-wrapper">
-                                    <img src="./assets/images/certifications/NodeJS.png"
-                                        alt="NodeJS Intermediate Certificate" class="certificate-img" loading="lazy" />
-                                </div>
-                                <div class="cert-footer">
-                                    <div class="cert-org">
-                                        <i class="fa fa-building"></i>
-                                        <span>HackerRank</span>
-                                    </div>
-                                    <div class="cert-date">
-                                        <i class="fa fa-calendar"></i>
-                                        <span>Oct 2024</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="certification-item padd-15">
-                            <div class="certification-box shadow-dark">
-                                <div class="cert-badge">
-                                    <i class="fa fa-certificate"></i>
-                                </div>
-                                <div class="cert-header">
-                                    <h4>JavaScript (Intermediate)</h4>
-                                    <span class="cert-type">Certificate</span>
-                                </div>
-                                <div class="cert-image-wrapper">
-                                    <img src="./assets/images/certifications/javascript_intermediate_certificate.png"
-                                        alt="JavaScript Intermediate Certificate" class="certificate-img"
-                                        loading="lazy" />
-                                </div>
-                                <div class="cert-footer">
-                                    <div class="cert-org">
-                                        <i class="fa fa-building"></i>
-                                        <span>HackerRank</span>
-                                    </div>
-                                    <div class="cert-date">
-                                        <i class="fa fa-calendar"></i>
-                                        <span>May 2024</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="certification-item padd-15">
-                            <div class="certification-box shadow-dark">
-                                <div class="cert-badge">
-                                    <i class="fa fa-certificate"></i>
-                                </div>
-                                <div class="cert-header">
-                                    <h4>CSS</h4>
-                                    <span class="cert-type">Certificate</span>
-                                </div>
-                                <div class="cert-image-wrapper">
-                                    <img src="./assets/images/certifications/css_certificate.png" alt="CSS Certificate"
-                                        class="certificate-img" loading="lazy" />
-                                </div>
-                                <div class="cert-footer">
-                                    <div class="cert-org">
-                                        <i class="fa fa-building"></i>
-                                        <span>HackerRank</span>
-                                    </div>
-                                    <div class="cert-date">
-                                        <i class="fa fa-calendar"></i>
-                                        <span>Apr 2023</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                  </div>
                 </div>
-            </section>
-            <!-- Certifications Section End -->
+              </div>
 
-            <!-- Interests Section Start -->
-            <section class="interests section" id="interests" data-aos="fade-up" data-aos-duration="800">
-                <div class="container">
-                    <div class="row">
-                        <div class="section-title padd-15">
-                            <h2>Interests</h2>
-                        </div>
+              <!-- Familiar -->
+              <div class="skills-content padd-15">
+                <div class="row">
+                  <div class="skills-text padd-15">
+                    <h3>
+                      <i
+                        class="fa fa-seedling"
+                        style="color: var(--skin-color); margin-right: 10px"
+                      ></i
+                      >Familiar
+                    </h3>
+                    <div class="skills-icons">
+                      <div
+                        class="skill-icon skill-familiar"
+                        title="Hugging Face"
+                        style="--skill-accent: #ffd21e"
+                      >
+                        <i class="fa fa-face-smile"></i
+                        ><span>Hugging Face</span>
+                      </div>
+                      <div
+                        class="skill-icon skill-familiar"
+                        title="Claude Sonnet"
+                        style="--skill-accent: #d97706"
+                      >
+                        <i class="fa fa-feather"></i><span>Claude</span>
+                      </div>
+                      <div
+                        class="skill-icon skill-familiar"
+                        title="Gemini"
+                        style="--skill-accent: #4285f4"
+                      >
+                        <i class="fa fa-gem"></i><span>Gemini</span>
+                      </div>
+                      <div
+                        class="skill-icon skill-familiar"
+                        title="LangGraph"
+                        style="--skill-accent: #1c78c0"
+                      >
+                        <i class="fa fa-diagram-project"></i
+                        ><span>LangGraph</span>
+                      </div>
+                      <div
+                        class="skill-icon skill-familiar"
+                        title="Ollama"
+                        style="--skill-accent: #7c3aed"
+                      >
+                        <i class="fa fa-server"></i><span>Ollama</span>
+                      </div>
+                      <div
+                        class="skill-icon skill-familiar"
+                        title="vLLM"
+                        style="--skill-accent: #0ea5e9"
+                      >
+                        <i class="fa fa-bolt"></i><span>vLLM</span>
+                      </div>
+                      <div
+                        class="skill-icon skill-familiar"
+                        title="Pydantic"
+                        style="--skill-accent: #e92063"
+                      >
+                        <i class="fa fa-shield-halved"></i><span>Pydantic</span>
+                      </div>
+                      <div
+                        class="skill-icon skill-familiar"
+                        title="Kubernetes"
+                        style="--skill-accent: #326ce5"
+                      >
+                        <i class="devicon-kubernetes-plain colored"></i
+                        ><span>Kubernetes</span>
+                      </div>
+                      <div
+                        class="skill-icon skill-familiar"
+                        title="MongoDB"
+                        style="--skill-accent: #4ea94b"
+                      >
+                        <i class="devicon-mongodb-plain colored"></i
+                        ><span>MongoDB</span>
+                      </div>
+                      <div
+                        class="skill-icon skill-familiar"
+                        title="Qdrant - Vector Database"
+                        style="--skill-accent: #dc244c"
+                      >
+                        <i class="fa fa-database"></i><span>Qdrant</span>
+                      </div>
                     </div>
-                    <div class="row">
-                        <!-- Interest 1: AI Research -->
-                        <div class="interest-item padd-15" data-aos="fade-up" data-aos-duration="600">
-                            <div class="interest-box shadow-dark" data-interest="ai-research">
-                                <div class="interest-image">
-                                    <div class="interest-icon-fallback">
-                                        <i class="fa fa-brain"></i>
-                                    </div>
-                                </div>
-                                <div class="interest-content">
-                                    <h4>AI Research</h4>
-                                    <p>Exploring latest LLM papers, experimenting with new architectures, and
-                                        contributing to open-source AI projects</p>
-
-                                    <!-- Gallery Hint -->
-                                    <div class="interest-gallery-hint">
-                                        <i class="fas fa-images"></i>
-                                        <span>Click để xem ảnh</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Interest 2: Data Visualization -->
-                        <div class="interest-item padd-15" data-aos="fade-up" data-aos-duration="600"
-                            data-aos-delay="100">
-                            <div class="interest-box shadow-dark" data-interest="data-visualization">
-                                <div class="interest-image">
-                                    <div class="interest-icon-fallback">
-                                        <i class="fa fa-chart-line"></i>
-                                    </div>
-                                </div>
-                                <div class="interest-content">
-                                    <h4>Data Visualization</h4>
-                                    <p>Creating insightful visualizations to communicate complex ML insights and model
-                                        performance metrics</p>
-
-                                    <!-- Gallery Hint -->
-                                    <div class="interest-gallery-hint">
-                                        <i class="fas fa-images"></i>
-                                        <span>Click để xem ảnh</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Interest 3: Building Tools -->
-                        <div class="interest-item padd-15" data-aos="fade-up" data-aos-duration="600"
-                            data-aos-delay="200">
-                            <div class="interest-box shadow-dark" data-interest="building-tools">
-                                <div class="interest-image">
-                                    <div class="interest-icon-fallback">
-                                        <i class="fa fa-tools"></i>
-                                    </div>
-                                </div>
-                                <div class="interest-content">
-                                    <h4>Building Tools</h4>
-                                    <p>Developing automation scripts, CLI tools, and productivity enhancers for ML
-                                        workflows and pipelines</p>
-
-                                    <!-- Gallery Hint -->
-                                    <div class="interest-gallery-hint">
-                                        <i class="fas fa-images"></i>
-                                        <span>Click để xem ảnh</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Interest 4: Tech Community -->
-                        <div class="interest-item padd-15" data-aos="fade-up" data-aos-duration="600"
-                            data-aos-delay="300">
-                            <div class="interest-box shadow-dark" data-interest="tech-community">
-                                <div class="interest-image">
-                                    <div class="interest-icon-fallback">
-                                        <i class="fa fa-users"></i>
-                                    </div>
-                                </div>
-                                <div class="interest-content">
-                                    <h4>Tech Community</h4>
-                                    <p>Writing technical blogs, mentoring aspiring ML engineers, and speaking at tech
-                                        meetups and conferences</p>
-
-                                    <!-- Gallery Hint -->
-                                    <div class="interest-gallery-hint">
-                                        <i class="fas fa-images"></i>
-                                        <span>Click để xem ảnh</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                  </div>
                 </div>
-            </section>
-            <!-- Interests Section End -->
-            <!-- Contact Section Start -->
-            <section class="contact section" id="contact" data-aos="fade-up" data-aos-duration="800">
-                <div class="container">
-                    <div class="row">
-                        <div class="section-title padd-15">
-                            <h2>Contact Me</h2>
-                        </div>
-                    </div>
-                    <h3 class="contact-title padd-15">Have You Any Question ?</h3>
-                    <h4 class="contact-sub-title padd-15">I'M AT YOUR SERVICES</h4>
-                    <div class="row">
-                        <!-- Contact Info Item Start -->
-                        <div class="contact-info-item padd-15">
-                            <div class="icon"><i class="fa fa-phone"></i></div>
-                            <h4>Call Us On</h4>
-                            <p>+84 86 8639 882</p>
-                        </div>
-                        <!-- Contact Info Item End -->
-                        <!-- Contact Info Item Start -->
-                        <div class="contact-info-item padd-15">
-                            <div class="icon"><i class="fa fa-map-marker-alt"></i></div>
-                            <h4>Address</h4>
-                            <p>Ho Chi Minh City</p>
-                        </div>
-                        <!-- Contact Info Item End -->
-                        <!-- Contact Info Item Start -->
-                        <div class="contact-info-item padd-15">
-                            <div class="icon"><i class="fa fa-envelope"></i></div>
-                            <h4>Email</h4>
-                            <p>vophuthinhcm@gmail.com</p>
-                        </div>
-                        <!-- Contact Info Item End -->
-                        <!-- Contact Info Item Start -->
-                        <div class="contact-info-item padd-15">
-                            <div class="icon"><i class="fa fa-globe-europe"></i></div>
-                            <h4>Website</h4>
-                            <p>vophuthinh.com</p>
-                        </div>
-                        <!-- Contact Info Item End -->
-                    </div>
-                    <h3 class="contact-title padd-15">SEND ME AN EMAIL</h3>
-                    <h4 class="contact-sub-title padd-15">I'M VERY RESPONSIVE TO MESSAGES</h4>
-                    <!-- Contact Form -->
-                    <div class="row">
-                        <form id="contactForm" class="contact-form padd-15">
-                            <div class="row">
-                                <div class="form-item col-6 padd-15">
-                                    <div class="form-group">
-                                        <input type="text" name="from_name" id="from_name" class="form-control"
-                                            placeholder=" " required />
-                                        <label for="from_name" class="form-label">Name</label>
-                                    </div>
-                                </div>
-                                <div class="form-item col-6 padd-15">
-                                    <div class="form-group">
-                                        <input type="email" name="email_id" id="email_id" class="form-control"
-                                            placeholder=" " required />
-                                        <label for="email_id" class="form-label">Email</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-item col-12 padd-15">
-                                    <div class="form-group">
-                                        <textarea name="message" id="message" class="form-control" placeholder=" "
-                                            required></textarea>
-                                        <label for="message" class="form-label">Message</label>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-item col-12 padd-15">
-                                    <button type="submit" class="btn" id="contact-submit-btn">
-                                        <span>Send Message</span>
-                                        <i class="fas fa-paper-plane"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Skills Section End -->
+        <!-- Project Section Start -->
+        <section
+          class="project section"
+          id="project"
+          data-aos="fade-up"
+          data-aos-duration="800"
+        >
+          <div class="container">
+            <div class="row">
+              <div class="section-title padd-15">
+                <h2>Projects</h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="project-filter">
+                <button
+                  type="button"
+                  class="filter-btn active"
+                  data-filter="all"
+                  aria-label="Filter projects: Show all"
+                  aria-pressed="true"
+                >
+                  All
+                </button>
+                <button
+                  type="button"
+                  class="filter-btn"
+                  data-filter="llm"
+                  aria-label="Filter projects: LLM Applications"
+                  aria-pressed="false"
+                >
+                  LLM / AI Agent
+                </button>
+                <button
+                  type="button"
+                  class="filter-btn"
+                  data-filter="data"
+                  aria-label="Filter projects: Data & Analytics"
+                  aria-pressed="false"
+                >
+                  Data/Analytics
+                </button>
+              </div>
+            </div>
+            <div id="projectsGrid" class="projects-grid">
+              <!-- Projects will be dynamically rendered by JavaScript -->
+              <noscript>
+                <div class="noscript-projects">
+                  <h3>HPT D-DAY Chatbot</h3>
+                  <p>
+                    AI chatbot for HPT D-DAY event using n8n + GPT-4o + Google
+                    Sheets. Handled 850+ user questions about schedule,
+                    speakers, and booths.
+                  </p>
+                  <h3>AI Agent — Lyly (2nd Prize)</h3>
+                  <p>
+                    AI Agent for executive decision support and operations
+                    optimization. Won 2nd prize in HPT's "AI in Business"
+                    competition.
+                  </p>
+                  <h3>H.I.H — HotNews Intelligence Hub (3rd Prize)</h3>
+                  <p>
+                    Intelligent news processing platform that automates content
+                    aggregation, analysis, and distribution. Won 3rd prize.
+                  </p>
+                  <h3>E-Commerce with Sentiment Analysis</h3>
+                  <p>
+                    Multi-vendor e-commerce platform with AI sentiment analysis
+                    using Hugging Face BERTweet. Built with React, Node.js,
+                    Express.js, MySQL, Socket.io.
+                  </p>
                 </div>
-            </section>
-            <!-- Contact Section End -->
-        </main>
-        <!-- Main Content End -->
+              </noscript>
+            </div>
+          </div>
+        </section>
+        <!-- Project Section End -->
+        <!-- Certifications Section Start -->
+        <section
+          class="certifications section"
+          id="certifications-awards"
+          data-aos="fade-up"
+          data-aos-duration="800"
+        >
+          <div class="container">
+            <div class="row">
+              <div class="section-title padd-15">
+                <h2>Certifications & Awards</h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="certification-item padd-15">
+                <a
+                  href="./assets/images/certifications/Google AI.png"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="cert-link"
+                >
+                  <div class="certification-box shadow-dark">
+                    <div class="cert-preview">
+                      <img
+                        src="./assets/images/certifications/Google AI.png"
+                        alt="Google AI Specialization"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="cert-header">
+                      <h4>Google AI Specialization</h4>
+                      <span class="cert-type">Certificate</span>
+                    </div>
+                    <div class="cert-footer">
+                      <div class="cert-org">
+                        <i class="fa fa-building"></i>
+                        <span>Google (Coursera)</span>
+                      </div>
+                      <div class="cert-date">
+                        <i class="fa fa-calendar"></i>
+                        <span>Feb 2026</span>
+                      </div>
+                    </div>
+                    <div class="cert-view-hint">
+                      <i class="fa fa-external-link-alt"></i> View Certificate
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="certification-item padd-15">
+                <a
+                  href="./assets/images/certifications/Certified Threat Intelligence & Governance Analyst(CTIGA).png"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="cert-link"
+                >
+                  <div class="certification-box shadow-dark">
+                    <div class="cert-preview">
+                      <img
+                        src="./assets/images/certifications/Certified Threat Intelligence & Governance Analyst(CTIGA).png"
+                        alt="Certified Threat Intelligence & Governance Analyst (CTIGA)"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="cert-header">
+                      <h4>
+                        Certified Threat Intelligence &amp; Governance Analyst
+                        (CTIGA)
+                      </h4>
+                      <span class="cert-type">Certificate</span>
+                    </div>
+                    <div class="cert-footer">
+                      <div class="cert-org">
+                        <i class="fa fa-building"></i>
+                        <span>Red Team Leaders</span>
+                      </div>
+                      <div class="cert-date">
+                        <i class="fa fa-calendar"></i>
+                        <span>Feb 2026</span>
+                      </div>
+                    </div>
+                    <div class="cert-view-hint">
+                      <i class="fa fa-external-link-alt"></i> View Certificate
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="certification-item padd-15">
+                <a
+                  href="./assets/images/certifications/Certified Phishing Prevention Specialist (CPPS).webp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="cert-link"
+                >
+                  <div class="certification-box shadow-dark">
+                    <div class="cert-preview">
+                      <img
+                        src="./assets/images/certifications/Certified Phishing Prevention Specialist (CPPS).webp"
+                        alt="Certified Phishing Prevention Specialist (CPPS)"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="cert-header">
+                      <h4>Certified Phishing Prevention Specialist (CPPS)</h4>
+                      <span class="cert-type">Certificate</span>
+                    </div>
+                    <div class="cert-footer">
+                      <div class="cert-org">
+                        <i class="fa fa-building"></i>
+                        <span>Red Team Leaders</span>
+                      </div>
+                      <div class="cert-date">
+                        <i class="fa fa-calendar"></i>
+                        <span>Feb 2026</span>
+                      </div>
+                    </div>
+                    <div class="cert-view-hint">
+                      <i class="fa fa-external-link-alt"></i> View Certificate
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="certification-item padd-15">
+                <a
+                  href="./assets/images/certifications/Gemini Certified Faculty.png"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="cert-link"
+                >
+                  <div class="certification-box shadow-dark">
+                    <div class="cert-preview">
+                      <img
+                        src="./assets/images/certifications/Gemini Certified Faculty.png"
+                        alt="Gemini Certified Faculty"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="cert-header">
+                      <h4>Gemini Certified Faculty</h4>
+                      <span class="cert-type">Certificate</span>
+                    </div>
+                    <div class="cert-footer">
+                      <div class="cert-org">
+                        <i class="fa fa-building"></i>
+                        <span>Google</span>
+                      </div>
+                      <div class="cert-date">
+                        <i class="fa fa-calendar"></i>
+                        <span>Jan 2026</span>
+                      </div>
+                    </div>
+                    <div class="cert-view-hint">
+                      <i class="fa fa-external-link-alt"></i> View Certificate
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="certification-item padd-15">
+                <a
+                  href="./assets/images/certifications/Building LLM Applications With Prompt Engineering.png"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="cert-link"
+                >
+                  <div class="certification-box shadow-dark">
+                    <div class="cert-preview">
+                      <img
+                        src="./assets/images/certifications/Building LLM Applications With Prompt Engineering.png"
+                        alt="Building LLM Applications With Prompt Engineering"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="cert-header">
+                      <h4>Building LLM Applications With Prompt Engineering</h4>
+                      <span class="cert-type">Certificate</span>
+                    </div>
+                    <div class="cert-footer">
+                      <div class="cert-org">
+                        <i class="fa fa-building"></i>
+                        <span>NVIDIA</span>
+                      </div>
+                      <div class="cert-date">
+                        <i class="fa fa-calendar"></i>
+                        <span>Dec 2025</span>
+                      </div>
+                    </div>
+                    <div class="cert-view-hint">
+                      <i class="fa fa-external-link-alt"></i> View Certificate
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="certification-item padd-15">
+                <a
+                  href="./assets/images/certifications/Building Real-Time Video AI Applications.png"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="cert-link"
+                >
+                  <div class="certification-box shadow-dark">
+                    <div class="cert-preview">
+                      <img
+                        src="./assets/images/certifications/Building Real-Time Video AI Applications.png"
+                        alt="Building Real-Time Video AI Applications"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="cert-header">
+                      <h4>Building Real-Time Video AI Applications</h4>
+                      <span class="cert-type">Certificate</span>
+                    </div>
+                    <div class="cert-footer">
+                      <div class="cert-org">
+                        <i class="fa fa-building"></i>
+                        <span>NVIDIA</span>
+                      </div>
+                      <div class="cert-date">
+                        <i class="fa fa-calendar"></i>
+                        <span>Oct 2025</span>
+                      </div>
+                    </div>
+                    <div class="cert-view-hint">
+                      <i class="fa fa-external-link-alt"></i> View Certificate
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="certification-item padd-15">
+                <a
+                  href="./assets/images/certifications/Getting Started with Deep Learning.png"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="cert-link"
+                >
+                  <div class="certification-box shadow-dark">
+                    <div class="cert-preview">
+                      <img
+                        src="./assets/images/certifications/Getting Started with Deep Learning.png"
+                        alt="Getting Started with Deep Learning"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="cert-header">
+                      <h4>Getting Started with Deep Learning</h4>
+                      <span class="cert-type">Certificate</span>
+                    </div>
+                    <div class="cert-footer">
+                      <div class="cert-org">
+                        <i class="fa fa-building"></i>
+                        <span>NVIDIA</span>
+                      </div>
+                      <div class="cert-date">
+                        <i class="fa fa-calendar"></i>
+                        <span>Oct 2025</span>
+                      </div>
+                    </div>
+                    <div class="cert-view-hint">
+                      <i class="fa fa-external-link-alt"></i> View Certificate
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="certification-item padd-15">
+                <a
+                  href="./assets/images/certifications/AI điều hành.webp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="cert-link"
+                >
+                  <div class="certification-box shadow-dark cert-award">
+                    <div class="cert-preview">
+                      <img
+                        src="./assets/images/certifications/AI điều hành.webp"
+                        alt="2nd Prize — AI in Business"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="cert-badge award-badge">
+                      <i class="fa fa-award"></i>
+                    </div>
+                    <div class="cert-header">
+                      <h4>2nd Prize — "AI in Business" Competition</h4>
+                      <span class="cert-type award-type">Award</span>
+                    </div>
+                    <div class="cert-footer">
+                      <div class="cert-org">
+                        <i class="fa fa-building"></i>
+                        <span>HPT Vietnam Corporation</span>
+                      </div>
+                      <div class="cert-date">
+                        <i class="fa fa-calendar"></i>
+                        <span>2025</span>
+                      </div>
+                    </div>
+                    <div class="cert-view-hint">
+                      <i class="fa fa-external-link-alt"></i> View Award
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="certification-item padd-15">
+                <a
+                  href="./assets/images/certifications/H.I.H.webp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="cert-link"
+                >
+                  <div class="certification-box shadow-dark cert-award">
+                    <div class="cert-preview">
+                      <img
+                        src="./assets/images/certifications/H.I.H.webp"
+                        alt="3rd Prize — AI in Business"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="cert-badge award-badge">
+                      <i class="fa fa-award"></i>
+                    </div>
+                    <div class="cert-header">
+                      <h4>3rd Prize — "AI in Business" Competition</h4>
+                      <span class="cert-type award-type">Award</span>
+                    </div>
+                    <div class="cert-footer">
+                      <div class="cert-org">
+                        <i class="fa fa-building"></i>
+                        <span>HPT Vietnam Corporation</span>
+                      </div>
+                      <div class="cert-date">
+                        <i class="fa fa-calendar"></i>
+                        <span>2025</span>
+                      </div>
+                    </div>
+                    <div class="cert-view-hint">
+                      <i class="fa fa-external-link-alt"></i> View Award
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- Certifications Section End -->
+
+        <!-- Contact Section Start -->
+        <section
+          class="contact section"
+          id="contact"
+          data-aos="fade-up"
+          data-aos-duration="800"
+        >
+          <div class="container">
+            <div class="row">
+              <div class="section-title padd-15">
+                <h2>Contact Me</h2>
+              </div>
+            </div>
+            <h3 class="contact-title padd-15">Get In Touch</h3>
+            <div class="row">
+              <!-- Contact Info Item Start -->
+              <div class="contact-info-item padd-15">
+                <div class="icon"><i class="fa fa-phone"></i></div>
+                <h4>Call Us On</h4>
+                <p>+84 86 8639 882</p>
+              </div>
+              <!-- Contact Info Item End -->
+              <!-- Contact Info Item Start -->
+              <div class="contact-info-item padd-15">
+                <div class="icon"><i class="fa fa-map-marker-alt"></i></div>
+                <h4>Address</h4>
+                <p>Ho Chi Minh City</p>
+              </div>
+              <!-- Contact Info Item End -->
+              <!-- Contact Info Item Start -->
+              <div class="contact-info-item padd-15">
+                <div class="icon"><i class="fa fa-envelope"></i></div>
+                <h4>Email</h4>
+                <p>vophuthinhcm@gmail.com</p>
+              </div>
+              <!-- Contact Info Item End -->
+              <!-- Contact Info Item Start -->
+              <div class="contact-info-item padd-15">
+                <div class="icon"><i class="fa fa-globe-europe"></i></div>
+                <h4>Website</h4>
+                <p>vophuthinh.com</p>
+              </div>
+              <!-- Contact Info Item End -->
+            </div>
+            <h3 class="contact-title padd-15">Send Me A Message</h3>
+            <!-- Contact Form -->
+            <div class="row">
+              <form id="contactForm" class="contact-form padd-15">
+                <div class="row">
+                  <div class="form-item col-6 padd-15">
+                    <div class="form-group">
+                      <input
+                        type="text"
+                        name="from_name"
+                        id="from_name"
+                        class="form-control"
+                        placeholder=" "
+                        required
+                      />
+                      <label for="from_name" class="form-label">Name</label>
+                    </div>
+                  </div>
+                  <div class="form-item col-6 padd-15">
+                    <div class="form-group">
+                      <input
+                        type="email"
+                        name="email_id"
+                        id="email_id"
+                        class="form-control"
+                        placeholder=" "
+                        required
+                      />
+                      <label for="email_id" class="form-label">Email</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-item col-12 padd-15">
+                    <div class="form-group">
+                      <textarea
+                        name="message"
+                        id="message"
+                        class="form-control"
+                        placeholder=" "
+                        required
+                      ></textarea>
+                      <label for="message" class="form-label">Message</label>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-item col-12 padd-15">
+                    <button type="submit" class="btn" id="contact-submit-btn">
+                      <span>Send Message</span>
+                      <i class="fas fa-paper-plane"></i>
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+        <!-- Contact Section End -->
+      </main>
+      <!-- Main Content End -->
     </div>
-    <!-- Style Switcher Start -->
-    <div class="style-switcher">
-        <div class="style-switcher-toggler s-icon">
-            <i class="fas fa-cog fa-spin"></i>
-        </div>
-        <div class="day-night s-icon">
-            <i class="fas"></i>
-        </div>
-        <h4>Theme Colors</h4>
-        <div class="colors">
-            <span class="color-1" data-color="color-1"></span>
-            <span class="color-2" data-color="color-2"></span>
-            <span class="color-3" data-color="color-3"></span>
-            <span class="color-4" data-color="color-4"></span>
-            <span class="color-5" data-color="color-5"></span>
-        </div>
-    </div>
-    <!-- Style Switcher End -->
-
     <!-- JS Files -->
     <!-- External Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js"
-        integrity="sha512-+2pW8xXU/rNr7VS+H62aqapfRpqFwnSQh9ap6THjsm41AxgA0MhFRtfrABS+Lx2KHJn82UOrnBKhjZOXpom2LQ=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
-    <!-- AOS, particles, spotlight, tilt, magnetic will be lazy loaded -->
-    <script src="./js/particles.js" defer></script>
-    <script src="./js/skills-3d.js" defer></script>
+    <script src="/js/particles.js" defer></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" defer></script>
+    <!-- Application Scripts (ES Modules) -->
+    <script type="module" src="js/config.js"></script>
+    <script type="module" src="js/utils.js"></script>
+    <script type="module" src="js/projects-data.js"></script>
 
-
-    <!-- Application Scripts -->
-    <!-- Global config and utilities (non-module) -->
-    <script src="js/config.js"></script>
-    <script src="js/utils.js"></script>
-    <script src="js/lazy-loader.js"></script>
-    <script src="js/projects-data.js"></script>
-    <script src="js/interests-data.js"></script>
-    <script src="js/image-optimizer.js" defer></script>
-    <script src="js/performance-monitor.js" defer></script>
-    
     <!-- Main application (ES6 modules) -->
     <script type="module" src="js/main.js"></script>
-    
-    <!-- Style switcher (standalone) -->
-    <script src="js/style-switcher.js" defer></script>
 
     <!-- Modals - Must be inside body, before closing tag -->
     <!-- Project Modal -->
-    <div id="projectModal" class="modal" role="dialog" aria-labelledby="projectModalTitle" aria-modal="true">
-        <div class="modal-content">
-            <span class="close" data-modal-close="projectModal" aria-label="Close modal">&times;</span>
-            <h2 id="projectModalTitle"></h2>
-            <div id="projectModalContent" class="project-modal-content">
-                <!-- Content will be populated by JavaScript -->
-            </div>
+    <div
+      id="projectModal"
+      class="modal"
+      role="dialog"
+      aria-labelledby="projectModalTitle"
+      aria-modal="true"
+    >
+      <div class="modal-content">
+        <span
+          class="close"
+          data-modal-close="projectModal"
+          aria-label="Close modal"
+          >&times;</span
+        >
+        <h2 id="projectModalTitle"></h2>
+        <div id="projectModalContent" class="project-modal-content">
+          <!-- Content will be populated by JavaScript -->
         </div>
-    </div>
-
-    <!-- Interest Gallery Modal -->
-    <div id="interestModal" class="modal" role="dialog" aria-labelledby="interestModalTitle" aria-modal="true">
-        <div class="modal-content interest-gallery">
-            <span class="close" data-modal-close="interestModal" aria-label="Close modal">&times;</span>
-            <h2 id="interestModalTitle"></h2>
-            <div id="interestModalImages" class="gallery-image-container">
-            </div>
-        </div>
+      </div>
     </div>
 
     <!-- Image Viewer Modal -->
-    <div id="imageViewerModal" class="modal image-viewer-modal" role="dialog" aria-label="Image viewer"
-        aria-modal="true">
-        <!-- Ambient Backdrop -->
-        <div class="image-viewer-backdrop">
-            <img id="viewerBackdrop" src="" alt="" aria-hidden="true">
-        </div>
-        <span class="close-image-viewer" data-modal-close="imageViewerModal"
-            aria-label="Close image viewer">&times;</span>
-        <div class="image-viewer-content">
-            <img id="viewerImage" src="" alt="Full size image" />
-            <button class="image-viewer-prev" data-image-nav="-1">&#10094;</button>
-            <button class="image-viewer-next" data-image-nav="1">&#10095;</button>
-            <div id="viewerCaption" class="image-viewer-caption"></div>
-        </div>
+    <div
+      id="imageViewerModal"
+      class="modal image-viewer-modal"
+      role="dialog"
+      aria-label="Image viewer"
+      aria-modal="true"
+    >
+      <!-- Ambient Backdrop -->
+      <div class="image-viewer-backdrop">
+        <img id="viewerBackdrop" src="" alt="" aria-hidden="true" />
+      </div>
+      <span
+        class="close-image-viewer"
+        data-modal-close="imageViewerModal"
+        aria-label="Close image viewer"
+        >&times;</span
+      >
+      <div class="image-viewer-content">
+        <img id="viewerImage" src="" alt="Full size image" />
+        <button class="image-viewer-prev" data-image-nav="-1">&#10094;</button>
+        <button class="image-viewer-next" data-image-nav="1">&#10095;</button>
+        <div id="viewerCaption" class="image-viewer-caption"></div>
+      </div>
     </div>
-</body>
-
+  </body>
 </html>

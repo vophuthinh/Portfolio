@@ -35,6 +35,10 @@ build/
 *.log
 npm-debug.log*
 
+# Environment variables
+.env
+.env.*
+
 # OS files
 .DS_Store
 Thumbs.db
@@ -49,4 +53,7 @@ Thumbs.db
 coverage/
 
 # Lighthouse reports
-lighthouse-report.*
+lighthouse-report*.json
+
+# Playwright MCP
+.playwright-mcp/

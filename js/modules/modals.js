@@ -1,3 +1,5 @@
+import { Utils } from "../utils.js";
+
 /**
  * Modals Module
  * Unified modal controller for all modals in the application
@@ -5,132 +7,132 @@
 
 export class ModalsController {
   constructor() {
-    this.projectModal = document.getElementById('projectModal');
-    this.interestModal = document.getElementById('interestModal');
-    this.imageViewerModal = document.getElementById('imageViewerModal');
-    this.certificateModal = document.getElementById('certificateModal');
-    
+    this.projectModal = document.getElementById("projectModal");
+    this.imageViewerModal = document.getElementById("imageViewerModal");
+    this.certificateModal = document.getElementById("certificateModal");
+
     this.currentImageList = [];
     this.currentImageIndex = 0;
-    
+
     this.init();
   }
-  
+
   init() {
     this.setupModalCloseHandlers();
     this.setupKeyboardHandlers();
     this.setupFocusTrap();
     this.setupCertificateModal();
   }
-  
+
   getLogger() {
-    return (typeof Utils !== 'undefined' && Utils.getLogger) 
-      ? Utils.getLogger() 
-      : { 
-          log: console.log.bind(console),
-          warn: console.warn.bind(console),
-          error: console.error.bind(console)
-        };
+    return Utils.getLogger();
   }
-  
+
   openModal(modalEl) {
     if (!modalEl) return;
-    modalEl.style.display = 'flex';
-    modalEl.classList.add('open');
-    document.body.style.overflow = 'hidden';
+    modalEl.style.display = "flex";
+    modalEl.classList.add("open");
+    document.body.style.overflow = "hidden";
   }
-  
+
   closeModal(modalEl) {
     if (!modalEl) return;
-    modalEl.style.display = 'none';
-    modalEl.classList.remove('open');
-    document.body.style.overflow = '';
+    modalEl.style.display = "none";
+    modalEl.classList.remove("open");
+    document.body.style.overflow = "";
   }
-  
+
   setupModalCloseHandlers() {
-    document.addEventListener('click', (e) => {
+    document.addEventListener("click", (e) => {
       const target = e.target;
-      
+
       // Close button clicks
-      if (target.hasAttribute('data-modal-close')) {
+      if (target.hasAttribute("data-modal-close")) {
         e.preventDefault();
         e.stopPropagation();
-        const modalId = target.getAttribute('data-modal-close');
+        const modalId = target.getAttribute("data-modal-close");
         if (modalId) {
           const modal = document.getElementById(modalId);
           if (modal) {
             this.closeModal(modal);
           }
         } else {
-          const closestModal = target.closest('.modal');
+          const closestModal = target.closest(".modal");
           if (closestModal) {
             this.closeModal(closestModal);
           }
         }
         return;
       }
-      
+
       // Image viewer navigation
-      if (target.hasAttribute('data-image-nav')) {
+      if (target.hasAttribute("data-image-nav")) {
         e.preventDefault();
         e.stopPropagation();
-        const direction = target.getAttribute('data-image-nav');
+        const direction = target.getAttribute("data-image-nav");
         this.changeImageViewerImage(direction);
         return;
       }
-      
+
       // Click overlay to close modals
-      if (target.classList.contains('modal')) {
+      if (target.classList.contains("modal")) {
         this.closeModal(target);
         return;
       }
-      
+
       // Close image viewer on background click
-      if (target.classList.contains('image-viewer-content')) {
+      if (target.classList.contains("image-viewer-content")) {
         this.closeImageViewer();
       }
     });
   }
-  
+
   setupKeyboardHandlers() {
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener("keydown", (e) => {
       // ESC key to close modals
-      if (e.key === 'Escape') {
-        const openModals = document.querySelectorAll('.modal.open, .modal[style*="flex"]');
+      if (e.key === "Escape") {
+        const openModals = document.querySelectorAll(
+          '.modal.open, .modal[style*="flex"]',
+        );
         if (openModals.length > 0) {
           const lastModal = openModals[openModals.length - 1];
           this.closeModal(lastModal);
           return;
         }
       }
-      
+
       // Arrow keys for image viewer navigation
-      if (this.imageViewerModal && this.imageViewerModal.style.display === 'flex') {
-        if (e.key === 'ArrowLeft') {
+      if (
+        this.imageViewerModal &&
+        this.imageViewerModal.style.display === "flex"
+      ) {
+        if (e.key === "ArrowLeft") {
           e.preventDefault();
           this.changeImageViewerImage(-1);
-        } else if (e.key === 'ArrowRight') {
+        } else if (e.key === "ArrowRight") {
           e.preventDefault();
           this.changeImageViewerImage(1);
         }
       }
     });
   }
-  
+
   setupFocusTrap() {
     const trapFocus = (modal) => {
       if (!modal) return;
-      const focusableElements = modal.querySelectorAll(
-        'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
-      );
-      if (focusableElements.length === 0) return;
-      
-      const firstElement = focusableElements[0];
-      const lastElement = focusableElements[focusableElements.length - 1];
-      
-      modal.addEventListener('keydown', function (e) {
-        if (e.key !== 'Tab') return;
-        
+
+      modal.addEventListener("keydown", function (e) {
+        if (e.key !== "Tab") return;
+
+        // Re-query focusable elements each time (modal content may change dynamically)
+        const focusableElements = modal.querySelectorAll(
+          'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])',
+        );
+        if (focusableElements.length === 0) return;
+
+        const firstElement = focusableElements[0];
+        const lastElement = focusableElements[focusableElements.length - 1];
+
         if (e.shiftKey) {
           if (document.activeElement === firstElement) {
             e.preventDefault();
@@ -144,108 +146,108 @@ export class ModalsController {
         }
       });
     };
-    
+
     if (this.projectModal) trapFocus(this.projectModal);
-    if (this.interestModal) trapFocus(this.interestModal);
     if (this.imageViewerModal) trapFocus(this.imageViewerModal);
   }
-  
+
   // Image Viewer Methods
   openImageViewer(images, index) {
     const logger = this.getLogger();
-    
+
     if (!images || images.length === 0) {
-      logger.warn('No images provided to image viewer');
+      logger.warn("No images provided to image viewer");
       return;
     }
     if (!this.imageViewerModal) {
-      logger.warn('imageViewerModal element not found');
+      logger.warn("imageViewerModal element not found");
       return;
     }
-    
+
     this.currentImageList = images;
-    this.currentImageIndex = (index >= 0 && index < images.length) ? index : 0;
-    
+    this.currentImageIndex = index >= 0 && index < images.length ? index : 0;
+
     this.updateImageViewerDisplay();
     this.openModal(this.imageViewerModal);
   }
-  
+
   closeImageViewer() {
     this.closeModal(this.imageViewerModal);
   }
-  
+
   changeImageViewerImage(direction) {
     if (this.currentImageList.length === 0) return;
-    
+
     this.currentImageIndex += parseInt(direction);
     if (this.currentImageIndex < 0) {
       this.currentImageIndex = this.currentImageList.length - 1;
     } else if (this.currentImageIndex >= this.currentImageList.length) {
       this.currentImageIndex = 0;
     }
-    
+
     this.updateImageViewerDisplay();
   }
-  
+
   updateImageViewerDisplay() {
-    const viewerImage = document.getElementById('viewerImage');
-    const viewerBackdrop = document.getElementById('viewerBackdrop');
-    const viewerCaption = document.getElementById('viewerCaption');
-    
+    const viewerImage = document.getElementById("viewerImage");
+    const viewerBackdrop = document.getElementById("viewerBackdrop");
+    const viewerCaption = document.getElementById("viewerCaption");
+
     const item = this.currentImageList[this.currentImageIndex];
-    const src = typeof item === 'string' ? item : item.src;
-    const caption = typeof item === 'string' ? '' : item.caption;
-    
+    const src = typeof item === "string" ? item : item.src;
+    const caption = typeof item === "string" ? "" : item.caption;
+
     if (viewerImage) {
       viewerImage.src = src;
       if (viewerBackdrop) {
         viewerBackdrop.src = src;
       }
       viewerImage.alt = caption || `Image ${this.currentImageIndex + 1}`;
-      
-      viewerImage.classList.remove('zoomed');
-      
+
+      viewerImage.classList.remove("zoomed");
+
       viewerImage.onclick = function (e) {
         e.stopPropagation();
-        this.classList.toggle('zoomed');
+        this.classList.toggle("zoomed");
       };
     }
-    
+
     if (viewerCaption) {
       if (caption) {
         viewerCaption.textContent = caption;
-        viewerCaption.style.display = 'block';
+        viewerCaption.style.display = "block";
       } else {
-        viewerCaption.style.display = 'none';
+        viewerCaption.style.display = "none";
       }
     }
   }
-  
+
   // Certificate Modal Setup
   setupCertificateModal() {
-    const certificateImages = document.querySelectorAll('.certificate-img');
+    const certificateImages = document.querySelectorAll(".certificate-img");
     if (certificateImages.length === 0) return;
-    
+
     let certModal = this.certificateModal;
     if (!certModal) {
-      certModal = document.createElement('div');
-      certModal.id = 'certificateModal';
-      certModal.classList.add('certificate-modal', 'modal');
-      certModal.setAttribute('role', 'dialog');
-      certModal.setAttribute('aria-modal', 'true');
-      certModal.setAttribute('aria-label', 'Certificate viewer');
-      certModal.innerHTML = '<span class="close" data-modal-close="certificateModal" aria-label="Close certificate viewer">&times;</span><img src="" alt="Zoomed Certificate">';
+      certModal = document.createElement("div");
+      certModal.id = "certificateModal";
+      certModal.classList.add("certificate-modal", "modal");
+      certModal.setAttribute("role", "dialog");
+      certModal.setAttribute("aria-modal", "true");
+      certModal.setAttribute("aria-label", "Certificate viewer");
+      certModal.innerHTML =
+        '<span class="close" data-modal-close="certificateModal" aria-label="Close certificate viewer">&times;</span><img src="" alt="Zoomed Certificate">';
       document.body.appendChild(certModal);
       this.certificateModal = certModal;
     }
-    
-    const modalImg = certModal.querySelector('img');
-    
+
+    const modalImg = certModal.querySelector("img");
+
     certificateImages.forEach((img) => {
-      img.addEventListener('click', () => {
+      img.addEventListener("click", () => {
         if (modalImg) {
           modalImg.src = img.src;
-          modalImg.alt = img.alt || 'Zoomed Certificate';
+          modalImg.alt = img.alt || "Zoomed Certificate";
         }
         this.openModal(certModal);
       });
