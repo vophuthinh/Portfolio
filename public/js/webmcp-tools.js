@@ -250,7 +250,8 @@
     function () {
       return fetch("/llms-full.txt")
         .then(function (r) {
-          if (!r.ok) throw new Error("Failed to fetch llms-full.txt: " + r.status);
+          if (!r.ok)
+            throw new Error("Failed to fetch llms-full.txt: " + r.status);
           return r.text();
         })
         .then(function (text) {
