@@ -431,7 +431,12 @@ class WebMCP {
             lineHeight: '1.45'
         });
 
-        ['Get a WebMCP token in your AI client', 'Paste token and click Connect AI', 'Use your assistant with this portfolio'].forEach((text) => {
+        const quickSteps = [
+            'Get a WebMCP token in your AI client',
+            'Paste token and click Connect AI',
+            'Use your assistant with this portfolio'
+        ];
+        quickSteps.forEach((text) => {
             const step = document.createElement('li');
             step.textContent = text;
             steps.appendChild(step);
