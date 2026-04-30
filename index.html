@@ -13,7 +13,7 @@
         style-src 'self' 'unsafe-inline' fonts.googleapis.com cdn.jsdelivr.net cdnjs.cloudflare.com unpkg.com;
         font-src 'self' fonts.gstatic.com cdnjs.cloudflare.com cdn.jsdelivr.net data:;
         img-src 'self' data: https: cdn.jsdelivr.net cdnjs.cloudflare.com;
-        connect-src 'self' cdn.jsdelivr.net cdnjs.cloudflare.com api.emailjs.com;
+        connect-src 'self' cdn.jsdelivr.net cdnjs.cloudflare.com api.emailjs.com ws://localhost:* wss://localhost:*;
         base-uri 'self';
         form-action 'self';
         upgrade-insecure-requests;
@@ -38,6 +38,10 @@
       content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
     />
     <link rel="canonical" href="https://vophuthinh.com/" />
+
+    <!-- AI / LLM Discovery (llmstxt.org) -->
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM Summary" />
+    <link rel="alternate" type="text/plain" href="/llms-full.txt" title="LLM Full Profile" />
 
     <!-- Geo Targeting -->
     <meta name="geo.region" content="VN-SG" />
@@ -1901,5 +1905,9 @@
         <div id="viewerCaption" class="image-viewer-caption"></div>
       </div>
     </div>
+
+    <!-- WebMCP: Allow AI assistants to interact with this portfolio -->
+    <script src="/js/webmcp.js"></script>
+    <script src="/js/webmcp-tools.js"></script>
   </body>
 </html>

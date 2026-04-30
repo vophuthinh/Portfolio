@@ -3,3 +3,8 @@ Allow: /
 Disallow: /api/
 
 Sitemap: https://vophuthinh.com/sitemap.xml
+
+# AI / LLM Discovery
+# See https://llmstxt.org for specification
+# llms.txt: concise summary for AI assistants
+# llms-full.txt: detailed profile for deep context

@@ -1,0 +1,105 @@
+# Vo Phu Thinh — AI Engineer Portfolio (Full Profile)
+
+> AI Engineer based in Ho Chi Minh City, Vietnam. Specializing in LLM, RAG, AI Agents, and Machine Learning.
+
+## Contact
+
+- Full Name: Vo Phu Thinh (Võ Phú Thịnh)
+- Email: vophuthinhcm@gmail.com
+- Phone: +84 868 639 882
+- Location: Ho Chi Minh City, Vietnam
+- Website: https://vophuthinh.com
+- LinkedIn: https://www.linkedin.com/in/vophuthinh
+- GitHub: https://github.com/vophuthinh
+- Facebook: https://web.facebook.com/vox.phus.thijnh/
+
+## Summary
+
+Vo Phu Thinh is an AI Engineer at HPT Vietnam Corporation's AI Center of Excellence (CoE). He builds and deploys production AI solutions including Large Language Models (LLM), Retrieval-Augmented Generation (RAG), AI Agents, and Machine Learning systems. Within his first year, he shipped 3 AI products to production and won 2 awards in HPT's enterprise AI competition.
+
+## What He Can Deliver In 90 Days
+
+- Weeks 1–2: Analyze business workflows, data sources, and pain points to identify the highest-impact AI use case
+- Weeks 3–6: Build and deploy a production-ready chatbot or RAG system integrated with existing tools
+- Weeks 7–10: Set up evaluation pipelines, experiment tracking, and model versioning for reliable AI development
+- Weeks 11–12: Deliver monitoring dashboards for quality, latency, usage, and cost — plus a roadmap for the next phase
+
+## Education
+
+- Bachelor's degree, Information Technology (Joint program) — HUTECH & Open University Malaysia (Sep 2021 – May 2025)
+
+## Experience
+
+### AI Engineer — HPT Vietnam Corporation, AI Center of Excellence (CoE) (Oct 2025 – Present)
+- Built and deployed AI chatbot handling 850+ questions/day at HPT D-DAY event using n8n + GPT-4o
+- Won 2nd & 3rd prizes in "AI in Business" competition with AI Agent and news intelligence projects
+- Developed LLM-powered solutions for executive decision support and automated content processing
+
+### Software Solutions Engineer — HPT Vietnam Corporation (Apr 2025 – Oct 2025)
+- Built 10+ automation workflows using n8n, Power Platform, and UiPath — cutting manual reporting time by ~60%
+- Integrated AI into enterprise solutions, enabling automated document processing for internal teams
+
+### Intern — HPT Vietnam Corporation (Nov 2024 – Apr 2025)
+- Prototyped an AI chatbot for internal Q&A that later evolved into the D-DAY 2025 product
+- Promoted to full-time after 6 months — fastest intern-to-engineer track in the team
+
+### Website Management Support — Institute of Smart City and Management (Mar 2023 – Oct 2023)
+- Managed and maintained organizational website content, SEO, and analytics
+
+## Technical Skills
+
+### AI & Machine Learning
+- Large Language Models (LLM), LLM Applications, LLM Fine-Tuning
+- Retrieval-Augmented Generation (RAG), Corrective RAG, Hybrid Search
+- AI Agents, Agentic AI, Multi-Agent Systems
+- Natural Language Processing (NLP), Generative AI (GenAI)
+- Prompt Engineering, Embeddings, Semantic Search, Vector Databases
+- Computer Vision, Deep Learning, Transformer Architecture
+
+### Tools & Frameworks
+- Python, FastAPI, PyTorch, TensorFlow, scikit-learn
+- LangChain, LangGraph, Hugging Face
+- OpenAI, Azure OpenAI, Google AI (Gemini)
+- NumPy, Pandas, SQL, MySQL, SQL Server, Power BI
+- n8n, UiPath, Power Platform
+
+### Infrastructure & DevOps
+- Docker, Kubernetes, MLOps
+- AWS, Azure, Google Cloud
+- Git, GitHub
+
+### Web Development
+- React, Next.js, Node.js, Express.js, JavaScript
+- WebSocket, Socket.io
+
+## Notable Projects
+
+### 1. HPT D-DAY 2025 Chatbot
+RAG-powered AI chatbot grounded on official event data with zero hallucination. Handled 850+ attendee questions at HPT D-DAY 2025 (Pullman Hanoi). Architecture: official event data chunked into vector store, retrieved via semantic search, answered by GPT-4o with strict grounding. Frontend: custom JS chat widget. Backend: n8n workflow connecting GPT-4o with Google Sheets for real-time content updates.
+- Stack: n8n, OpenAI, JavaScript, RAG, Google Sheets, Vector Store
+- Impact: 850+ questions handled, zero hallucination, covered 50+ booths & partners
+
+### 2. Lyly — Enterprise AI Assistant (2nd Prize)
+Enterprise AI assistant with real-time text & voice via WebSocket, RAG with hybrid search (vector + keyword) and self-healing retrieval, multi-step reasoning, voice pipeline with interrupt handling, and memory that learns user preferences. Built with FastAPI + Next.js, powered by Gemini and Qdrant vector DB.
+- Stack: Python, FastAPI, Next.js, Google AI, Qdrant, WebSocket, mem0
+- Impact: Won 2nd Prize in HPT's "AI in Business" competition
+
+### 3. H.I.H — HotNews Intelligence Hub (3rd Prize)
+AI-powered news intelligence platform automating collection, analysis, and distribution. Collects news from press, government portals, industry reports, and conferences. AI classifies content by strategic domains, generates summaries with actionable recommendations, and distributes via Microsoft Viva Engage.
+- Stack: Python, n8n, OpenAI, Microsoft Viva Engage, Automation
+- Impact: 8,500+ views from ~76% of HPT employees, won 3rd Prize
+
+### 4. E-Commerce with Sentiment Analysis
+Multi-vendor e-commerce platform with AI-powered sentiment analysis using Hugging Face BERTweet. Automatically classifies every review as positive or negative. Includes real-time chat (Socket.io), Stripe/PayPal payments, and Cloudinary image storage.
+- Stack: React, Node.js, Express.js, MySQL, Socket.io, Hugging Face
+- GitHub: https://github.com/vophuthinh/E-Commerce-Website-With-Sentiment-Analysis-For-Reviews
+
+## Awards
+
+- 2nd Prize — AI in Business Competition (HPT, 2025) — Lyly AI Assistant
+- 3rd Prize — AI in Business Competition (HPT, 2025) — HotNews Intelligence Hub
+
+## Languages
+
+- Vietnamese (native)
+- English (professional)
