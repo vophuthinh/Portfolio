@@ -57,3 +57,5 @@ lighthouse-report*.json
 
 # Playwright MCP
 .playwright-mcp/
+.vercel
+.env*.local

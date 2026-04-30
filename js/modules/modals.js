@@ -224,8 +224,8 @@ export class ModalsController {
 
   // Certificate Modal Setup
   setupCertificateModal() {
-    const certificateImages = document.querySelectorAll(".certificate-img");
-    if (certificateImages.length === 0) return;
+    const certLinks = document.querySelectorAll(".cert-link");
+    if (certLinks.length === 0) return;
 
     let certModal = this.certificateModal;
     if (!certModal) {
@@ -243,9 +243,11 @@ export class ModalsController {
 
     const modalImg = certModal.querySelector("img");
 
-    certificateImages.forEach((img) => {
-      img.addEventListener("click", () => {
-        if (modalImg) {
+    certLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const img = link.querySelector(".cert-preview img");
+        if (modalImg && img) {
           modalImg.src = img.src;
           modalImg.alt = img.alt || "Zoomed Certificate";
         }

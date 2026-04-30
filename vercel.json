@@ -26,16 +26,13 @@
       "dest": "/sw.js"
     },
     {
+      "handle": "filesystem"
+    },
+    {
       "src": "/(.*)",
       "dest": "/index.html"
     }
   ],
-  "env": {
-    "EMAILJS_SERVICE_ID": "@emailjs_service_id",
-    "EMAILJS_TEMPLATE_ID": "@emailjs_template_id",
-    "EMAILJS_PUBLIC_KEY": "@emailjs_public_key",
-    "EMAILJS_PRIVATE_KEY": "@emailjs_private_key"
-  },
   "headers": [
     {
       "source": "/(.*)",
