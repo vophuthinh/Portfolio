@@ -41,7 +41,7 @@
           },
         ],
       };
-    }
+    },
   );
 
   // Tool: Get skills
@@ -107,7 +107,7 @@
           },
         ],
       };
-    }
+    },
   );
 
   // Tool: Get projects
@@ -125,13 +125,7 @@
                 title: "HPT D-DAY 2025 Chatbot",
                 description:
                   "RAG-powered AI chatbot with zero hallucination, handled 850+ questions at HPT D-DAY 2025",
-                stack: [
-                  "n8n",
-                  "OpenAI",
-                  "JavaScript",
-                  "RAG",
-                  "Google Sheets",
-                ],
+                stack: ["n8n", "OpenAI", "JavaScript", "RAG", "Google Sheets"],
                 impact: "850+ questions, zero hallucination",
               },
               {
@@ -152,12 +146,7 @@
                 title: "H.I.H — HotNews Intelligence Hub (3rd Prize)",
                 description:
                   "AI-powered news intelligence platform automating collection, analysis, and distribution",
-                stack: [
-                  "Python",
-                  "n8n",
-                  "OpenAI",
-                  "Microsoft Viva Engage",
-                ],
+                stack: ["Python", "n8n", "OpenAI", "Microsoft Viva Engage"],
                 impact: "8,500+ views from ~76% of HPT employees",
               },
               {
@@ -178,7 +167,7 @@
           },
         ],
       };
-    }
+    },
   );
 
   // Tool: Get experience
@@ -224,7 +213,7 @@
           },
         ],
       };
-    }
+    },
   );
 
   // Tool: Navigate to section
@@ -244,22 +233,20 @@
       if (el) {
         el.scrollIntoView({ behavior: "smooth" });
         return {
-          content: [
-            { type: "text", text: "Navigated to section: " + section },
-          ],
+          content: [{ type: "text", text: "Navigated to section: " + section }],
         };
       }
       return {
         content: [{ type: "text", text: "Section not found: " + section }],
       };
-    }
+    },
   );
 
   // Resource: llms-full.txt
   mcp.registerResource(
     "profile://full",
     "Full AI-readable profile of Vo Phu Thinh",
-    "text/plain",
+    { uri: "https://vophuthinh.com/llms-full.txt", mimeType: "text/plain" },
     function () {
       return fetch("/llms-full.txt")
         .then(function (r) {
@@ -267,10 +254,16 @@
         })
         .then(function (text) {
           return {
-            content: [{ type: "text", text: text }],
+            contents: [
+              {
+                uri: "https://vophuthinh.com/llms-full.txt",
+                text: text,
+                mimeType: "text/plain",
+              },
+            ],
           };
         });
-    }
+    },
   );
 
   // Prompt: Hiring assessment
@@ -295,6 +288,6 @@
           },
         ],
       };
-    }
+    },
   );
 })();
