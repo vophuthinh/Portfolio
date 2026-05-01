@@ -4010,6 +4010,18 @@ body.dark .contact .contact-form .form-label {
 
 /* Mobile*/
 @media (max-width: 767.98px) {
+  /* Keep hero content pinned near the top on small screens */
+  .home {
+    align-items: flex-start;
+    min-height: 100svh;
+    min-height: 100dvh;
+  }
+
+  .home .row {
+    justify-content: flex-start;
+    gap: 12px;
+  }
+
   .contact .contact-form {
     padding: 25px 15px;
   }
@@ -4106,8 +4118,10 @@ body.dark .contact .contact-form .form-label {
 
   /* ---- Home section mobile optimization ---- */
   .home .container {
-    padding-top: 30px;
-    padding-bottom: 20px;
+    margin: 0 auto;
+    width: 100%;
+    padding-top: 12px;
+    padding-bottom: calc(24px + env(safe-area-inset-bottom));
   }
 
   h1.hello {
@@ -4128,14 +4142,23 @@ body.dark .contact .contact-form .form-label {
   .home-info p {
     font-size: 15px;
     line-height: 1.7;
-    margin-bottom: 24px;
+    margin-bottom: 18px;
   }
 
   .home .btn-download {
+    display: inline-flex;
     width: auto;
     padding: 14px 32px;
     font-size: 15px;
     min-height: 48px;
+  }
+
+  .home .home-img {
+    margin-bottom: 12px;
+  }
+
+  .home .home-img img {
+    height: clamp(170px, 30vh, 200px);
   }
 
   /* ---- End home section mobile ---- */
@@ -4195,6 +4218,69 @@ body.dark .contact .contact-form .form-label {
     bottom: -8px !important;
     right: -8px !important;
     border-width: 3px !important;
+  }
+}
+
+/* Short landscape phones: keep CTA visible in first viewport */
+@media (max-width: 767.98px) and (orientation: landscape) and (max-height: 430px) {
+  .home .container {
+    padding-top: 6px;
+    padding-bottom: 10px;
+  }
+
+  .home .row {
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+    gap: 14px;
+  }
+
+  .home .home-img {
+    flex: 0 0 130px;
+    max-width: 130px;
+    margin-bottom: 0;
+  }
+
+  .home .home-img img {
+    height: 120px;
+  }
+
+  .home .home-info {
+    flex: 1 1 auto;
+    max-width: 440px;
+  }
+
+  h1.hello {
+    font-size: 18px;
+    margin: 0 0 6px;
+    line-height: 1.25;
+  }
+
+  h1.hello span.name {
+    font-size: 18px;
+  }
+
+  h2.my-profession {
+    font-size: 15px;
+    margin: 0 0 6px;
+    line-height: 1.25;
+  }
+
+  .home-info p {
+    font-size: 12px;
+    line-height: 1.45;
+    margin-bottom: 10px;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .home .btn-download {
+    padding: 10px 22px;
+    font-size: 13px;
+    min-height: 40px;
   }
 }
 
