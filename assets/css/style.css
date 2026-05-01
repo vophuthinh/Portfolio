@@ -1317,6 +1317,7 @@ body:not(.dark) .about .about-content .timeline {
 .project-item {
   display: flex;
   height: 100%;
+  min-width: 0;
 }
 
 .project-card:hover {
@@ -2502,13 +2503,13 @@ body:not(.dark) .about .about-content .timeline {
     gap: 10px;
   }
 
-  .btn {
+  .modal-buttons .btn {
     width: 100%;
     padding: 10px 20px;
     font-size: 14px;
   }
 
-  .btn + .btn {
+  .modal-buttons .btn + .btn {
     margin-top: 10px;
   }
 
@@ -2613,12 +2614,12 @@ body:not(.dark) .about .about-content .timeline {
     gap: 5px;
   }
 
-  .btn {
+  .modal-buttons .btn {
     padding: 8px 15px;
     font-size: 12px;
   }
 
-  .btn + .btn {
+  .modal-buttons .btn + .btn {
     margin-top: 5px;
   }
 
@@ -3622,6 +3623,8 @@ body:not(.dark) .cert-award:hover .cert-type {
   color: var(--text-black-700);
   text-decoration: none;
   transition: color 0.3s ease;
+  display: inline-block;
+  padding: 12px 0;
 }
 
 .contact .contact-info-item p a:hover {
@@ -3970,13 +3973,38 @@ body.dark .contact .contact-form .form-label {
     padding: 16px;
   }
 
+  .home .row {
+    flex-direction: column-reverse;
+    align-items: center;
+    text-align: center;
+  }
+
   .home .home-info {
     flex: 0 0 100%;
     max-width: 100%;
   }
 
   .home .home-img {
-    display: none;
+    flex: 0 0 auto;
+    max-width: 200px;
+    margin-bottom: 20px;
+  }
+
+  .home .home-img img {
+    height: 200px;
+    width: auto;
+  }
+
+  .home .btn-download {
+    width: auto;
+    padding: 14px 36px;
+    font-size: 15px;
+    min-height: 48px;
+  }
+
+  .home .home-info p {
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -4076,15 +4104,41 @@ body.dark .contact .contact-form .form-label {
     max-width: 100%;
   }
 
+  /* ---- Home section mobile optimization ---- */
+  .home .container {
+    padding-top: 30px;
+    padding-bottom: 20px;
+  }
+
   h1.hello {
-    font-size: 24px;
-    margin: 15px 0;
+    font-size: 22px;
+    margin: 10px 0;
+    line-height: 1.35;
+  }
+
+  h1.hello span.name {
+    font-size: 20px;
   }
 
   h2.my-profession {
-    font-size: 23px;
-    margin: 15px 0;
+    font-size: 18px;
+    margin: 10px 0;
   }
+
+  .home-info p {
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 24px;
+  }
+
+  .home .btn-download {
+    width: auto;
+    padding: 14px 32px;
+    font-size: 15px;
+    min-height: 48px;
+  }
+
+  /* ---- End home section mobile ---- */
 
   .skills .skills-content .dev-icons {
     font-size: 2.3rem;
@@ -4124,6 +4178,23 @@ body.dark .contact .contact-form .form-label {
   .skill-tag {
     padding: 10px 18px;
     font-size: 13px;
+  }
+
+  /* Smaller tech frame brackets on mobile */
+  .home-img::before {
+    height: 40px !important;
+    width: 40px !important;
+    top: -8px !important;
+    left: -8px !important;
+    border-width: 3px !important;
+  }
+
+  .home-img::after {
+    height: 40px !important;
+    width: 40px !important;
+    bottom: -8px !important;
+    right: -8px !important;
+    border-width: 3px !important;
   }
 }
 
@@ -4719,7 +4790,8 @@ body:not(.dark) a:focus-visible {
 
   .filter-btn {
     font-size: 12px;
-    padding: 6px 16px;
+    padding: 10px 16px;
+    min-height: 44px;
   }
 }
 
