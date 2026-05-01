@@ -4,6 +4,16 @@
  */
 
 (function () {
+  // Don't initialize the WebMCP widget on mobile layouts.
+  const isMobileLayout =
+    typeof window !== "undefined" &&
+    typeof window.matchMedia === "function" &&
+    window.matchMedia("(max-width: 767.98px)").matches;
+
+  if (isMobileLayout) {
+    return;
+  }
+
   const mcp = new WebMCP({
     color: "#ec1839",
     position: "bottom-right",
