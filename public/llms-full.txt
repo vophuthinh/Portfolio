@@ -1,6 +1,16 @@
-# Vo Phu Thinh — AI Engineer Portfolio (Full Profile)
+# Vo Phu Thinh — AI Engineer CV & Portfolio (Full Profile)
 
-> AI Engineer based in Ho Chi Minh City, Vietnam. Specializing in LLM, RAG, AI Agents, and Machine Learning.
+> AI Engineer based in Ho Chi Minh City, Vietnam. Open to new opportunities.
+> Specializing in LLM, RAG, AI Agents, and Machine Learning.
+> 3 AI products shipped to production. 2 enterprise AI awards.
+
+## Hiring Summary
+
+- **Role:** AI Engineer (LLM / RAG / AI Agent / ML)
+- **Location:** Ho Chi Minh City, Vietnam (open to remote)
+- **Availability:** Open to hire — full-time, contract, or freelance
+- **Key Strength:** Ships production AI fast — 3 products in first year
+- **Download CV:** https://vophuthinh.com/CV-VoPhuThinh.pdf
 
 ## Contact
 

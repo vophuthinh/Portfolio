@@ -1,18 +1,27 @@
-# Vo Phu Thinh — AI Engineer Portfolio
+# Vo Phu Thinh — AI Engineer CV & Portfolio
 
-> AI Engineer based in Ho Chi Minh City, Vietnam. Specializing in LLM, RAG, AI Agents, and Machine Learning.
+> AI Engineer based in Ho Chi Minh City, Vietnam. Open to new opportunities.
+> Specializing in LLM, RAG, AI Agents, and Machine Learning.
+> 3 AI products shipped to production in first year. 2 awards.
 
 ## About
 
-Vo Phu Thinh (Võ Phú Thịnh) is an AI Engineer currently working at HPT Vietnam Corporation. He builds and deploys production AI solutions including Large Language Models (LLM), Retrieval-Augmented Generation (RAG), AI Agents, and Machine Learning systems.
+Vo Phu Thinh (Võ Phú Thịnh) is an AI Engineer currently working at HPT Vietnam Corporation's AI Center of Excellence. He builds and deploys production AI solutions including Large Language Models (LLM), Retrieval-Augmented Generation (RAG), AI Agents, and Machine Learning systems.
+
+## Availability
+
+**Open to hire** — available for AI Engineer roles (full-time, contract, remote).
+Can deliver a production-ready AI chatbot or RAG system within 6 weeks.
+
+## Contact
 
 - Email: vophuthinhcm@gmail.com
 - Phone: +84 868 639 882
 - Location: Ho Chi Minh City, Vietnam
 - LinkedIn: https://www.linkedin.com/in/vophuthinh
 - GitHub: https://github.com/vophuthinh
-- Website: https://vophuthinh.com
+- Website & CV: https://vophuthinh.com
 
 ## Detailed Information
 
-- [Full Profile](https://vophuthinh.com/llms-full.txt)
+- [Full Profile & Resume](https://vophuthinh.com/llms-full.txt)
