@@ -493,48 +493,18 @@
       />
     </noscript>
 
-    <!-- Devicon - Tech Stack Icons (Latest) -->
-    <link
-      rel="preload"
-      as="style"
-      href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
-      onload="
-        this.onload = null;
-        this.rel = 'stylesheet';
-      "
-    />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
-      />
-    </noscript>
     <!-- CSS Files  -->
     <link rel="stylesheet" href="./assets/css/style.css" />
     <!-- Default skin color -->
     <link rel="stylesheet" href="./assets/css/skins/color-1.css" />
     <!-- Font Awesome - Latest Version -->
     <link
-      rel="preload"
-      as="style"
+      rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
       integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
-      onload="
-        this.onload = null;
-        this.rel = 'stylesheet';
-      "
     />
-    <noscript>
-      <link
-        rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-        crossorigin="anonymous"
-        referrerpolicy="no-referrer"
-      />
-    </noscript>
     <!-- AOS CSS removed to reduce render-blocking third-party requests -->
   </head>
 
@@ -960,7 +930,7 @@
                         title="Python"
                         style="--skill-accent: #3776ab"
                       >
-                        <i class="devicon-python-plain colored"></i
+                        <i class="fa-brands fa-python" aria-hidden="true"></i
                         ><span>Python</span>
                       </div>
                       <div
@@ -975,7 +945,10 @@
                         title="NumPy"
                         style="--skill-accent: #4dabcf"
                       >
-                        <i class="devicon-numpy-plain colored"></i
+                        <i
+                          class="fa-solid fa-square-root-variable"
+                          aria-hidden="true"
+                        ></i
                         ><span>NumPy</span>
                       </div>
                       <div
@@ -983,7 +956,7 @@
                         title="Pandas"
                         style="--skill-accent: #6366f1"
                       >
-                        <i class="devicon-pandas-plain colored"></i
+                        <i class="fa-solid fa-table" aria-hidden="true"></i
                         ><span>Pandas</span>
                       </div>
                       <div
@@ -1015,7 +988,7 @@
                         title="SQL"
                         style="--skill-accent: #336791"
                       >
-                        <i class="devicon-azuresqldatabase-plain colored"></i
+                        <i class="fa-solid fa-database" aria-hidden="true"></i
                         ><span>SQL</span>
                       </div>
                       <div
@@ -1023,7 +996,7 @@
                         title="MySQL"
                         style="--skill-accent: #4479a1"
                       >
-                        <i class="devicon-mysql-plain colored"></i
+                        <i class="fa-solid fa-database" aria-hidden="true"></i
                         ><span>MySQL</span>
                       </div>
                       <div
@@ -1031,7 +1004,7 @@
                         title="SQL Server"
                         style="--skill-accent: #cc2927"
                       >
-                        <i class="devicon-microsoftsqlserver-plain colored"></i
+                        <i class="fa-solid fa-server" aria-hidden="true"></i
                         ><span>SQL Server</span>
                       </div>
                       <div
@@ -1093,7 +1066,7 @@
                         title="scikit-learn"
                         style="--skill-accent: #f7931e"
                       >
-                        <i class="devicon-scikitlearn-plain colored"></i
+                        <i class="fa-solid fa-brain" aria-hidden="true"></i
                         ><span>scikit-learn</span>
                       </div>
                       <div
@@ -1101,7 +1074,7 @@
                         title="PyTorch"
                         style="--skill-accent: #ee4c2c"
                       >
-                        <i class="devicon-pytorch-original colored"></i
+                        <i class="fa-solid fa-microchip" aria-hidden="true"></i
                         ><span>PyTorch</span>
                       </div>
                       <div
@@ -1109,7 +1082,10 @@
                         title="TensorFlow"
                         style="--skill-accent: #ff6f00"
                       >
-                        <i class="devicon-tensorflow-original colored"></i
+                        <i
+                          class="fa-solid fa-diagram-project"
+                          aria-hidden="true"
+                        ></i
                         ><span>TensorFlow</span>
                       </div>
                       <div
@@ -1169,7 +1145,7 @@
                         title="Azure OpenAI"
                         style="--skill-accent: #0089d6"
                       >
-                        <i class="devicon-azure-plain colored"></i
+                        <i class="fa-brands fa-microsoft" aria-hidden="true"></i
                         ><span>Azure OpenAI</span>
                       </div>
                       <div
@@ -1230,9 +1206,7 @@
                         title="AWS"
                         style="--skill-accent: #ff9900"
                       >
-                        <i
-                          class="devicon-amazonwebservices-plain-wordmark colored"
-                        ></i
+                        <i class="fa-brands fa-aws" aria-hidden="true"></i
                         ><span>AWS</span>
                       </div>
                       <div
@@ -1240,7 +1214,7 @@
                         title="Google Cloud"
                         style="--skill-accent: #4285f4"
                       >
-                        <i class="devicon-googlecloud-plain colored"></i
+                        <i class="fa-brands fa-google" aria-hidden="true"></i
                         ><span>Google Cloud</span>
                       </div>
                       <div
@@ -1248,7 +1222,7 @@
                         title="Azure"
                         style="--skill-accent: #0089d6"
                       >
-                        <i class="devicon-azure-plain colored"></i
+                        <i class="fa-brands fa-microsoft" aria-hidden="true"></i
                         ><span>Azure</span>
                       </div>
                       <div
@@ -1256,7 +1230,7 @@
                         title="Docker"
                         style="--skill-accent: #2496ed"
                       >
-                        <i class="devicon-docker-plain colored"></i
+                        <i class="fa-brands fa-docker" aria-hidden="true"></i
                         ><span>Docker</span>
                       </div>
                       <div
@@ -1264,7 +1238,7 @@
                         title="Git"
                         style="--skill-accent: #f05032"
                       >
-                        <i class="devicon-git-plain colored"></i
+                        <i class="fa-brands fa-git-alt" aria-hidden="true"></i
                         ><span>Git</span>
                       </div>
                       <div
@@ -1272,7 +1246,7 @@
                         title="GitHub"
                         style="--skill-accent: #6e5494"
                       >
-                        <i class="devicon-github-original"></i
+                        <i class="fa-brands fa-github" aria-hidden="true"></i
                         ><span>GitHub</span>
                       </div>
                       <div
@@ -1280,7 +1254,8 @@
                         title="Linux"
                         style="--skill-accent: #fcc624"
                       >
-                        <i class="devicon-linux-plain"></i><span>Linux</span>
+                        <i class="fa-brands fa-linux" aria-hidden="true"></i
+                        ><span>Linux</span>
                       </div>
                     </div>
                   </div>
@@ -1355,7 +1330,7 @@
                         title="Kubernetes"
                         style="--skill-accent: #326ce5"
                       >
-                        <i class="devicon-kubernetes-plain colored"></i
+                        <i class="fa-solid fa-cubes" aria-hidden="true"></i
                         ><span>Kubernetes</span>
                       </div>
                       <div
@@ -1363,7 +1338,7 @@
                         title="MongoDB"
                         style="--skill-accent: #4ea94b"
                       >
-                        <i class="devicon-mongodb-plain colored"></i
+                        <i class="fa-solid fa-leaf" aria-hidden="true"></i
                         ><span>MongoDB</span>
                       </div>
                       <div
