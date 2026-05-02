@@ -1051,6 +1051,9 @@ body:not(.dark) .about .about-content .timeline {
   max-width: 100%;
   margin-bottom: 35px;
   padding: 0 15px;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
 }
 
 .skills .skills-content:last-child {
@@ -1060,6 +1063,19 @@ body:not(.dark) .about .about-content .timeline {
 .skills .skills-content .skills-text {
   flex: 0 0 100%;
   max-width: 100%;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.skills .skills-content > .row {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
+.skills .skills-content:hover {
+  box-shadow: none;
 }
 
 .skills .skills-content .skills-text h3 {
@@ -1126,6 +1142,9 @@ body:not(.dark) .about .about-content .timeline {
   margin-top: 20px;
   margin-bottom: 0;
   align-items: center;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
 }
 
 .skill-icon {
@@ -1135,14 +1154,8 @@ body:not(.dark) .about .about-content .timeline {
   align-items: center;
   gap: 8px;
   padding: 8px 14px;
-  background:
-    linear-gradient(
-      135deg,
-      rgba(255, 255, 255, 0.02),
-      rgba(var(--skin-color-rgb), 0.06)
-    ),
-    var(--bg-black-900);
-  border: 2px solid var(--bg-black-50);
+  background: transparent;
+  border: 0;
   border-radius: 10px;
   transition: all 0.28s cubic-bezier(0.4, 0, 0.2, 1);
   cursor: default;
@@ -1182,10 +1195,8 @@ body:not(.dark) .about .about-content .timeline {
 
 .skill-icon:hover {
   transform: translateY(-3px);
-  border-color: color-mix(in srgb, var(--skill-accent) 80%, #ffffff 20%);
-  box-shadow:
-    0 10px 24px rgba(0, 0, 0, 0.2),
-    0 0 0 1px color-mix(in srgb, var(--skill-accent) 45%, transparent);
+  border-color: transparent;
+  box-shadow: none;
 }
 
 .skill-icon:hover i {
@@ -5736,6 +5747,14 @@ body:not(.dark) .skills .skills-content {
   margin-bottom: 42px;
 }
 
+/* Keep skill section wrappers transparent on light theme */
+body:not(.dark) .skills .skills-content > .row,
+body:not(.dark) .skills .skills-content .skills-text {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+}
+
 body:not(.dark) .skills .skills-content .skills-text h3 {
   border-bottom-color: #e5e7eb;
 }
@@ -5745,10 +5764,10 @@ body:not(.dark) .skills-icons {
 }
 
 body:not(.dark) .skill-icon {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
+  background: transparent;
+  border: 0;
   border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+  box-shadow: none;
 }
 
 body:not(.dark) .skill-icon i {
@@ -5763,10 +5782,8 @@ body:not(.dark) .skill-icon span {
 
 body:not(.dark) .skill-icon:hover {
   transform: translateY(-2px);
-  border-color: color-mix(in srgb, var(--skill-accent) 45%, #cbd5e1);
-  box-shadow:
-    0 8px 18px rgba(15, 23, 42, 0.1),
-    0 0 0 1px color-mix(in srgb, var(--skill-accent) 16%, #ffffff);
+  border-color: transparent;
+  box-shadow: none;
 }
 
 body:not(.dark) .skill-icon:hover i {
