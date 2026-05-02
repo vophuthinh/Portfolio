@@ -39,14 +39,14 @@
   "homepage": "https://vophuthinh.com",
   "devDependencies": {
     "eslint": "^8.56.0",
-    "lighthouse": "^11.5.0",
+    "lighthouse": "^13.2.0",
     "prettier": "^3.1.1",
-    "rollup-plugin-visualizer": "^5.11.0",
+    "rollup-plugin-visualizer": "^7.0.1",
     "sharp": "^0.33.5",
     "stylelint": "^16.1.0",
     "terser": "^5.26.0",
-    "vite": "^5.0.0",
-    "vitest": "^2.1.9"
+    "vite": "^8.0.10",
+    "vitest": "^4.1.5"
   },
   "dependencies": {
     "express": "^4.18.2"
