@@ -110,6 +110,8 @@ ul {
   z-index: 0;
   overflow-y: auto;
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
   transition:
     opacity 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
     transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
@@ -4005,8 +4007,19 @@ body.dark .contact .contact-form .form-label {
 
 /* Mobile*/
 @media (max-width: 767.98px) {
+  body::after {
+    display: none;
+  }
+
+  .scroll-progress-bar {
+    display: none !important;
+  }
+
   .section {
+    height: 100dvh;
+    min-height: 100dvh;
     padding: 0 16px;
+    padding-bottom: calc(24px + env(safe-area-inset-bottom));
   }
 
   .aside .nav-toggler,
@@ -4173,6 +4186,7 @@ body.dark .contact .contact-form .form-label {
 
   .section .container {
     margin-bottom: 40px;
+    padding-bottom: calc(120px + env(safe-area-inset-bottom));
   }
 
   .skills .skills-content .text-workflow {

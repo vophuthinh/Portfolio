@@ -25,22 +25,36 @@ export class ScrollController {
   }
 
   setupScrollHandler() {
+    const getActiveSection = () =>
+      document.querySelector("main .section.active");
+
     const handleScroll = () => {
+      const activeSection = getActiveSection();
+      const scrollContainer = activeSection || document.documentElement;
+
       // Scroll Progress Bar
-      const scrollTop =
-        document.documentElement.scrollTop || document.body.scrollTop;
-      const scrollHeight =
-        document.documentElement.scrollHeight -
-        document.documentElement.clientHeight;
-      const progress = (scrollTop / scrollHeight) * 100;
+      const scrollTop = activeSection
+        ? scrollContainer.scrollTop
+        : document.documentElement.scrollTop ||
+          document.body.scrollTop ||
+          window.scrollY ||
+          0;
+      const scrollHeight = activeSection
+        ? scrollContainer.scrollHeight - scrollContainer.clientHeight
+        : document.documentElement.scrollHeight -
+          document.documentElement.clientHeight;
+      const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
 
       if (this.progressBar) {
-        this.progressBar.style.width = scrollHeight > 0 ? `${progress}%` : "0%";
+        this.progressBar.style.width = `${progress}%`;
       }
 
       // Back to Top Button
       if (this.backToTopBtn) {
-        if (window.scrollY > this.config.BACK_TO_TOP_THRESHOLD) {
+        const currentScroll = activeSection
+          ? scrollContainer.scrollTop
+          : window.scrollY || scrollTop;
+        if (currentScroll > this.config.BACK_TO_TOP_THRESHOLD) {
           this.backToTopBtn.classList.add("show");
         } else {
           this.backToTopBtn.classList.remove("show");
@@ -57,12 +71,30 @@ export class ScrollController {
     window.addEventListener("scroll", throttledScrollHandler, {
       passive: true,
     });
+
+    const sections = document.querySelectorAll("main .section");
+    sections.forEach((section) => {
+      section.addEventListener("scroll", throttledScrollHandler, {
+        passive: true,
+      });
+    });
+
+    handleScroll();
   }
 
   setupBackToTopButton() {
     if (this.backToTopBtn) {
       this.backToTopBtn.addEventListener("click", (e) => {
         e.preventDefault();
+        const activeSection = document.querySelector("main .section.active");
+        if (activeSection) {
+          activeSection.scrollTo({
+            top: 0,
+            behavior: "smooth",
+          });
+          return;
+        }
+
         window.scrollTo({
           top: 0,
           behavior: "smooth",
