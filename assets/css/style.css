@@ -4254,9 +4254,68 @@ body.dark .contact .contact-form .form-label {
     font-size: 24px;
   }
 
+  .contact .contact-form .form-item {
+    margin-bottom: 24px;
+  }
+
   .contact .contact-form .btn {
     width: 100%;
-    padding: 0 30px;
+    height: 52px;
+    min-height: 52px;
+    padding: 0 18px;
+    border-radius: 16px;
+    justify-content: center;
+    gap: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: none;
+    background: linear-gradient(
+      135deg,
+      var(--skin-color) 0%,
+      rgba(var(--skin-color-rgb), 0.86) 100%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    box-shadow:
+      0 10px 24px rgba(var(--skin-color-rgb), 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  }
+
+  .contact .contact-form .btn::before,
+  .contact .contact-form .btn::after {
+    content: none;
+  }
+
+  .contact .contact-form .btn i {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    background: rgba(255, 255, 255, 0.2);
+    transform: none;
+  }
+
+  .contact .contact-form .btn:hover {
+    transform: none;
+    box-shadow:
+      0 10px 24px rgba(var(--skin-color-rgb), 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  }
+
+  .contact .contact-form .btn:active {
+    transform: translateY(1px);
+    box-shadow:
+      0 6px 16px rgba(var(--skin-color-rgb), 0.28),
+      inset 0 1px 0 rgba(255, 255, 255, 0.24);
+  }
+
+  .contact .contact-form .btn:disabled {
+    opacity: 0.72;
+    transform: none;
+    cursor: not-allowed;
   }
 
   .about .about-content .personal-info .info-item {

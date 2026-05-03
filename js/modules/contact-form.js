@@ -174,7 +174,7 @@ export class ContactFormController {
   loadScript(src) {
     return new Promise((resolve) => {
       if (document.querySelector(`script[data-src="${src}"]`)) {
-        resolve(typeof emailjs !== "undefined" || typeof Swal !== "undefined");
+        resolve(typeof Swal !== "undefined");
         return;
       }
       const script = document.createElement("script");
