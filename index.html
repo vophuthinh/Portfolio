@@ -480,7 +480,7 @@
     <link
       rel="preload"
       as="style"
-      href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Poppins:wght@200;300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Poppins:wght@300;400;500;600;700&display=swap"
       onload="
         this.onload = null;
         this.rel = 'stylesheet';
@@ -488,23 +488,47 @@
     />
     <noscript>
       <link
-        href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Poppins:wght@200;300;400;500;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet"
       />
     </noscript>
 
     <!-- CSS Files  -->
     <link rel="stylesheet" href="./assets/css/style.css" />
-    <!-- Default skin color -->
-    <link rel="stylesheet" href="./assets/css/skins/color-1.css" />
-    <!-- Font Awesome - Latest Version -->
+    <!-- Default skin color (inlined to save HTTP request) -->
+    <style>
+      :root {
+        --skin-color: #ec1839;
+        --skin-color-rgb: 236, 24, 57;
+        --skin-color-02: rgba(236, 24, 57, 0.2);
+        --skin-color-03: rgba(236, 24, 57, 0.3);
+        --skin-color-04: rgba(236, 24, 57, 0.4);
+        --skin-color-05: rgba(236, 24, 57, 0.5);
+        --skin-color-06: rgba(236, 24, 57, 0.6);
+        --skin-gradient: #ff6b9d;
+        --skin-gradient-light: rgba(255, 107, 157, 0.1);
+      }
+    </style>
+    <!-- Font Awesome - Async load to avoid render-blocking -->
     <link
-      rel="stylesheet"
+      rel="preload"
+      as="style"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
       integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
       crossorigin="anonymous"
-      referrerpolicy="no-referrer"
+      onload="
+        this.onload = null;
+        this.rel = 'stylesheet';
+      "
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous"
+      />
+    </noscript>
     <!-- AOS CSS removed to reduce render-blocking third-party requests -->
   </head>
 
@@ -1557,7 +1581,7 @@
               </div>
               <div class="certification-item padd-15">
                 <a
-                  href="./assets/images/certifications/Certified Threat Intelligence & Governance Analyst(CTIGA).png"
+                  href="./assets/images/certifications/Certified Threat Intelligence & Governance Analyst(CTIGA).webp"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="cert-link"
@@ -1565,7 +1589,7 @@
                   <div class="certification-box shadow-dark">
                     <div class="cert-preview">
                       <img
-                        src="./assets/images/certifications/Certified Threat Intelligence & Governance Analyst(CTIGA).png"
+                        src="./assets/images/certifications/Certified Threat Intelligence & Governance Analyst(CTIGA).webp"
                         alt="Certified Threat Intelligence & Governance Analyst (CTIGA)"
                         loading="lazy"
                       />
@@ -1630,7 +1654,7 @@
               </div>
               <div class="certification-item padd-15">
                 <a
-                  href="./assets/images/certifications/Gemini Certified Faculty.png"
+                  href="./assets/images/certifications/Gemini Certified Faculty.webp"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="cert-link"
@@ -1638,7 +1662,7 @@
                   <div class="certification-box shadow-dark">
                     <div class="cert-preview">
                       <img
-                        src="./assets/images/certifications/Gemini Certified Faculty.png"
+                        src="./assets/images/certifications/Gemini Certified Faculty.webp"
                         alt="Gemini Certified Faculty"
                         loading="lazy"
                       />
@@ -1665,7 +1689,7 @@
               </div>
               <div class="certification-item padd-15">
                 <a
-                  href="./assets/images/certifications/Building LLM Applications With Prompt Engineering.png"
+                  href="./assets/images/certifications/Building LLM Applications With Prompt Engineering.webp"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="cert-link"
@@ -1673,7 +1697,7 @@
                   <div class="certification-box shadow-dark">
                     <div class="cert-preview">
                       <img
-                        src="./assets/images/certifications/Building LLM Applications With Prompt Engineering.png"
+                        src="./assets/images/certifications/Building LLM Applications With Prompt Engineering.webp"
                         alt="Building LLM Applications With Prompt Engineering"
                         loading="lazy"
                       />
@@ -1700,7 +1724,7 @@
               </div>
               <div class="certification-item padd-15">
                 <a
-                  href="./assets/images/certifications/Building Real-Time Video AI Applications.png"
+                  href="./assets/images/certifications/Building Real-Time Video AI Applications.webp"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="cert-link"
@@ -1708,7 +1732,7 @@
                   <div class="certification-box shadow-dark">
                     <div class="cert-preview">
                       <img
-                        src="./assets/images/certifications/Building Real-Time Video AI Applications.png"
+                        src="./assets/images/certifications/Building Real-Time Video AI Applications.webp"
                         alt="Building Real-Time Video AI Applications"
                         loading="lazy"
                       />
@@ -1735,7 +1759,7 @@
               </div>
               <div class="certification-item padd-15">
                 <a
-                  href="./assets/images/certifications/Getting Started with Deep Learning.png"
+                  href="./assets/images/certifications/Getting Started with Deep Learning.webp"
                   target="_blank"
                   rel="noopener noreferrer"
                   class="cert-link"
@@ -1743,7 +1767,7 @@
                   <div class="certification-box shadow-dark">
                     <div class="cert-preview">
                       <img
-                        src="./assets/images/certifications/Getting Started with Deep Learning.png"
+                        src="./assets/images/certifications/Getting Started with Deep Learning.webp"
                         alt="Getting Started with Deep Learning"
                         loading="lazy"
                       />
