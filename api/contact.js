@@ -79,7 +79,9 @@ function sanitizeInput(str) {
   if (typeof str !== "string") return "";
   return str
     .trim()
-    .replace(/[<>]/g, "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
     .replace(/[\r\n]/g, " ")
     .substring(0, 1000);
 }
@@ -163,6 +165,15 @@ export default async (req, res) => {
     });
   }
 
+  // Require JSON content type (prevents CSRF via form submission)
+  const contentType = req.headers["content-type"] || "";
+  if (!contentType.includes("application/json")) {
+    return res.status(415).json({
+      error: "Unsupported media type",
+      message: "Content-Type must be application/json",
+    });
+  }
+
   try {
     if (
       !EMAIL_CONFIG.SERVICE_ID ||
@@ -198,7 +209,29 @@ export default async (req, res) => {
     }
 
     // Parse and validate request body
-    const { from_name, email_id, message } = req.body;
+    const { from_name, email_id, message, _ts } = req.body;
+
+    // Anti-spam: reject if honeypot field is present (bots fill all fields)
+    if (req.body.website) {
+      // Return fake success so bot doesn't retry
+      return res.status(200).json({ success: true });
+    }
+
+    // Anti-spam: form must be open for at least 3 seconds
+    const tsNum = Number(_ts);
+    if (!_ts || !Number.isFinite(tsNum)) {
+      return res.status(400).json({
+        error: "Invalid submission",
+        message: "Please submit using the contact form.",
+      });
+    }
+    const formAge = Date.now() - tsNum;
+    if (formAge < 3000 || formAge > 86400000) {
+      return res.status(400).json({
+        error: "Invalid submission",
+        message: "Please wait a moment before submitting.",
+      });
+    }
 
     if (!from_name || !email_id || !message) {
       return res.status(400).json({

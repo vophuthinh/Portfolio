@@ -2,7 +2,7 @@ import { describe, it, expect } from "vitest";
 
 /**
  * Replicate escapeHtml from js/utils.js for unit testing (without DOM)
- * In the browser, it uses textContent/innerHTML. For tests, replicate the logic.
+ * Uses the same regex-based approach as production code.
  */
 function escapeHtml(text) {
   if (typeof text !== "string") return "";
@@ -11,7 +11,7 @@ function escapeHtml(text) {
     "<": "&lt;",
     ">": "&gt;",
     '"': "&quot;",
-    "'": "&#039;",
+    "'": "&#39;",
   };
   return text.replace(/[&<>"']/g, (m) => map[m]);
 }
@@ -25,9 +25,12 @@ describe("escapeHtml", () => {
     expect(escapeHtml("a & b")).toBe("a &amp; b");
   });
 
-  it("should escape quotes", () => {
+  it("should escape double quotes", () => {
     expect(escapeHtml('"hello"')).toBe("&quot;hello&quot;");
-    expect(escapeHtml("'hello'")).toBe("&#039;hello&#039;");
+  });
+
+  it("should escape single quotes", () => {
+    expect(escapeHtml("'hello'")).toBe("&#39;hello&#39;");
   });
 
   it("should return empty string for non-string input", () => {

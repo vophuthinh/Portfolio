@@ -77,7 +77,7 @@ function securityHeadersMiddleware(req, res, next) {
     script-src 'self' 'nonce-${nonce}' cdn.jsdelivr.net unpkg.com cdnjs.cloudflare.com;
     style-src 'self' 'nonce-${nonce}' fonts.googleapis.com cdn.jsdelivr.net cdnjs.cloudflare.com unpkg.com;
     font-src 'self' fonts.gstatic.com cdnjs.cloudflare.com cdn.jsdelivr.net data:;
-    img-src 'self' data: https: cdn.jsdelivr.net cdnjs.cloudflare.com;
+    img-src 'self' data: cdn.jsdelivr.net cdnjs.cloudflare.com;
     connect-src 'self' cdn.jsdelivr.net cdnjs.cloudflare.com api.emailjs.com;
     base-uri 'self';
     form-action 'self';
@@ -96,6 +96,10 @@ function securityHeadersMiddleware(req, res, next) {
   res.setHeader(
     "Permissions-Policy",
     "geolocation=(), microphone=(), camera=()",
+  );
+  res.setHeader(
+    "Strict-Transport-Security",
+    "max-age=63072000; includeSubDomains; preload",
   );
 
   next();

@@ -143,6 +143,11 @@ ul {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Pause animations in hidden sections to save GPU/battery */
+.section:not(.active) * {
+  animation-play-state: paused !important;
+}
+
 /* Keyframes removed - now using CSS transitions for smoother performance */
 
 /* Accessibility */
@@ -256,20 +261,17 @@ ul {
   font-size: 16px;
   font-weight: 500;
   padding: 12px 35px;
-  color: #ffffff;
   border-radius: 40px;
   display: inline-block;
   white-space: nowrap;
-  border: none;
-  background: transparent;
   border: 1px solid var(--skin-color);
+  background: transparent;
   color: var(--skin-color);
-  box-shadow: 0 0 10px var(--skin-color-03);
+  box-shadow: 0 4px 15px var(--skin-color-03);
   transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 15px var(--skin-color-03);
 }
 
 .btn::before {
@@ -1299,6 +1301,9 @@ body:not(.dark) .about .about-content .timeline {
   box-shadow: 0 0 15px rgba(var(--skin-color-rgb), 0.05);
   backdrop-filter: blur(5px);
   position: relative;
+}
+
+.project-card:hover {
   will-change: transform;
 }
 
@@ -2330,39 +2335,27 @@ body:not(.dark) .about .about-content .timeline {
   margin-top: 20px;
 }
 
-.btn {
+.modal-buttons .btn {
   padding: 12px 30px;
   border-radius: 30px;
-  font-size: 16px;
   font-weight: 600;
   text-transform: uppercase;
-  transition: all 0.4s ease;
   display: inline-flex;
-  align-items: center;
   gap: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-  position: relative;
-  overflow: hidden;
 }
 
-.btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
+.modal-buttons .btn::before {
   background: rgba(255, 255, 255, 0.2);
-  transition: all 0.4s ease;
+  left: -100%;
   transform: skewX(-45deg);
 }
 
-.btn:hover::before {
+.modal-buttons .btn:hover::before {
   left: 100%;
 }
 
-.btn:hover {
-  transform: translateY(-3px);
+.modal-buttons .btn:hover {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
 }
 
@@ -2378,12 +2371,12 @@ body:not(.dark) .about .about-content .timeline {
   color: #ffd700;
 }
 
-.btn:not(.btn-github):not(.btn-case-study):not(.btn-demo) {
+.modal-buttons .btn:not(.btn-github):not(.btn-case-study):not(.btn-demo) {
   background: var(--skin-color);
   color: #ffffff;
 }
 
-.btn:not(.btn-github):not(.btn-case-study):not(.btn-demo):hover {
+.modal-buttons .btn:not(.btn-github):not(.btn-case-study):not(.btn-demo):hover {
   background: var(--skin-color);
 }
 
@@ -3598,12 +3591,8 @@ body:not(.dark) .cert-award:hover .cert-type {
 }
 
 /* Interactive States (hover desktop + touch/keyboard mobile) */
-.contact .contact-info-item:is(
-    :hover,
-    :active,
-    :focus-visible,
-    .is-touch-active
-  ) {
+.contact
+  .contact-info-item:is(:hover, :active, :focus-visible, .is-touch-active) {
   transform: translateY(-10px);
   border-color: var(--skin-color);
   box-shadow:
@@ -3611,7 +3600,8 @@ body:not(.dark) .cert-award:hover .cert-type {
     inset 0 0 20px rgba(var(--skin-color-rgb), 0.05);
 }
 
-.contact .contact-info-item:is(
+.contact
+  .contact-info-item:is(
     :hover,
     :active,
     :focus-visible,
@@ -3647,12 +3637,9 @@ body:not(.dark) .cert-award:hover .cert-type {
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.contact .contact-info-item:is(
-    :hover,
-    :active,
-    :focus-visible,
-    .is-touch-active
-  ) .icon {
+.contact
+  .contact-info-item:is(:hover, :active, :focus-visible, .is-touch-active)
+  .icon {
   background: transparent;
   border-color: var(--skin-color);
   box-shadow:
@@ -5258,6 +5245,13 @@ body:not(.dark) .theme-toggle .fa-sun {
   color: #ffffff;
 }
 
+/* Desktop: keep back-to-top clear of WebMCP AI assistant launcher */
+@media (min-width: 768px) {
+  body.has-webmcp-widget .back-to-top {
+    bottom: 92px;
+  }
+}
+
 /* ============================================
    NEURAL NETWORK BACKGROUND
    ============================================ */
@@ -5392,7 +5386,8 @@ body:not(.dark) .theme-toggle .fa-sun {
 
 /* Dark Mode Glow */
 body.dark .service-item .service-item-inner:hover,
-body.dark .contact-info-item:is(:hover, :active, :focus-visible, .is-touch-active) {
+body.dark
+  .contact-info-item:is(:hover, :active, :focus-visible, .is-touch-active) {
   transform: translateY(-6px);
   box-shadow:
     0 10px 25px rgba(0, 0, 0, 0.5),

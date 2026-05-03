@@ -59,7 +59,9 @@ export class ProjectsController {
     if (ext.toLowerCase() !== ".webp") return "";
 
     return widths
-      .map((width) => `${this.toImageUrl(`${basePath}-${width}${ext}`)} ${width}w`)
+      .map(
+        (width) => `${this.toImageUrl(`${basePath}-${width}${ext}`)} ${width}w`,
+      )
       .join(", ");
   }
 
@@ -79,20 +81,10 @@ export class ProjectsController {
       return;
     }
 
-    this.projectsGrid.innerHTML = `
-      <div style="grid-column: 1/-1; text-align: center; padding: 60px 20px;">
-        <div style="display: inline-block; width: 50px; height: 50px; border: 4px solid var(--bg-black-50); border-top-color: var(--skin-color); border-radius: 50%; animation: spin 1s linear infinite;"></div>
-        <p style="color: var(--text-black-700); margin-top: 20px; font-size: 16px;">Loading projects...</p>
-      </div>
-    `;
-
-    setTimeout(() => {
-      this.projectsGrid.style.display = "";
-      this.projectsGrid.innerHTML = this.projects
-        .map((project) => this.renderProjectCard(project))
-        .join("");
-      this.attachProjectImageErrorHandlers();
-    }, 100);
+    this.projectsGrid.innerHTML = this.projects
+      .map((project) => this.renderProjectCard(project))
+      .join("");
+    this.attachProjectImageErrorHandlers();
   }
 
   attachProjectImageErrorHandlers() {

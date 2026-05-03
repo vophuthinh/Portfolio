@@ -7,7 +7,9 @@ function sanitizeInput(str) {
   if (typeof str !== "string") return "";
   return str
     .trim()
-    .replace(/[<>]/g, "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
     .replace(/[\r\n]/g, " ")
     .substring(0, 1000);
 }
@@ -18,9 +20,9 @@ function validateEmail(email) {
 }
 
 describe("sanitizeInput", () => {
-  it("should strip HTML tags", () => {
+  it("should encode HTML angle brackets", () => {
     expect(sanitizeInput("<script>alert(1)</script>")).toBe(
-      "scriptalert(1)/script",
+      "&lt;script&gt;alert(1)&lt;/script&gt;",
     );
   });
 
@@ -60,6 +62,14 @@ describe("sanitizeInput", () => {
     const result = sanitizeInput(malicious);
     expect(result).not.toContain("\r");
     expect(result).not.toContain("\n");
+  });
+
+  it("should encode ampersands", () => {
+    expect(sanitizeInput("a & b")).toBe("a &amp; b");
+  });
+
+  it("should preserve content with angle brackets (encoded)", () => {
+    expect(sanitizeInput("a < b > c")).toBe("a &lt; b &gt; c");
   });
 });
 

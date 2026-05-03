@@ -13,6 +13,8 @@ export class ContactFormController {
     this.fromName = document.getElementById("from_name");
     this.emailId = document.getElementById("email_id");
     this.message = document.getElementById("message");
+    this.honeypot = document.getElementById("hp_website");
+    this.formTs = document.getElementById("form_ts");
 
     this.init();
   }
@@ -20,6 +22,11 @@ export class ContactFormController {
   init() {
     if (this.contactForm) {
       this.contactForm.addEventListener("submit", (e) => this.handleSubmit(e));
+    }
+
+    // Set timestamp when form becomes available
+    if (this.formTs) {
+      this.formTs.value = String(Date.now());
     }
 
     this.initEmailJS();
@@ -30,8 +37,7 @@ export class ContactFormController {
   }
 
   validateEmail(email) {
-    const re =
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
   }
 
@@ -42,6 +48,16 @@ export class ContactFormController {
 
     if (!this.fromName || !this.emailId || !this.message) {
       logger.warn("Contact form elements not found");
+      return;
+    }
+
+    // Anti-spam: honeypot check (bots fill hidden fields)
+    if (this.honeypot && this.honeypot.value) {
+      logger.warn("Honeypot triggered");
+      this.fromName.value = "";
+      this.emailId.value = "";
+      this.message.value = "";
+      this.showSuccess(); // Fake success to not alert the bot
       return;
     }
 
@@ -58,6 +74,7 @@ export class ContactFormController {
       from_name: this.fromName.value.trim(),
       email_id: email,
       message: this.message.value.trim(),
+      _ts: this.formTs ? this.formTs.value : "",
     };
 
     // Disable submit button
@@ -97,35 +114,7 @@ export class ContactFormController {
       }
     } catch (error) {
       logger.error("Contact form error:", error);
-
-      // Fallback to EmailJS direct (if available)
-      const emailJsReady = await this.ensureEmailJsLoaded();
-      if (emailJsReady && typeof emailjs !== "undefined") {
-        try {
-          const EMAILJS_SERVICE_ID = AppConfig.EMAIL?.SERVICE_ID || "";
-          const EMAILJS_TEMPLATE_ID = AppConfig.EMAIL?.TEMPLATE_ID || "";
-
-          if (!EMAILJS_SERVICE_ID || !EMAILJS_TEMPLATE_ID) {
-            this.showFallbackMessage();
-            return;
-          }
-
-          await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, params);
-
-          // Clear form
-          this.fromName.value = "";
-          this.emailId.value = "";
-          this.message.value = "";
-          this.emailId.classList.remove("is-invalid");
-
-          this.showSuccess();
-        } catch (fallbackError) {
-          logger.error("Fallback EmailJS error:", fallbackError);
-          this.showError();
-        }
-      } else {
-        this.showError();
-      }
+      this.showError();
     } finally {
       // Re-enable submit button
       if (this.contactSubmitBtn) {
@@ -166,63 +155,15 @@ export class ContactFormController {
     }
   }
 
-  showFallbackMessage() {
-    const fallbackMessage =
-      "Contact form is not configured. Please email directly at vophuthinhcm@gmail.com";
-    if (typeof Swal !== "undefined") {
-      Swal.fire({
-        icon: "info",
-        title: "Contact Unavailable",
-        text: fallbackMessage,
-        confirmButtonText: "OK",
-      });
-    } else {
-      alert(fallbackMessage);
-    }
-    // Fallback: open mailto link
-    if (this.message) {
-      window.location.href = `mailto:vophuthinhcm@gmail.com?subject=Contact from Portfolio&body=${encodeURIComponent(this.message.value)}`;
-    }
-  }
-
   initEmailJS() {
-    // Defer third-party loading until idle to avoid impacting first paint
+    // Defer SweetAlert2 loading until idle to avoid impacting first paint
     const runWhenIdle = window.requestIdleCallback
       ? window.requestIdleCallback.bind(window)
       : (cb) => setTimeout(cb, 500);
 
     runWhenIdle(async () => {
       await this.ensureSwalLoaded();
-      const loaded = await this.ensureEmailJsLoaded();
-      if (loaded) {
-        this.initializeEmailJS();
-      }
     });
-  }
-
-  initializeEmailJS() {
-    try {
-      const publicKey = AppConfig.EMAIL?.PUBLIC_KEY || "";
-
-      if (publicKey && typeof emailjs !== "undefined" && emailjs.init) {
-        emailjs.init({
-          publicKey: publicKey,
-        });
-
-        const logger = this.getLogger();
-        logger.log("EmailJS initialized successfully");
-      }
-    } catch (error) {
-      const logger = this.getLogger();
-      logger.warn("EmailJS init error:", error);
-    }
-  }
-
-  async ensureEmailJsLoaded() {
-    if (typeof emailjs !== "undefined") return true;
-    return this.loadScript(
-      "https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js",
-    );
   }
 
   async ensureSwalLoaded() {

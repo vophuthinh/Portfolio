@@ -571,6 +571,10 @@ class WebMCP {
         container.appendChild(contentPanel);
         container.appendChild(triggerButton);
         document.body.appendChild(container);
+        document.body.classList.add('has-webmcp-widget');
+
+        // Ensure widget does not overlap with other floating controls (e.g. back-to-top)
+        this._syncFloatingControlsOffset();
     }
 
     /**
@@ -617,6 +621,63 @@ class WebMCP {
                     alignItems: 'flex-end'
                 });
         }
+    }
+
+    /**
+     * Check whether an element is currently visible in the layout
+     * @private
+     */
+    _isElementVisible(element) {
+        if (!element) return false;
+        const styles = window.getComputedStyle(element);
+        if (styles.display === 'none' || styles.visibility === 'hidden') {
+            return false;
+        }
+        return parseFloat(styles.opacity || '0') > 0;
+    }
+
+    /**
+     * Offset widget vertically if it overlaps with other floating UI (back-to-top)
+     * @private
+     */
+    _syncFloatingControlsOffset() {
+        const container = document.getElementById(this.elementId);
+        if (!container) return;
+
+        const trigger = container.querySelector('.webmcp-trigger');
+        const backToTop = document.querySelector('.back-to-top');
+        if (!trigger || !backToTop) {
+            container.style.transform = '';
+            return;
+        }
+
+        const isBackToTopVisible =
+            backToTop.classList.contains('show') && this._isElementVisible(backToTop);
+
+        if (!isBackToTopVisible) {
+            container.style.transform = '';
+            return;
+        }
+
+        const triggerRect = trigger.getBoundingClientRect();
+        const topButtonRect = backToTop.getBoundingClientRect();
+
+        const overlapsHorizontally =
+            triggerRect.left < topButtonRect.right && triggerRect.right > topButtonRect.left;
+        const overlapsVertically =
+            triggerRect.top < topButtonRect.bottom && triggerRect.bottom > topButtonRect.top;
+
+        if (!overlapsHorizontally || !overlapsVertically) {
+            container.style.transform = '';
+            return;
+        }
+
+        const minSpacing = 12;
+        const shiftUp = Math.max(
+            0,
+            triggerRect.bottom - topButtonRect.top + minSpacing
+        );
+        container.style.transform = `translateY(-${Math.ceil(shiftUp)}px)`;
     }
 
     /**
@@ -697,6 +758,7 @@ class WebMCP {
     _setupEventListeners() {
         const container = document.getElementById(this.elementId);
         if (!container) return;
+        const syncFloatingOffset = () => this._syncFloatingControlsOffset();
 
         // Trigger button click - expand/collapse
         const trigger = container.querySelector('.webmcp-trigger');
@@ -735,7 +797,21 @@ class WebMCP {
         document.addEventListener('mousemove', () => this._resetInactivityTimer());
         document.addEventListener('keypress', () => this._resetInactivityTimer());
         document.addEventListener('click', () => this._resetInactivityTimer());
-        document.addEventListener('scroll', () => this._resetInactivityTimer());
+        document.addEventListener('scroll', () => {
+            this._resetInactivityTimer();
+            syncFloatingOffset();
+        }, { passive: true });
+
+        // Keep distance from other floating controls while resizing/scrolling sections
+        window.addEventListener('resize', syncFloatingOffset, { passive: true });
+        window.addEventListener('orientationchange', syncFloatingOffset, { passive: true });
+
+        const sections = document.querySelectorAll('main .section');
+        sections.forEach((section) => {
+            section.addEventListener('scroll', syncFloatingOffset, { passive: true });
+        });
+
+        syncFloatingOffset();
     }
 
     /**
@@ -755,6 +831,7 @@ class WebMCP {
             contentPanel.style.display = 'none';
         }
 
+        this._syncFloatingControlsOffset();
         this._resetInactivityTimer();
     }
 

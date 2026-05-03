@@ -23,6 +23,7 @@ export class ModalsController {
     this.setupModalCloseHandlers();
     this.setupKeyboardHandlers();
     this.setupFocusTrap();
+    this.setupSwipeGesture();
     this.setupCertificateModal();
   }
 
@@ -180,6 +181,42 @@ export class ModalsController {
 
     if (this.projectModal) trapFocus(this.projectModal);
     if (this.imageViewerModal) trapFocus(this.imageViewerModal);
+  }
+
+  setupSwipeGesture() {
+    if (!this.imageViewerModal) return;
+
+    let touchStartX = 0;
+    let touchStartY = 0;
+    const SWIPE_THRESHOLD = 50;
+
+    this.imageViewerModal.addEventListener(
+      "touchstart",
+      (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        touchStartY = e.changedTouches[0].screenY;
+      },
+      { passive: true },
+    );
+
+    this.imageViewerModal.addEventListener(
+      "touchend",
+      (e) => {
+        const dx = e.changedTouches[0].screenX - touchStartX;
+        const dy = e.changedTouches[0].screenY - touchStartY;
+
+        // Only trigger if horizontal swipe is dominant
+        if (Math.abs(dx) < SWIPE_THRESHOLD || Math.abs(dx) < Math.abs(dy))
+          return;
+
+        if (dx > 0) {
+          this.changeImageViewerImage(-1); // Swipe right → previous
+        } else {
+          this.changeImageViewerImage(1); // Swipe left → next
+        }
+      },
+      { passive: true },
+    );
   }
 
   // Image Viewer Methods

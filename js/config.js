@@ -1,13 +1,8 @@
 const AppConfig = {
   // Email Configuration
   EMAIL: {
-    // Use backend API proxy (recommended for security)
+    // Use backend API proxy (credentials secured server-side)
     API_ENDPOINT: "/api/contact",
-
-    // Public keys for client-side fallback (safe to expose - EmailJS is designed for client use)
-    SERVICE_ID: "service_48b0gyq",
-    TEMPLATE_ID: "template_4d2wwti",
-    PUBLIC_KEY: "oF2S6I0ORnNleh8lm",
     FALLBACK_EMAIL: "vophuthinhcm@gmail.com",
   },
 
