@@ -299,6 +299,17 @@ ul {
   box-shadow: 0 8px 25px var(--skin-color-05);
 }
 
+/* Keep the main CTA neon-red on hover across themes */
+.home .buttons .hire-me:hover,
+.home .buttons .hire-me:focus-visible {
+  background: transparent;
+  color: var(--skin-color);
+  border-color: var(--skin-color);
+  box-shadow:
+    0 8px 25px var(--skin-color-05),
+    0 0 24px var(--skin-color-04);
+}
+
 .shadow-dark {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: box-shadow 0.3s ease;
@@ -576,14 +587,20 @@ h1.hello span {
 }
 
 h2.my-profession {
-  font-size: 32px;
+  font-size: clamp(24px, 2.2vw, 32px);
   margin: 20px 0;
   font-weight: 600;
   line-height: 1.4;
+  white-space: nowrap;
 }
 
 .typing {
   color: var(--skin-color);
+  white-space: nowrap;
+}
+
+h2.my-profession .typed-cursor {
+  white-space: nowrap;
 }
 
 .home-info p {
@@ -4344,6 +4361,7 @@ body.dark .contact .contact-form .form-label {
   h2.my-profession {
     font-size: 18px;
     margin: 10px 0;
+    white-space: normal;
   }
 
   .home-info p {
@@ -4495,6 +4513,7 @@ body.dark .contact .contact-form .form-label {
     font-size: 15px;
     margin: 0 0 6px;
     line-height: 1.25;
+    white-space: normal;
   }
 
   .home-info p {
