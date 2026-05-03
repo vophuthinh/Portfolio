@@ -41,33 +41,16 @@ body {
   overflow-x: hidden;
 }
 
-body::after {
-  content: " ";
-  display: block;
-  position: absolute;
-  top: 0;
+body.modal-open {
+  position: fixed;
   left: 0;
-  bottom: 0;
   right: 0;
-  background:
-    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
-    linear-gradient(
-      90deg,
-      rgba(255, 0, 0, 0.03),
-      rgba(0, 255, 0, 0.01),
-      rgba(0, 0, 255, 0.03)
-    );
-  z-index: 9999;
-  background-size:
-    100% 2px,
-    3px 100%;
-  pointer-events: none;
+  width: 100%;
+  overflow: hidden;
 }
 
-body:not(.dark)::after {
-  background: none;
-  opacity: 0;
-  pointer-events: none;
+body.modal-open .section.active {
+  overflow-y: hidden;
 }
 
 * {
@@ -1883,7 +1866,8 @@ body:not(.dark) .about .about-content .timeline {
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 100vh;
+  height: 100dvh;
   background: rgba(0, 0, 0, 0.8);
   justify-content: center;
   align-items: center;
@@ -1907,7 +1891,8 @@ body:not(.dark) .about .about-content .timeline {
   text-align: center;
   max-width: 780px;
   width: 90%;
-  max-height: 90vh;
+  max-height: calc(100vh - 24px);
+  max-height: calc(100dvh - 24px);
   overflow-y: auto;
   border-radius: 16px;
   position: relative;
@@ -2422,6 +2407,27 @@ body:not(.dark) .about .about-content .timeline {
 
 /* Tablet portrait & large phones */
 @media (max-width: 768px) {
+  #projectModal .modal-content {
+    padding-top: calc(6px + env(safe-area-inset-top));
+    padding-bottom: calc(10px + env(safe-area-inset-bottom));
+  }
+
+  #projectModal .close {
+    position: sticky;
+    top: calc(8px + env(safe-area-inset-top));
+    right: auto;
+    margin-left: auto;
+    margin-right: 10px;
+    width: 44px;
+    height: 44px;
+    font-size: 26px;
+    border: 1px solid var(--bg-black-50);
+    background: rgba(14, 17, 23, 0.88);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    z-index: 30;
+  }
+
   .modal-content {
     padding: 0;
     max-width: 95%;
@@ -2455,6 +2461,10 @@ body:not(.dark) .about .about-content .timeline {
 
   .modal-body {
     padding: 16px;
+  }
+
+  #projectModal .modal-body {
+    padding-bottom: calc(20px + env(safe-area-inset-bottom));
   }
 
   .modal-section {
@@ -2528,10 +2538,24 @@ body:not(.dark) .about .about-content .timeline {
 
 /* Small phones (iPhone SE, Galaxy S8, etc.) */
 @media (max-width: 480px) {
+  #projectModal .modal-content {
+    padding-top: calc(6px + env(safe-area-inset-top));
+    padding-bottom: calc(10px + env(safe-area-inset-bottom));
+  }
+
+  #projectModal .close {
+    top: calc(6px + env(safe-area-inset-top));
+    margin-right: 8px;
+    width: 42px;
+    height: 42px;
+    font-size: 24px;
+  }
+
   .modal-content {
     width: 98%;
     max-width: 98%;
-    max-height: 95vh;
+    max-height: calc(100vh - 10px);
+    max-height: calc(100dvh - 10px);
     border-radius: 12px;
   }
 
@@ -2563,6 +2587,10 @@ body:not(.dark) .about .about-content .timeline {
 
   .modal-body {
     padding: 14px;
+  }
+
+  #projectModal .modal-body {
+    padding-bottom: calc(18px + env(safe-area-inset-bottom));
   }
 
   .modal-section {
@@ -2639,7 +2667,8 @@ body:not(.dark) .about .about-content .timeline {
 /* Landscape phones — limit hero height */
 @media (max-height: 500px) and (orientation: landscape) {
   .modal-content {
-    max-height: 95vh;
+    max-height: calc(100vh - 10px);
+    max-height: calc(100dvh - 10px);
   }
 
   .modal-hero {
@@ -4007,14 +4036,6 @@ body.dark .contact .contact-form .form-label {
 
 /* Mobile*/
 @media (max-width: 767.98px) {
-  body::after {
-    display: none;
-  }
-
-  .scroll-progress-bar {
-    display: none !important;
-  }
-
   .section {
     height: 100dvh;
     min-height: 100dvh;
@@ -5008,28 +5029,6 @@ body:not(.dark) a:focus-visible {
 
 .project-actions .btn-card:hover {
   transform: translateY(-4px) scale(1.03);
-}
-
-/* ============================================
-   SCROLL PROGRESS BAR
-   ============================================ */
-.scroll-progress-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 0%;
-  height: 4px;
-  background: linear-gradient(
-    90deg,
-    var(--skin-color),
-    var(--skin-gradient),
-    var(--skin-color)
-  );
-  background-size: 200% 100%;
-  animation: gradientShift 2s linear infinite;
-  z-index: 9999;
-  transition: width 0.1s;
-  box-shadow: 0 0 10px var(--skin-color);
 }
 
 @keyframes gradientShift {
@@ -6224,7 +6223,6 @@ body:not(.dark) .skeleton-card {
 
   .aside,
   .back-to-top,
-  .scroll-progress-bar,
   .style-switcher,
   .theme-toggle,
   .preloader,

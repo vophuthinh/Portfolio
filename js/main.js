@@ -14,6 +14,7 @@ import { ResponsiveImagesController } from "./modules/responsive-images.js";
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator)) return;
+  if (import.meta.env.DEV) return;
 
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("/sw.js").catch(() => {
@@ -22,9 +23,33 @@ function registerServiceWorker() {
   });
 }
 
+function cleanupDevServiceWorkers() {
+  if (!("serviceWorker" in navigator)) return;
+  if (!import.meta.env.DEV) return;
+
+  // In Vite dev mode, active SW can cache /@vite/client and break HMR websocket.
+  navigator.serviceWorker.getRegistrations().then((registrations) => {
+    registrations.forEach((registration) => {
+      registration.unregister();
+    });
+  });
+
+  if ("caches" in window) {
+    caches.keys().then((cacheKeys) => {
+      cacheKeys
+        .filter((key) => key.includes("vophuthinh-portfolio"))
+        .forEach((key) => {
+          caches.delete(key);
+        });
+    });
+  }
+}
+
 // Initialize all controllers when DOM is ready
 document.addEventListener("DOMContentLoaded", function () {
   "use strict";
+
+  cleanupDevServiceWorkers();
 
   // Initialize core modules
   const appInit = new AppInitializer();

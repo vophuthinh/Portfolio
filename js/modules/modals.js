@@ -13,6 +13,8 @@ export class ModalsController {
 
     this.currentImageList = [];
     this.currentImageIndex = 0;
+    this.scrollLockY = 0;
+    this.scrollLockCount = 0;
 
     this.init();
   }
@@ -30,16 +32,45 @@ export class ModalsController {
 
   openModal(modalEl) {
     if (!modalEl) return;
+
+    const isAlreadyOpen =
+      modalEl.classList.contains("open") || modalEl.style.display === "flex";
+    if (isAlreadyOpen) return;
+
     modalEl.style.display = "flex";
     modalEl.classList.add("open");
-    document.body.style.overflow = "hidden";
+    this.lockBodyScroll();
   }
 
   closeModal(modalEl) {
     if (!modalEl) return;
+
+    const wasOpen =
+      modalEl.classList.contains("open") || modalEl.style.display === "flex";
+    if (!wasOpen) return;
+
     modalEl.style.display = "none";
     modalEl.classList.remove("open");
-    document.body.style.overflow = "";
+    this.unlockBodyScroll();
+  }
+
+  lockBodyScroll() {
+    this.scrollLockCount += 1;
+    if (this.scrollLockCount > 1) return;
+
+    this.scrollLockY = window.scrollY || window.pageYOffset || 0;
+    document.body.classList.add("modal-open");
+    document.body.style.top = `-${this.scrollLockY}px`;
+  }
+
+  unlockBodyScroll() {
+    this.scrollLockCount = Math.max(0, this.scrollLockCount - 1);
+
+    if (this.scrollLockCount > 0) return;
+
+    document.body.classList.remove("modal-open");
+    document.body.style.top = "";
+    window.scrollTo(0, this.scrollLockY);
   }
 
   setupModalCloseHandlers() {

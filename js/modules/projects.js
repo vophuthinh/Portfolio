@@ -44,6 +44,25 @@ export class ProjectsController {
     return Utils.escapeHtml(text);
   }
 
+  toImageUrl(path) {
+    return typeof path === "string" ? encodeURI(path) : path;
+  }
+
+  buildResponsiveSrcset(imagePath, widths = [480, 768, 1024]) {
+    if (!imagePath || typeof imagePath !== "string") return "";
+
+    const extIndex = imagePath.lastIndexOf(".");
+    if (extIndex < 0) return "";
+
+    const basePath = imagePath.slice(0, extIndex);
+    const ext = imagePath.slice(extIndex);
+    if (ext.toLowerCase() !== ".webp") return "";
+
+    return widths
+      .map((width) => `${this.toImageUrl(`${basePath}-${width}${ext}`)} ${width}w`)
+      .join(", ");
+  }
+
   renderProjects() {
     if (!this.projectsGrid) {
       const projectSection = document.getElementById("project");
@@ -93,6 +112,12 @@ export class ProjectsController {
   renderProjectCard(project) {
     const imagePath =
       project.image || `./assets/images/portfolio/portfolio-${project.id}.jpg`;
+    const imageSrc = this.toImageUrl(imagePath);
+    const imageSrcset = this.buildResponsiveSrcset(imagePath);
+    const imageSizes = "(max-width: 480px) 92vw, (max-width: 992px) 44vw, 30vw";
+    const imageResponsiveAttrs = imageSrcset
+      ? `srcset="${imageSrcset}" sizes="${imageSizes}"`
+      : "";
 
     const techChips = (project.stack || [])
       .slice(0, this.config.MAX_TECH_CHIPS_DISPLAY)
@@ -134,7 +159,7 @@ export class ProjectsController {
       <div class="project-item" data-category="${project.category}" data-project-id="${project.id}">
         <div class="project-card">
           <div class="project-cover">
-            <img src="${imagePath}" alt="${this.escapeHtml(project.title)}" loading="lazy" decoding="async" />
+            <img src="${imageSrc}" ${imageResponsiveAttrs} alt="${this.escapeHtml(project.title)}" loading="lazy" decoding="async" />
           </div>
           <div class="project-content">
             <h3 class="project-title">${this.escapeHtml(project.title)}</h3>
@@ -254,6 +279,7 @@ export class ProjectsController {
       const imagePath =
         project.image ||
         `./assets/images/portfolio/portfolio-${project.id}.jpg`;
+      const imageSrc = this.toImageUrl(imagePath);
 
       const techStackTags = project.stack
         .map(
@@ -288,7 +314,7 @@ export class ProjectsController {
 
       this.projectModalContent.innerHTML = `
         <div class="modal-hero">
-          <img src="${imagePath}" alt="${this.escapeHtml(project.title)}" loading="lazy" />
+          <img src="${imageSrc}" alt="${this.escapeHtml(project.title)}" loading="lazy" />
         </div>
 
         <div class="modal-body">
@@ -342,7 +368,7 @@ export class ProjectsController {
     } else {
       this.projectModal.style.display = "flex";
       this.projectModal.classList.add("open");
-      document.body.style.overflow = "hidden";
+      document.body.classList.add("modal-open");
     }
   }
 }

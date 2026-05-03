@@ -1,0 +1,203 @@
+{
+  "profile": {
+    "name": "Vo Phu Thinh",
+    "vietnamese_name": "Võ Phú Thịnh",
+    "title": "AI Engineer",
+    "company": "HPT Vietnam Corporation — AI Center of Excellence",
+    "location": "Ho Chi Minh City, Vietnam",
+    "email": "vophuthinhcm@gmail.com",
+    "phone": "+84 868 639 882",
+    "website": "https://vophuthinh.com",
+    "linkedin": "https://www.linkedin.com/in/vophuthinh",
+    "github": "https://github.com/vophuthinh",
+    "facebook": "https://web.facebook.com/vox.phus.thijnh/",
+    "cv_download": "https://vophuthinh.com/CV-VoPhuThinh.pdf",
+    "availability": "Open to hire — full-time, contract, freelance, and remote opportunities",
+    "key_strength": "Ships production AI fast — 3 products in first year",
+    "summary": "AI Engineer specializing in LLM, RAG, AI Agents, and Machine Learning. Shipped 3 AI products to production in first year. Won 2 awards in enterprise AI competition at HPT Vietnam.",
+    "education": "Bachelor's degree, Information Technology — HUTECH & Open University Malaysia (2021–2025)",
+    "what_can_deliver_90_days": [
+      "Weeks 1–2: Analyze business workflows, data sources, and pain points to identify highest-impact AI use cases",
+      "Weeks 3–6: Build and deploy a production-ready chatbot or RAG system integrated with existing tools",
+      "Weeks 7–10: Set up evaluation pipelines, experiment tracking, and model versioning for reliable AI development",
+      "Weeks 11–12: Deliver monitoring dashboards for quality, latency, usage, and cost plus a roadmap for next phase"
+    ],
+    "awards": [
+      "2nd Prize — AI in Business Competition (HPT, 2025) — Lyly AI Assistant",
+      "3rd Prize — AI in Business Competition (HPT, 2025) — HotNews Intelligence Hub"
+    ],
+    "languages": [
+      "Vietnamese (native)",
+      "English (professional)"
+    ]
+  },
+  "skills": {
+    "ai_ml": [
+      "Large Language Models (LLM)",
+      "LLM Applications",
+      "LLM Fine-Tuning",
+      "Retrieval-Augmented Generation (RAG)",
+      "Corrective RAG",
+      "Hybrid Search",
+      "AI Agents / Agentic AI",
+      "Multi-Agent Systems",
+      "Natural Language Processing (NLP)",
+      "Generative AI (GenAI)",
+      "Deep Learning",
+      "Prompt Engineering",
+      "Embeddings",
+      "Semantic Search",
+      "Vector Databases",
+      "Computer Vision",
+      "Transformer Architecture"
+    ],
+    "frameworks": [
+      "Python",
+      "FastAPI",
+      "PyTorch",
+      "TensorFlow",
+      "LangChain",
+      "LangGraph",
+      "Hugging Face",
+      "OpenAI",
+      "Google AI (Gemini)",
+      "Azure OpenAI",
+      "n8n",
+      "UiPath",
+      "Power Platform"
+    ],
+    "data": [
+      "NumPy",
+      "Pandas",
+      "scikit-learn",
+      "SQL",
+      "MySQL",
+      "SQL Server",
+      "Power BI"
+    ],
+    "infrastructure": [
+      "Docker",
+      "Kubernetes",
+      "AWS",
+      "Azure",
+      "Google Cloud",
+      "MLOps",
+      "Git",
+      "GitHub"
+    ],
+    "web": [
+      "React",
+      "Next.js",
+      "Node.js",
+      "Express.js",
+      "JavaScript",
+      "WebSocket",
+      "Socket.io"
+    ]
+  },
+  "experience": [
+    {
+      "role": "AI Engineer",
+      "company": "HPT Vietnam Corporation — AI Center of Excellence",
+      "period": "Oct 2025 – Present",
+      "highlights": [
+        "Built AI chatbot handling 850+ questions/day",
+        "Won 2nd & 3rd prizes in AI in Business competition",
+        "Developed LLM-powered solutions for executive decision support"
+      ]
+    },
+    {
+      "role": "Software Solutions Engineer",
+      "company": "HPT Vietnam Corporation",
+      "period": "Apr 2025 – Oct 2025",
+      "highlights": [
+        "Built 10+ automation workflows, cutting manual reporting by ~60%",
+        "Integrated AI into enterprise solutions"
+      ]
+    },
+    {
+      "role": "Intern",
+      "company": "HPT Vietnam Corporation",
+      "period": "Nov 2024 – Apr 2025",
+      "highlights": [
+        "Prototyped AI chatbot that evolved into D-DAY 2025 product",
+        "Promoted to full-time after 6 months — fastest track in team"
+      ]
+    },
+    {
+      "role": "Website Management Support",
+      "company": "Institute of Smart City and Management",
+      "period": "Mar 2023 – Oct 2023",
+      "highlights": [
+        "Managed and maintained organizational website content",
+        "Improved SEO structure and supported analytics reporting"
+      ]
+    }
+  ],
+  "projects_fallback": [
+    {
+      "title": "HPT D-DAY 2025 Chatbot",
+      "category": "llm",
+      "summary": "RAG-powered AI chatbot grounded on official event data with zero hallucination.",
+      "problem": "Attendees and organizers needed instant, accurate answers for schedule, sessions, booths, and partners at HPT D-DAY 2025.",
+      "solution": "Built zero-hallucination RAG chatbot with GPT-4o + vector retrieval, powered by n8n and Google Sheets for real-time content updates.",
+      "stack": ["n8n", "OpenAI", "JavaScript", "RAG", "Google Sheets", "Vector Store"],
+      "impact": [
+        { "label": "Volume", "value": "850+ questions handled" },
+        { "label": "Accuracy", "value": "Zero hallucination — grounded answers only" },
+        { "label": "Coverage", "value": "Event info, 50+ booths & partners" }
+      ],
+      "results": "Operated stably throughout the event and significantly reduced onsite support workload.",
+      "link": null,
+      "github": null
+    },
+    {
+      "title": "Lyly — Enterprise AI Assistant (2nd Prize)",
+      "category": "llm",
+      "summary": "Enterprise AI assistant with real-time voice/text, hybrid RAG, and multi-step reasoning.",
+      "problem": "HPT executives needed faster, data-driven decisions with unified retrieval, reasoning, and conversational interface.",
+      "solution": "Built production AI assistant using FastAPI + Next.js with Gemini, Qdrant, hybrid search, corrective RAG, and memory personalization.",
+      "stack": ["Python", "FastAPI", "Next.js", "Google AI", "Qdrant", "WebSocket", "mem0"],
+      "impact": [
+        { "label": "Award", "value": "2nd Prize" },
+        { "label": "Realtime", "value": "Unified voice/text via WebSocket gateway" },
+        { "label": "RAG", "value": "Hybrid search + Corrective RAG pipeline" }
+      ],
+      "results": "Delivered enterprise decision-support platform with real-time conversations and reasoning.",
+      "link": null,
+      "github": null
+    },
+    {
+      "title": "H.I.H — HotNews Intelligence Hub (3rd Prize)",
+      "category": "data",
+      "summary": "AI-powered news intelligence platform automating collection, analysis, and internal distribution.",
+      "problem": "Internal teams lacked unified business intelligence workflow, causing manual effort and inconsistent information quality.",
+      "solution": "Automated intelligence pipeline from collection to classification, recommendation summaries, and distribution via Microsoft Viva Engage.",
+      "stack": ["Python", "n8n", "OpenAI", "Microsoft Viva Engage", "Automation"],
+      "impact": [
+        { "label": "Award", "value": "3rd Prize" },
+        { "label": "HotNews Online", "value": "8,500+ views from ~76% of HPT staff" },
+        { "label": "Industry News", "value": "~4,000 views from ~70% of HPT staff" }
+      ],
+      "results": "Improved internal communications quality and established foundation for AI strategy support.",
+      "link": null,
+      "github": null
+    },
+    {
+      "title": "E-Commerce with Sentiment Analysis",
+      "category": "data",
+      "summary": "Multi-vendor e-commerce platform with AI sentiment analysis for product reviews.",
+      "problem": "Sellers lacked automated visibility into customer sentiment trends across product reviews.",
+      "solution": "Integrated BERTweet sentiment classification and built full commerce stack with real-time chat and payment integrations.",
+      "stack": ["React", "Node.js", "Express.js", "MySQL", "Socket.io", "Hugging Face"],
+      "impact": [
+        { "label": "AI", "value": "Automated sentiment classification" },
+        { "label": "Platform", "value": "Multi-vendor marketplace" },
+        { "label": "Realtime", "value": "Live chat & notifications" }
+      ],
+      "results": "Enabled data-driven product and service improvements from unstructured review signals.",
+      "link": null,
+      "github": "https://github.com/vophuthinh/E-Commerce-Website-With-Sentiment-Analysis-For-Reviews"
+    }
+  ]
+}

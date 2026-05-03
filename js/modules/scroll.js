@@ -3,12 +3,11 @@ import { Utils } from "../utils.js";
 
 /**
  * Scroll Module
- * Handles scroll progress bar and back-to-top button
+ * Handles back-to-top button behavior
  */
 
 export class ScrollController {
   constructor() {
-    this.progressBar = document.querySelector(".scroll-progress-bar");
     this.backToTopBtn = document.querySelector(".back-to-top");
 
     this.config = {
@@ -32,23 +31,12 @@ export class ScrollController {
       const activeSection = getActiveSection();
       const scrollContainer = activeSection || document.documentElement;
 
-      // Scroll Progress Bar
       const scrollTop = activeSection
         ? scrollContainer.scrollTop
         : document.documentElement.scrollTop ||
           document.body.scrollTop ||
           window.scrollY ||
           0;
-      const scrollHeight = activeSection
-        ? scrollContainer.scrollHeight - scrollContainer.clientHeight
-        : document.documentElement.scrollHeight -
-          document.documentElement.clientHeight;
-      const progress = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
-
-      if (this.progressBar) {
-        this.progressBar.style.width = `${progress}%`;
-      }
-
       // Back to Top Button
       if (this.backToTopBtn) {
         const currentScroll = activeSection
