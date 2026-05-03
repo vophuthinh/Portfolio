@@ -3597,8 +3597,13 @@ body:not(.dark) .cert-award:hover .cert-type {
   z-index: -1;
 }
 
-/* Hover Effects */
-.contact .contact-info-item:hover {
+/* Interactive States (hover desktop + touch/keyboard mobile) */
+.contact .contact-info-item:is(
+    :hover,
+    :active,
+    :focus-visible,
+    .is-touch-active
+  ) {
   transform: translateY(-10px);
   border-color: var(--skin-color);
   box-shadow:
@@ -3606,7 +3611,12 @@ body:not(.dark) .cert-award:hover .cert-type {
     inset 0 0 20px rgba(var(--skin-color-rgb), 0.05);
 }
 
-.contact .contact-info-item:hover::before {
+.contact .contact-info-item:is(
+    :hover,
+    :active,
+    :focus-visible,
+    .is-touch-active
+  )::before {
   opacity: 1;
   animation: gridMove 20s linear infinite;
 }
@@ -3637,7 +3647,12 @@ body:not(.dark) .cert-award:hover .cert-type {
   box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
-.contact .contact-info-item:hover .icon {
+.contact .contact-info-item:is(
+    :hover,
+    :active,
+    :focus-visible,
+    .is-touch-active
+  ) .icon {
   background: transparent;
   border-color: var(--skin-color);
   box-shadow:
@@ -3658,8 +3673,14 @@ body:not(.dark) .cert-award:hover .cert-type {
   transition: all 0.4s ease;
 }
 
-.contact .contact-info-item:hover .icon .fa,
-.contact .contact-info-item:hover .icon .fab {
+.contact
+  .contact-info-item:is(:hover, :active, :focus-visible, .is-touch-active)
+  .icon
+  .fa,
+.contact
+  .contact-info-item:is(:hover, :active, :focus-visible, .is-touch-active)
+  .icon
+  .fab {
   filter: drop-shadow(0 0 5px var(--skin-color));
   transform: scale(1.1);
 }
@@ -3997,7 +4018,7 @@ body.dark .contact .contact-form .form-label {
     margin-right: 15px;
   }
 
-  .contact .row {
+  .contact .contact-cards-row {
     justify-content: center;
   }
 
@@ -4132,14 +4153,107 @@ body.dark .contact .contact-form .form-label {
   .contact .contact-info-item {
     flex: 0 0 100%;
     max-width: 100%;
+    width: 100%;
+    min-width: 0;
     margin-bottom: 25px;
-    padding: 25px 15px;
+    margin-top: 0;
     margin-left: 0;
     margin-right: 0;
+    padding: 25px 14px;
   }
 
-  .contact .row {
+  .contact .contact-info-item.padd-15 {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .contact .contact-info-item p,
+  .contact .contact-info-item p a {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    hyphens: auto;
+  }
+
+  .contact .container {
+    overflow-x: hidden;
+    overflow-x: clip;
+  }
+
+  .contact .contact-cards-row {
+    margin-left: 0;
+    margin-right: 0;
     justify-content: center;
+  }
+
+  .contact .contact-info-item .icon {
+    border-color: rgba(var(--skin-color-rgb), 0.35);
+    box-shadow:
+      0 0 16px rgba(var(--skin-color-rgb), 0.16),
+      inset 0 0 12px rgba(var(--skin-color-rgb), 0.1);
+  }
+
+  .contact .contact-info-item .icon .fa,
+  .contact .contact-info-item .icon .fab {
+    filter: drop-shadow(0 0 4px rgba(var(--skin-color-rgb), 0.45));
+  }
+
+  .contact .contact-info-item.is-touch-active .icon {
+    background: transparent;
+    border-color: var(--skin-color);
+    box-shadow:
+      0 0 22px rgba(var(--skin-color-rgb), 0.42),
+      inset 0 0 15px rgba(var(--skin-color-rgb), 0.2);
+    transform: scale(1.1);
+  }
+
+  .contact .contact-info-item.is-touch-active::before {
+    opacity: 1;
+    animation: gridMove 18s linear infinite;
+  }
+
+  .contact .contact-info-item.is-touch-active .icon .fa,
+  .contact .contact-info-item.is-touch-active .icon .fab {
+    filter: drop-shadow(0 0 6px var(--skin-color));
+    transform: scale(1.1);
+  }
+
+  .contact .contact-info-item.is-touch-active {
+    transform: translateY(-8px);
+    border-color: var(--skin-color);
+    box-shadow:
+      0 14px 35px rgba(var(--skin-color-rgb), 0.25),
+      inset 0 0 20px rgba(var(--skin-color-rgb), 0.06);
+  }
+
+  .contact .contact-info-item {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  .contact .contact-info-item:hover {
+    transform: none;
+    border-color: var(--bg-black-50);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
+  }
+
+  .contact .contact-info-item:hover::before {
+    opacity: 0;
+    animation: none;
+  }
+
+  .contact .contact-info-item:hover .icon {
+    background: var(--bg-black-50);
+    border-color: rgba(var(--skin-color-rgb), 0.35);
+    box-shadow:
+      0 0 16px rgba(var(--skin-color-rgb), 0.16),
+      inset 0 0 12px rgba(var(--skin-color-rgb), 0.1);
+    transform: none;
+  }
+
+  .contact .contact-info-item:hover .icon .fa,
+  .contact .contact-info-item:hover .icon .fab {
+    filter: drop-shadow(0 0 4px rgba(var(--skin-color-rgb), 0.45));
+    transform: none;
   }
 
   .contact .contact-info-item .icon {
@@ -5278,7 +5392,7 @@ body:not(.dark) .theme-toggle .fa-sun {
 
 /* Dark Mode Glow */
 body.dark .service-item .service-item-inner:hover,
-body.dark .contact-info-item:hover {
+body.dark .contact-info-item:is(:hover, :active, :focus-visible, .is-touch-active) {
   transform: translateY(-6px);
   box-shadow:
     0 10px 25px rgba(0, 0, 0, 0.5),
@@ -5288,7 +5402,8 @@ body.dark .contact-info-item:hover {
 
 /* Light Mode Shadow Pop */
 body:not(.dark) .service-item .service-item-inner:hover,
-body:not(.dark) .contact-info-item:hover {
+body:not(.dark)
+  .contact-info-item:is(:hover, :active, :focus-visible, .is-touch-active) {
   transform: translateY(-6px);
   box-shadow:
     0 16px 40px rgba(0, 0, 0, 0.1),
@@ -5297,30 +5412,31 @@ body:not(.dark) .contact-info-item:hover {
   border-color: var(--skin-color);
 }
 
-/* Prevent sticky :hover on touch devices (iOS/Android) for contact cards */
+/* Prevent sticky :hover on touch devices for contact cards
+   Touch effects are handled by .is-touch-active class */
 @media (hover: none), (pointer: coarse) {
-  .contact .contact-info-item:hover,
-  body.dark .contact-info-item:hover,
-  body:not(.dark) .contact-info-item:hover {
+  .contact .contact-info-item:hover:not(.is-touch-active),
+  body.dark .contact-info-item:hover:not(.is-touch-active),
+  body:not(.dark) .contact-info-item:hover:not(.is-touch-active) {
     transform: none;
     border-color: var(--bg-black-50);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
   }
 
-  .contact .contact-info-item:hover::before {
+  .contact .contact-info-item:hover:not(.is-touch-active)::before {
     opacity: 0;
     animation: none;
   }
 
-  .contact .contact-info-item:hover .icon {
+  .contact .contact-info-item:hover:not(.is-touch-active) .icon {
     background: var(--bg-black-50);
     border-color: var(--bg-black-50);
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
     transform: none;
   }
 
-  .contact .contact-info-item:hover .icon .fa,
-  .contact .contact-info-item:hover .icon .fab {
+  .contact .contact-info-item:hover:not(.is-touch-active) .icon .fa,
+  .contact .contact-info-item:hover:not(.is-touch-active) .icon .fab {
     filter: none;
     transform: none;
   }

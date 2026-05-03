@@ -8,6 +8,7 @@ import { NavigationController } from "./modules/navigation.js";
 import { ProjectsController } from "./modules/projects.js";
 import { modalsController } from "./modules/modals.js";
 import { ContactFormController } from "./modules/contact-form.js";
+import { ContactCardsController } from "./modules/contact-cards.js";
 import { ScrollController } from "./modules/scroll.js";
 import { AppInitializer, initPreloaderAndAnimations } from "./modules/init.js";
 import { ResponsiveImagesController } from "./modules/responsive-images.js";
@@ -57,6 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const projects = new ProjectsController();
   const modals = modalsController; // Use singleton instance
   const contactForm = new ContactFormController();
+  const contactCards = new ContactCardsController();
   const scroll = new ScrollController();
   const responsiveImages = new ResponsiveImagesController();
 
