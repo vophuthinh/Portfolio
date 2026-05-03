@@ -267,7 +267,7 @@ export class ModalsController {
       certModal.setAttribute("aria-modal", "true");
       certModal.setAttribute("aria-label", "Certificate viewer");
       certModal.innerHTML =
-        '<span class="close" data-modal-close="certificateModal" aria-label="Close certificate viewer">&times;</span><img src="" alt="Zoomed Certificate">';
+        '<span class="close-modal" data-modal-close="certificateModal" aria-label="Close certificate viewer">&times;</span><img src="" alt="Zoomed Certificate">';
       document.body.appendChild(certModal);
       this.certificateModal = certModal;
     }
