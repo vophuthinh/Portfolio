@@ -299,15 +299,69 @@ ul {
   box-shadow: 0 8px 25px var(--skin-color-05);
 }
 
-/* Keep the main CTA neon-red on hover across themes */
-.home .buttons .hire-me:hover,
-.home .buttons .hire-me:focus-visible {
-  background: transparent;
-  color: var(--skin-color);
+/* Hire Me button — always red gradient like Download CV */
+.hire-me {
+  background: linear-gradient(135deg, var(--skin-color), var(--skin-gradient));
+  color: #ffffff;
   border-color: var(--skin-color);
+  font-weight: 700;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.hire-me::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition:
+    width 0.6s ease,
+    height 0.6s ease;
+}
+
+.hire-me:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.hire-me::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.hire-me:hover::after {
+  left: 100%;
+}
+
+.hire-me:hover,
+.hire-me:focus-visible {
+  transform: translateY(-5px) scale(1.05);
   box-shadow:
-    0 8px 25px var(--skin-color-05),
-    0 0 24px var(--skin-color-04);
+    0 12px 40px rgba(var(--skin-color-rgb), 0.5),
+    0 0 0 4px rgba(var(--skin-color-rgb), 0.2);
+  filter: brightness(1.15);
+}
+
+.hire-me:active {
+  transform: translateY(-2px) scale(1.02);
+  transition: all 0.1s ease;
 }
 
 .shadow-dark {
@@ -3693,8 +3747,8 @@ body:not(.dark) .cert-award:hover .cert-type {
   color: var(--text-black-700);
   text-decoration: none;
   transition: color 0.3s ease;
-  display: inline-block;
-  padding: 12px 0;
+  display: inline;
+  word-break: break-all;
 }
 
 .contact .contact-info-item p a:hover {
@@ -5969,14 +6023,14 @@ body:not(.dark) .section-title h2::after {
   opacity: 0.85;
 }
 
-/* Download CV button trên nền sáng — nổi bật hơn */
-body:not(.dark) .btn {
+/* Light theme .btn — exclude CTA buttons that are always red */
+body:not(.dark) .btn:not(.btn-download):not(.hire-me) {
   color: var(--skin-color);
   border-color: var(--skin-color);
   background: rgba(255, 255, 255, 0.8);
 }
 
-body:not(.dark) .btn:hover {
+body:not(.dark) .btn:not(.btn-download):not(.hire-me):hover {
   background: var(--skin-color);
   color: #ffffff;
 }
