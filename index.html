@@ -478,13 +478,8 @@
     <link rel="preload" href="./assets/css/style.css" as="style" />
     <link rel="preload" href="./assets/images/hero.webp" as="image" />
     <link
-      rel="preload"
-      as="style"
+      rel="stylesheet"
       href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Poppins:wght@300;400;500;600;700&display=swap"
-      onload="
-        this.onload = null;
-        this.rel = 'stylesheet';
-      "
     />
     <noscript>
       <link
@@ -521,11 +516,7 @@
   </head>
 
   <body class="dark">
-    <script>
-      // Apply saved theme instantly to prevent flash
-      if (localStorage.getItem("theme") === "light")
-        document.body.classList.remove("dark");
-    </script>
+    <script src="/js/theme-init.js"></script>
     <!-- Preloader -->
     <div class="preloader">
       <div class="loader-content">
