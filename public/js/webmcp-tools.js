@@ -21,6 +21,22 @@
     padding: "20px",
   });
 
+  const NATIVE_TOOL_REGISTRY_KEY = "__vophuthinh_native_webmcp_tools__";
+  const nativeToolRegistry = (() => {
+    if (typeof window === "undefined") {
+      return new Set();
+    }
+
+    const existingRegistry = window[NATIVE_TOOL_REGISTRY_KEY];
+    if (existingRegistry instanceof Set) {
+      return existingRegistry;
+    }
+
+    const registry = new Set(Array.isArray(existingRegistry) ? existingRegistry : []);
+    window[NATIVE_TOOL_REGISTRY_KEY] = registry;
+    return registry;
+  })();
+
   const DEFAULT_MCP_DATA = {
     profile: {
       name: "Vo Phu Thinh",
@@ -99,8 +115,96 @@
       });
   }
 
+  function isNativeModelContextAvailable() {
+    return (
+      typeof navigator !== "undefined" &&
+      !!navigator.modelContext &&
+      typeof navigator.modelContext.registerTool === "function"
+    );
+  }
+
+  function normalizeToolInputSchema(schema) {
+    if (!schema || typeof schema !== "object") {
+      return { type: "object", properties: {} };
+    }
+
+    if (schema.type || schema.properties || schema.oneOf || schema.anyOf) {
+      return schema;
+    }
+
+    // Backward-compat: existing custom WebMCP code often passes raw property maps.
+    const keys = Object.keys(schema);
+    const looksLikePropertyMap =
+      keys.length > 0 &&
+      keys.every((key) => {
+        const value = schema[key];
+        return (
+          value &&
+          typeof value === "object" &&
+          (value.type ||
+            value.description ||
+            value.enum ||
+            value.default ||
+            value.oneOf ||
+            value.anyOf)
+        );
+      });
+
+    if (looksLikePropertyMap) {
+      return {
+        type: "object",
+        properties: schema,
+      };
+    }
+
+    return schema;
+  }
+
+  function registerNativeTool(name, description, schema, executeFn) {
+    if (!isNativeModelContextAvailable() || nativeToolRegistry.has(name)) {
+      return;
+    }
+
+    try {
+      navigator.modelContext.registerTool({
+        name,
+        description,
+        inputSchema: normalizeToolInputSchema(schema),
+        execute: async function (args) {
+          const safeArgs = args && typeof args === "object" ? args : {};
+          if (typeof executeFn !== "function") {
+            return {
+              content: [
+                {
+                  type: "text",
+                  text: `Tool ${name} has no execute function.`,
+                },
+              ],
+            };
+          }
+          return executeFn(safeArgs);
+        },
+      });
+
+      nativeToolRegistry.add(name);
+      console.log(`[WebMCP] Native tool registered: ${name}`);
+    } catch (error) {
+      // Chrome throws InvalidStateError when tool name already exists.
+      if (error && typeof error === "object" && error.name === "InvalidStateError") {
+        nativeToolRegistry.add(name);
+        return;
+      }
+      console.warn(`[WebMCP] Native tool registration failed for "${name}"`, error);
+    }
+  }
+
+  function registerTool(name, description, schema, executeFn) {
+    mcp.registerTool(name, description, schema, executeFn);
+    registerNativeTool(name, description, schema, executeFn);
+  }
+
   function registerJsonTool(name, description, resolver) {
-    mcp.registerTool(name, description, {}, function () {
+    registerTool(name, description, { type: "object", properties: {} }, function () {
       return {
         content: [
           {
@@ -151,15 +255,27 @@
   });
 
   // Tool: Navigate to section
-  mcp.registerTool(
+  registerTool(
     "navigate_to_section",
     "Navigate to a specific section of the portfolio website",
     {
-      section: {
-        type: "string",
-        description:
-          "Section to navigate to: home, about, skills, project, certifications-awards, contact",
+      type: "object",
+      properties: {
+        section: {
+          type: "string",
+          enum: [
+            "home",
+            "about",
+            "skills",
+            "project",
+            "certifications-awards",
+            "contact",
+          ],
+          description:
+            "Section to navigate to: home, about, skills, project, certifications-awards, contact",
+        },
       },
+      additionalProperties: false,
     },
     function (args) {
       var section = args.section || "home";
