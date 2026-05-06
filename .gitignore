@@ -59,3 +59,6 @@ lighthouse-report*.json
 .playwright-mcp/
 .vercel
 .env*.local
+
+# Agent skills (local only)
+.agents/
