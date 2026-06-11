@@ -1,7 +1,20 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npm i *)"
+      "Bash(npm i *)",
+      "Bash(npm run *)",
+      "Bash(curl -s http://localhost:5174/)",
+      "Bash(npx playwright *)",
+      "Bash(node -e ' *)",
+      "Bash(node check-portfolio.mjs)",
+      "Bash(node check-theme.mjs)",
+      "Bash(pkill -f \"vite --port 5174\")",
+      "Bash(npm --prefix /Users/vophuthinh/Code/Portfolio run dev -- --port 5174)",
+      "Bash(node check-csp.mjs)"
+    ],
+    "additionalDirectories": [
+      "/tmp",
+      "/private/tmp"
     ]
   }
 }
