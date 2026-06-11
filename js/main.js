@@ -3,6 +3,8 @@
  * Imports and initializes all modules
  */
 
+import { inject } from "@vercel/analytics";
+import { injectSpeedInsights } from "@vercel/speed-insights";
 import { Logger } from "./config.js";
 import { NavigationController } from "./modules/navigation.js";
 import { ProjectsController } from "./modules/projects.js";
@@ -12,6 +14,9 @@ import { ContactCardsController } from "./modules/contact-cards.js";
 import { ScrollController } from "./modules/scroll.js";
 import { AppInitializer, initPreloaderAndAnimations } from "./modules/init.js";
 import { ResponsiveImagesController } from "./modules/responsive-images.js";
+
+inject();
+injectSpeedInsights();
 
 function registerServiceWorker() {
   if (!("serviceWorker" in navigator)) return;
