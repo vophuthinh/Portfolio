@@ -29,7 +29,15 @@
       "Bash('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' --headless=new --screenshot=/tmp/p-mobile.png --window-size=390,844 --no-sandbox --virtual-time-budget=3000 http://localhost:3001)",
       "Bash(npm install *)",
       "Bash(awk 'NR>=4330 && NR<=4370 {print NR\": \"$0}' /Users/vophuthinh/Code/Portfolio/assets/css/style.css)",
-      "Bash(awk 'NR>=4100 && NR<=4110 {print NR\": \"$0}' /Users/vophuthinh/Code/Portfolio/assets/css/style.css)"
+      "Bash(awk 'NR>=4100 && NR<=4110 {print NR\": \"$0}' /Users/vophuthinh/Code/Portfolio/assets/css/style.css)",
+      "Bash(npm --prefix /Users/vophuthinh/Code/Portfolio run dev -- --port 3001)",
+      "Bash(awk 'NR>=3 && NR<=17 {print NR\": \"$0}' /Users/vophuthinh/Code/Portfolio/assets/css/style.css)",
+      "Bash(awk 'NR>=360 && NR<=380 {print NR\": \"$0}' /Users/vophuthinh/Code/Portfolio/assets/css/style.css)",
+      "Bash(awk 'NR>=5619 && NR<=5660 {print NR\": \"$0}' /Users/vophuthinh/Code/Portfolio/assets/css/style.css)",
+      "Bash(awk 'NR>=3656 && NR<=3770 {print NR\": \"$0}' /Users/vophuthinh/Code/Portfolio/assets/css/style.css)",
+      "Bash(awk 'NR>=1238 && NR<=1310 {print NR\": \"$0}' /Users/vophuthinh/Code/Portfolio/assets/css/style.css)",
+      "Bash(awk 'NR>=5570 && NR<=5620 {print NR\": \"$0}' /Users/vophuthinh/Code/Portfolio/assets/css/style.css)",
+      "Bash(awk 'NR>=4679 && NR<=4695 {print NR\": \"$0}' /Users/vophuthinh/Code/Portfolio/assets/css/style.css)"
     ],
     "additionalDirectories": [
       "/tmp",
