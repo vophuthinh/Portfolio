@@ -34,6 +34,7 @@ export class ProjectsController {
     this.renderProjects();
     this.setupFilterButtons();
     this.setupProjectClickHandlers();
+    this.setupCardSpotlight();
   }
 
   getLogger() {
@@ -362,5 +363,16 @@ export class ProjectsController {
       this.projectModal.classList.add("open");
       document.body.classList.add("modal-open");
     }
+  }
+
+  setupCardSpotlight() {
+    if (!this.projectsGrid) return;
+    this.projectsGrid.addEventListener('mousemove', (e) => {
+      const card = e.target.closest('.project-card');
+      if (!card) return;
+      const rect = card.getBoundingClientRect();
+      card.style.setProperty('--mouse-x', ((e.clientX - rect.left) / rect.width * 100).toFixed(1) + '%');
+      card.style.setProperty('--mouse-y', ((e.clientY - rect.top) / rect.height * 100).toFixed(1) + '%');
+    });
   }
 }

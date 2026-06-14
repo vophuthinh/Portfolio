@@ -70,6 +70,9 @@ export class NavigationController {
           targetSection.classList.add("aos-animate");
         }
 
+        // Fire event so scroll-reveal can pick up newly visible elements
+        document.dispatchEvent(new CustomEvent('sectionChange', { detail: { section: target } }));
+
         if (
           typeof AOS !== "undefined" &&
           typeof AOS.refreshHard === "function"

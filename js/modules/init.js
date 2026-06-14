@@ -14,6 +14,7 @@ export class AppInitializer {
     this.setupTypingAnimation();
     this.updateExperienceDuration();
     this.setupThemeToggle();
+    this.setupStatCounters();
   }
 
   getLogger() {
@@ -139,6 +140,74 @@ export class AppInitializer {
       document.body.classList.toggle("dark");
       const isDark = document.body.classList.contains("dark");
       localStorage.setItem("theme", isDark ? "dark" : "light");
+    });
+  }
+
+  setupHeroSpotlight() {
+    const homeSection = document.getElementById('home');
+    if (!homeSection) return;
+    homeSection.addEventListener('mousemove', (e) => {
+      const rect = homeSection.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width * 100).toFixed(1) + '%';
+      const y = ((e.clientY - rect.top) / rect.height * 100).toFixed(1) + '%';
+      homeSection.style.setProperty('--spotlight-x', x);
+      homeSection.style.setProperty('--spotlight-y', y);
+    });
+  }
+
+  setupStatCounters() {
+    const statNumbers = document.querySelectorAll('.stat-number');
+    if (!statNumbers.length) return;
+
+    const easeOutExpo = (t) => t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+
+    const animateCounter = (el, target, suffix, duration = 1200, delay = 0) => {
+      setTimeout(() => {
+        const start = performance.now();
+        const tick = (now) => {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = easeOutExpo(progress);
+          const current = Math.round(eased * target);
+          el.textContent = current + suffix;
+          if (progress < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      }, delay);
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const raw = el.textContent.trim();
+        const suffix = raw.replace(/[\d]/g, '');
+        const num = parseInt(raw.replace(/\D/g, ''), 10);
+        if (!isNaN(num)) {
+          animateCounter(el, num, suffix);
+        }
+        observer.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+
+    statNumbers.forEach((el, i) => {
+      el.dataset.target = el.textContent;
+      observer.observe(el);
+    });
+
+    // Also trigger on sectionChange
+    document.addEventListener('sectionChange', () => {
+      statNumbers.forEach((el) => {
+        if (!el.dataset.animated) {
+          const raw = el.dataset.target || el.textContent.trim();
+          const suffix = raw.replace(/[\d]/g, '');
+          const num = parseInt(raw.replace(/\D/g, ''), 10);
+          if (!isNaN(num)) {
+            el.dataset.animated = 'true';
+            animateCounter(el, num, suffix);
+          }
+        }
+      });
     });
   }
 }

@@ -12,7 +12,7 @@
         script-src 'self' 'sha256-7YZeD3/Y6Zq9KM8XlpyHYWTvbWQ+WvFbWVmiWyQ2dcM=' cdn.jsdelivr.net unpkg.com cdnjs.cloudflare.com va.vercel-scripts.com;
         style-src 'self' 'unsafe-inline' fonts.googleapis.com cdn.jsdelivr.net cdnjs.cloudflare.com unpkg.com;
         font-src 'self' fonts.gstatic.com cdnjs.cloudflare.com cdn.jsdelivr.net data:;
-        img-src 'self' data: cdn.jsdelivr.net cdnjs.cloudflare.com;
+        img-src 'self' data: cdn.jsdelivr.net cdnjs.cloudflare.com github-readme-stats.vercel.app;
         connect-src 'self' cdn.jsdelivr.net cdnjs.cloudflare.com api.emailjs.com ws://localhost:* wss://localhost:* va.vercel-analytics.com vitals.vercel-insights.com;
         base-uri 'self';
         form-action 'self';
@@ -588,6 +588,10 @@
           <div class="container">
             <div class="row">
               <div class="home-info padd-15">
+                <div class="availability-badge" style="display: none">
+                  <span class="badge-dot"></span>
+                  Open to new opportunities
+                </div>
                 <h1 class="hello">
                   Hello, my name is <span class="name">Vo Phu Thinh</span>
                 </h1>
@@ -595,10 +599,10 @@
                   I'm an <span class="typing">AI Engineer</span>
                 </h2>
                 <p>
-                  Built 3 AI products at HPT Vietnam in my first year — from
-                  an 850-question event chatbot to award-winning AI agents. I
-                  specialize in LLM, RAG, and AI Agent systems that solve real
-                  enterprise problems.
+                  3 AI products shipped. 2 enterprise awards. 850+ live
+                  questions handled by a single chatbot in one day. I build
+                  LLM, RAG, and multi-agent systems at HPT Vietnam that go
+                  beyond demos and into production.
                 </p>
                 <a
                   href="./CV-VoPhuThinh.pdf"
@@ -650,7 +654,7 @@
                     <h3>I'm Vo Phu Thinh, an <span>AI Engineer</span></h3>
                     <p>
                       I joined HPT Vietnam as an AI Engineer Intern and was
-                      promoted to full-time after 6 months — the fastest
+                      promoted to full-time after 6 months, the fastest
                       intern-to-engineer track in the team. Since then, I've
                       shipped 3 AI products to production at the AI Center of
                       Excellence, each solving concrete enterprise problems.
@@ -679,31 +683,12 @@
                         automation for enterprise use cases
                       </li>
                     </ul>
-                    <h4 style="margin-top: 18px; margin-bottom: 10px">
-                      What I Can Deliver In 90 Days
-                    </h4>
-                    <ul class="about-bullet-list">
-                      <li>
-                        <strong>Weeks 1–2:</strong> Analyze business workflows,
-                        data sources, and pain points to identify the
-                        highest-impact AI use case
-                      </li>
-                      <li>
-                        <strong>Weeks 3–6:</strong> Build and deploy a
-                        production-ready chatbot or RAG system integrated with
-                        existing tools
-                      </li>
-                      <li>
-                        <strong>Weeks 7–10:</strong> Set up evaluation
-                        pipelines, experiment tracking, and model versioning for
-                        reliable AI development
-                      </li>
-                      <li>
-                        <strong>Weeks 11–12:</strong> Deliver monitoring
-                        dashboards for quality, latency, usage, and cost — plus
-                        a roadmap for the next phase
-                      </li>
-                    </ul>
+                    <p style="margin-top: 18px; color: var(--text-black-700); line-height: 1.8;">
+                      I'm currently open to AI Engineer roles at companies building
+                      real products with LLM, RAG, or multi-agent systems. I work best
+                      in fast-moving teams where I can own the full cycle from
+                      research to production deployment.
+                    </p>
                   </div>
                   <div class="personal-info padd-15">
                     <div class="about-profile-img">
@@ -727,6 +712,20 @@
                         <span class="stat-number">850+</span>
                         <span class="stat-label">Q&A / Day</span>
                       </div>
+                    </div>
+                    <div class="about-github">
+                      <img
+                        src="https://github-readme-stats.vercel.app/api?username=vophuthinh&show_icons=true&theme=transparent&hide_border=true&title_color=ec1839&icon_color=ec1839&text_color=a0a0a0&count_private=true"
+                        alt="GitHub Stats"
+                        loading="lazy"
+                        onerror="this.style.display='none'"
+                      />
+                      <img
+                        src="https://github-readme-stats.vercel.app/api/top-langs/?username=vophuthinh&layout=compact&theme=transparent&hide_border=true&title_color=ec1839&text_color=a0a0a0&langs_count=5"
+                        alt="Top Languages"
+                        loading="lazy"
+                        onerror="this.style.display='none'"
+                      />
                     </div>
                     <div class="row">
                       <div class="info-item padd-15">
@@ -840,6 +839,15 @@
                                 processing
                               </li>
                             </ul>
+                            <div class="timeline-tags">
+                              <span class="tl-tag">Python</span>
+                              <span class="tl-tag">FastAPI</span>
+                              <span class="tl-tag">LangChain</span>
+                              <span class="tl-tag">OpenAI</span>
+                              <span class="tl-tag">Qdrant</span>
+                              <span class="tl-tag">n8n</span>
+                              <span class="tl-tag">Next.js</span>
+                            </div>
                           </div>
                           <div class="timeline-item">
                             <div class="circle-dot"></div>
@@ -855,7 +863,7 @@
                             <ul class="timeline-details">
                               <li>
                                 Built 10+ automation workflows using n8n, Power
-                                Platform, and UiPath — cutting manual reporting
+                                Platform, and UiPath, cutting manual reporting
                                 time by ~60%
                               </li>
                               <li>
@@ -864,6 +872,13 @@
                                 internal teams
                               </li>
                             </ul>
+                            <div class="timeline-tags">
+                              <span class="tl-tag">n8n</span>
+                              <span class="tl-tag">Power Platform</span>
+                              <span class="tl-tag">UiPath</span>
+                              <span class="tl-tag">Python</span>
+                              <span class="tl-tag">SQL</span>
+                            </div>
                           </div>
                           <div class="timeline-item">
                             <div class="circle-dot"></div>
@@ -881,10 +896,16 @@
                                 that later evolved into the D-DAY 2025 product
                               </li>
                               <li>
-                                Promoted to full-time after 6 months — fastest
+                                Promoted to full-time after 6 months, the fastest
                                 intern-to-engineer track in the team
                               </li>
                             </ul>
+                            <div class="timeline-tags">
+                              <span class="tl-tag">Python</span>
+                              <span class="tl-tag">GPT-4o</span>
+                              <span class="tl-tag">n8n</span>
+                              <span class="tl-tag">JavaScript</span>
+                            </div>
                           </div>
                           <div class="timeline-item">
                             <div class="circle-dot"></div>
@@ -904,6 +925,11 @@
                                 content, SEO, and analytics
                               </li>
                             </ul>
+                            <div class="timeline-tags">
+                              <span class="tl-tag">WordPress</span>
+                              <span class="tl-tag">SEO</span>
+                              <span class="tl-tag">Google Analytics</span>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -932,13 +958,11 @@
               <!-- Programming & Data Science -->
               <div class="skills-content padd-15">
                 <div class="row">
-                  <div class="skills-text padd-15">
+                  <div class="skills-text padd-15" style="--cat-color: #3776ab">
                     <h3>
-                      <i
-                        class="fa fa-code"
-                        style="color: var(--skin-color); margin-right: 10px"
-                      ></i
-                      >Programming & Data Science
+                      <i class="fa fa-code"></i>
+                      Programming
+                      <span class="skill-level-badge level-proficient">Proficient</span>
                     </h3>
                     <div class="skills-icons">
                       <div
@@ -983,13 +1007,11 @@
               <!-- Data & Analytics -->
               <div class="skills-content padd-15">
                 <div class="row">
-                  <div class="skills-text padd-15">
+                  <div class="skills-text padd-15" style="--cat-color: #336791">
                     <h3>
-                      <i
-                        class="fa fa-database"
-                        style="color: var(--skin-color); margin-right: 10px"
-                      ></i
-                      >Data & Analytics
+                      <i class="fa fa-database"></i>
+                      Data & Analytics
+                      <span class="skill-level-badge level-proficient">Proficient</span>
                     </h3>
                     <div class="skills-icons">
                       <div
@@ -1031,13 +1053,11 @@
               <!-- Machine Learning -->
               <div class="skills-content padd-15">
                 <div class="row">
-                  <div class="skills-text padd-15">
+                  <div class="skills-text padd-15" style="--cat-color: #ee4c2c">
                     <h3>
-                      <i
-                        class="fa fa-brain"
-                        style="color: var(--skin-color); margin-right: 10px"
-                      ></i
-                      >Machine Learning
+                      <i class="fa fa-brain"></i>
+                      Machine Learning
+                      <span class="skill-level-badge level-proficient">Proficient</span>
                     </h3>
                     <div class="skills-icons">
                       <div
@@ -1093,16 +1113,85 @@
                 </div>
               </div>
 
-              <!-- GenAI & LLM -->
+              <!-- Cloud & DevOps -->
               <div class="skills-content padd-15">
                 <div class="row">
-                  <div class="skills-text padd-15">
+                  <div class="skills-text padd-15" style="--cat-color: #ff9900">
                     <h3>
-                      <i
-                        class="fa fa-robot"
-                        style="color: var(--skin-color); margin-right: 10px"
-                      ></i
-                      >GenAI & LLM
+                      <i class="fa fa-cloud"></i>
+                      Cloud & DevOps
+                      <span class="skill-level-badge level-familiar">Familiar</span>
+                    </h3>
+                    <div class="skills-icons">
+                      <div
+                        class="skill-icon"
+                        title="AWS"
+                        style="--skill-accent: #ff9900"
+                      >
+                        <i class="fa-brands fa-aws" aria-hidden="true"></i
+                        ><span>AWS</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="Google Cloud"
+                        style="--skill-accent: #4285f4"
+                      >
+                        <i class="fa-brands fa-google" aria-hidden="true"></i
+                        ><span>Google Cloud</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="Azure"
+                        style="--skill-accent: #0089d6"
+                      >
+                        <i class="fa-brands fa-microsoft" aria-hidden="true"></i
+                        ><span>Azure</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="Docker"
+                        style="--skill-accent: #2496ed"
+                      >
+                        <i class="fa-brands fa-docker" aria-hidden="true"></i
+                        ><span>Docker</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="Git"
+                        style="--skill-accent: #f05032"
+                      >
+                        <i class="fa-brands fa-git-alt" aria-hidden="true"></i
+                        ><span>Git</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="GitHub"
+                        style="--skill-accent: #6e5494"
+                      >
+                        <i class="fa-brands fa-github" aria-hidden="true"></i
+                        ><span>GitHub</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="Linux"
+                        style="--skill-accent: #fcc624"
+                      >
+                        <i class="fa-brands fa-linux" aria-hidden="true"></i
+                        ><span>Linux</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- GenAI & LLM -->
+              <div class="skills-content skills-featured padd-15">
+                <div class="row">
+                  <div class="skills-text padd-15" style="--cat-color: #8b5cf6">
+                    <h3>
+                      <i class="fa fa-robot"></i>
+                      GenAI & LLM
+                      <span class="skill-level-badge level-expert">Expert</span>
                     </h3>
                     <div class="skills-icons">
                       <div
@@ -1210,89 +1299,14 @@
                 </div>
               </div>
 
-              <!-- Cloud & DevOps -->
-              <div class="skills-content padd-15">
-                <div class="row">
-                  <div class="skills-text padd-15">
-                    <h3>
-                      <i
-                        class="fa fa-cloud"
-                        style="color: var(--skin-color); margin-right: 10px"
-                      ></i
-                      >Cloud & DevOps
-                    </h3>
-                    <div class="skills-icons">
-                      <div
-                        class="skill-icon"
-                        title="AWS"
-                        style="--skill-accent: #ff9900"
-                      >
-                        <i class="fa-brands fa-aws" aria-hidden="true"></i
-                        ><span>AWS</span>
-                      </div>
-                      <div
-                        class="skill-icon"
-                        title="Google Cloud"
-                        style="--skill-accent: #4285f4"
-                      >
-                        <i class="fa-brands fa-google" aria-hidden="true"></i
-                        ><span>Google Cloud</span>
-                      </div>
-                      <div
-                        class="skill-icon"
-                        title="Azure"
-                        style="--skill-accent: #0089d6"
-                      >
-                        <i class="fa-brands fa-microsoft" aria-hidden="true"></i
-                        ><span>Azure</span>
-                      </div>
-                      <div
-                        class="skill-icon"
-                        title="Docker"
-                        style="--skill-accent: #2496ed"
-                      >
-                        <i class="fa-brands fa-docker" aria-hidden="true"></i
-                        ><span>Docker</span>
-                      </div>
-                      <div
-                        class="skill-icon"
-                        title="Git"
-                        style="--skill-accent: #f05032"
-                      >
-                        <i class="fa-brands fa-git-alt" aria-hidden="true"></i
-                        ><span>Git</span>
-                      </div>
-                      <div
-                        class="skill-icon"
-                        title="GitHub"
-                        style="--skill-accent: #6e5494"
-                      >
-                        <i class="fa-brands fa-github" aria-hidden="true"></i
-                        ><span>GitHub</span>
-                      </div>
-                      <div
-                        class="skill-icon"
-                        title="Linux"
-                        style="--skill-accent: #fcc624"
-                      >
-                        <i class="fa-brands fa-linux" aria-hidden="true"></i
-                        ><span>Linux</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
               <!-- Familiar -->
               <div class="skills-content padd-15">
                 <div class="row">
-                  <div class="skills-text padd-15">
+                  <div class="skills-text padd-15" style="--cat-color: #f59e0b">
                     <h3>
-                      <i
-                        class="fa fa-seedling"
-                        style="color: var(--skin-color); margin-right: 10px"
-                      ></i
-                      >Familiar
+                      <i class="fa fa-seedling"></i>
+                      Familiar
+                      <span class="skill-level-badge level-familiar">Familiar</span>
                     </h3>
                     <div class="skills-icons">
                       <div
@@ -1333,32 +1347,10 @@
                       </div>
                       <div
                         class="skill-icon skill-familiar"
-                        title="Ollama"
-                        style="--skill-accent: #7c3aed"
-                      >
-                        <i class="fa fa-server"></i><span>Ollama</span>
-                      </div>
-                      <div
-                        class="skill-icon skill-familiar"
-                        title="vLLM"
-                        style="--skill-accent: #0ea5e9"
-                      >
-                        <i class="fa fa-bolt"></i><span>vLLM</span>
-                      </div>
-                      <div
-                        class="skill-icon skill-familiar"
                         title="Pydantic"
                         style="--skill-accent: #e92063"
                       >
                         <i class="fa fa-shield-halved"></i><span>Pydantic</span>
-                      </div>
-                      <div
-                        class="skill-icon skill-familiar"
-                        title="Kubernetes"
-                        style="--skill-accent: #326ce5"
-                      >
-                        <i class="fa-solid fa-cubes" aria-hidden="true"></i
-                        ><span>Kubernetes</span>
                       </div>
                       <div
                         class="skill-icon skill-familiar"
@@ -1381,6 +1373,43 @@
                         style="--skill-accent: #7c3aed"
                       >
                         <i class="fa fa-memory"></i><span>mem0</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Exploring -->
+              <div class="skills-content padd-15">
+                <div class="row">
+                  <div class="skills-text padd-15" style="--cat-color: #7c3aed">
+                    <h3>
+                      <i class="fa fa-flask"></i>
+                      Exploring
+                      <span class="skill-level-badge level-learning">Learning</span>
+                    </h3>
+                    <div class="skills-icons">
+                      <div
+                        class="skill-icon skill-exploring"
+                        title="Ollama — Local LLM Inference"
+                        style="--skill-accent: #7c3aed"
+                      >
+                        <i class="fa fa-server"></i><span>Ollama</span>
+                      </div>
+                      <div
+                        class="skill-icon skill-exploring"
+                        title="vLLM — High-throughput LLM Serving"
+                        style="--skill-accent: #0ea5e9"
+                      >
+                        <i class="fa fa-bolt"></i><span>vLLM</span>
+                      </div>
+                      <div
+                        class="skill-icon skill-exploring"
+                        title="Kubernetes — Container Orchestration"
+                        style="--skill-accent: #326ce5"
+                      >
+                        <i class="fa-solid fa-cubes" aria-hidden="true"></i
+                        ><span>Kubernetes</span>
                       </div>
                     </div>
                   </div>
@@ -1500,7 +1529,7 @@
                       <i class="fa fa-award"></i>
                     </div>
                     <div class="cert-header">
-                      <h3>2nd Prize — "AI in Business" Competition</h3>
+                      <h3>2nd Prize: "AI in Business" Competition</h3>
                       <span class="cert-type award-type">Award</span>
                     </div>
                     <div class="cert-footer">
@@ -1538,7 +1567,7 @@
                       <i class="fa fa-award"></i>
                     </div>
                     <div class="cert-header">
-                      <h3>3rd Prize — "AI in Business" Competition</h3>
+                      <h3>3rd Prize: "AI in Business" Competition</h3>
                       <span class="cert-type award-type">Award</span>
                     </div>
                     <div class="cert-footer">
@@ -1826,7 +1855,7 @@
             <h3 class="contact-title padd-15">Get In Touch</h3>
             <p class="contact-subtitle padd-15">
               Whether it's a job opportunity, a collaboration, or just a
-              question — I'd love to hear from you.
+              question, I'd love to hear from you.
             </p>
             <div class="row contact-cards-row">
               <!-- Contact Info Item Start -->

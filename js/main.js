@@ -14,6 +14,7 @@ import { ContactCardsController } from "./modules/contact-cards.js";
 import { ScrollController } from "./modules/scroll.js";
 import { AppInitializer, initPreloaderAndAnimations } from "./modules/init.js";
 import { ResponsiveImagesController } from "./modules/responsive-images.js";
+import { initScrollReveal } from "./modules/scroll-reveal.js";
 
 inject();
 injectSpeedInsights();
@@ -66,6 +67,9 @@ document.addEventListener("DOMContentLoaded", function () {
   const contactCards = new ContactCardsController();
   const scroll = new ScrollController();
   const responsiveImages = new ResponsiveImagesController();
+
+  // Scroll reveal animations
+  initScrollReveal();
 
   // Log successful initialization
   const logger = Logger;
