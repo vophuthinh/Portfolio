@@ -37,7 +37,15 @@
       "Bash(awk 'NR>=3656 && NR<=3770 {print NR\": \"$0}' /Users/vophuthinh/Code/Portfolio/assets/css/style.css)",
       "Bash(awk 'NR>=1238 && NR<=1310 {print NR\": \"$0}' /Users/vophuthinh/Code/Portfolio/assets/css/style.css)",
       "Bash(awk 'NR>=5570 && NR<=5620 {print NR\": \"$0}' /Users/vophuthinh/Code/Portfolio/assets/css/style.css)",
-      "Bash(awk 'NR>=4679 && NR<=4695 {print NR\": \"$0}' /Users/vophuthinh/Code/Portfolio/assets/css/style.css)"
+      "Bash(awk 'NR>=4679 && NR<=4695 {print NR\": \"$0}' /Users/vophuthinh/Code/Portfolio/assets/css/style.css)",
+      "Bash(awk 'NR>=4435 && NR<=4450 {print NR\": \"$0}' /Users/vophuthinh/Code/Portfolio/assets/css/style.css)",
+      "Bash(node --check js/main.js js/utils.js js/config.js js/projects-data.js)",
+      "Bash(grep -E \"\\\\.\\(js\\)$\")",
+      "Bash(npm test *)",
+      "Bash(lsof -ti:3002)",
+      "Bash(git -C /Users/vophuthinh/Code/Portfolio log --oneline -5)",
+      "Bash(python3)",
+      "Bash(awk 'NR>=938 && NR<=1020 {print NR\": \"$0}' /Users/vophuthinh/Code/Portfolio/assets/css/style.css)"
     ],
     "additionalDirectories": [
       "/tmp",
