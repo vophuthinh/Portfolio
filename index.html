@@ -467,24 +467,27 @@
     <!-- PWA Manifest -->
     <link rel="manifest" href="./assets/favicon/manifest.json" />
 
-    <!-- Font Preconnect for Performance -->
+    <!-- Preconnect for critical third-party origins -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <!-- DNS Prefetch for CDN Performance -->
-    <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+    <!-- DNS Prefetch for remaining CDNs -->
     <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
     <link rel="dns-prefetch" href="https://unpkg.com" />
     <!-- Preload Critical Assets -->
     <link rel="preload" href="./assets/css/style.css" as="style" />
     <link rel="preload" href="./assets/images/hero.webp" as="image" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Poppins:wght@300;400;500;600;700&display=swap"
-    />
+    <!-- Fonts and icons loaded async by font-loader.js to avoid render-blocking -->
     <noscript>
       <link
-        href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Poppins:wght@300;400;500;600;700&display=swap"
         rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Poppins:wght@300;400;500;600;700&display=swap"
+      />
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
       />
     </noscript>
 
@@ -504,14 +507,6 @@
         --skin-gradient-light: rgba(255, 107, 157, 0.1);
       }
     </style>
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
     <!-- AOS CSS removed to reduce render-blocking third-party requests -->
   </head>
 
@@ -649,7 +644,7 @@
             </div>
             <div class="row">
               <div class="about-content padd-15">
-                <div class="row">
+                <div class="row about-top-row">
                   <div class="about-text padd-15">
                     <h3>I'm Vo Phu Thinh, an <span>AI Engineer</span></h3>
                     <p>
@@ -709,9 +704,29 @@
                       </li>
                     </ul>
                   </div>
-                </div>
-                <div class="row">
                   <div class="personal-info padd-15">
+                    <div class="about-profile-img">
+                      <img
+                        src="./assets/images/hero.webp"
+                        alt="Vo Phu Thinh - AI Engineer"
+                        loading="lazy"
+                        decoding="async"
+                      />
+                    </div>
+                    <div class="about-stats">
+                      <div class="stat-item">
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">AI Products</span>
+                      </div>
+                      <div class="stat-item">
+                        <span class="stat-number">2</span>
+                        <span class="stat-label">Awards Won</span>
+                      </div>
+                      <div class="stat-item">
+                        <span class="stat-number">850+</span>
+                        <span class="stat-label">Q&A / Day</span>
+                      </div>
+                    </div>
                     <div class="row">
                       <div class="info-item padd-15">
                         <p>Website: <span>vophuthinh.com</span></p>
@@ -1983,6 +1998,8 @@
       </div>
     </div>
 
+    <!-- Load fonts and icons async to avoid render-blocking -->
+    <script src="/js/font-loader.js" defer></script>
     <!-- WebMCP: Allow AI assistants to interact with this portfolio -->
     <script src="/js/webmcp.js" defer></script>
     <script src="/js/webmcp-tools.js" defer></script>

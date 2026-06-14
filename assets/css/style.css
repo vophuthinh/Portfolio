@@ -786,8 +786,8 @@ h2.my-profession .typed-cursor {
 }
 
 .about .about-content .about-text {
-  flex: 0 0 100%;
-  max-width: 100%;
+  flex: 0 0 60%;
+  max-width: 60%;
 }
 
 .about .about-content .about-text h3 {
@@ -846,9 +846,67 @@ h2.my-profession .typed-cursor {
 }
 
 .about .about-content .personal-info {
-  flex: 0 0 100%;
-  max-width: 100%;
-  margin-top: 20px;
+  flex: 0 0 40%;
+  max-width: 40%;
+  margin-top: 0;
+  padding-left: 30px;
+}
+
+.about-profile-img {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.about-profile-img img {
+  width: 148px;
+  height: 148px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center 5%;
+  border: 3px solid var(--skin-color);
+  box-shadow: 0 0 24px var(--skin-color-02);
+  transition: box-shadow 0.3s;
+}
+
+.about-profile-img img:hover {
+  box-shadow: 0 0 32px var(--skin-color-04);
+}
+
+.about-stats {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 22px;
+}
+
+.about-stats .stat-item {
+  flex: 1;
+  text-align: center;
+  padding: 12px 6px;
+  background: var(--bg-black-50);
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: border-color 0.3s;
+}
+
+.about-stats .stat-item:hover {
+  border-color: var(--skin-color);
+}
+
+.about-stats .stat-number {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--skin-color);
+  line-height: 1;
+}
+
+.about-stats .stat-label {
+  display: block;
+  font-size: 11px;
+  color: var(--text-black-700);
+  margin-top: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
 }
 
 .about .about-content .personal-info .info-item {
@@ -4360,6 +4418,21 @@ body.dark .contact .contact-form .form-label {
     opacity: 0.72;
     transform: none;
     cursor: not-allowed;
+  }
+
+  .about .about-content .about-text,
+  .about .about-content .personal-info {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding-left: 15px;
+  }
+
+  .about-profile-img {
+    display: none;
+  }
+
+  .about-stats {
+    justify-content: center;
   }
 
   .about .about-content .personal-info .info-item {
