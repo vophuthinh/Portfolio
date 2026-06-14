@@ -15,6 +15,7 @@ export class AppInitializer {
     this.updateExperienceDuration();
     this.setupThemeToggle();
     this.setupStatCounters();
+    this.setupHeroMetrics();
   }
 
   getLogger() {
@@ -222,6 +223,53 @@ export class AppInitializer {
         }
       });
     });
+  }
+
+  setupHeroMetrics() {
+    const metrics = document.querySelectorAll(".hero-metric-value");
+    if (!metrics.length) return;
+
+    const easeOutExpo = (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
+
+    const animateMetric = (el, delay = 0) => {
+      const target = parseInt(el.dataset.target, 10);
+      const suffix = el.dataset.suffix || "";
+      const textValue = el.dataset.text || "";
+      const duration = 1800;
+
+      // If it's a text value (like "Zero"), just reveal it
+      if (textValue) {
+        setTimeout(() => {
+          el.textContent = textValue;
+          el.classList.add("counted");
+        }, delay);
+        return;
+      }
+
+      setTimeout(() => {
+        const start = performance.now();
+        const tick = (now) => {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = easeOutExpo(progress);
+          const current = Math.round(eased * target);
+          el.textContent = current + suffix;
+          if (progress < 1) {
+            requestAnimationFrame(tick);
+          } else {
+            el.classList.add("counted");
+          }
+        };
+        requestAnimationFrame(tick);
+      }, delay);
+    };
+
+    // Trigger after preloader hides (slight delay for visual impact)
+    setTimeout(() => {
+      metrics.forEach((el, i) => {
+        animateMetric(el, i * 200);
+      });
+    }, 800);
   }
 }
 

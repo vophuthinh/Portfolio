@@ -36,6 +36,17 @@ const projectsData = [
     link: null,
     github: null,
     image: "./assets/images/portfolio/Chatbot D-Day 2025.webp",
+    architecture: {
+      description:
+        "User → JS Chat Widget → n8n Workflow → Vector Store (RAG) → GPT-4o → Grounded Answer",
+      nodes: [
+        "Chat Widget",
+        "n8n Orchestrator",
+        "Vector Store",
+        "GPT-4o",
+        "Google Sheets",
+      ],
+    },
   },
   {
     id: 2,
@@ -73,6 +84,11 @@ const projectsData = [
     link: null,
     github: null,
     image: "./assets/images/portfolio/Lyly Assistant.webp",
+    architecture: {
+      description:
+        "User (Voice/Text) → WebSocket Gateway → FastAPI → Gemini LLM + Qdrant RAG + mem0 Memory → Multi-step Planner → Response",
+      nodes: ["WebSocket", "FastAPI", "Gemini", "Qdrant", "mem0", "Planner"],
+    },
   },
   {
     id: 3,
@@ -102,6 +118,11 @@ const projectsData = [
     link: null,
     github: null,
     image: "./assets/images/portfolio/Soc Do La.webp",
+    architecture: {
+      description:
+        "News Sources → Python Crawler → n8n Pipeline → OpenAI Classification & Summary → Microsoft Viva Engage Distribution",
+      nodes: ["News Sources", "Python Crawler", "n8n", "OpenAI", "Viva Engage"],
+    },
   },
   {
     id: 4,

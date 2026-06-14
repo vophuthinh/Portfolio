@@ -290,6 +290,28 @@ export class ProjectsController {
         )
         .join("");
 
+      // Architecture flow diagram
+      let architectureHtml = "";
+      if (project.architecture && project.architecture.nodes) {
+        const flowNodes = project.architecture.nodes
+          .map(
+            (node) => `<span class="arch-node">${this.escapeHtml(node)}</span>`,
+          )
+          .join(
+            '<span class="arch-arrow"><i class="fas fa-arrow-right"></i></span>',
+          );
+        architectureHtml = `
+          <div class="modal-section modal-section-architecture">
+            <div class="modal-section-icon"><i class="fa fa-project-diagram"></i></div>
+            <div class="modal-section-content">
+              <h3>Architecture</h3>
+              <div class="arch-flow">${flowNodes}</div>
+              <p class="arch-description">${this.escapeHtml(project.architecture.description)}</p>
+            </div>
+          </div>
+        `;
+      }
+
       const hasGithub = project.github && project.github !== "#";
       const hasLink = project.link && project.link !== "#";
 
@@ -326,6 +348,8 @@ export class ProjectsController {
               <p>${this.escapeHtml(project.solution)}</p>
             </div>
           </div>
+
+          ${architectureHtml}
 
           <div class="modal-section modal-section-tech">
             <div class="modal-section-icon"><i class="fa fa-code"></i></div>
@@ -367,12 +391,18 @@ export class ProjectsController {
 
   setupCardSpotlight() {
     if (!this.projectsGrid) return;
-    this.projectsGrid.addEventListener('mousemove', (e) => {
-      const card = e.target.closest('.project-card');
+    this.projectsGrid.addEventListener("mousemove", (e) => {
+      const card = e.target.closest(".project-card");
       if (!card) return;
       const rect = card.getBoundingClientRect();
-      card.style.setProperty('--mouse-x', ((e.clientX - rect.left) / rect.width * 100).toFixed(1) + '%');
-      card.style.setProperty('--mouse-y', ((e.clientY - rect.top) / rect.height * 100).toFixed(1) + '%');
+      card.style.setProperty(
+        "--mouse-x",
+        (((e.clientX - rect.left) / rect.width) * 100).toFixed(1) + "%",
+      );
+      card.style.setProperty(
+        "--mouse-y",
+        (((e.clientY - rect.top) / rect.height) * 100).toFixed(1) + "%",
+      );
     });
   }
 }
