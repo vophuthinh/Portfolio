@@ -148,6 +148,10 @@ export class ProjectsController {
         ? `<span class="btn-card btn-internal-card" title="Internal company project"><i class="fas fa-lock"></i> <span>Internal Project</span></span>`
         : "";
 
+    const heroMetricHtml = project.heroMetric
+      ? `<div class="project-hero-metric"><span class="hero-metric-num">${this.escapeHtml(project.heroMetric.value)}</span><span class="hero-metric-lbl">${this.escapeHtml(project.heroMetric.label)}</span></div>`
+      : "";
+
     return `
       <div class="project-item" data-category="${project.category}" data-project-id="${project.id}">
         <div class="project-card">
@@ -156,6 +160,7 @@ export class ProjectsController {
           </div>
           <div class="project-content">
             <h3 class="project-title">${this.escapeHtml(project.title)}</h3>
+            ${heroMetricHtml}
             <p class="project-summary">${this.escapeHtml(project.summary)}</p>
             ${impactChips ? `<div class="project-impact-chips">${impactChips}</div>` : ""}
             <div class="project-tech-chips">

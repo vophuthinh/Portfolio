@@ -11,6 +11,7 @@ const projectsData = [
       "Attendees and organizers at HPT D-DAY 2025 (Pullman Hanoi) needed instant, accurate answers about the event schedule, speakers, breakout sessions, booth locations, and partner information. The onsite support team couldn't handle the volume manually, and any incorrect information would damage the event experience.",
     solution:
       "Replaced manual Q&A support with a zero-hallucination AI chatbot that served 850+ attendees. Architecture: official event data (Excel files) chunked into a vector store, retrieved via semantic search, and answered by GPT-4o with strict grounding — if the data doesn't exist, the bot says so. Frontend: custom JS chat widget on dday.hpt.vn with session management and XSS protection. Backend: n8n workflow connecting GPT-4o with Google Sheets so organizers could update content in real-time without touching code.",
+    heroMetric: { value: "850+", label: "Q&A Handled" },
     stack: [
       "n8n",
       "OpenAI",
@@ -58,6 +59,7 @@ const projectsData = [
       "HPT's executive team needed faster, data-driven decision-making across business units, but existing tools couldn't unify document retrieval, real-time conversation, and multi-step analysis into one coherent workflow.",
     solution:
       'Delivered a production-grade AI assistant that executives actually use for decision support. Key capabilities: real-time text & voice conversations via WebSocket, RAG with hybrid search (vector + keyword) and self-healing retrieval, multi-step reasoning that breaks complex questions into executable plans, voice pipeline with interrupt handling, and memory that learns user preferences over time. Built with FastAPI backend + Next.js frontend, powered by Gemini and Qdrant vector DB. Won 2nd prize in HPT\'s "AI in Business" competition.',
+    heroMetric: { value: "2nd", label: "Prize" },
     stack: [
       "Python",
       "FastAPI",
@@ -100,6 +102,7 @@ const projectsData = [
       "HPT's internal communications, business development, and strategy teams lacked a unified system to collect, analyze, and distribute business intelligence. Staff spent excessive time manually searching news from domestic and international press, government portals, industry reports, and conferences — leading to delays and inconsistent information quality.",
     solution:
       'Automated the entire intelligence pipeline that previously took staff hours of manual searching. The platform collects news from press, government portals, industry reports, and conferences, then uses AI to classify content by strategic domains (Banking, Government, Manufacturing, Cybersecurity, AI & Tech), generate summaries with actionable recommendations, and distribute weekly/monthly newsletters via Microsoft Viva Engage — all without human intervention. Won 3rd prize in HPT\'s "AI in Business" competition.',
+    heroMetric: { value: "8,500+", label: "Views" },
     stack: ["Python", "n8n", "OpenAI", "Microsoft Viva Engage", "Automation"],
     impact: [
       { label: "Award", value: "3rd Prize" },
@@ -134,6 +137,7 @@ const projectsData = [
       "Sellers and administrators on multi-vendor platforms had no automated way to understand customer sentiment from product reviews, making it difficult to identify issues and improve products or services.",
     solution:
       "Gave sellers visibility into what customers actually think. Built a full multi-vendor e-commerce platform with integrated AI sentiment analysis — Hugging Face BERTweet automatically classifies every review as positive or negative, surfacing trends sellers couldn't see before. Includes real-time chat (Socket.io), Stripe/PayPal payments, and Cloudinary image storage.",
+    heroMetric: { value: "AI", label: "Sentiment" },
     stack: [
       "React",
       "Node.js",
