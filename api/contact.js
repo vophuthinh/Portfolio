@@ -36,38 +36,47 @@ const EMAIL_CONFIG = {
  * protection, use Vercel KV / Upstash Redis.
  * The Map is capped at MAX_TRACKED_IPS to prevent memory leaks.
  */
-const MAX_TRACKED_IPS = 500;
-const rateLimitStore = new Map();
+export const MAX_TRACKED_IPS = 500;
 
-function checkRateLimit(ip) {
-  const now = Date.now();
-  const hourAgo = now - 3600000;
+export function createRateLimiter(
+  maxRequests = EMAIL_CONFIG.RATE_LIMIT,
+  store = new Map(),
+) {
+  return function checkRateLimit(ip, now = Date.now()) {
+    const hourAgo = now - 3600000;
 
-  if (!rateLimitStore.has(ip)) {
-    // Evict oldest entries when store is full
-    if (rateLimitStore.size >= MAX_TRACKED_IPS) {
-      const oldestKey = rateLimitStore.keys().next().value;
-      rateLimitStore.delete(oldestKey);
+    if (!store.has(ip)) {
+      // Evict oldest entries when store is full
+      if (store.size >= MAX_TRACKED_IPS) {
+        const oldestKey = store.keys().next().value;
+        store.delete(oldestKey);
+      }
+      store.set(ip, []);
     }
-    rateLimitStore.set(ip, []);
-  }
 
-  const requests = rateLimitStore.get(ip).filter((time) => time > hourAgo);
+    const requests = store.get(ip).filter((time) => time > hourAgo);
 
-  if (requests.length >= EMAIL_CONFIG.RATE_LIMIT) {
-    return false;
-  }
+    if (requests.length >= maxRequests) {
+      return false;
+    }
 
-  requests.push(now);
-  rateLimitStore.set(ip, requests);
+    requests.push(now);
+    store.set(ip, requests);
 
-  return true;
+    return true;
+  };
 }
+
+const rateLimitStore = new Map();
+export const checkRateLimit = createRateLimiter(
+  EMAIL_CONFIG.RATE_LIMIT,
+  rateLimitStore,
+);
 
 /**
  * Validate email format
  */
-function validateEmail(email) {
+export function validateEmail(email) {
   const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   return re.test(email);
 }
@@ -75,7 +84,7 @@ function validateEmail(email) {
 /**
  * Sanitize input to prevent injection (XSS, CRLF/header injection)
  */
-function sanitizeInput(str) {
+export function sanitizeInput(str) {
   if (typeof str !== "string") return "";
   return str
     .trim()

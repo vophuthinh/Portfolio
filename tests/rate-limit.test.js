@@ -1,37 +1,5 @@
 import { describe, it, expect } from "vitest";
-
-/**
- * Replicate rate limiting logic from api/contact.js for unit testing
- */
-const MAX_TRACKED_IPS = 500;
-
-function createRateLimiter(maxRequests = 5) {
-  const store = new Map();
-
-  return function checkRateLimit(ip) {
-    const now = Date.now();
-    const hourAgo = now - 3600000;
-
-    if (!store.has(ip)) {
-      if (store.size >= MAX_TRACKED_IPS) {
-        const oldestKey = store.keys().next().value;
-        store.delete(oldestKey);
-      }
-      store.set(ip, []);
-    }
-
-    const requests = store.get(ip).filter((time) => time > hourAgo);
-
-    if (requests.length >= maxRequests) {
-      return false;
-    }
-
-    requests.push(now);
-    store.set(ip, requests);
-
-    return true;
-  };
-}
+import { createRateLimiter, MAX_TRACKED_IPS } from "../api/contact.js";
 
 describe("Rate Limiter", () => {
   it("should allow requests under the limit", () => {

@@ -1,20 +1,5 @@
 import { describe, it, expect } from "vitest";
-
-/**
- * Replicate escapeHtml from js/utils.js for unit testing (without DOM)
- * Uses the same regex-based approach as production code.
- */
-function escapeHtml(text) {
-  if (typeof text !== "string") return "";
-  const map = {
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;",
-  };
-  return text.replace(/[&<>"']/g, (m) => map[m]);
-}
+import { escapeHtml } from "../js/utils.js";
 
 describe("escapeHtml", () => {
   it("should escape HTML special characters", () => {

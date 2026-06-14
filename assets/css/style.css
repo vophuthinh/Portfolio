@@ -7459,42 +7459,85 @@ body:not(.dark) .about-profile-img img {
 
 .skills .skills-overview {
   display: grid;
-  grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr);
-  gap: 18px;
+  grid-template-columns: minmax(0, 1.65fr) minmax(280px, 0.95fr);
+  gap: 22px;
   align-items: center;
-  padding: 24px 28px;
+  padding: 28px 30px;
   border-radius: 24px;
   border: 1px solid rgba(var(--skin-color-rgb), 0.12);
   background:
+    radial-gradient(
+      circle at top left,
+      rgba(var(--skin-color-rgb), 0.13),
+      transparent 42%
+    ),
     linear-gradient(135deg, rgba(var(--skin-color-rgb), 0.08), transparent 58%),
     var(--bg-black-100);
   box-shadow: 0 18px 36px rgba(15, 23, 42, 0.1);
 }
 
-.skills .skills-overview-text {
-  margin: 0;
-  max-width: 64ch;
-  font-size: 15px;
-  line-height: 1.8;
-  color: var(--text-black-700);
-}
-
-.skills .skills-overview-tags {
+.skills .skills-overview-copy {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
+  flex-direction: column;
   gap: 10px;
 }
 
-.skills .skills-overview-tags span {
-  padding: 10px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(var(--skin-color-rgb), 0.16);
-  background: rgba(var(--skin-color-rgb), 0.06);
-  font-size: 12px;
+.skills .skills-overview-kicker {
+  font-family: "Share Tech Mono", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--skin-color);
+}
+
+.skills .skills-overview-title {
+  margin: 0;
+  max-width: 17ch;
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
+  color: var(--text-black-900);
+}
+
+.skills .skills-overview-text {
+  margin: 0;
+  max-width: 62ch;
+  font-size: 15px;
+  line-height: 1.85;
+  color: var(--text-black-700);
+}
+
+.skills .skills-overview-signals {
+  display: grid;
+  gap: 12px;
+}
+
+.skills .skills-signal {
+  padding: 14px 16px;
+  border-radius: 18px;
+  border: 1px solid rgba(var(--skin-color-rgb), 0.12);
+  background: rgba(var(--skin-color-rgb), 0.05);
+}
+
+.skills .skills-signal-label {
+  display: block;
+  margin-bottom: 6px;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-black-700);
+}
+
+.skills .skills-signal strong {
+  display: block;
+  font-size: 14px;
+  line-height: 1.5;
   font-weight: 600;
   color: var(--text-black-900);
-  white-space: nowrap;
 }
 
 .skills .skills-board {
@@ -7593,6 +7636,7 @@ body:not(.dark) .about-profile-img img {
 }
 
 .skills .skills-card-kicker {
+  font-family: "Share Tech Mono", monospace;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -7604,6 +7648,7 @@ body:not(.dark) .about-profile-img img {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  font-family: "Share Tech Mono", monospace;
   padding: 6px 10px;
   border-radius: 999px;
   border: 1px solid color-mix(in srgb, var(--cat-color) 22%, transparent);
@@ -7664,6 +7709,16 @@ body:not(.dark) .about-profile-img img {
   color: var(--text-black-700);
 }
 
+.skills .skills-card-highlight {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid
+    color-mix(in srgb, var(--cat-color) 18%, rgba(255, 255, 255, 0.08));
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-black-900);
+}
+
 .skills .skills-shell .skills-card-featured .skills-card-description {
   max-width: 64ch;
 }
@@ -7687,6 +7742,7 @@ body:not(.dark) .about-profile-img img {
 .skills .skills-cluster-label {
   display: block;
   margin-bottom: 12px;
+  font-family: "Share Tech Mono", monospace;
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.14em;
@@ -7795,6 +7851,11 @@ body:not(.dark) .skills .skills-shell .skills-card.skills-text {
   border-color: color-mix(in srgb, var(--cat-color) 16%, #d6dce6);
 }
 
+body:not(.dark) .skills .skills-signal {
+  background: rgba(255, 255, 255, 0.72);
+  border-color: rgba(var(--skin-color-rgb), 0.12);
+}
+
 body:not(.dark) .skills .skills-cluster {
   background: color-mix(in srgb, var(--cat-color) 8%, #ffffff);
   border-color: color-mix(in srgb, var(--cat-color) 16%, #dbe3ee);
@@ -7812,11 +7873,12 @@ body:not(.dark) .skills .skills-shell .skill-icon:hover {
 @media (max-width: 991.98px) {
   .skills .skills-overview {
     grid-template-columns: 1fr;
-    padding: 22px 24px;
+    padding: 24px;
   }
 
-  .skills .skills-overview-tags {
-    justify-content: flex-start;
+  .skills .skills-overview-title {
+    max-width: 18ch;
+    font-size: 30px;
   }
 
   .skills .skills-board {
@@ -7848,8 +7910,10 @@ body:not(.dark) .skills .skills-shell .skill-icon:hover {
     border-radius: 20px;
   }
 
-  .skills .skills-overview-tags span {
-    padding: 8px 12px;
+  .skills .skills-overview-title {
+    max-width: none;
+    font-size: 24px;
+    line-height: 1.15;
   }
 
   .skills .skills-board {

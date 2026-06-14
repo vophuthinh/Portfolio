@@ -73,8 +73,7 @@ export class AppInitializer {
   }
 
   updateExperienceDuration() {
-    const calculateMonths = (startDateStr) => {
-      const startDate = new Date(startDateStr);
+    const calculateMonths = (startDate) => {
       const currentDate = new Date();
       const yearsDifference =
         currentDate.getFullYear() - startDate.getFullYear();
@@ -93,34 +92,45 @@ export class AppInitializer {
     };
 
     const timelineDates = document.querySelectorAll(".timeline-date");
+    const monthMap = {
+      Jan: 0,
+      Feb: 1,
+      Mar: 2,
+      Apr: 3,
+      May: 4,
+      Jun: 5,
+      Jul: 6,
+      Aug: 7,
+      Sep: 8,
+      Oct: 9,
+      Nov: 10,
+      Dec: 11,
+    };
+
     timelineDates.forEach((element) => {
-      const textContent = element.textContent;
-      if (textContent.includes("Now")) {
-        const startDateMatch = textContent.match(/([A-Za-z]{3}) (\d{4})/);
-        if (startDateMatch) {
-          const [_, monthStr, yearStr] = startDateMatch;
-          const monthMap = {
-            Jan: 0,
-            Feb: 1,
-            Mar: 2,
-            Apr: 3,
-            May: 4,
-            Jun: 5,
-            Jul: 6,
-            Aug: 7,
-            Sep: 8,
-            Oct: 9,
-            Nov: 10,
-            Dec: 11,
-          };
-          const startDate = new Date(parseInt(yearStr), monthMap[monthStr]);
-          const months = calculateMonths(startDate);
-          element.innerHTML = textContent.replace(
-            /\([^)]*mos\)/,
-            `(${formatDuration(months)})`,
-          );
-        }
+      const rawText =
+        element.dataset.rawTimelineText ||
+        element.textContent.replace(/\s+/g, " ").trim();
+
+      if (!element.dataset.rawTimelineText) {
+        element.dataset.rawTimelineText = rawText;
       }
+
+      if (!/\b(Present|Now)\b/.test(rawText)) return;
+
+      const startDateMatch = rawText.match(/([A-Za-z]{3}) (\d{4})/);
+      if (!startDateMatch) return;
+
+      const [, monthStr, yearStr] = startDateMatch;
+      const monthIndex = monthMap[monthStr];
+      if (monthIndex === undefined) return;
+
+      const startDate = new Date(parseInt(yearStr, 10), monthIndex);
+      const months = calculateMonths(startDate);
+      const labelText = rawText.replace(/\s*\([^)]*\)\s*$/, "");
+      const iconHtml = element.querySelector("i")?.outerHTML || "";
+
+      element.innerHTML = `${iconHtml}${iconHtml ? " " : ""}${labelText} (${formatDuration(months)})`;
     });
   }
 
@@ -144,22 +154,22 @@ export class AppInitializer {
   }
 
   setupHeroSpotlight() {
-    const homeSection = document.getElementById('home');
+    const homeSection = document.getElementById("home");
     if (!homeSection) return;
-    homeSection.addEventListener('mousemove', (e) => {
+    homeSection.addEventListener("mousemove", (e) => {
       const rect = homeSection.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width * 100).toFixed(1) + '%';
-      const y = ((e.clientY - rect.top) / rect.height * 100).toFixed(1) + '%';
-      homeSection.style.setProperty('--spotlight-x', x);
-      homeSection.style.setProperty('--spotlight-y', y);
+      const x = (((e.clientX - rect.left) / rect.width) * 100).toFixed(1) + "%";
+      const y = (((e.clientY - rect.top) / rect.height) * 100).toFixed(1) + "%";
+      homeSection.style.setProperty("--spotlight-x", x);
+      homeSection.style.setProperty("--spotlight-y", y);
     });
   }
 
   setupStatCounters() {
-    const statNumbers = document.querySelectorAll('.stat-number');
+    const statNumbers = document.querySelectorAll(".stat-number");
     if (!statNumbers.length) return;
 
-    const easeOutExpo = (t) => t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+    const easeOutExpo = (t) => (t === 1 ? 1 : 1 - Math.pow(2, -10 * t));
 
     const animateCounter = (el, target, suffix, duration = 1200, delay = 0) => {
       setTimeout(() => {
@@ -176,19 +186,22 @@ export class AppInitializer {
       }, delay);
     };
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        const el = entry.target;
-        const raw = el.textContent.trim();
-        const suffix = raw.replace(/[\d]/g, '');
-        const num = parseInt(raw.replace(/\D/g, ''), 10);
-        if (!isNaN(num)) {
-          animateCounter(el, num, suffix);
-        }
-        observer.unobserve(el);
-      });
-    }, { threshold: 0.5 });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target;
+          const raw = el.textContent.trim();
+          const suffix = raw.replace(/[\d]/g, "");
+          const num = parseInt(raw.replace(/\D/g, ""), 10);
+          if (!isNaN(num)) {
+            animateCounter(el, num, suffix);
+          }
+          observer.unobserve(el);
+        });
+      },
+      { threshold: 0.5 },
+    );
 
     statNumbers.forEach((el, i) => {
       el.dataset.target = el.textContent;
@@ -196,14 +209,14 @@ export class AppInitializer {
     });
 
     // Also trigger on sectionChange
-    document.addEventListener('sectionChange', () => {
+    document.addEventListener("sectionChange", () => {
       statNumbers.forEach((el) => {
         if (!el.dataset.animated) {
           const raw = el.dataset.target || el.textContent.trim();
-          const suffix = raw.replace(/[\d]/g, '');
-          const num = parseInt(raw.replace(/\D/g, ''), 10);
+          const suffix = raw.replace(/[\d]/g, "");
+          const num = parseInt(raw.replace(/\D/g, ""), 10);
           if (!isNaN(num)) {
-            el.dataset.animated = 'true';
+            el.dataset.animated = "true";
             animateCounter(el, num, suffix);
           }
         }

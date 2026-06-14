@@ -1,23 +1,5 @@
 import { describe, it, expect } from "vitest";
-
-/**
- * Replicate sanitizeInput from api/contact.js for unit testing
- */
-function sanitizeInput(str) {
-  if (typeof str !== "string") return "";
-  return str
-    .trim()
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/[\r\n]/g, " ")
-    .substring(0, 1000);
-}
-
-function validateEmail(email) {
-  const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return re.test(email);
-}
+import { sanitizeInput, validateEmail } from "../api/contact.js";
 
 describe("sanitizeInput", () => {
   it("should encode HTML angle brackets", () => {

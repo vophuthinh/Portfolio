@@ -49,7 +49,9 @@ const Logger = {
 };
 
 // Assign to window for non-module scripts
-window.AppConfig = AppConfig;
-window.Logger = Logger;
+if (typeof window !== "undefined") {
+  window.AppConfig = AppConfig;
+  window.Logger = Logger;
+}
 
 export { AppConfig, Logger };

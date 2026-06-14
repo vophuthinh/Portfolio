@@ -13,6 +13,8 @@ import contactHandler from "./api/contact.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+const DIST_DIR = path.join(__dirname, "dist");
+const INDEX_FILE = path.join(DIST_DIR, "index.html");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -74,11 +76,11 @@ function securityHeadersMiddleware(req, res, next) {
     "Content-Security-Policy",
     `
     default-src 'self';
-    script-src 'self' 'nonce-${nonce}' cdn.jsdelivr.net unpkg.com cdnjs.cloudflare.com;
+    script-src 'self' 'nonce-${nonce}' cdn.jsdelivr.net unpkg.com cdnjs.cloudflare.com va.vercel-scripts.com;
     style-src 'self' 'nonce-${nonce}' fonts.googleapis.com cdn.jsdelivr.net cdnjs.cloudflare.com unpkg.com;
     font-src 'self' fonts.gstatic.com cdnjs.cloudflare.com cdn.jsdelivr.net data:;
-    img-src 'self' data: cdn.jsdelivr.net cdnjs.cloudflare.com;
-    connect-src 'self' cdn.jsdelivr.net cdnjs.cloudflare.com api.emailjs.com;
+    img-src 'self' data: cdn.jsdelivr.net cdnjs.cloudflare.com github-readme-stats.vercel.app;
+    connect-src 'self' cdn.jsdelivr.net cdnjs.cloudflare.com api.emailjs.com va.vercel-analytics.com vitals.vercel-insights.com;
     base-uri 'self';
     form-action 'self';
     frame-ancestors 'none';
@@ -126,30 +128,38 @@ app.post("/api/contact", contactHandler);
 
 // Serve static files from dist directory
 app.use(
-  express.static(path.join(__dirname, "dist"), {
-    maxAge: "1y",
+  express.static(DIST_DIR, {
     etag: true,
     lastModified: true,
+    setHeaders(res, filePath) {
+      if (filePath.endsWith(".html")) {
+        res.setHeader("Cache-Control", "no-cache");
+        return;
+      }
+
+      if (filePath.endsWith(`${path.sep}sw.js`)) {
+        res.setHeader("Cache-Control", "public, max-age=0, must-revalidate");
+        res.setHeader("Service-Worker-Allowed", "/");
+        res.setHeader("Content-Type", "application/javascript");
+        return;
+      }
+
+      res.setHeader("Cache-Control", "public, max-age=31536000, immutable");
+    },
   }),
 );
 
-// Service Worker with proper MIME type
-app.get("/sw.js", (req, res) => {
-  res.setHeader("Content-Type", "application/javascript");
-  res.setHeader("Service-Worker-Allowed", "/");
-  res.sendFile(path.join(__dirname, "dist", "sw.js"));
-});
-
 // Handle SPA routing - serve index.html for all routes
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
+  res.setHeader("Cache-Control", "no-cache");
+  res.sendFile(INDEX_FILE);
 });
 
 // Start server
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
   console.log(`🔒 CSP nonce injection enabled`);
-  console.log(`📁 Serving from: ${path.join(__dirname, "dist")}`);
+  console.log(`📁 Serving from: ${DIST_DIR}`);
 });
 
 export default app;
