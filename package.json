@@ -39,6 +39,7 @@
   "homepage": "https://vophuthinh.com",
   "devDependencies": {
     "eslint": "^8.56.0",
+    "jsdom": "^29.1.1",
     "lighthouse": "^13.2.0",
     "prettier": "^3.1.1",
     "rollup-plugin-visualizer": "^7.0.1",

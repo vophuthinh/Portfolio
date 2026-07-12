@@ -7,6 +7,7 @@
 
 import express from "express";
 import path from "path";
+import fs from "fs";
 import crypto from "crypto";
 import { fileURLToPath } from "url";
 import contactHandler from "./api/contact.js";
@@ -15,6 +16,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const DIST_DIR = path.join(__dirname, "dist");
 const INDEX_FILE = path.join(DIST_DIR, "index.html");
+const OFFLINE_FILE = path.join(DIST_DIR, "offline.html");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -24,47 +26,38 @@ function generateNonce() {
   return crypto.randomBytes(16).toString("base64");
 }
 
-// Middleware to inject nonce into HTML
-function injectNonceMiddleware(req, res, next) {
-  const originalSend = res.send;
+// Read an HTML file and inject the given nonce into inline scripts/styles,
+// replacing any stale nonce baked in at build time (res.sendFile bypasses
+// res.send, so this must run explicitly in each HTML route handler).
+function renderHtmlWithNonce(filePath, nonce) {
+  let html = fs.readFileSync(filePath, "utf8");
 
-  res.send = function (data) {
-    if (typeof data === "string" && data.includes("</html>")) {
-      const nonce = res.locals.nonce;
+  html = html.replace(
+    /<script([^>]*?)>([\s\S]*?)<\/script>/gi,
+    (match, attributes, content) => {
+      if (attributes.includes("src=")) {
+        return match;
+      }
+      const cleanAttributes = attributes.replace(/\s*nonce="[^"]*"/gi, "");
+      return `<script${cleanAttributes} nonce="${nonce}">${content}</script>`;
+    },
+  );
 
-      // Add nonce to inline scripts
-      data = data.replace(
-        /<script([^>]*?)>([\s\S]*?)<\/script>/gi,
-        (match, attributes, content) => {
-          if (attributes.includes("nonce=") || attributes.includes("src=")) {
-            return match;
-          }
-          return `<script${attributes} nonce="${nonce}">${content}</script>`;
-        },
-      );
+  html = html.replace(
+    /<style([^>]*?)>([\s\S]*?)<\/style>/gi,
+    (match, attributes, content) => {
+      const cleanAttributes = attributes.replace(/\s*nonce="[^"]*"/gi, "");
+      return `<style${cleanAttributes} nonce="${nonce}">${content}</style>`;
+    },
+  );
 
-      // Add nonce to inline styles
-      data = data.replace(
-        /<style([^>]*?)>([\s\S]*?)<\/style>/gi,
-        (match, attributes, content) => {
-          if (attributes.includes("nonce=")) {
-            return match;
-          }
-          return `<style${attributes} nonce="${nonce}">${content}</style>`;
-        },
-      );
+  // Remove the meta CSP tag — HTTP header CSP takes precedence
+  html = html.replace(
+    /<meta\s+http-equiv="Content-Security-Policy"[^>]*>/gi,
+    "",
+  );
 
-      // Remove the meta CSP tag — HTTP header CSP takes precedence
-      data = data.replace(
-        /<meta\s+http-equiv="Content-Security-Policy"[^>]*>/gi,
-        "",
-      );
-    }
-
-    originalSend.call(this, data);
-  };
-
-  next();
+  return html;
 }
 
 // Security headers middleware
@@ -77,7 +70,7 @@ function securityHeadersMiddleware(req, res, next) {
     `
     default-src 'self';
     script-src 'self' 'nonce-${nonce}' cdn.jsdelivr.net unpkg.com cdnjs.cloudflare.com va.vercel-scripts.com;
-    style-src 'self' 'nonce-${nonce}' fonts.googleapis.com cdn.jsdelivr.net cdnjs.cloudflare.com unpkg.com;
+    style-src 'self' 'unsafe-inline' fonts.googleapis.com cdn.jsdelivr.net cdnjs.cloudflare.com unpkg.com;
     font-src 'self' fonts.gstatic.com cdnjs.cloudflare.com cdn.jsdelivr.net data:;
     img-src 'self' data: cdn.jsdelivr.net cdnjs.cloudflare.com github-readme-stats.vercel.app;
     connect-src 'self' cdn.jsdelivr.net cdnjs.cloudflare.com api.emailjs.com va.vercel-analytics.com vitals.vercel-insights.com;
@@ -121,22 +114,30 @@ app.use((req, res, next) => {
 });
 
 app.use(securityHeadersMiddleware);
-app.use(injectNonceMiddleware);
 
 // API endpoints
 app.post("/api/contact", contactHandler);
 
-// Serve static files from dist directory
+// Explicit HTML routes with per-request nonce injection.
+// Registered before express.static so a direct request for /index.html or
+// /offline.html can't bypass nonce injection via the static file handler.
+app.get(["/", "/index.html"], (req, res) => {
+  res.setHeader("Cache-Control", "no-cache");
+  res.send(renderHtmlWithNonce(INDEX_FILE, res.locals.nonce));
+});
+
+app.get("/offline.html", (req, res) => {
+  res.setHeader("Cache-Control", "no-cache");
+  res.send(renderHtmlWithNonce(OFFLINE_FILE, res.locals.nonce));
+});
+
+// Serve static files from dist directory (index.html excluded — handled above)
 app.use(
   express.static(DIST_DIR, {
+    index: false,
     etag: true,
     lastModified: true,
     setHeaders(res, filePath) {
-      if (filePath.endsWith(".html")) {
-        res.setHeader("Cache-Control", "no-cache");
-        return;
-      }
-
       if (filePath.endsWith(`${path.sep}sw.js`)) {
         res.setHeader("Cache-Control", "public, max-age=0, must-revalidate");
         res.setHeader("Service-Worker-Allowed", "/");
@@ -149,10 +150,10 @@ app.use(
   }),
 );
 
-// Handle SPA routing - serve index.html for all routes
+// Handle SPA routing - serve index.html for all other routes
 app.get("*", (req, res) => {
   res.setHeader("Cache-Control", "no-cache");
-  res.sendFile(INDEX_FILE);
+  res.send(renderHtmlWithNonce(INDEX_FILE, res.locals.nonce));
 });
 
 // Start server

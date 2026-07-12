@@ -75,4 +75,11 @@ export default defineConfig({
     devSourcemap: true,
     preprocessorOptions: {},
   },
+
+  // Vitest settings (DOM-dependent tests use jsdom via a per-file
+  // `// @vitest-environment jsdom` pragma, not this global default,
+  // so plain Node tests stay fast)
+  test: {
+    environment: "node",
+  },
 });

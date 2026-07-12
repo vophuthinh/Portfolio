@@ -30,6 +30,14 @@ function registerServiceWorker() {
   });
 }
 
+function hideBrokenGithubStatsImages() {
+  document.querySelectorAll(".about-github-img").forEach((img) => {
+    img.addEventListener("error", () => {
+      img.style.display = "none";
+    });
+  });
+}
+
 function cleanupDevServiceWorkers() {
   if (!("serviceWorker" in navigator)) return;
   if (!import.meta.env.DEV) return;
@@ -57,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
   "use strict";
 
   cleanupDevServiceWorkers();
+  hideBrokenGithubStatsImages();
 
   // Initialize core modules
   const appInit = new AppInitializer();

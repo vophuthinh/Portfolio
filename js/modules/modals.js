@@ -1,20 +1,19 @@
-import { Utils } from "../utils.js";
-
 /**
  * Modals Module
  * Unified modal controller for all modals in the application
  */
 
+const FOCUSABLE_SELECTOR =
+  'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
+
 export class ModalsController {
   constructor() {
     this.projectModal = document.getElementById("projectModal");
-    this.imageViewerModal = document.getElementById("imageViewerModal");
     this.certificateModal = document.getElementById("certificateModal");
 
-    this.currentImageList = [];
-    this.currentImageIndex = 0;
     this.scrollLockY = 0;
     this.scrollLockCount = 0;
+    this.modalTriggers = new Map();
 
     this.init();
   }
@@ -23,24 +22,22 @@ export class ModalsController {
     this.setupModalCloseHandlers();
     this.setupKeyboardHandlers();
     this.setupFocusTrap();
-    this.setupSwipeGesture();
     this.setupCertificateModal();
   }
 
-  getLogger() {
-    return Utils.getLogger();
-  }
-
-  openModal(modalEl) {
+  openModal(modalEl, triggerEl = null) {
     if (!modalEl) return;
 
     const isAlreadyOpen =
       modalEl.classList.contains("open") || modalEl.style.display === "flex";
     if (isAlreadyOpen) return;
 
+    this.modalTriggers.set(modalEl, triggerEl || document.activeElement);
+
     modalEl.style.display = "flex";
     modalEl.classList.add("open");
     this.lockBodyScroll();
+    this.focusFirstElement(modalEl);
   }
 
   closeModal(modalEl) {
@@ -53,6 +50,27 @@ export class ModalsController {
     modalEl.style.display = "none";
     modalEl.classList.remove("open");
     this.unlockBodyScroll();
+
+    const trigger = this.modalTriggers.get(modalEl);
+    this.modalTriggers.delete(modalEl);
+    if (
+      trigger &&
+      typeof trigger.focus === "function" &&
+      document.contains(trigger)
+    ) {
+      trigger.focus();
+    }
+  }
+
+  // Move focus into the modal on open (WCAG 2.4.3): first focusable child,
+  // falling back to the modal container itself (requires tabindex="-1").
+  focusFirstElement(modalEl) {
+    const focusableElements = modalEl.querySelectorAll(FOCUSABLE_SELECTOR);
+    if (focusableElements.length > 0) {
+      focusableElements[0].focus();
+    } else {
+      modalEl.focus();
+    }
   }
 
   lockBodyScroll() {
@@ -97,24 +115,9 @@ export class ModalsController {
         return;
       }
 
-      // Image viewer navigation
-      if (target.hasAttribute("data-image-nav")) {
-        e.preventDefault();
-        e.stopPropagation();
-        const direction = target.getAttribute("data-image-nav");
-        this.changeImageViewerImage(direction);
-        return;
-      }
-
       // Click overlay to close modals
       if (target.classList.contains("modal")) {
         this.closeModal(target);
-        return;
-      }
-
-      // Close image viewer on background click
-      if (target.classList.contains("image-viewer-content")) {
-        this.closeImageViewer();
       }
     });
   }
@@ -129,165 +132,40 @@ export class ModalsController {
         if (openModals.length > 0) {
           const lastModal = openModals[openModals.length - 1];
           this.closeModal(lastModal);
-          return;
-        }
-      }
-
-      // Arrow keys for image viewer navigation
-      if (
-        this.imageViewerModal &&
-        this.imageViewerModal.style.display === "flex"
-      ) {
-        if (e.key === "ArrowLeft") {
-          e.preventDefault();
-          this.changeImageViewerImage(-1);
-        } else if (e.key === "ArrowRight") {
-          e.preventDefault();
-          this.changeImageViewerImage(1);
         }
       }
     });
   }
 
   setupFocusTrap() {
-    const trapFocus = (modal) => {
-      if (!modal) return;
+    if (this.projectModal) this.trapFocus(this.projectModal);
+  }
 
-      modal.addEventListener("keydown", function (e) {
-        if (e.key !== "Tab") return;
+  trapFocus(modal) {
+    if (!modal) return;
 
-        // Re-query focusable elements each time (modal content may change dynamically)
-        const focusableElements = modal.querySelectorAll(
-          'a[href], button:not([disabled]), textarea:not([disabled]), input:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])',
-        );
-        if (focusableElements.length === 0) return;
+    modal.addEventListener("keydown", (e) => {
+      if (e.key !== "Tab") return;
 
-        const firstElement = focusableElements[0];
-        const lastElement = focusableElements[focusableElements.length - 1];
+      // Re-query focusable elements each time (modal content may change dynamically)
+      const focusableElements = modal.querySelectorAll(FOCUSABLE_SELECTOR);
+      if (focusableElements.length === 0) return;
 
-        if (e.shiftKey) {
-          if (document.activeElement === firstElement) {
-            e.preventDefault();
-            lastElement.focus();
-          }
-        } else {
-          if (document.activeElement === lastElement) {
-            e.preventDefault();
-            firstElement.focus();
-          }
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+
+      if (e.shiftKey) {
+        if (document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement.focus();
         }
-      });
-    };
-
-    if (this.projectModal) trapFocus(this.projectModal);
-    if (this.imageViewerModal) trapFocus(this.imageViewerModal);
-  }
-
-  setupSwipeGesture() {
-    if (!this.imageViewerModal) return;
-
-    let touchStartX = 0;
-    let touchStartY = 0;
-    const SWIPE_THRESHOLD = 50;
-
-    this.imageViewerModal.addEventListener(
-      "touchstart",
-      (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-        touchStartY = e.changedTouches[0].screenY;
-      },
-      { passive: true },
-    );
-
-    this.imageViewerModal.addEventListener(
-      "touchend",
-      (e) => {
-        const dx = e.changedTouches[0].screenX - touchStartX;
-        const dy = e.changedTouches[0].screenY - touchStartY;
-
-        // Only trigger if horizontal swipe is dominant
-        if (Math.abs(dx) < SWIPE_THRESHOLD || Math.abs(dx) < Math.abs(dy))
-          return;
-
-        if (dx > 0) {
-          this.changeImageViewerImage(-1); // Swipe right → previous
-        } else {
-          this.changeImageViewerImage(1); // Swipe left → next
-        }
-      },
-      { passive: true },
-    );
-  }
-
-  // Image Viewer Methods
-  openImageViewer(images, index) {
-    const logger = this.getLogger();
-
-    if (!images || images.length === 0) {
-      logger.warn("No images provided to image viewer");
-      return;
-    }
-    if (!this.imageViewerModal) {
-      logger.warn("imageViewerModal element not found");
-      return;
-    }
-
-    this.currentImageList = images;
-    this.currentImageIndex = index >= 0 && index < images.length ? index : 0;
-
-    this.updateImageViewerDisplay();
-    this.openModal(this.imageViewerModal);
-  }
-
-  closeImageViewer() {
-    this.closeModal(this.imageViewerModal);
-  }
-
-  changeImageViewerImage(direction) {
-    if (this.currentImageList.length === 0) return;
-
-    this.currentImageIndex += parseInt(direction);
-    if (this.currentImageIndex < 0) {
-      this.currentImageIndex = this.currentImageList.length - 1;
-    } else if (this.currentImageIndex >= this.currentImageList.length) {
-      this.currentImageIndex = 0;
-    }
-
-    this.updateImageViewerDisplay();
-  }
-
-  updateImageViewerDisplay() {
-    const viewerImage = document.getElementById("viewerImage");
-    const viewerBackdrop = document.getElementById("viewerBackdrop");
-    const viewerCaption = document.getElementById("viewerCaption");
-
-    const item = this.currentImageList[this.currentImageIndex];
-    const src = typeof item === "string" ? item : item.src;
-    const caption = typeof item === "string" ? "" : item.caption;
-
-    if (viewerImage) {
-      viewerImage.src = src;
-      if (viewerBackdrop) {
-        viewerBackdrop.src = src;
-      }
-      viewerImage.alt = caption || `Image ${this.currentImageIndex + 1}`;
-
-      viewerImage.classList.remove("zoomed");
-
-      viewerImage.onclick = function (e) {
-        e.stopPropagation();
-        this.classList.toggle("zoomed");
-      };
-    }
-
-    if (viewerCaption) {
-      if (caption) {
-        viewerCaption.textContent = caption;
-        viewerCaption.style.display = "block";
       } else {
-        viewerCaption.style.display = "none";
+        if (document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement.focus();
+        }
       }
-    }
+    });
   }
 
   // Certificate Modal Setup
@@ -303,10 +181,12 @@ export class ModalsController {
       certModal.setAttribute("role", "dialog");
       certModal.setAttribute("aria-modal", "true");
       certModal.setAttribute("aria-label", "Certificate viewer");
+      certModal.setAttribute("tabindex", "-1");
       certModal.innerHTML =
-        '<span class="close-modal" data-modal-close="certificateModal" aria-label="Close certificate viewer">&times;</span><img src="" alt="Zoomed Certificate">';
+        '<button type="button" class="close-modal" data-modal-close="certificateModal" aria-label="Close certificate viewer">&times;</button><img src="" alt="Zoomed Certificate">';
       document.body.appendChild(certModal);
       this.certificateModal = certModal;
+      this.trapFocus(certModal);
     }
 
     const modalImg = certModal.querySelector("img");
@@ -319,7 +199,7 @@ export class ModalsController {
           modalImg.src = img.src;
           modalImg.alt = img.alt || "Zoomed Certificate";
         }
-        this.openModal(certModal);
+        this.openModal(certModal, link);
       });
     });
   }
@@ -329,8 +209,8 @@ export class ModalsController {
 export const modalsController = new ModalsController();
 
 // Export functions for backward compatibility
-export function openModal(modalEl) {
-  modalsController.openModal(modalEl);
+export function openModal(modalEl, triggerEl = null) {
+  modalsController.openModal(modalEl, triggerEl);
 }
 
 export function closeModal(modalEl) {

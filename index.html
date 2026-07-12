@@ -71,7 +71,7 @@
     />
     <meta
       property="og:description"
-      content="AI Engineer CV & Portfolio — chuyên LLM, RAG, AI Agent. 3 sản phẩm AI production, 2 giải thưởng. Sẵn sàng nhận việc tại Ho Chi Minh City."
+      content="AI Engineer CV & Portfolio — specializing in LLM, RAG, AI Agent. 3 AI products shipped to production, 2 awards won. Open to new opportunities in Ho Chi Minh City."
     />
     <meta
       property="og:image"
@@ -98,7 +98,7 @@
     />
     <meta
       name="twitter:description"
-      content="AI Engineer CV & Portfolio — chuyên LLM, RAG, AI Agent. 3 sản phẩm AI production, 2 giải thưởng. Sẵn sàng nhận việc tại Ho Chi Minh City."
+      content="AI Engineer CV & Portfolio — specializing in LLM, RAG, AI Agent. 3 AI products shipped to production, 2 awards won. Open to new opportunities in Ho Chi Minh City."
     />
     <meta
       name="twitter:image"
@@ -588,10 +588,6 @@
           <div class="container">
             <div class="row">
               <div class="home-info padd-15">
-                <div class="availability-badge" style="display: none">
-                  <span class="badge-dot"></span>
-                  Open to new opportunities
-                </div>
                 <h1 class="hello">
                   Hello, my name is <span class="name">Vo Phu Thinh</span>
                 </h1>
@@ -599,8 +595,9 @@
                   I'm an <span class="typing">AI Engineer</span>
                 </h2>
                 <p>
-                  I build LLM, RAG, and multi-agent systems at HPT Vietnam that
-                  go beyond demos and into production.
+                  I build autonomous AI Agents, Agentic RAG, and MCP-powered
+                  systems at HPT Vietnam that go beyond demos and into
+                  production.
                 </p>
 
                 <a
@@ -726,13 +723,13 @@
                         src="https://github-readme-stats.vercel.app/api?username=vophuthinh&show_icons=true&theme=transparent&hide_border=true&title_color=ec1839&icon_color=ec1839&text_color=a0a0a0&count_private=true"
                         alt="GitHub Stats"
                         loading="lazy"
-                        onerror="this.style.display = 'none'"
+                        class="about-github-img"
                       />
                       <img
                         src="https://github-readme-stats.vercel.app/api/top-langs/?username=vophuthinh&layout=compact&theme=transparent&hide_border=true&title_color=ec1839&text_color=a0a0a0&langs_count=5"
                         alt="Top Languages"
                         loading="lazy"
-                        onerror="this.style.display = 'none'"
+                        class="about-github-img"
                       />
                       <a
                         href="https://github.com/vophuthinh"
@@ -2144,44 +2141,21 @@
       role="dialog"
       aria-labelledby="projectModalTitle"
       aria-modal="true"
+      tabindex="-1"
     >
       <div class="modal-content">
-        <span
+        <button
+          type="button"
           class="close"
           data-modal-close="projectModal"
           aria-label="Close modal"
-          >&times;</span
         >
+          &times;
+        </button>
         <h2 id="projectModalTitle"></h2>
         <div id="projectModalContent" class="project-modal-content">
           <!-- Content will be populated by JavaScript -->
         </div>
-      </div>
-    </div>
-
-    <!-- Image Viewer Modal -->
-    <div
-      id="imageViewerModal"
-      class="modal image-viewer-modal"
-      role="dialog"
-      aria-label="Image viewer"
-      aria-modal="true"
-    >
-      <!-- Ambient Backdrop -->
-      <div class="image-viewer-backdrop">
-        <img id="viewerBackdrop" src="" alt="" aria-hidden="true" />
-      </div>
-      <span
-        class="close-image-viewer"
-        data-modal-close="imageViewerModal"
-        aria-label="Close image viewer"
-        >&times;</span
-      >
-      <div class="image-viewer-content">
-        <img id="viewerImage" src="" alt="Full size image" />
-        <button class="image-viewer-prev" data-image-nav="-1">&#10094;</button>
-        <button class="image-viewer-next" data-image-nav="1">&#10095;</button>
-        <div id="viewerCaption" class="image-viewer-caption"></div>
       </div>
     </div>
 

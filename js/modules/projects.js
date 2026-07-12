@@ -154,7 +154,7 @@ export class ProjectsController {
 
     return `
       <div class="project-item" data-category="${project.category}" data-project-id="${project.id}">
-        <div class="project-card">
+        <div class="project-card" tabindex="0" role="button" aria-haspopup="dialog" aria-label="View case study: ${this.escapeHtml(project.title)}">
           <div class="project-cover">
             <img src="${imageSrc}" ${imageResponsiveAttrs} alt="${this.escapeHtml(project.title)}" loading="lazy" decoding="async" />
           </div>
@@ -242,21 +242,42 @@ export class ProjectsController {
 
       const projectCard = e.target.closest(".project-card");
       if (projectCard) {
-        const projectItem = projectCard.closest(".project-item");
-        if (projectItem) {
-          const projectIdAttr = projectItem.getAttribute("data-project-id");
-          if (projectIdAttr) {
-            const projectId = parseInt(projectIdAttr, 10);
-            if (!isNaN(projectId)) {
-              this.openProjectModal(projectId);
-            }
-          }
-        }
+        this.openProjectModalFromCard(projectCard);
       }
+    });
+
+    // Enter/Space activates the card itself (native <a>/<button> children
+    // inside .project-actions already handle their own Enter behavior).
+    this.projectsGrid.addEventListener("keydown", (e) => {
+      if (e.key !== "Enter" && e.key !== " ") return;
+
+      const clickedButton = e.target.closest(
+        ".btn-github-card, .btn-demo-card, .btn-card, .project-actions a",
+      );
+      if (clickedButton) return;
+
+      const projectCard = e.target.closest(".project-card");
+      if (!projectCard) return;
+
+      e.preventDefault();
+      this.openProjectModalFromCard(projectCard);
     });
   }
 
-  openProjectModal(projectId) {
+  openProjectModalFromCard(projectCard) {
+    const projectItem = projectCard.closest(".project-item");
+    if (!projectItem) return;
+
+    const projectIdAttr = projectItem.getAttribute("data-project-id");
+    if (!projectIdAttr) return;
+
+    const projectId = parseInt(projectIdAttr, 10);
+    if (isNaN(projectId)) return;
+
+    this.openProjectModal(projectId, projectCard);
+  }
+
+  openProjectModal(projectId, triggerEl = null) {
     const project = this.projects.find((p) => p.id === projectId);
     const logger = this.getLogger();
 
@@ -386,7 +407,7 @@ export class ProjectsController {
     }
 
     if (typeof openModal === "function") {
-      openModal(this.projectModal);
+      openModal(this.projectModal, triggerEl);
     } else {
       this.projectModal.style.display = "flex";
       this.projectModal.classList.add("open");

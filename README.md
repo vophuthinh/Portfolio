@@ -12,10 +12,9 @@
 - **Dynamic Typing Animation**: Showcases multiple roles (AI Engineer, ML Engineer, LLM Application Engineer, MLOps Practitioner)
 - **Smooth Animations**: AOS (Animate On Scroll) integration for engaging user experience
 - **Responsive Design**: Mobile-first approach with optimized layouts for all screen sizes
-- **Theme Switcher**: 5 color themes + light/dark mode toggle
+- **Theme Toggle**: Light/dark mode toggle
 - **Modern Card Design**: Premium project cards with hover effects and impact metrics
 - **Enhanced Certifications**: Beautiful certificate cards with award differentiation
-- **Interest Gallery**: Interactive image galleries for personal interests
 
 ### 🛠️ **Technical Features**
 - **Modular Architecture**: Separated data, config, and logic for easy maintenance
