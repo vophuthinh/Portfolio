@@ -3,7 +3,7 @@ import { Utils } from "../utils.js";
 
 /**
  * Scroll Module
- * Handles back-to-top button behavior
+ * Handles back-to-top button behavior with native window scrolling
  */
 
 export class ScrollController {
@@ -24,24 +24,14 @@ export class ScrollController {
   }
 
   setupScrollHandler() {
-    const getActiveSection = () =>
-      document.querySelector("main .section.active");
-
     const handleScroll = () => {
-      const activeSection = getActiveSection();
-      const scrollContainer = activeSection || document.documentElement;
+      const currentScroll =
+        window.pageYOffset ||
+        document.documentElement.scrollTop ||
+        document.body.scrollTop ||
+        0;
 
-      const scrollTop = activeSection
-        ? scrollContainer.scrollTop
-        : document.documentElement.scrollTop ||
-          document.body.scrollTop ||
-          window.scrollY ||
-          0;
-      // Back to Top Button
       if (this.backToTopBtn) {
-        const currentScroll = activeSection
-          ? scrollContainer.scrollTop
-          : window.scrollY || scrollTop;
         if (currentScroll > this.config.BACK_TO_TOP_THRESHOLD) {
           this.backToTopBtn.classList.add("show");
         } else {
@@ -50,7 +40,6 @@ export class ScrollController {
       }
     };
 
-    // Throttle scroll events
     const throttledScrollHandler = Utils.throttle(
       handleScroll,
       this.config.THROTTLE_MS,
@@ -60,13 +49,6 @@ export class ScrollController {
       passive: true,
     });
 
-    const sections = document.querySelectorAll("main .section");
-    sections.forEach((section) => {
-      section.addEventListener("scroll", throttledScrollHandler, {
-        passive: true,
-      });
-    });
-
     handleScroll();
   }
 
@@ -74,15 +56,6 @@ export class ScrollController {
     if (this.backToTopBtn) {
       this.backToTopBtn.addEventListener("click", (e) => {
         e.preventDefault();
-        const activeSection = document.querySelector("main .section.active");
-        if (activeSection) {
-          activeSection.scrollTo({
-            top: 0,
-            behavior: "smooth",
-          });
-          return;
-        }
-
         window.scrollTo({
           top: 0,
           behavior: "smooth",

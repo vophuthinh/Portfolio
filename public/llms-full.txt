@@ -36,24 +36,28 @@ Vo Phu Thinh is an AI Engineer at HPT Vietnam Corporation's AI Center of Excelle
 
 ## Education
 
-- Bachelor's degree, Information Technology (Joint program) — HUTECH & Open University Malaysia (Sep 2021 – May 2025)
+- Bachelor of Information Technology (Joint International Program) — HUTECH & Open University Malaysia (2021 – 2025)
+- Intensive English Language Mobility Programme — Universiti Malaysia Sarawak (UNIMAS) (Jul 2023 – Aug 2023)
+- Full Stack Web Developer Professional Certificate — Ironhack Vietnam (Mar 2022 – Aug 2023)
 
 ## Experience
 
-### AI Engineer — HPT Vietnam Corporation, AI Center of Excellence (CoE) (Oct 2025 – Present)
-- Built and deployed AI chatbot handling 850+ questions/day at HPT D-DAY event using n8n + GPT-4o
-- Won 2nd & 3rd prizes in "AI in Business" competition with AI Agent and news intelligence projects
-- Developed LLM-powered solutions for executive decision support and automated content processing
+### AI Engineer — HPT Vietnam Corporation, AI Center of Excellence (CoE) (Nov 2024 – Present)
+- Architected the Award-Winning "Lyly" (Executive AI Assistant): Designed a multimodal system for real-time voice and text interaction, low-latency streaming, hybrid vector search (Qdrant), and mem0 memory
+- Engineered End-to-End Vector Pipelines: Automated workflows for strategic chunking & domain embeddings for enterprise knowledge systems
+- Orchestrated HPT D-Day 2025 RAG Chatbot: High-accuracy RAG handling 850+ questions in a single day with zero hallucination
+- Optimized LLM Reliability in Microsoft Copilot: Advanced prompt engineering and grounding strategies mitigating hallucinations
+- Co-developed HIH (HotNews Intelligence Hub): Automated intelligence system featuring "Sóc Dò La" news vectorization and summarization (8,500+ views, won 3rd prize)
 
 ### Software Solutions Engineer — HPT Vietnam Corporation (Apr 2025 – Oct 2025)
-- Built 10+ automation workflows using n8n, Power Platform, and UiPath — cutting manual reporting time by ~60%
-- Integrated AI into enterprise solutions, enabling automated document processing for internal teams
+- Built 10+ automation workflows using n8n, Power Platform, and UiPath — cutting manual operational & reporting time by ~60%
+- Integrated AI & LLM services into enterprise solutions for automated document processing
 
-### Intern — HPT Vietnam Corporation (Nov 2024 – Apr 2025)
+### AI Engineer Intern — HPT Vietnam Corporation (Nov 2024 – Apr 2025)
 - Prototyped an AI chatbot for internal Q&A that later evolved into the D-DAY 2025 product
 - Promoted to full-time after 6 months — fastest intern-to-engineer track in the team
 
-### Website Management Support — Institute of Smart City and Management (Mar 2023 – Oct 2023)
+### Website Management Support — Institute of Smart City and Management (ISCM - UEH) (Mar 2023 – Oct 2023)
 - Managed and maintained organizational website content, SEO, and analytics
 
 ## Technical Skills

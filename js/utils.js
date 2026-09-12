@@ -52,10 +52,46 @@ function getLogger() {
   };
 }
 
+/**
+ * Show temporary toast notification
+ * @param {string} message - Toast message text
+ * @param {number} duration - Duration in milliseconds
+ */
+function showToast(message, duration = 2800) {
+  if (typeof document === "undefined") return;
+  let container = document.getElementById("toast-container");
+  if (!container) {
+    container = document.createElement("div");
+    container.id = "toast-container";
+    container.className = "toast-container";
+    container.setAttribute("role", "status");
+    container.setAttribute("aria-live", "polite");
+    document.body.appendChild(container);
+  }
+
+  const toast = document.createElement("div");
+  toast.className = "toast-pill";
+  toast.innerHTML = `<i class="fa-solid fa-circle-check"></i> <span>${escapeHtml(message)}</span>`;
+  container.appendChild(toast);
+
+  // Trigger smooth entrance
+  requestAnimationFrame(() => {
+    toast.classList.add("visible");
+  });
+
+  setTimeout(() => {
+    toast.classList.remove("visible");
+    setTimeout(() => {
+      if (toast.parentElement) toast.parentElement.removeChild(toast);
+    }, 300);
+  }, duration);
+}
+
 const Utils = {
   escapeHtml,
   throttle,
   getLogger,
+  showToast,
 };
 
 // Assign to window for non-module scripts
@@ -64,4 +100,5 @@ if (typeof window !== "undefined") {
 }
 
 export default Utils;
-export { Utils, escapeHtml, throttle, getLogger };
+export { Utils, escapeHtml, throttle, getLogger, showToast };
+

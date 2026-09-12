@@ -3,6 +3,7 @@
  * Imports and initializes all modules
  */
 
+import "../assets/css/style.css";
 import { inject } from "@vercel/analytics";
 import { injectSpeedInsights } from "@vercel/speed-insights";
 import { Logger } from "./config.js";
@@ -15,6 +16,10 @@ import { ScrollController } from "./modules/scroll.js";
 import { AppInitializer, initPreloaderAndAnimations } from "./modules/init.js";
 import { ResponsiveImagesController } from "./modules/responsive-images.js";
 import { initScrollReveal } from "./modules/scroll-reveal.js";
+import { initThreeLatentSpace } from "./modules/three-latent-space.js";
+import { initAISimulator } from "./modules/ai-simulator.js";
+import { initCardTilt } from "./modules/tilt.js";
+import { showToast } from "./utils.js";
 
 inject();
 injectSpeedInsights();
@@ -80,11 +85,37 @@ document.addEventListener("DOMContentLoaded", function () {
   // Scroll reveal animations
   initScrollReveal();
 
+  // 3D WebGL Latent Space, AI Tech Lab Simulator, and 3D Card Tilt
+  const latentSpace = initThreeLatentSpace();
+  const aiSimulator = initAISimulator();
+  const cardTilt = initCardTilt();
+
+  // One-click clipboard copy for email with toast notification
+  setupQuickEmailCopy();
+
   // Log successful initialization
   const logger = Logger;
 
-  logger.log("🚀 Portfolio application initialized successfully");
+  logger.log("🚀 Portfolio application initialized successfully with 3D WebGL & AI Simulator");
 });
+
+function setupQuickEmailCopy() {
+  document.querySelectorAll("[data-copy-email]").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const email = btn.getAttribute("data-copy-email") || "vophuthinhcm@gmail.com";
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(email).then(() => {
+          showToast(`Copied ${email} to clipboard!`);
+        }).catch(() => {
+          window.location.href = `mailto:${email}`;
+        });
+      } else {
+        window.location.href = `mailto:${email}`;
+      }
+    });
+  });
+}
 
 // Initialize preloader and animations
 initPreloaderAndAnimations();

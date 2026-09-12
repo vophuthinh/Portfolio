@@ -1,144 +1,108 @@
-import { AppConfig } from "../config.js";
-
 /**
  * Navigation Module
- * Handles navigation logic, section switching, and scroll-based navigation
+ * Handles continuous scroll, IntersectionObserver scroll-spy, and mobile navigation
  */
 
 export class NavigationController {
   constructor() {
-    this.nav = document.querySelector(".nav");
-    this.allSection = document.querySelectorAll("main .section");
+    this.nav = document.querySelector(".nav, .header-nav");
+    this.allSection = document.querySelectorAll("main .section, main section");
     this.totalSection = this.allSection.length;
     this.navList = this.nav ? this.nav.querySelectorAll("li") : [];
     this.totalNavList = this.navList.length;
-    this.aside = document.querySelector(".aside");
+    this.aside = document.querySelector(".aside, .site-header, .header-nav");
     this.navTogglerBtn = document.querySelector(".nav-toggler");
+    this.header = document.querySelector(".site-header");
 
-    // Navigation config
-    this.config = AppConfig.NAVIGATION || {
-      SECTION_SCROLL_ANIM_MS: 700,
-      SECTION_SCROLL_COOLDOWN_MS: 750,
-      SECTION_SCROLL_EDGE_PX: 5,
-      WHEEL_DELTA_THRESHOLD: 50,
-    };
-
-    // Wheel navigation state
-    this.wheelAccum = 0;
-    this.wheelAccumDir = 0;
-    this.isSectionTransitioning = false;
-    this.lastSectionScrollTs = 0;
-    this.edgeReachedTs = 0; // Timestamp when user first hit edge
+    this.currentSectionId = "home";
+    this.isClickScrolling = false;
+    this.clickScrollTimeout = null;
 
     this.init();
   }
 
   init() {
-    if (!this.nav) return;
+    if (!this.nav && !this.allSection.length) return;
 
     this.setupNavClickHandlers();
     this.setupHireMeButton();
     this.setupNavToggler();
-    this.setupWheelNavigation();
+    this.setupScrollSpy();
+    this.setupHeaderScrollEffect();
   }
 
-  removeBackSection() {
-    for (let i = 0; i < this.totalSection; i++) {
-      this.allSection[i].classList.remove("back-section");
-    }
-  }
+  setupHeaderScrollEffect() {
+    if (!this.header) return;
 
-  addBackSection(num) {
-    if (this.allSection[num]) {
-      this.allSection[num].classList.add("back-section");
-    }
-  }
-
-  showSection(element) {
-    const target = element.getAttribute("href")?.split("#")[1];
-    if (target) {
-      for (let i = 0; i < this.totalSection; i++) {
-        this.allSection[i].classList.remove("active");
+    const handleScroll = () => {
+      if (window.scrollY > 30) {
+        this.header.classList.add("scrolled");
+      } else {
+        this.header.classList.remove("scrolled");
       }
-      const targetSection = document.querySelector("#" + target);
-      if (targetSection) {
-        targetSection.classList.add("active");
+    };
 
-        // Some sections use AOS on the section root. Because sections are
-        // fixed and toggled via classes, force animation state after nav switch.
-        if (targetSection.hasAttribute("data-aos")) {
-          targetSection.classList.add("aos-animate");
-        }
-
-        // Fire event so scroll-reveal can pick up newly visible elements
-        document.dispatchEvent(new CustomEvent('sectionChange', { detail: { section: target } }));
-
-        if (
-          typeof AOS !== "undefined" &&
-          typeof AOS.refreshHard === "function"
-        ) {
-          AOS.refreshHard();
-        }
-      }
-    }
-  }
-
-  updateNav(element) {
-    const target = element.getAttribute("href")?.split("#")[1];
-    if (!target) return;
-
-    for (let i = 0; i < this.totalNavList; i++) {
-      const navLink = this.navList[i].querySelector("a");
-      if (navLink) {
-        navLink.classList.remove("active");
-        const navTarget = navLink.getAttribute("href")?.split("#")[1];
-        if (navTarget === target) {
-          navLink.classList.add("active");
-        }
-      }
-    }
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
   }
 
   setupNavClickHandlers() {
-    for (let i = 0; i < this.totalNavList; i++) {
-      const a = this.navList[i].querySelector("a");
-      if (!a) continue;
+    const navLinks = document.querySelectorAll(".nav a, .header-nav a, a[href^='#']");
 
-      a.addEventListener("click", (e) => {
-        e.preventDefault();
-        this.removeBackSection();
+    navLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        const href = link.getAttribute("href");
+        if (!href || !href.startsWith("#") || href === "#") return;
 
-        for (let j = 0; j < this.totalNavList; j++) {
-          const navLink = this.navList[j].querySelector("a");
-          if (navLink && navLink.classList.contains("active")) {
-            this.addBackSection(j);
+        const targetId = href.substring(1);
+        const targetSection = document.getElementById(targetId);
+
+        if (targetSection) {
+          e.preventDefault();
+
+          this.isClickScrolling = true;
+          this.updateNav(link);
+
+          // Scroll to target with header offset
+          const headerOffset = 70;
+          const elementPosition = targetSection.getBoundingClientRect().top;
+          const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth",
+          });
+
+          if (history.replaceState) {
+            history.replaceState(null, "", `#${targetId}`);
           }
-          if (navLink) {
-            navLink.classList.remove("active");
-          }
-        }
-        a.classList.add("active");
-        this.showSection(a);
-        this.updateNav(a);
 
-        if (window.innerWidth < 1200) {
-          this.toggleAside();
+          // Close mobile menu if open
+          this.closeMobileNav();
+
+          // Reset click scrolling lock
+          clearTimeout(this.clickScrollTimeout);
+          this.clickScrollTimeout = setTimeout(() => {
+            this.isClickScrolling = false;
+          }, 800);
+
+          // Fire sectionChange event
+          document.dispatchEvent(
+            new CustomEvent("sectionChange", { detail: { section: targetId } }),
+          );
         }
       });
-    }
+    });
   }
 
   setupHireMeButton() {
     const hireMeBtn = document.querySelector(".hire-me");
     if (hireMeBtn) {
       hireMeBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        const sectionIndex = hireMeBtn.getAttribute("data-section-index");
-        this.showSection(hireMeBtn);
-        this.updateNav(hireMeBtn);
-        this.removeBackSection();
-        if (sectionIndex) {
-          this.addBackSection(parseInt(sectionIndex));
+        const targetSection = document.querySelector("#contact");
+        if (targetSection) {
+          e.preventDefault();
+          targetSection.scrollIntoView({ behavior: "smooth" });
         }
       });
     }
@@ -148,173 +112,93 @@ export class NavigationController {
     if (this.navTogglerBtn) {
       this.navTogglerBtn.addEventListener("click", () => this.toggleAside());
     }
+
+    // Close when clicking outside mobile nav
+    document.addEventListener("click", (e) => {
+      const isNavOpen = document.body.classList.contains("nav-open") || (this.nav && this.nav.classList.contains("open"));
+      if (!isNavOpen) return;
+
+      const clickedInsideHeader = e.target.closest(".site-header, .aside");
+      if (!clickedInsideHeader) {
+        this.closeMobileNav();
+      }
+    });
   }
 
   toggleAside() {
+    document.body.classList.toggle("nav-open");
     if (this.aside) this.aside.classList.toggle("open");
     if (this.navTogglerBtn) this.navTogglerBtn.classList.toggle("open");
-    for (let i = 0; i < this.totalSection; i++) {
-      this.allSection[i].classList.toggle("open");
-    }
   }
 
-  getActiveNavIndex() {
-    for (let i = 0; i < this.totalNavList; i++) {
-      const link = this.navList[i].querySelector("a");
-      if (link && link.classList.contains("active")) return i;
-    }
-
-    const activeSection = document.querySelector("section.active");
-    if (activeSection && activeSection.id) {
-      for (let i = 0; i < this.totalNavList; i++) {
-        const link = this.navList[i].querySelector("a");
-        const target = link?.getAttribute("href")?.split("#")[1];
-        if (target === activeSection.id) return i;
-      }
-    }
-    return 0;
+  closeMobileNav() {
+    document.body.classList.remove("nav-open");
+    if (this.aside) this.aside.classList.remove("open");
+    if (this.navTogglerBtn) this.navTogglerBtn.classList.remove("open");
   }
 
-  isAnyModalOpen() {
-    return !!document.querySelector('.modal.open, .modal[style*="flex"]');
-  }
+  setupScrollSpy() {
+    if (!("IntersectionObserver" in window)) return;
 
-  getScrollableParent(el) {
-    let cur = el;
-    while (cur && cur !== document.body) {
-      const style = window.getComputedStyle(cur);
-      const overflowY = style.overflowY;
-      const canScroll =
-        (overflowY === "auto" || overflowY === "scroll") &&
-        cur.scrollHeight > cur.clientHeight + 1;
-      if (canScroll) return cur;
-      cur = cur.parentElement;
-    }
-    return null;
-  }
-
-  navigateToNavIndex(nextIndex) {
-    if (nextIndex < 0 || nextIndex >= this.totalNavList) return;
-    const targetLink = this.navList[nextIndex].querySelector("a");
-    if (!targetLink) return;
-
-    const currentIndex = this.getActiveNavIndex();
-
-    this.wheelAccum = 0;
-    this.wheelAccumDir = 0;
-    this.removeBackSection();
-
-    if (currentIndex >= 0 && currentIndex !== nextIndex) {
-      this.addBackSection(currentIndex);
-    }
-
-    this.showSection(targetLink);
-    this.updateNav(targetLink);
-
-    const targetId = targetLink.getAttribute("href")?.split("#")[1];
-    if (targetId && history.replaceState) {
-      history.replaceState(null, "", `#${targetId}`);
-    }
-
-    const activeSection = document.querySelector("section.active");
-    if (activeSection && activeSection.scrollTop > 0) {
-      activeSection.scrollTop = 0;
-    }
-
-    this.isSectionTransitioning = true;
-    setTimeout(() => {
-      this.isSectionTransitioning = false;
-      this.removeBackSection();
-    }, this.config.SECTION_SCROLL_ANIM_MS);
-  }
-
-  setupWheelNavigation() {
-    const handleWheel = (e) => {
-      if (this.isAnyModalOpen()) return;
-      if (this.isSectionTransitioning) return;
-
-      if (
-        e.target &&
-        e.target.closest('input, textarea, select, [contenteditable="true"]')
-      )
-        return;
-      if (e.ctrlKey) return;
-
-      const dy = e.deltaY;
-      if (!dy) return;
-
-      const direction = dy > 0 ? 1 : -1;
-      const activeSection = document.querySelector("section.active");
-      if (!activeSection) return;
-
-      const nestedScroll = this.getScrollableParent(e.target);
-      if (nestedScroll && nestedScroll !== activeSection) {
-        this.wheelAccum = 0;
-        this.wheelAccumDir = 0;
-        return;
-      }
-
-      const scrollContainer = activeSection;
-      const canScroll =
-        scrollContainer.scrollHeight >
-        scrollContainer.clientHeight + this.config.SECTION_SCROLL_EDGE_PX;
-
-      if (canScroll) {
-        const maxScrollTop =
-          scrollContainer.scrollHeight - scrollContainer.clientHeight;
-        const atTop =
-          scrollContainer.scrollTop <= this.config.SECTION_SCROLL_EDGE_PX;
-        const atBottom =
-          scrollContainer.scrollTop >=
-          maxScrollTop - this.config.SECTION_SCROLL_EDGE_PX;
-
-        if ((direction === 1 && !atBottom) || (direction === -1 && !atTop)) {
-          this.wheelAccum = 0;
-          this.wheelAccumDir = 0;
-          this.edgeReachedTs = 0;
-          return;
-        }
-      }
-
-      // Dwell time: user must stay at edge for a minimum duration
-      const edgeDwell = this.config.EDGE_DWELL_MS || 400;
-      const now2 = Date.now();
-      if (this.edgeReachedTs === 0) {
-        this.edgeReachedTs = now2;
-      }
-      if (now2 - this.edgeReachedTs < edgeDwell) {
-        e.preventDefault();
-        return;
-      }
-
-      if (this.wheelAccumDir !== direction) {
-        this.wheelAccum = 0;
-        this.wheelAccumDir = direction;
-      }
-      this.wheelAccum += Math.abs(dy);
-
-      if (this.wheelAccum < this.config.WHEEL_DELTA_THRESHOLD) return;
-
-      this.wheelAccum = 0;
-      this.wheelAccumDir = 0;
-      this.edgeReachedTs = 0;
-
-      const currentIndex = this.getActiveNavIndex();
-      const nextIndex = direction === 1 ? currentIndex + 1 : currentIndex - 1;
-      if (nextIndex < 0 || nextIndex >= this.totalNavList) return;
-
-      const now = Date.now();
-      if (
-        now - this.lastSectionScrollTs <
-        this.config.SECTION_SCROLL_COOLDOWN_MS
-      )
-        return;
-      this.lastSectionScrollTs = now;
-
-      e.preventDefault();
-      this.navigateToNavIndex(nextIndex);
+    const observerOptions = {
+      root: null,
+      rootMargin: "-20% 0px -50% 0px",
+      threshold: 0,
     };
 
-    document.addEventListener("wheel", handleWheel, { passive: false });
+    const observer = new IntersectionObserver((entries) => {
+      if (this.isClickScrolling) return;
+
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id;
+          if (sectionId && sectionId !== this.currentSectionId) {
+            this.currentSectionId = sectionId;
+            this.setActiveNavLink(sectionId);
+
+            document.dispatchEvent(
+              new CustomEvent("sectionChange", { detail: { section: sectionId } }),
+            );
+          }
+        }
+      });
+    }, observerOptions);
+
+    this.allSection.forEach((section) => {
+      observer.observe(section);
+    });
   }
+
+  setActiveNavLink(sectionId) {
+    const allNavLinks = document.querySelectorAll(".nav a, .header-nav a");
+
+    allNavLinks.forEach((link) => {
+      link.classList.remove("active");
+      const linkHref = link.getAttribute("href");
+      if (linkHref === `#${sectionId}` || (sectionId === "project" && linkHref === "#projects")) {
+        link.classList.add("active");
+      }
+    });
+  }
+
+  updateNav(element) {
+    const target = element.getAttribute("href")?.split("#")[1];
+    if (target) {
+      this.setActiveNavLink(target);
+    }
+  }
+
+  // Compatibility methods for existing codebase
+  showSection(element) {
+    const target = element.getAttribute("href")?.split("#")[1];
+    if (target) {
+      const targetSection = document.getElementById(target);
+      if (targetSection) {
+        targetSection.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  }
+
+  removeBackSection() {}
+  addBackSection() {}
 }

@@ -492,19 +492,19 @@
     </noscript>
 
     <!-- CSS Files  -->
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <!-- Default skin color (inlined to save HTTP request) -->
+    <link rel="stylesheet" href="./assets/css/style.css?direct" />
+    <!-- Modern AI Engineer palette -->
     <style>
       :root {
-        --skin-color: #ec1839;
-        --skin-color-rgb: 236, 24, 57;
-        --skin-color-02: rgba(236, 24, 57, 0.2);
-        --skin-color-03: rgba(236, 24, 57, 0.3);
-        --skin-color-04: rgba(236, 24, 57, 0.4);
-        --skin-color-05: rgba(236, 24, 57, 0.5);
-        --skin-color-06: rgba(236, 24, 57, 0.6);
-        --skin-gradient: #ff6b9d;
-        --skin-gradient-light: rgba(255, 107, 157, 0.1);
+        --skin-color: #e11d48;
+        --skin-color-rgb: 225, 29, 72;
+        --skin-color-02: rgba(225, 29, 72, 0.15);
+        --skin-color-03: rgba(225, 29, 72, 0.25);
+        --skin-color-04: rgba(225, 29, 72, 0.35);
+        --skin-color-05: rgba(225, 29, 72, 0.45);
+        --skin-color-06: rgba(225, 29, 72, 0.55);
+        --skin-gradient: #f43f5e;
+        --skin-gradient-light: rgba(225, 29, 72, 0.08);
       }
     </style>
     <!-- AOS CSS removed to reduce render-blocking third-party requests -->
@@ -536,100 +536,269 @@
       <i class="fas fa-arrow-up"></i>
     </a>
 
-    <!-- Theme Toggle Button -->
-    <button
-      class="theme-toggle"
-      aria-label="Toggle light/dark mode"
-      title="Toggle light/dark mode"
-    >
-      <i class="fas fa-sun"></i>
-      <i class="fas fa-moon"></i>
-    </button>
+    <!-- Sticky Glass Header Start -->
+    <header class="site-header" id="site-header">
+      <div class="header-container">
+        <a href="#home" class="header-logo" aria-label="Vo Phu Thinh - Home">
+          <img
+            src="./assets/favicon/apple-icon-180x180.png"
+            alt="Vo Phu Thinh Logo"
+            class="logo-mark"
+            width="38"
+            height="38"
+          />
+          <div class="logo-meta">
+            <span class="logo-name">Vo Phu Thinh</span>
+            <span class="logo-title">AI Engineer</span>
+          </div>
+        </a>
+        <nav class="header-nav" aria-label="Main Navigation">
+          <ul class="nav">
+            <li>
+              <a href="#home" class="active"><i class="fa fa-home"></i><span>Home</span></a>
+            </li>
+            <li>
+              <a href="#about"><i class="fa fa-user"></i><span>About</span></a>
+            </li>
+            <li>
+              <a href="#project"><i class="fa fa-briefcase"></i><span>Projects</span></a>
+            </li>
+            <li>
+              <a href="#ai-lab"><i class="fa-solid fa-flask-vial"></i><span>AI Lab</span></a>
+            </li>
+            <li>
+              <a href="#skills"><i class="fa fa-list"></i><span>Skills</span></a>
+            </li>
+            <li>
+              <a href="#certifications-awards"><i class="fa fa-certificate"></i><span>Awards</span></a>
+            </li>
+            <li>
+              <a href="#contact"><i class="fa fa-envelope"></i><span>Contact</span></a>
+            </li>
+          </ul>
+        </nav>
+        <div class="header-right">
+          <a
+            href="./CV-VoPhuThinh.pdf"
+            download="CV_VoPhuThinh.pdf"
+            class="btn-header-cv"
+            title="Download CV"
+          >
+            <i class="fa-solid fa-file-pdf"></i> <span>CV</span>
+          </a>
+          <button
+            class="theme-toggle"
+            aria-label="Toggle light/dark mode"
+            title="Toggle light/dark mode"
+          >
+            <i class="fas fa-sun"></i>
+            <i class="fas fa-moon"></i>
+          </button>
+          <button
+            class="nav-toggler"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+          >
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+    <!-- Sticky Glass Header End -->
 
     <!-- Main Container Start -->
     <div class="main-container">
-      <!-- Aside Start -->
-      <div class="aside">
-        <div class="logo">
-          <a href="#home"><span>P</span>ortfolio</a>
-        </div>
-        <div class="nav-toggler">
-          <span></span>
-        </div>
-        <ul class="nav">
-          <li>
-            <a href="#home" class="active"><i class="fa fa-home"></i>Home</a>
-          </li>
-          <li>
-            <a href="#about"><i class="fa fa-user"></i>About</a>
-          </li>
-          <li>
-            <a href="#skills"><i class="fa fa-list"></i>Skills</a>
-          </li>
-          <li>
-            <a href="#project"><i class="fa fa-briefcase"></i>Project</a>
-          </li>
-          <li>
-            <a href="#certifications-awards"
-              ><i class="fa fa-certificate"></i>Certification</a
-            >
-          </li>
-          <li>
-            <a href="#contact"><i class="fa fa-envelope"></i>Contact</a>
-          </li>
-        </ul>
-      </div>
-      <!-- Aside End -->
       <!-- Main Content Start -->
       <main class="main-content" id="main-content">
         <!-- Home Section Start -->
         <section class="home active section" id="home">
           <canvas id="neural-canvas"></canvas>
+          <div class="hero-ambient-glow" aria-hidden="true"></div>
           <div class="container">
-            <div class="row">
+            <div class="row hero-row">
               <div class="home-info padd-15">
-                <h1 class="hello">
-                  Hello, my name is <span class="name">Vo Phu Thinh</span>
+                <div class="hero-status-pill">
+                  <span class="status-beacon">
+                    <span class="beacon-pulse"></span>
+                    <span class="beacon-dot"></span>
+                  </span>
+                  <span class="status-title">Open to High-Impact AI Roles</span>
+                  <span class="status-sep">&bull;</span>
+                  <span class="status-org">AI CoE @ HPT Vietnam</span>
+                </div>
+
+                <h1 class="hero-heading">
+                  Architecting Production <br />
+                  <span class="hero-accent">AI Agents &amp; RAG Systems</span>
                 </h1>
-                <h2 class="my-profession">
-                  I'm an <span class="typing">AI Engineer</span>
-                </h2>
-                <p>
-                  I build autonomous AI Agents, Agentic RAG, and MCP-powered
-                  systems at HPT Vietnam that go beyond demos and into
-                  production.
+
+                <div class="hero-subline">
+                  <span class="subline-intro">Hi, I'm</span>
+                  <strong class="hero-author-name">Vo Phu Thinh</strong>
+                  <span class="subline-bullet">&bull;</span>
+                  <span class="typing-container">
+                    <span class="typing">AI Engineer</span>
+                  </span>
+                </div>
+
+                <p class="hero-description">
+                  Engineering production-grade Agentic RAG, low-latency multimodal assistants, and autonomous tool-calling architectures with Model Context Protocol (MCP) — strictly grounded for zero hallucination and measurable business ROI.
                 </p>
 
-                <a
-                  href="./CV-VoPhuThinh.pdf"
-                  download="CV_VoPhuThinh.pdf"
-                  class="btn btn-download"
-                  >Download CV <i class="fa-solid fa-download"></i
-                ></a>
+                <!-- Core Technical Stack Chips for Instant Recruiter Parsing -->
+                <div class="hero-stack-pills" aria-label="Core Technical Expertise">
+                  <span class="hero-stack-tag"><i class="fa-solid fa-bolt"></i> Agentic RAG</span>
+                  <span class="hero-stack-tag"><i class="fa-solid fa-network-wired"></i> LangGraph &amp; MCP</span>
+                  <span class="hero-stack-tag"><i class="fa-brands fa-microsoft"></i> Azure &amp; Azure OpenAI</span>
+                  <span class="hero-stack-tag"><i class="fa-solid fa-database"></i> Vector DBs (Qdrant)</span>
+                  <span class="hero-stack-tag"><i class="fa-solid fa-shield-halved"></i> Zero-Hallucination Guardrails</span>
+                  <span class="hero-stack-tag"><i class="fa-brands fa-python"></i> Python &amp; FastAPI</span>
+                </div>
+
+                <div class="home-buttons">
+                  <a
+                    href="./CV-VoPhuThinh.pdf"
+                    download="CV_VoPhuThinh.pdf"
+                    class="btn btn-download"
+                  >
+                    <span>Download CV</span>
+                    <i class="fa-solid fa-download"></i>
+                  </a>
+                  <button
+                    type="button"
+                    class="btn btn-recruiter-brief"
+                    id="openRecruiterBriefBtn"
+                    data-modal-target="recruiterModal"
+                    aria-label="Open Recruiter Executive Summary"
+                  >
+                    <i class="fa-solid fa-bolt-lightning"></i>
+                    <span>Recruiter TL;DR</span>
+                  </button>
+                  <a href="#project" class="btn btn-outline-hero">
+                    <span>Explore Projects</span>
+                    <i class="fa-solid fa-arrow-down"></i>
+                  </a>
+                  <div class="hero-social-links" aria-label="Quick social links">
+                    <a
+                      href="https://github.com/vophuthinh"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="hero-social-btn"
+                      aria-label="GitHub Profile"
+                      title="GitHub"
+                    >
+                      <i class="fa-brands fa-github"></i>
+                    </a>
+                    <a
+                      href="https://linkedin.com/in/vophuthinh"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="hero-social-btn"
+                      aria-label="LinkedIn Profile"
+                      title="LinkedIn"
+                    >
+                      <i class="fa-brands fa-linkedin-in"></i>
+                    </a>
+                    <button
+                      type="button"
+                      class="hero-social-btn btn-copy-email"
+                      data-copy-email="vophuthinhcm@gmail.com"
+                      aria-label="Copy Email vophuthinhcm@gmail.com"
+                      title="Copy Email"
+                    >
+                      <i class="fa-solid fa-envelope"></i>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Credibility Metrics Strip -->
+                <div class="hero-metrics-strip">
+                  <div class="hero-metric-cell">
+                    <span class="metric-number">3<span class="metric-plus">+</span></span>
+                    <span class="metric-title">Production AI Shipped</span>
+                  </div>
+                  <div class="metric-divider" aria-hidden="true"></div>
+                  <div class="hero-metric-cell">
+                    <span class="metric-number">850<span class="metric-plus">+</span></span>
+                    <span class="metric-title">Live Q&amp;A / Day</span>
+                  </div>
+                  <div class="metric-divider" aria-hidden="true"></div>
+                  <div class="hero-metric-cell">
+                    <span class="metric-number">100<span class="metric-plus">%</span></span>
+                    <span class="metric-title">Grounded Accuracy</span>
+                  </div>
+                  <div class="metric-divider" aria-hidden="true"></div>
+                  <div class="hero-metric-cell">
+                    <span class="metric-number">2<span class="metric-plus">x</span></span>
+                    <span class="metric-title">Enterprise AI Awards</span>
+                  </div>
+                </div>
               </div>
+
               <div class="home-img padd-15">
-                <div class="image-wrapper">
-                  <img
-                    src="./assets/images/hero.webp"
-                    alt="Vo Phu Thinh - AI Engineer (Machine Learning)"
-                    loading="eager"
-                    fetchpriority="high"
-                    decoding="async"
-                  />
+                <div class="hero-card-container">
+                  <!-- Floating Glass Badges -->
+                  <div class="hero-floating-badge badge-top-left" aria-hidden="true">
+                    <div class="badge-icon-wrap">
+                      <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <div class="badge-text-wrap">
+                      <span class="badge-label">Agentic RAG</span>
+                      <span class="badge-sub">Deterministic Routing</span>
+                    </div>
+                  </div>
+
+                  <div class="hero-floating-badge badge-bottom-right" aria-hidden="true">
+                    <div class="badge-icon-wrap badge-icon-award">
+                      <i class="fa-solid fa-award"></i>
+                    </div>
+                    <div class="badge-text-wrap">
+                      <span class="badge-label">2x AI Awards</span>
+                      <span class="badge-sub">HPT &amp; Hutech Winner</span>
+                    </div>
+                  </div>
+
+                  <!-- Profile Card Frame -->
+                  <div class="image-wrapper hero-profile-frame">
+                    <div class="frame-status-header">
+                      <span class="status-indicator-dot"></span>
+                      <span class="frame-code-title">SYS // MODEL_ACTIVE</span>
+                      <span class="frame-pill">ENTERPRISE</span>
+                    </div>
+                    <div class="frame-image-box">
+                      <img
+                        src="./assets/images/hero.webp"
+                        alt="Vo Phu Thinh - AI Engineer"
+                        loading="eager"
+                        fetchpriority="high"
+                        decoding="async"
+                        width="420"
+                        height="420"
+                      />
+                      <div class="frame-bottom-gradient" aria-hidden="true"></div>
+                    </div>
+                    <div class="frame-status-footer">
+                      <div class="footer-info">
+                        <span class="footer-name">Vo Phu Thinh</span>
+                        <span class="footer-role">AI Engineer &bull; LLM / RAG</span>
+                      </div>
+                      <span class="footer-status-tag">ONLINE</span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
           <!-- Scroll Down Indicator -->
           <div class="scroll-down">
-            <a href="#about">
+            <a href="#about" aria-label="Scroll to About section">
               <span class="mouse">
                 <span class="wheel"></span>
               </span>
             </a>
           </div>
         </section>
-        <!-- Main Container End -->
+        <!-- Home Section End -->
         <!-- About Section Start -->
         <section
           class="about section"
@@ -647,49 +816,38 @@
               <div class="about-content padd-15">
                 <div class="row about-top-row">
                   <div class="about-text padd-15">
-                    <h3>I'm Vo Phu Thinh, an <span>AI Engineer</span></h3>
+                    <h3>Engineering Intelligence, <span>Not Just Prompts</span></h3>
                     <p>
-                      I joined HPT Vietnam as an AI Engineer Intern and was
-                      promoted to full-time after 6 months, the fastest
-                      intern-to-engineer track in the team. Since then, I've
-                      shipped 3 AI products to production at the AI Center of
-                      Excellence, each solving concrete enterprise problems.
+                      I am an AI Engineer at <strong>HPT Vietnam Corporation (AI Center of Excellence)</strong>. My engineering focus is bridging the gap between fragile proof-of-concepts and <strong>deterministic, enterprise-grade AI systems</strong>.
                     </p>
-                    <h4 style="margin-top: 18px; margin-bottom: 10px">
-                      Highlights
+                    <p style="margin-top: 10px; color: var(--text-black-700); line-height: 1.8;">
+                      I architect production systems that operate with mathematical grounding, sub-second streaming latencies, and zero-hallucination guarantees. My core toolkit centers on <strong>Agentic RAG</strong>, <strong>autonomous tool-routing via Model Context Protocol (MCP)</strong>, <strong>hybrid semantic search (Qdrant)</strong>, and <strong>low-latency voice/text pipelines</strong>. Rather than treating LLMs as magic black boxes, I design the robust distributed plumbing around them — deterministic routing, strategic embedding chunking, self-healing retrieval loops, and rigorous evaluation harnesses.
+                    </p>
+                    <h4 style="margin-top: 20px; margin-bottom: 12px">
+                      Key Milestones &amp; Production Track Record
                     </h4>
                     <ul class="about-bullet-list">
                       <li>
-                        Built and shipped
-                        <strong>3 AI products to production</strong> within my
-                        first year
+                        <strong>Architected "Lyly" (Executive AI Assistant):</strong> Built a multimodal assistant with bi-directional voice &amp; text streaming via WebSockets, hybrid vector search (Qdrant), and dynamic contextual memory (<code style="color:var(--skin-color);font-size:0.9em;">mem0</code>). Awarded <strong>2nd Prize</strong> in HPT's Enterprise AI Competition.
                       </li>
                       <li>
-                        Developed an AI chatbot that handled
-                        <strong>850+ questions in a single day</strong> at a
-                        company event
+                        <strong>Orchestrated HPT D-DAY 2025 RAG Chatbot:</strong> Deployed a high-throughput, zero-hallucination RAG chatbot handling <strong>850+ live executive queries in a single day</strong> at Pullman Hanoi with 100% grounded accuracy against official knowledge bases.
                       </li>
                       <li>
-                        Won <strong>2 awards</strong> in HPT's enterprise AI
-                        competition with AI Agent and News Intelligence projects
+                        <strong>Co-engineered HIH ("S&oacute;c D&ograve; La"):</strong> Automated intelligence pipeline vectorizing and synthesizing industry trends into actionable executive briefings via Microsoft Viva Engage (8,500+ impressions, <strong>3rd Prize Winner</strong>).
                       </li>
                       <li>
-                        Experienced in
-                        <strong>chatbot, RAG, AI Agent</strong>, and workflow
-                        automation for enterprise use cases
+                        <strong>Enterprise Copilot &amp; Process Automation:</strong> Formulated advanced grounding and prompt optimization frameworks for Microsoft Copilot deployments, paired with 10+ production workflows (n8n, Power Platform) cutting manual cycles by ~60%.
                       </li>
                     </ul>
                     <p
                       style="
-                        margin-top: 18px;
+                        margin-top: 20px;
                         color: var(--text-black-700);
                         line-height: 1.8;
                       "
                     >
-                      I'm currently open to AI Engineer roles at companies
-                      building real products with LLM, RAG, or multi-agent
-                      systems. I work best in fast-moving teams where I can own
-                      the full cycle from research to production deployment.
+                      I thrive in fast-moving engineering environments that demand high velocity and architectural rigor. I'm currently open to AI Engineer and Agentic Systems Architect roles where I can own the complete lifecycle from research to scaled production.
                     </p>
                   </div>
                   <div class="personal-info padd-15">
@@ -806,14 +964,39 @@
                           <div class="timeline-item">
                             <div class="circle-dot"></div>
                             <h3 class="timeline-date">
-                              <i class="fa fa-calendar"></i> Sep 2021 - May 2025
+                              <i class="fa fa-calendar"></i> 2021 - 2025
                             </h3>
                             <h4 class="timeline-title">
-                              HUTECH &amp; Open University Malaysia
+                              HUTECH &amp; Open University Malaysia (OUM)
                             </h4>
                             <p class="timeline-text">
-                              Bachelor's degree, Information Technology (Joint
-                              program)
+                              Bachelor of Information Technology (Joint International Program)
+                            </p>
+                          </div>
+                          <!-- Timeline Item -->
+                          <div class="timeline-item">
+                            <div class="circle-dot"></div>
+                            <h3 class="timeline-date">
+                              <i class="fa fa-calendar"></i> Jul 2023 - Aug 2023
+                            </h3>
+                            <h4 class="timeline-title">
+                              Universiti Malaysia Sarawak (UNIMAS)
+                            </h4>
+                            <p class="timeline-text">
+                              Intensive English Language Mobility Programme
+                            </p>
+                          </div>
+                          <!-- Timeline Item -->
+                          <div class="timeline-item">
+                            <div class="circle-dot"></div>
+                            <h3 class="timeline-date">
+                              <i class="fa fa-calendar"></i> Mar 2022 - Aug 2023
+                            </h3>
+                            <h4 class="timeline-title">
+                              Ironhack Vietnam
+                            </h4>
+                            <p class="timeline-text">
+                              Full Stack Web Developer Professional Certificate
                             </p>
                           </div>
                         </div>
@@ -829,37 +1012,37 @@
                           <div class="timeline-item">
                             <div class="circle-dot"></div>
                             <h3 class="timeline-date">
-                              <i class="fa fa-calendar"></i> Oct 2025 - Present
+                              <i class="fa fa-calendar"></i> Nov 2024 - Present
                             </h3>
                             <h4 class="timeline-title">
-                              HPT Vietnam Corporation – AI Center of Excellence
-                              (CoE)
+                              HPT Vietnam Corporation – AI Center of Excellence (CoE)
                             </h4>
                             <p class="timeline-text">AI Engineer</p>
                             <ul class="timeline-details">
                               <li>
-                                Built and deployed AI chatbot handling 850+
-                                questions/day at HPT D-DAY event using n8n +
-                                GPT-4o
+                                <strong>Architected "Lyly" (Executive AI Assistant):</strong> Designed a multimodal system for real-time voice and text interaction, winning 2nd prize for technical innovation and low-latency response.
                               </li>
                               <li>
-                                Won 2nd &amp; 3rd prizes in "AI in Business"
-                                competition with AI Agent and news intelligence
-                                projects
+                                <strong>Engineered End-to-End Vector Pipelines:</strong> Developed automated workflows for strategic chunking and embedding, significantly enhancing semantic retrieval for enterprise knowledge management.
                               </li>
                               <li>
-                                Developed LLM-powered solutions for executive
-                                decision support and automated content
-                                processing
+                                <strong>Orchestrated HPT D-Day 2025 RAG Chatbot:</strong> Deployed a high-accuracy RAG system providing real-time, consistent answers for event agenda, venue, registration, and speakers (850+ Q&A handled).
+                              </li>
+                              <li>
+                                <strong>Optimized LLM Reliability in Microsoft Copilot:</strong> Implemented advanced prompt engineering and grounding strategies to mitigate hallucinations and ensure reliable outputs for business-critical workflows.
+                              </li>
+                              <li>
+                                <strong>Co-developed HIH (HotNews Intelligence Hub):</strong> Built an automated intelligence system featuring "S&oacute;c D&ograve; La" for news vectorization and summarization (8,500+ views, won 3rd prize).
                               </li>
                             </ul>
                             <div class="timeline-tags">
                               <span class="tl-tag">Python</span>
                               <span class="tl-tag">FastAPI</span>
+                              <span class="tl-tag">Agentic RAG</span>
                               <span class="tl-tag">LangChain</span>
                               <span class="tl-tag">OpenAI</span>
                               <span class="tl-tag">Qdrant</span>
-                              <span class="tl-tag">n8n</span>
+                              <span class="tl-tag">mem0</span>
                               <span class="tl-tag">Next.js</span>
                             </div>
                           </div>
@@ -876,14 +1059,10 @@
                             </p>
                             <ul class="timeline-details">
                               <li>
-                                Built 10+ automation workflows using n8n, Power
-                                Platform, and UiPath, cutting manual reporting
-                                time by ~60%
+                                Built 10+ automation workflows using n8n, Power Platform, and UiPath, cutting manual reporting and operational time by ~60%.
                               </li>
                               <li>
-                                Integrated AI into enterprise solutions,
-                                enabling automated document processing for
-                                internal teams
+                                Integrated AI into enterprise solutions, enabling automated document processing and structured information extraction for internal teams.
                               </li>
                             </ul>
                             <div class="timeline-tags">
@@ -898,25 +1077,23 @@
                             <div class="circle-dot"></div>
                             <h3 class="timeline-date">
                               <i class="fa fa-calendar"></i> Nov 2024 - Apr 2025
-                              (6mos)
                             </h3>
                             <h4 class="timeline-title">
                               HPT Vietnam Corporation
                             </h4>
-                            <p class="timeline-text">Intern</p>
+                            <p class="timeline-text">AI Engineer Intern</p>
                             <ul class="timeline-details">
                               <li>
-                                Prototyped an AI chatbot for internal Q&amp;A
-                                that later evolved into the D-DAY 2025 product
+                                Researched RAG techniques and prototyped enterprise Q&amp;A assistants that later evolved into the D-DAY 2025 AI system.
                               </li>
                               <li>
-                                Promoted to full-time after 6 months, the
-                                fastest intern-to-engineer track in the team
+                                Promoted to full-time after 6 months — the fastest intern-to-engineer track in the team.
                               </li>
                             </ul>
                             <div class="timeline-tags">
                               <span class="tl-tag">Python</span>
                               <span class="tl-tag">GPT-4o</span>
+                              <span class="tl-tag">RAG</span>
                               <span class="tl-tag">n8n</span>
                               <span class="tl-tag">JavaScript</span>
                             </div>
@@ -925,18 +1102,16 @@
                             <div class="circle-dot"></div>
                             <h3 class="timeline-date">
                               <i class="fa fa-calendar"></i> Mar 2023 - Oct 2023
-                              (8mos)
                             </h3>
                             <h4 class="timeline-title">
-                              Institute of Smart City and Management
+                              Institute of Smart City and Management (ISCM - UEH)
                             </h4>
                             <p class="timeline-text">
                               Website Management Support
                             </p>
                             <ul class="timeline-details">
                               <li>
-                                Managed and maintained organizational website
-                                content, SEO, and analytics
+                                Managed and maintained organizational website content, SEO, and web performance analytics.
                               </li>
                             </ul>
                             <div class="timeline-tags">
@@ -955,6 +1130,195 @@
           </div>
         </section>
         <!-- About Section End -->
+        <!-- Project Section Start -->
+        <section
+          class="project section"
+          id="project"
+          data-aos="fade-up"
+          data-aos-duration="800"
+        >
+          <div class="container">
+            <div class="row">
+              <div class="section-title padd-15">
+                <h2>Featured Projects</h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="project-filter">
+                <button
+                  type="button"
+                  class="filter-btn active"
+                  data-filter="all"
+                  aria-label="Filter projects: Show all"
+                  aria-pressed="true"
+                >
+                  All
+                </button>
+                <button
+                  type="button"
+                  class="filter-btn"
+                  data-filter="llm"
+                  aria-label="Filter projects: LLM Applications"
+                  aria-pressed="false"
+                >
+                  LLM / AI Agent
+                </button>
+                <button
+                  type="button"
+                  class="filter-btn"
+                  data-filter="data"
+                  aria-label="Filter projects: Data & Analytics"
+                  aria-pressed="false"
+                >
+                  Data/Analytics
+                </button>
+              </div>
+            </div>
+            <div id="projectsGrid" class="projects-grid">
+              <!-- Projects will be dynamically rendered by JavaScript -->
+              <noscript>
+                <div class="noscript-projects">
+                  <h3>HPT D-DAY Chatbot</h3>
+                  <p>
+                    AI chatbot for HPT D-DAY event using n8n + GPT-4o + Google
+                    Sheets. Handled 850+ user questions about schedule,
+                    speakers, and booths.
+                  </p>
+                  <h3>AI Agent — Lyly (2nd Prize)</h3>
+                  <p>
+                    AI Agent for executive decision support and operations
+                    optimization. Won 2nd prize in HPT's "AI in Business"
+                    competition.
+                  </p>
+                  <h3>H.I.H — HotNews Intelligence Hub (3rd Prize)</h3>
+                  <p>
+                    Intelligent news processing platform that automates content
+                    aggregation, analysis, and distribution. Won 3rd prize.
+                  </p>
+                  <h3>E-Commerce with Sentiment Analysis</h3>
+                  <p>
+                    Multi-vendor e-commerce platform with AI sentiment analysis
+                    using Hugging Face BERTweet. Built with React, Node.js,
+                    Express.js, MySQL, Socket.io.
+                  </p>
+                </div>
+              </noscript>
+            </div>
+          </div>
+        </section>
+        <!-- Project Section End -->
+
+        <!-- AI Tech Lab / Agent Playground Start -->
+        <section class="ai-lab section" id="ai-lab">
+          <div class="container">
+            <div class="row">
+              <div class="section-title padd-15">
+                <div class="section-eyebrow">
+                  <span class="eyebrow-pill">
+                    <i class="fa-solid fa-flask-vial"></i> Live Architecture Simulation
+                  </span>
+                </div>
+                <h2>AI Tech Lab &bull; Agent &amp; RAG Simulator</h2>
+                <p class="section-subtitle">
+                  Trải nghiệm trực tiếp luồng thực thi Agentic RAG, giao thức MCP Tool Calling và cơ chế kiểm soát không ảo giác (Zero-Hallucination Guardrails).
+                </p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="ai-lab-wrapper padd-15">
+                <div class="ai-lab-chassis">
+                  <!-- Lab Header Control Bar -->
+                  <div class="lab-chassis-header">
+                    <div class="chassis-status">
+                      <span class="status-indicator-dot"></span>
+                      <span class="chassis-title">AGENTIC EXECUTION ENVIRONMENT</span>
+                      <span class="chassis-badge">ENTERPRISE SPEC</span>
+                    </div>
+                    <div class="lab-preset-bar">
+                      <span class="preset-label">Preset Traces:</span>
+                      <button type="button" class="sim-preset-chip active" data-preset="rag-policy">
+                        <i class="fa-solid fa-shield-halved"></i> Agentic RAG (Security Policy)
+                      </button>
+                      <button type="button" class="sim-preset-chip" data-preset="mcp-agent">
+                        <i class="fa-solid fa-network-wired"></i> Multi-Agent MCP Execution
+                      </button>
+                      <button type="button" class="sim-preset-chip" data-preset="custom-prompt">
+                        <i class="fa-solid fa-terminal"></i> Enterprise Capabilities
+                      </button>
+                    </div>
+                  </div>
+
+                  <!-- Query Input Console -->
+                  <div class="lab-input-console">
+                    <div class="input-icon"><i class="fa-solid fa-terminal"></i></div>
+                    <input
+                      type="text"
+                      id="sim-query-input"
+                      class="sim-input-field"
+                      placeholder="Enter a prompt or select a preset trace above..."
+                      value="Tìm kiếm chính sách bảo mật dữ liệu &amp; quy định LLM nội bộ HPT 2026"
+                    />
+                    <button type="button" id="btn-run-sim" class="btn-execute-pipeline">
+                      <i class="fa-solid fa-play"></i>
+                      <span>Execute Pipeline</span>
+                    </button>
+                  </div>
+
+                  <!-- Telemetry Metrics Bar -->
+                  <div class="lab-telemetry-bar">
+                    <div class="telemetry-item">
+                      <span class="telemetry-label"><i class="fa-regular fa-clock"></i> Total Latency</span>
+                      <span class="telemetry-val" id="stat-sim-latency">0ms</span>
+                    </div>
+                    <div class="telemetry-divider"></div>
+                    <div class="telemetry-item">
+                      <span class="telemetry-label"><i class="fa-solid fa-bolt"></i> TTFT</span>
+                      <span class="telemetry-val" id="stat-sim-ttft">...</span>
+                    </div>
+                    <div class="telemetry-divider"></div>
+                    <div class="telemetry-item">
+                      <span class="telemetry-label"><i class="fa-solid fa-gauge-high"></i> Throughput</span>
+                      <span class="telemetry-val" id="stat-sim-tokens">0 t/s</span>
+                    </div>
+                    <div class="telemetry-divider"></div>
+                    <div class="telemetry-item">
+                      <span class="telemetry-label"><i class="fa-solid fa-shield-halved"></i> Hallucination Target</span>
+                      <span class="telemetry-val val-green" id="stat-sim-hallucination">0.0%</span>
+                    </div>
+                  </div>
+
+                  <!-- Pipeline Steps & Output Split View -->
+                  <div class="lab-grid-view">
+                    <!-- Left: Pipeline Steps -->
+                    <div class="lab-pipeline-panel">
+                      <div class="panel-header">
+                        <span class="panel-title"><i class="fa-solid fa-diagram-project"></i> Pipeline Step Trace</span>
+                        <span class="panel-tag">DETERMINISTIC</span>
+                      </div>
+                      <div id="sim-pipeline-steps" class="pipeline-steps-list">
+                        <!-- Populated dynamically by ai-simulator.js -->
+                      </div>
+                    </div>
+
+                    <!-- Right: Terminal Streaming Output -->
+                    <div class="lab-terminal-panel">
+                      <div class="panel-header">
+                        <span class="panel-title"><i class="fa-solid fa-code"></i> Verified Output Stream</span>
+                        <span class="panel-tag tag-green">ZERO HALLUCINATION</span>
+                      </div>
+                      <div class="terminal-body">
+                        <pre id="sim-terminal-output" class="terminal-code-view">Click "Execute Pipeline" to trigger the Agentic workflow...</pre>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <!-- AI Tech Lab / Agent Playground End -->
+
         <!-- Skills Section Start -->
         <section
           class="skills section"
@@ -1555,83 +1919,6 @@
           </div>
         </section>
         <!-- Skills Section End -->
-        <!-- Project Section Start -->
-        <section
-          class="project section"
-          id="project"
-          data-aos="fade-up"
-          data-aos-duration="800"
-        >
-          <div class="container">
-            <div class="row">
-              <div class="section-title padd-15">
-                <h2>Projects</h2>
-              </div>
-            </div>
-            <div class="row">
-              <div class="project-filter">
-                <button
-                  type="button"
-                  class="filter-btn active"
-                  data-filter="all"
-                  aria-label="Filter projects: Show all"
-                  aria-pressed="true"
-                >
-                  All
-                </button>
-                <button
-                  type="button"
-                  class="filter-btn"
-                  data-filter="llm"
-                  aria-label="Filter projects: LLM Applications"
-                  aria-pressed="false"
-                >
-                  LLM / AI Agent
-                </button>
-                <button
-                  type="button"
-                  class="filter-btn"
-                  data-filter="data"
-                  aria-label="Filter projects: Data & Analytics"
-                  aria-pressed="false"
-                >
-                  Data/Analytics
-                </button>
-              </div>
-            </div>
-            <div id="projectsGrid" class="projects-grid">
-              <!-- Projects will be dynamically rendered by JavaScript -->
-              <noscript>
-                <div class="noscript-projects">
-                  <h3>HPT D-DAY Chatbot</h3>
-                  <p>
-                    AI chatbot for HPT D-DAY event using n8n + GPT-4o + Google
-                    Sheets. Handled 850+ user questions about schedule,
-                    speakers, and booths.
-                  </p>
-                  <h3>AI Agent — Lyly (2nd Prize)</h3>
-                  <p>
-                    AI Agent for executive decision support and operations
-                    optimization. Won 2nd prize in HPT's "AI in Business"
-                    competition.
-                  </p>
-                  <h3>H.I.H — HotNews Intelligence Hub (3rd Prize)</h3>
-                  <p>
-                    Intelligent news processing platform that automates content
-                    aggregation, analysis, and distribution. Won 3rd prize.
-                  </p>
-                  <h3>E-Commerce with Sentiment Analysis</h3>
-                  <p>
-                    Multi-vendor e-commerce platform with AI sentiment analysis
-                    using Hugging Face BERTweet. Built with React, Node.js,
-                    Express.js, MySQL, Socket.io.
-                  </p>
-                </div>
-              </noscript>
-            </div>
-          </div>
-        </section>
-        <!-- Project Section End -->
         <!-- Certifications Section Start -->
         <section
           class="certifications section"
@@ -1675,7 +1962,7 @@
                       </div>
                       <div class="cert-date">
                         <i class="fa fa-calendar"></i>
-                        <span>2025</span>
+                        <span>Jan 2026</span>
                       </div>
                     </div>
                     <div class="cert-view-hint">
@@ -1713,11 +2000,116 @@
                       </div>
                       <div class="cert-date">
                         <i class="fa fa-calendar"></i>
-                        <span>2025</span>
+                        <span>Jan 2026</span>
                       </div>
                     </div>
                     <div class="cert-view-hint">
                       <i class="fa fa-external-link-alt"></i> View Award
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="certification-item padd-15">
+                <a
+                  href="./assets/images/certifications/Microsoft-Agentic-AI.svg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="cert-link"
+                >
+                  <div class="certification-box shadow-dark">
+                    <div class="cert-preview">
+                      <img
+                        src="./assets/images/certifications/Microsoft-Agentic-AI.svg"
+                        alt="Implement Agentic AI &amp; Copilot Solutions"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="cert-header">
+                      <h3>Implement Agentic AI &amp; Copilot Solutions</h3>
+                      <span class="cert-type">Certificate</span>
+                    </div>
+                    <div class="cert-footer">
+                      <div class="cert-org">
+                        <i class="fa fa-building"></i>
+                        <span>Microsoft</span>
+                      </div>
+                      <div class="cert-date">
+                        <i class="fa fa-calendar"></i>
+                        <span>2025 - 2026</span>
+                      </div>
+                    </div>
+                    <div class="cert-view-hint">
+                      <i class="fa fa-external-link-alt"></i> View Certificate
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="certification-item padd-15">
+                <a
+                  href="./assets/images/certifications/Google-Cloud-Architect.svg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="cert-link"
+                >
+                  <div class="certification-box shadow-dark">
+                    <div class="cert-preview">
+                      <img
+                        src="./assets/images/certifications/Google-Cloud-Architect.svg"
+                        alt="Google Cloud Certified Professional Cloud Architect"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="cert-header">
+                      <h3>Professional Cloud Architect</h3>
+                      <span class="cert-type">Certificate</span>
+                    </div>
+                    <div class="cert-footer">
+                      <div class="cert-org">
+                        <i class="fa fa-building"></i>
+                        <span>Google Cloud</span>
+                      </div>
+                      <div class="cert-date">
+                        <i class="fa fa-calendar"></i>
+                        <span>Dec 2023</span>
+                      </div>
+                    </div>
+                    <div class="cert-view-hint">
+                      <i class="fa fa-external-link-alt"></i> View Certificate
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="certification-item padd-15">
+                <a
+                  href="./assets/images/certifications/IBM-Machine-Learning.svg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="cert-link"
+                >
+                  <div class="certification-box shadow-dark">
+                    <div class="cert-preview">
+                      <img
+                        src="./assets/images/certifications/IBM-Machine-Learning.svg"
+                        alt="Machine Learning with Python"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="cert-header">
+                      <h3>Machine Learning with Python</h3>
+                      <span class="cert-type">Certificate</span>
+                    </div>
+                    <div class="cert-footer">
+                      <div class="cert-org">
+                        <i class="fa fa-building"></i>
+                        <span>IBM (Coursera)</span>
+                      </div>
+                      <div class="cert-date">
+                        <i class="fa fa-calendar"></i>
+                        <span>Sep 2025</span>
+                      </div>
+                    </div>
+                    <div class="cert-view-hint">
+                      <i class="fa fa-external-link-alt"></i> View Certificate
                     </div>
                   </div>
                 </a>
@@ -2122,8 +2514,7 @@
       <!-- Main Content End -->
     </div>
     <!-- JS Files -->
-    <!-- External Libraries -->
-    <script src="/js/particles.js" defer></script>
+
 
     <!-- Application Scripts (ES Modules) -->
     <script type="module" src="js/config.js"></script>
@@ -2155,6 +2546,155 @@
         <h2 id="projectModalTitle"></h2>
         <div id="projectModalContent" class="project-modal-content">
           <!-- Content will be populated by JavaScript -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Recruiter Executive Summary Modal -->
+    <div
+      id="recruiterModal"
+      class="modal recruiter-modal"
+      role="dialog"
+      aria-labelledby="recruiterModalTitle"
+      aria-modal="true"
+      tabindex="-1"
+    >
+      <div class="modal-content recruiter-modal-content">
+        <button
+          type="button"
+          class="close recruiter-close-btn"
+          data-modal-close="recruiterModal"
+          aria-label="Close recruiter brief"
+        >
+          &times;
+        </button>
+
+        <div class="recruiter-brief-header">
+          <div class="recruiter-badge-row">
+            <span class="recruiter-status-tag">
+              <span class="pulse-dot"></span>
+              VERIFIED AI TALENT DOSSIER
+            </span>
+            <span class="recruiter-track-tag">FAST-TRACK FOR HIRING MANAGERS</span>
+          </div>
+          <h2 id="recruiterModalTitle" class="recruiter-title">
+            Executive Profile // Vo Phu Thinh
+          </h2>
+          <p class="recruiter-subtitle">
+            AI Engineer specializing in Agentic RAG, Autonomous Tool-Calling (MCP), and Zero-Hallucination Production Architectures.
+          </p>
+        </div>
+
+        <div class="recruiter-snapshot-grid">
+          <div class="snapshot-card">
+            <span class="snapshot-label"><i class="fa-solid fa-briefcase"></i> Target Roles</span>
+            <strong class="snapshot-val">AI Engineer / Agentic Systems Specialist</strong>
+          </div>
+          <div class="snapshot-card">
+            <span class="snapshot-label"><i class="fa-solid fa-building"></i> Current Station</span>
+            <strong class="snapshot-val">AI CoE @ HPT Vietnam Corp</strong>
+          </div>
+          <div class="snapshot-card">
+            <span class="snapshot-label"><i class="fa-solid fa-location-dot"></i> Work Mode</span>
+            <strong class="snapshot-val">HCMC / Global Remote / Relocation</strong>
+          </div>
+          <div class="snapshot-card">
+            <span class="snapshot-label"><i class="fa-solid fa-graduation-cap"></i> Academic</span>
+            <strong class="snapshot-val">B.IT (Honor's) Open Univ Malaysia</strong>
+          </div>
+        </div>
+
+        <div class="recruiter-pillars-section">
+          <h3 class="recruiter-section-title">
+            <i class="fa-solid fa-layer-group"></i> Core Engineering Differentiators
+          </h3>
+          <div class="recruiter-pillars-grid">
+            <div class="pillar-card">
+              <div class="pillar-header">
+                <i class="fa-solid fa-shield-halved"></i>
+                <h4>Zero-Hallucination RAG</h4>
+              </div>
+              <p>
+                Engineered production RAG with strict semantic chunking, HyDE retrieval, dynamic thresholding, and fallback routing. Handled <strong>850+ live enterprise queries</strong> with 100% grounded accuracy at HPT D-DAY 2025.
+              </p>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-header">
+                <i class="fa-solid fa-network-wired"></i>
+                <h4>Agentic Systems &amp; MCP</h4>
+              </div>
+              <p>
+                Architected autonomous agents adhering to Model Context Protocol (MCP). Implemented multi-step planning, stateful execution graphs with LangGraph, and resilient tool-calling failovers.
+              </p>
+            </div>
+            <div class="pillar-card">
+              <div class="pillar-header">
+                <i class="fa-solid fa-bolt"></i>
+                <h4>Real-Time Voice &amp; Streaming</h4>
+              </div>
+              <p>
+                Delivered low-latency WebSocket text/audio gateway with interrupt handling, mem0 long-term memory personalization, and Qdrant hybrid vector search (Won <strong>2nd Prize</strong> in Enterprise AI).
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="recruiter-stack-section">
+          <h3 class="recruiter-section-title">
+            <i class="fa-solid fa-code"></i> Production Stack &amp; Protocols
+          </h3>
+          <div class="recruiter-tech-tags">
+            <span class="r-tag primary">Python</span>
+            <span class="r-tag primary">LangChain / LangGraph</span>
+            <span class="r-tag primary">LlamaIndex</span>
+            <span class="r-tag primary">OpenAI &amp; Azure OpenAI</span>
+            <span class="r-tag primary"><i class="fa-brands fa-microsoft"></i> Microsoft Azure (AI Search)</span>
+            <span class="r-tag primary">Google Gemini</span>
+            <span class="r-tag primary">Qdrant Vector DB</span>
+            <span class="r-tag primary">FastAPI &amp; WebSocket</span>
+            <span class="r-tag accent">Model Context Protocol (MCP)</span>
+            <span class="r-tag accent">Ragas / Evaluation</span>
+            <span class="r-tag neutral">Docker &amp; Linux</span>
+            <span class="r-tag neutral">Git / CI/CD</span>
+            <span class="r-tag neutral">PostgreSQL &amp; Redis</span>
+          </div>
+        </div>
+
+        <div class="recruiter-actions-footer">
+          <a
+            href="./CV-VoPhuThinh.pdf"
+            download="CV_VoPhuThinh.pdf"
+            class="btn-recruiter-action primary"
+          >
+            <i class="fa-solid fa-file-arrow-down"></i>
+            <span>Download ATS CV</span>
+          </a>
+          <button
+            type="button"
+            class="btn-recruiter-action secondary"
+            data-copy-email="vophuthinhcm@gmail.com"
+          >
+            <i class="fa-solid fa-copy"></i>
+            <span>Copy Email</span>
+          </button>
+          <a
+            href="https://linkedin.com/in/vophuthinh"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-recruiter-action outline"
+          >
+            <i class="fa-brands fa-linkedin"></i>
+            <span>LinkedIn</span>
+          </a>
+          <a
+            href="https://github.com/vophuthinh"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-recruiter-action outline"
+          >
+            <i class="fa-brands fa-github"></i>
+            <span>GitHub</span>
+          </a>
         </div>
       </div>
     </div>

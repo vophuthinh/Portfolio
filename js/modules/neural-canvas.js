@@ -10,14 +10,14 @@ export function initNeuralCanvas() {
   let W, H;
 
   const CONFIG = {
-    get count() { return isMobile() ? 35 : 70; },
-    maxDist: 140,
-    speed: 0.4,
-    nodeRadius: { min: 1.5, max: 3.5 },
-    lineOpacity: 0.18,
-    nodeOpacity: 0.7,
-    // red accent rgb
-    r: 236, g: 24, b: 57,
+    get count() { return isMobile() ? 30 : 50; },
+    maxDist: 120,
+    speed: 0.25,
+    nodeRadius: { min: 1.2, max: 2.6 },
+    lineOpacity: 0.08,
+    nodeOpacity: 0.35,
+    // red accent rgb matching brand
+    r: 225, g: 29, b: 72,
   };
 
   function resize() {

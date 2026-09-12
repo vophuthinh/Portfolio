@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 420" width="100%" height="100%">
+  <defs>
+    <linearGradient id="ibmBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="50%" stop-color="#1e1b4b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="ibmBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0f62fe"/>
+      <stop offset="100%" stop-color="#8a3ffc"/>
+    </linearGradient>
+  </defs>
+  <!-- Background -->
+  <rect width="600" height="420" fill="url(#ibmBg)" rx="12"/>
+  <rect x="15" y="15" width="570" height="390" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="2" rx="8"/>
+  <rect x="25" y="25" width="550" height="370" fill="none" stroke="url(#ibmBlue)" stroke-width="1" stroke-dasharray="4,4" rx="6" opacity="0.6"/>
+
+  <!-- IBM 8-bar Logo Simulation -->
+  <g transform="translate(60, 50)">
+    <text x="0" y="32" fill="#0f62fe" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="34" font-weight="900" letter-spacing="4">IBM</text>
+    <text x="95" y="30" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="600">| Coursera</text>
+  </g>
+
+  <!-- Title Badge -->
+  <g transform="translate(420, 50)">
+    <rect width="120" height="30" rx="15" fill="rgba(15,98,254,0.15)" stroke="#0f62fe" stroke-width="1"/>
+    <text x="60" y="19" fill="#a78bfa" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" text-anchor="middle">CERTIFICATE</text>
+  </g>
+
+  <!-- Certificate Heading -->
+  <text x="60" y="145" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" letter-spacing="1.5">PROFESSIONAL SPECIALIZATION</text>
+  <text x="60" y="185" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="26" font-weight="800">Machine Learning with Python</text>
+  <text x="60" y="217" fill="#a78bfa" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="600">Supervised &amp; Unsupervised Models, Evaluation</text>
+
+  <!-- Recipient -->
+  <text x="60" y="270" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">Awarded to</text>
+  <text x="60" y="300" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700">Vo Phu Thinh</text>
+
+  <!-- Divider -->
+  <line x1="60" y1="325" x2="540" y2="325" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+
+  <!-- Footer Info -->
+  <g transform="translate(60, 355)">
+    <text x="0" y="0" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Scikit-learn &bull; SciPy &bull; Regression &bull; Classification</text>
+    <text x="480" y="0" fill="#a78bfa" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" text-anchor="end">IBM Skills Network</text>
+  </g>
+</svg>

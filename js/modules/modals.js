@@ -23,6 +23,7 @@ export class ModalsController {
     this.setupKeyboardHandlers();
     this.setupFocusTrap();
     this.setupCertificateModal();
+    this.setupRecruiterModal();
   }
 
   openModal(modalEl, triggerEl = null) {
@@ -200,6 +201,27 @@ export class ModalsController {
           modalImg.alt = img.alt || "Zoomed Certificate";
         }
         this.openModal(certModal, link);
+      });
+    });
+  }
+
+  setupRecruiterModal() {
+    const recruiterBtn = document.getElementById("openRecruiterBriefBtn");
+    const recruiterModal = document.getElementById("recruiterModal");
+
+    if (recruiterBtn && recruiterModal) {
+      recruiterBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        this.openModal(recruiterModal, recruiterBtn);
+      });
+    }
+
+    document.querySelectorAll('[data-modal-target="recruiterModal"]').forEach((trigger) => {
+      trigger.addEventListener("click", (e) => {
+        e.preventDefault();
+        if (recruiterModal) {
+          this.openModal(recruiterModal, trigger);
+        }
       });
     });
   }

@@ -34,9 +34,10 @@ export class AppInitializer {
           strings: [
             "",
             "AI Engineer",
-            "Software Solutions Engineer",
-            "LLM Application Developer",
-            "AI Agent Builder",
+            "Agentic Systems Architect",
+            "Deterministic RAG Specialist",
+            "Autonomous AI Agent Builder",
+            "Multi-Agent Orchestrator",
           ],
           typeSpeed: 100,
           backSpeed: 60,
