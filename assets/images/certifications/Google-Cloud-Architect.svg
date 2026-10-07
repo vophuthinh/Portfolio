@@ -43,7 +43,7 @@
 
   <!-- Footer Info -->
   <g transform="translate(60, 355)">
-    <text x="0" y="0" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Cloud Architecture &bull; Security &bull; Distributed Systems</text>
+    <text x="0" y="0" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Cloud Architecture &#8226; Security &#8226; Distributed Systems</text>
     <text x="480" y="0" fill="#34a853" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" text-anchor="end">Google Cloud</text>
   </g>
 </svg>

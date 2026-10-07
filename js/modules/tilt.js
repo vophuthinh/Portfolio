@@ -82,3 +82,23 @@ export class TiltController {
 export function initCardTilt() {
   return new TiltController();
 }
+
+/**
+ * Cursor spotlight: writes --mouse-x / --mouse-y (percent) on the hovered card.
+ * Delegated on the document so it works for cards rendered later.
+ */
+export function initCursorSpotlight(selector = '.certification-box') {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.matchMedia('(hover: none)').matches) return;
+  document.addEventListener(
+    'mousemove',
+    (e) => {
+      const card = e.target.closest?.(selector);
+      if (!card) return;
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mouse-x', (((e.clientX - r.left) / r.width) * 100).toFixed(1) + '%');
+      card.style.setProperty('--mouse-y', (((e.clientY - r.top) / r.height) * 100).toFixed(1) + '%');
+    },
+    { passive: true },
+  );
+}

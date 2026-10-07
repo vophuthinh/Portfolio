@@ -72,7 +72,7 @@ function securityHeadersMiddleware(req, res, next) {
     script-src 'self' 'nonce-${nonce}' cdn.jsdelivr.net unpkg.com cdnjs.cloudflare.com va.vercel-scripts.com;
     style-src 'self' 'unsafe-inline' fonts.googleapis.com cdn.jsdelivr.net cdnjs.cloudflare.com unpkg.com;
     font-src 'self' fonts.gstatic.com cdnjs.cloudflare.com cdn.jsdelivr.net data:;
-    img-src 'self' data: cdn.jsdelivr.net cdnjs.cloudflare.com github-readme-stats.vercel.app;
+    img-src 'self' data: cdn.jsdelivr.net cdnjs.cloudflare.com;
     connect-src 'self' cdn.jsdelivr.net cdnjs.cloudflare.com api.emailjs.com va.vercel-analytics.com vitals.vercel-insights.com;
     base-uri 'self';
     form-action 'self';

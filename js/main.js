@@ -18,7 +18,8 @@ import { ResponsiveImagesController } from "./modules/responsive-images.js";
 import { initScrollReveal } from "./modules/scroll-reveal.js";
 import { initThreeLatentSpace } from "./modules/three-latent-space.js";
 import { initAISimulator } from "./modules/ai-simulator.js";
-import { initCardTilt } from "./modules/tilt.js";
+import { initCardTilt, initCursorSpotlight } from "./modules/tilt.js";
+import { initRoiCalculator } from "./modules/roi-calculator.js";
 import { showToast } from "./utils.js";
 
 inject();
@@ -31,14 +32,6 @@ function registerServiceWorker() {
   window.addEventListener("load", () => {
     navigator.serviceWorker.register("/sw.js").catch(() => {
       // Silent fail in production; app still works without SW
-    });
-  });
-}
-
-function hideBrokenGithubStatsImages() {
-  document.querySelectorAll(".about-github-img").forEach((img) => {
-    img.addEventListener("error", () => {
-      img.style.display = "none";
     });
   });
 }
@@ -70,7 +63,6 @@ document.addEventListener("DOMContentLoaded", function () {
   "use strict";
 
   cleanupDevServiceWorkers();
-  hideBrokenGithubStatsImages();
 
   // Initialize core modules
   const appInit = new AppInitializer();
@@ -89,6 +81,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const latentSpace = initThreeLatentSpace();
   const aiSimulator = initAISimulator();
   const cardTilt = initCardTilt();
+  initCursorSpotlight();
+  const roiCalculator = initRoiCalculator();
 
   // One-click clipboard copy for email with toast notification
   setupQuickEmailCopy();

@@ -20,6 +20,15 @@ export class AISimulatorController {
     this.statTokens = document.getElementById('stat-sim-tokens');
     this.statHallucination = document.getElementById('stat-sim-hallucination');
 
+    // Inference Run Receipt (Thermal Print Benchmark Ticket)
+    this.receiptEl = document.getElementById('inference-receipt');
+    this.receiptTraceId = document.getElementById('receipt-trace-id');
+    this.receiptArchVal = document.getElementById('receipt-arch-val');
+    this.receiptHallucinationVal = document.getElementById('receipt-hallucination-val');
+    this.receiptTokenBurn = document.getElementById('receipt-token-burn');
+    this.receiptLatencyVal = document.getElementById('receipt-latency-val');
+    this.receiptEnvVal = document.getElementById('receipt-env-val');
+
     this.isExecuting = false;
     this.activeMode = 'rag'; // 'rag' | 'mcp'
 
@@ -137,6 +146,7 @@ Tôi chuyên thiết kế và đưa vào vận hành thực tế các hệ thố
       this.queryInput.value = data.query;
     }
     this.currentPresetKey = presetKey;
+    this.updateReceipt(presetKey, false);
   }
 
   async runSimulation() {
@@ -222,11 +232,80 @@ Tôi chuyên thiết kế và đưa vào vận hành thực tế các hệ thố
     if (this.statTokens) this.statTokens.textContent = '94 t/s';
     if (this.statHallucination) this.statHallucination.textContent = '0.00%';
 
+    // Update the thermal print receipt with executed metrics
+    this.updateReceipt(this.currentPresetKey, true, totalLatency);
+
     await this.streamText(presetData.output);
 
     this.runBtn.disabled = false;
     this.runBtn.innerHTML = '<i class="fa-solid fa-play"></i> <span>Execute Pipeline</span>';
     this.isExecuting = false;
+  }
+
+  updateReceipt(presetKey, isExecuted = false, actualLatency = 0) {
+    if (!this.receiptEl) return;
+
+    // Trigger thermal print feed animation
+    this.receiptEl.classList.remove('printing');
+    void this.receiptEl.offsetWidth; // Trigger reflow
+    this.receiptEl.classList.add('printing');
+
+    const traceNum = Math.floor(1000 + Math.random() * 9000);
+    if (this.receiptTraceId) {
+      this.receiptTraceId.textContent = `TRACE #HPT-RAG-2026-${traceNum}`;
+    }
+
+    if (presetKey === 'mcp-agent') {
+      if (this.receiptArchVal) {
+        this.receiptArchVal.textContent = 'Multi-Agent ReAct + MCP Tool Calling (Timescale & Python Sandbox)';
+      }
+      if (this.receiptTokenBurn) {
+        this.receiptTokenBurn.textContent = '-620 TOKENS';
+      }
+      if (this.receiptLatencyVal) {
+        this.receiptLatencyVal.textContent = isExecuted && actualLatency
+          ? `${actualLatency}ms (P99: 140ms / SIMULATED)`
+          : '< 180ms / P99: 140ms';
+      }
+      if (this.receiptEnvVal) {
+        this.receiptEnvVal.textContent = 'Isolated MCP Docker Sandbox // TimescaleDB Telemetry';
+      }
+    } else if (presetKey === 'custom-prompt') {
+      if (this.receiptArchVal) {
+        this.receiptArchVal.textContent = 'Enterprise Knowledge Retrieval & Solution Synthesis';
+      }
+      if (this.receiptTokenBurn) {
+        this.receiptTokenBurn.textContent = '-350 TOKENS';
+      }
+      if (this.receiptLatencyVal) {
+        this.receiptLatencyVal.textContent = isExecuted && actualLatency
+          ? `${actualLatency}ms (P99: 160ms / SIMULATED)`
+          : '< 200ms / P99: 160ms';
+      }
+      if (this.receiptEnvVal) {
+        this.receiptEnvVal.textContent = 'Milvus / ChromaDB + vLLM Grounded Synthesis';
+      }
+    } else {
+      // 'rag-policy'
+      if (this.receiptArchVal) {
+        this.receiptArchVal.textContent = 'Agentic RAG + HyDE + BGE Reranker-Large';
+      }
+      if (this.receiptTokenBurn) {
+        this.receiptTokenBurn.textContent = '-480 TOKENS';
+      }
+      if (this.receiptLatencyVal) {
+        this.receiptLatencyVal.textContent = isExecuted && actualLatency
+          ? `${actualLatency}ms (P99: < 260ms / SIMULATED)`
+          : '< 260ms (simulated)';
+      }
+      if (this.receiptEnvVal) {
+        this.receiptEnvVal.textContent = 'Enterprise Sandbox // Qdrant + Azure OpenAI';
+      }
+    }
+
+    if (this.receiptHallucinationVal) {
+      this.receiptHallucinationVal.textContent = 'ZERO-HALLUCINATION (100% GROUNDED)';
+    }
   }
 
   async streamText(fullText) {

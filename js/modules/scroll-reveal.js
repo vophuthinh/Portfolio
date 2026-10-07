@@ -8,7 +8,6 @@ export function initScrollReveal() {
     { selector: '.section-title', delay: 0 },
     { selector: '.about-text', delay: 80 },
     { selector: '.about-stats .stat-item', delay: 60 },
-    { selector: '.about-github', delay: 140 },
     { selector: '.personal-info', delay: 40 },
     { selector: '.skills-text', delay: 80 },
     { selector: '.project-item', delay: 100 },

@@ -48,7 +48,7 @@
 
   <!-- Footer Info -->
   <g transform="translate(60, 360)">
-    <text x="0" y="0" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Skills: Agent 365 &bull; Frontier Firm &bull; Work IQ &bull; Microsoft Copilot</text>
+    <text x="0" y="0" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Skills: Agent 365 &#8226; Frontier Firm &#8226; Work IQ &#8226; Microsoft Copilot</text>
     <text x="480" y="0" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" text-anchor="end">Microsoft Learn</text>
   </g>
 </svg>

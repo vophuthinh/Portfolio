@@ -41,7 +41,7 @@
 
   <!-- Footer Info -->
   <g transform="translate(60, 355)">
-    <text x="0" y="0" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Scikit-learn &bull; SciPy &bull; Regression &bull; Classification</text>
+    <text x="0" y="0" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Scikit-learn &#8226; SciPy &#8226; Regression &#8226; Classification</text>
     <text x="480" y="0" fill="#a78bfa" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" text-anchor="end">IBM Skills Network</text>
   </g>
 </svg>
