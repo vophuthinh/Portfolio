@@ -11,7 +11,6 @@ export class AppInitializer {
   }
 
   init() {
-    this.setupTypingAnimation();
     this.updateExperienceDuration();
     this.setupThemeToggle();
     this.setupStatCounters();
@@ -20,58 +19,6 @@ export class AppInitializer {
 
   getLogger() {
     return Utils.getLogger();
-  }
-
-  setupTypingAnimation() {
-    const typingElement = document.querySelector(".typing");
-    if (!typingElement) return;
-    typingElement.textContent = "AI Engineer";
-
-    const initTyped = () => {
-      if (typeof Typed === "undefined") return;
-      try {
-        new Typed(".typing", {
-          strings: [
-            "",
-            "AI Engineer",
-            "Agentic Systems Architect",
-            "Deterministic RAG Specialist",
-            "Autonomous AI Agent Builder",
-            "Multi-Agent Orchestrator",
-          ],
-          typeSpeed: 100,
-          backSpeed: 60,
-          loop: true,
-        });
-      } catch (error) {
-        const logger = this.getLogger();
-        logger.error("Typed.js initialization error:", error);
-      }
-    };
-
-    const loadTypedScript = () =>
-      new Promise((resolve) => {
-        if (typeof Typed !== "undefined") {
-          resolve();
-          return;
-        }
-        const script = document.createElement("script");
-        script.src =
-          "https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.1.0/typed.umd.js";
-        script.async = true;
-        script.onload = () => resolve();
-        script.onerror = () => resolve();
-        document.head.appendChild(script);
-      });
-
-    const runWhenIdle = window.requestIdleCallback
-      ? window.requestIdleCallback.bind(window)
-      : (cb) => setTimeout(cb, 300);
-
-    runWhenIdle(async () => {
-      await loadTypedScript();
-      initTyped();
-    });
   }
 
   updateExperienceDuration() {

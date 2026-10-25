@@ -45,7 +45,7 @@ Vo Phu Thinh is an AI Engineer at HPT Vietnam Corporation's AI Center of Excelle
 ### AI Engineer — HPT Vietnam Corporation, AI Center of Excellence (CoE) (Nov 2024 – Present)
 - Architected the Award-Winning "Lyly" (Executive AI Assistant): Designed a multimodal system for real-time voice and text interaction, low-latency streaming, hybrid vector search (Qdrant), and mem0 memory
 - Engineered End-to-End Vector Pipelines: Automated workflows for strategic chunking & domain embeddings for enterprise knowledge systems
-- Orchestrated HPT D-Day 2025 RAG Chatbot: High-accuracy RAG handling 850+ questions in a single day with zero hallucination
+- Orchestrated HPT D-Day 2025 RAG Chatbot: High-accuracy RAG handling 850+ questions in a single day
 - Optimized LLM Reliability in Microsoft Copilot: Advanced prompt engineering and grounding strategies mitigating hallucinations
 - Co-developed HIH (HotNews Intelligence Hub): Automated intelligence system featuring "Sóc Dò La" news vectorization and summarization (8,500+ views, won 3rd prize)
 
@@ -69,6 +69,12 @@ Vo Phu Thinh is an AI Engineer at HPT Vietnam Corporation's AI Center of Excelle
 - Natural Language Processing (NLP), Generative AI (GenAI)
 - Prompt Engineering, Embeddings, Semantic Search, Vector Databases
 - Computer Vision, Deep Learning, Transformer Architecture
+- Deep Learning: CNN, Transformers & Attention, Transfer Learning, Fine-Tuning (LoRA), Neural Network Training
+- GH-300 GitHub Copilot: Copilot Chat & Agent Mode, Prompt Crafting, Copilot Privacy & Security
+- AI-103 Develop AI apps and agents on Azure: Azure AI Services, Azure AI Search, Azure AI Foundry, Azure AI Agents
+- AB-100 Agentic AI Business Solutions Architect: Microsoft Copilot Studio, Power Platform, Agent 365, Responsible AI & Governance
+- Microsoft Certified: Agentic AI Business Solutions Architect Expert (Oct 2026), Azure AI Apps and Agents Developer Associate (Oct 2026), GitHub Copilot (Oct 2026) — verifiable on Microsoft Learn
+- Credential: Frontier Transformation Engineer Badge (Microsoft, via LevelUp)
 
 ### Tools & Frameworks
 - Python, FastAPI, PyTorch, TensorFlow, scikit-learn
@@ -89,9 +95,9 @@ Vo Phu Thinh is an AI Engineer at HPT Vietnam Corporation's AI Center of Excelle
 ## Notable Projects
 
 ### 1. HPT D-DAY 2025 Chatbot
-RAG-powered AI chatbot grounded on official event data with zero hallucination. Handled 850+ attendee questions at HPT D-DAY 2025 (Pullman Hanoi). Architecture: official event data chunked into vector store, retrieved via semantic search, answered by GPT-4o with strict grounding. Frontend: custom JS chat widget. Backend: n8n workflow connecting GPT-4o with Google Sheets for real-time content updates.
+RAG-powered AI chatbot grounded on official event data. Handled 850+ attendee questions at HPT D-DAY 2025 (Pullman Hanoi). Architecture: official event data chunked into vector store, retrieved via semantic search, answered by GPT-4o with strict grounding. Frontend: custom JS chat widget. Backend: n8n workflow connecting GPT-4o with Google Sheets for real-time content updates.
 - Stack: n8n, OpenAI, JavaScript, RAG, Google Sheets, Vector Store
-- Impact: 850+ questions handled, zero hallucination, covered 50+ booths & partners
+- Impact: 850+ questions handled, covered 50+ booths & partners
 
 ### 2. Lyly — Enterprise AI Assistant (2nd Prize)
 Enterprise AI assistant with real-time text & voice via WebSocket, RAG with hybrid search (vector + keyword) and self-healing retrieval, multi-step reasoning, voice pipeline with interrupt handling, and memory that learns user preferences. Built with FastAPI + Next.js, powered by Gemini and Qdrant vector DB.

@@ -21,6 +21,9 @@ describe("ROICalculatorController", () => {
         <span id="roi-savings-monthly"></span>
         <span id="roi-savings-annual"></span>
         <span id="roi-savings-percent"></span>
+        <input type="checkbox" class="roi-lever-input" data-lever="cache" checked />
+        <input type="checkbox" class="roi-lever-input" data-lever="prune" checked />
+        <input type="checkbox" class="roi-lever-input" data-lever="route" checked />
 
         <div id="roi-bar-standard"></div>
         <div id="roi-bar-optimized"></div>
@@ -60,5 +63,15 @@ describe("ROICalculatorController", () => {
     expect(document.getElementById("roi-query-slider").value).toBe("50000");
     expect(document.getElementById("roi-context-slider").value).toBe("8000");
     expect(enterpriseBtn.classList.contains("active")).toBe(true);
+  });
+
+  it("turning every lever off removes savings; each lever lowers cost", () => {
+    const calc = new ROICalculatorController();
+    const all = calc.monthlyCost({ cache: true, prune: true, route: true }, 450000, 4000);
+    const none = calc.monthlyCost({ cache: false, prune: false, route: false }, 450000, 4000);
+    expect(none).toBe(6525);
+    expect(all).toBeLessThan(none);
+    document.querySelectorAll(".roi-lever-input").forEach((i) => { i.checked = false; i.dispatchEvent(new Event("change")); });
+    expect(document.getElementById("roi-savings-percent").textContent).toBe("-0% COST");
   });
 });

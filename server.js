@@ -123,6 +123,10 @@ app.post("/api/contact", contactHandler);
 // /offline.html can't bypass nonce injection via the static file handler.
 app.get(["/", "/index.html"], (req, res) => {
   res.setHeader("Cache-Control", "no-cache");
+  res.vary("Accept");
+  if (req.accepts(["html", "text/markdown"]) === "text/markdown") {
+    return res.type("text/markdown").sendFile(path.join(DIST_DIR, "index.md"));
+  }
   res.send(renderHtmlWithNonce(INDEX_FILE, res.locals.nonce));
 });
 
@@ -135,6 +139,7 @@ app.get("/offline.html", (req, res) => {
 app.use(
   express.static(DIST_DIR, {
     index: false,
+    extensions: ["html"],
     etag: true,
     lastModified: true,
     setHeaders(res, filePath) {
@@ -150,10 +155,18 @@ app.use(
   }),
 );
 
-// Handle SPA routing - serve index.html for all other routes
-app.get("*", (req, res) => {
-  res.setHeader("Cache-Control", "no-cache");
-  res.send(renderHtmlWithNonce(INDEX_FILE, res.locals.nonce));
+// Unknown paths: real 404 (Markdown for agents, JSON under /api, HTML otherwise)
+app.use((req, res) => {
+  res.status(404).vary("Accept");
+  if (req.path.startsWith("/api/")) {
+    return res.sendFile(path.join(DIST_DIR, "404.json"), {
+      headers: { "Content-Type": "application/json; charset=utf-8" },
+    });
+  }
+  if (req.accepts(["html", "text/markdown"]) === "text/markdown") {
+    return res.type("text/markdown").sendFile(path.join(DIST_DIR, "404.md"));
+  }
+  res.sendFile(path.join(DIST_DIR, "404.html"));
 });
 
 // Start server

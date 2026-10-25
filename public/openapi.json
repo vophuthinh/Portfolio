@@ -1,0 +1,134 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "vophuthinh.com Public API",
+    "version": "1.0.0",
+    "description": "Read-only public API for the portfolio of Vo Phu Thinh, AI Engineer. No authentication required. Also exposes an MCP server over Streamable HTTP at /api/mcp.",
+    "contact": { "name": "Vo Phu Thinh", "email": "vophuthinhcm@gmail.com", "url": "https://vophuthinh.com/contact" }
+  },
+  "servers": [{ "url": "https://vophuthinh.com" }],
+  "paths": {
+    "/api/profile": {
+      "get": {
+        "operationId": "getProfile",
+        "summary": "Get profile",
+        "description": "Returns name, title, location, contact details, availability, awards, languages and work experience.",
+        "responses": {
+          "200": { "description": "Profile.", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Profile" } } } },
+          "405": { "$ref": "#/components/responses/Error" }
+        }
+      }
+    },
+    "/api/skills": {
+      "get": {
+        "operationId": "getSkills",
+        "summary": "Get skills",
+        "description": "Returns technical skills grouped by area (ai_ml, frameworks, data, infrastructure, web).",
+        "responses": {
+          "200": { "description": "Skills grouped by area.", "content": { "application/json": { "schema": { "type": "object", "additionalProperties": { "type": "array", "items": { "type": "string" } } } } } },
+          "405": { "$ref": "#/components/responses/Error" }
+        }
+      }
+    },
+    "/api/projects": {
+      "get": {
+        "operationId": "listProjects",
+        "summary": "List projects",
+        "description": "Returns portfolio projects, optionally filtered by category.",
+        "parameters": [
+          { "name": "category", "in": "query", "required": false, "description": "Project category to filter by, for example llm.", "schema": { "type": "string" } }
+        ],
+        "responses": {
+          "200": { "description": "Projects.", "content": { "application/json": { "schema": { "type": "object", "required": ["count", "projects"], "properties": { "count": { "type": "integer" }, "projects": { "type": "array", "items": { "$ref": "#/components/schemas/Project" } } } } } } },
+          "404": { "$ref": "#/components/responses/Error" },
+          "405": { "$ref": "#/components/responses/Error" }
+        }
+      }
+    },
+    "/api/contact": {
+      "post": {
+        "operationId": "sendContactMessage",
+        "summary": "Send a contact message",
+        "description": "Sends a message to Vo Phu Thinh by email. Rate limited to 5 requests per IP per hour.",
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "type": "object", "required": ["from_name", "email_id", "message"], "properties": { "from_name": { "type": "string", "description": "Sender name." }, "email_id": { "type": "string", "format": "email", "description": "Sender email address." }, "message": { "type": "string", "maxLength": 1000, "description": "Message body." } } } } }
+        },
+        "responses": {
+          "200": { "description": "Message sent.", "content": { "application/json": { "schema": { "type": "object", "properties": { "success": { "type": "boolean" }, "message": { "type": "string" } } } } } },
+          "400": { "$ref": "#/components/responses/Error" },
+          "415": { "$ref": "#/components/responses/Error" },
+          "429": { "$ref": "#/components/responses/Error" },
+          "503": { "$ref": "#/components/responses/Error" }
+        }
+      }
+    },
+    "/api/mcp": {
+      "post": {
+        "operationId": "callMcpServer",
+        "summary": "MCP server (Streamable HTTP)",
+        "description": "Model Context Protocol endpoint. Accepts one JSON-RPC 2.0 message per POST. Methods: initialize, ping, tools/list, tools/call. Tools: get_profile, get_skills, list_projects.",
+        "requestBody": {
+          "required": true,
+          "content": { "application/json": { "schema": { "type": "object", "required": ["jsonrpc", "method"], "properties": { "jsonrpc": { "const": "2.0" }, "id": { "type": ["integer", "string"] }, "method": { "type": "string" }, "params": { "type": "object" } } } } }
+        },
+        "responses": {
+          "200": { "description": "JSON-RPC response.", "content": { "application/json": { "schema": { "type": "object" } } } },
+          "202": { "description": "Notification accepted; no body." },
+          "400": { "$ref": "#/components/responses/Error" },
+          "405": { "$ref": "#/components/responses/Error" }
+        }
+      }
+    }
+  },
+  "components": {
+    "responses": {
+      "Error": { "description": "Structured error.", "content": { "application/json": { "schema": { "$ref": "#/components/schemas/Error" } } } }
+    },
+    "schemas": {
+      "Error": {
+        "type": "object",
+        "required": ["error"],
+        "properties": {
+          "error": {
+            "type": "object",
+            "required": ["code", "message"],
+            "properties": {
+              "code": { "type": "string", "description": "Stable machine-readable error code." },
+              "message": { "type": "string", "description": "Human-readable explanation." },
+              "hint": { "type": "string", "description": "How to fix the request." },
+              "docs": { "type": "string", "format": "uri", "description": "Documentation URL." }
+            }
+          }
+        }
+      },
+      "Profile": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "title": { "type": "string" },
+          "company": { "type": "string" },
+          "location": { "type": "string" },
+          "email": { "type": "string", "format": "email" },
+          "website": { "type": "string", "format": "uri" },
+          "availability": { "type": "string" },
+          "summary": { "type": "string" },
+          "awards": { "type": "array", "items": { "type": "string" } },
+          "languages": { "type": "array", "items": { "type": "string" } },
+          "experience": { "type": "array", "items": { "type": "object" } }
+        }
+      },
+      "Project": {
+        "type": "object",
+        "properties": {
+          "title": { "type": "string" },
+          "category": { "type": "string" },
+          "summary": { "type": "string" },
+          "problem": { "type": "string" },
+          "solution": { "type": "string" },
+          "stack": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    }
+  }
+}

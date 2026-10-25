@@ -39,7 +39,7 @@ describe("AISimulatorController Inference Receipt", () => {
     const sim = new AISimulatorController();
     expect(document.getElementById("receipt-arch-val").textContent).toContain("Agentic RAG + HyDE");
     expect(document.getElementById("receipt-token-burn").textContent).toContain("-480 TOKENS");
-    expect(document.getElementById("receipt-hallucination-val").textContent).toContain("ZERO-HALLUCINATION");
+    expect(document.getElementById("receipt-hallucination-val").textContent).toContain("GROUNDED");
   });
 
   it("should update receipt when switching to MCP Agent preset", () => {
@@ -62,5 +62,16 @@ describe("AISimulatorController Inference Receipt", () => {
     const receipt = document.getElementById("inference-receipt");
     sim.updateReceipt("rag-policy");
     expect(receipt.classList.contains("printing")).toBe(true);
+  });
+
+  it("loads the guardrail refusal preset with its own receipt", () => {
+    const sim = new AISimulatorController();
+    sim.selectPreset("refuse");
+    expect(document.getElementById("receipt-arch-val").textContent).toContain("blocked");
+  });
+
+  it("renders markdown safely", () => {
+    const sim = new AISimulatorController();
+    expect(sim.renderMd("**a** <img onerror=x>")).toBe("<strong>a</strong> &lt;img onerror=x&gt;");
   });
 });

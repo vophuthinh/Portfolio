@@ -6,11 +6,11 @@ const projectsData = [
     title: "HPT D-DAY 2025 Chatbot",
     category: "llm",
     summary:
-      "Problem: onsite Q&A overload at HPT D-DAY 2025. Solution: RAG-powered AI chatbot grounded on official event data with zero hallucination. Impact: handled 850+ attendee questions and became a key digital highlight.",
+      "Problem: onsite Q&A overload at HPT D-DAY 2025. Solution: RAG-powered AI chatbot grounded on official event data. Impact: handled 850+ attendee questions and became a key digital highlight.",
     problem:
       "Attendees and organizers at HPT D-DAY 2025 (Pullman Hanoi) needed instant, accurate answers about the event schedule, speakers, breakout sessions, booth locations, and partner information. The onsite support team couldn't handle the volume manually, and any incorrect information would damage the event experience.",
     solution:
-      "Replaced manual Q&A support with a zero-hallucination AI chatbot that served 850+ attendees. Architecture: official event data (Excel files) chunked into a vector store, retrieved via semantic search, and answered by GPT-4o with strict grounding - if the data doesn't exist, the bot says so. Frontend: custom JS chat widget on dday.hpt.vn with session management and XSS protection. Backend: n8n workflow connecting GPT-4o with Google Sheets so organizers could update content in real-time without touching code.",
+      "Replaced manual Q&A support with a grounded AI chatbot that served 850+ attendees. Architecture: official event data (Excel files) chunked into a vector store, retrieved via semantic search, and answered by GPT-4o with strict grounding - if the data doesn't exist, the bot says so. Frontend: custom JS chat widget on dday.hpt.vn with session management and XSS protection. Backend: n8n workflow connecting GPT-4o with Google Sheets so organizers could update content in real-time without touching code.",
     heroMetric: { value: "850+", label: "Q&A Handled" },
     stack: [
       "n8n",
@@ -24,7 +24,7 @@ const projectsData = [
       { label: "Volume", value: "850+ questions handled" },
       {
         label: "Accuracy",
-        value: "Zero hallucination, grounded answers only",
+        value: "Answers grounded in official event data",
       },
       { label: "Coverage", value: "Event info, agenda, 50+ booths & partners" },
       {
@@ -33,7 +33,7 @@ const projectsData = [
       },
     ],
     results:
-      "Operated stably throughout the event, handling 850+ attendee questions with zero hallucination. Significantly reduced workload for the onsite support team and became a standout AI experience highlight of HPT D-DAY 2025.",
+      "Operated stably throughout the event, handling 850+ attendee questions. Significantly reduced workload for the onsite support team and became a standout AI experience highlight of HPT D-DAY 2025.",
     link: null,
     github: null,
     image: "./assets/images/portfolio/Chatbot D-Day 2025.webp",

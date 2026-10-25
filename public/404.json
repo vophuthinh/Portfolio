@@ -1,0 +1,8 @@
+{
+  "error": {
+    "code": "not_found",
+    "message": "No API endpoint exists at this path.",
+    "hint": "See /openapi.json for the list of endpoints: /api/profile, /api/skills, /api/projects, /api/contact, /api/mcp.",
+    "docs": "https://vophuthinh.com/docs"
+  }
+}

@@ -8,6 +8,15 @@
 
 Vo Phu Thinh (Võ Phú Thịnh) is an AI Engineer currently working at HPT Vietnam Corporation's AI Center of Excellence. He builds and deploys production AI solutions including Large Language Models (LLM), Retrieval-Augmented Generation (RAG), AI Agents, and Machine Learning systems.
 
+## Key Skills
+
+- Deep Learning: CNN, Transformers, Transfer Learning, Fine-Tuning (LoRA), PyTorch, TensorFlow
+- GH-300 GitHub Copilot: Copilot Chat, Agent Mode, prompt crafting
+- AI-103 Develop AI apps and agents on Azure: Azure AI Services, Azure AI Search, Azure AI Foundry, Azure AI Agents
+- AB-100 Agentic AI Business Solutions Architect: Microsoft Copilot Studio, Power Platform, Agent 365
+- Microsoft Certified: Agentic AI Business Solutions Architect Expert (Oct 2026), Azure AI Apps and Agents Developer Associate (Oct 2026), GitHub Copilot (Oct 2026)
+- Credential: Frontier Transformation Engineer Badge (Microsoft, via LevelUp)
+
 ## Availability
 
 **Open to hire** — available for AI Engineer roles (full-time, contract, remote).
@@ -25,3 +34,9 @@ Can deliver a production-ready AI chatbot or RAG system within 6 weeks.
 ## Detailed Information
 
 - [Full Profile & Resume](https://vophuthinh.com/llms-full.txt)
+- [API documentation](https://vophuthinh.com/docs)
+- [OpenAPI spec](https://vophuthinh.com/openapi.json)
+- [MCP server card](https://vophuthinh.com/.well-known/mcp/server-card.json) (Streamable HTTP endpoint: https://vophuthinh.com/api/mcp)
+- [About](https://vophuthinh.com/about)
+- [Contact](https://vophuthinh.com/contact)
+- [Privacy](https://vophuthinh.com/privacy)

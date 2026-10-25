@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>API Documentation | vophuthinh.com</title>
+<meta name="description" content="Public API, OpenAPI spec and MCP server of vophuthinh.com (Vo Phu Thinh, AI Engineer).">
+<link rel="canonical" href="https://vophuthinh.com/docs">
+<style>
+body{font:16px/1.6 system-ui,sans-serif;max-width:46rem;margin:0 auto;padding:2rem 1rem;color:#1a1a1a;background:#fff}
+@media(prefers-color-scheme:dark){body{color:#e6e6e6;background:#0e0e10}a{color:#8ab4ff}}
+nav a{margin-right:1rem}pre{overflow-x:auto;background:rgba(127,127,127,.15);padding:.75rem;border-radius:6px}
+</style>
+</head>
+<body>
+<nav><a href="/">Home</a><a href="/about">About</a><a href="/contact">Contact</a><a href="/privacy">Privacy</a><a href="/docs">API docs</a></nav>
+<main>
+<h1>vophuthinh API Documentation</h1>
+<p>The vophuthinh.com API is a free, read-only JSON API with no authentication. The machine-readable spec is <a href="/openapi.json">/openapi.json</a> (OpenAPI 3.1). An MCP server is available at <code>/api/mcp</code> (Streamable HTTP); its manifest is <a href="/.well-known/mcp/server-card.json">/.well-known/mcp/server-card.json</a>. Agents can also read <a href="/llms.txt">llms.txt</a> or request the home page with <code>Accept: text/markdown</code>.</p>
+<h2>Authentication</h2>
+<p>None. All GET endpoints are public. CORS allows any origin.</p>
+<h2>Endpoints</h2>
+<ul>
+<li><code>GET /api/profile</code> — profile, contact, awards, experience.</li>
+<li><code>GET /api/skills</code> — skills grouped by area.</li>
+<li><code>GET /api/projects?category=llm</code> — projects, optional category filter.</li>
+<li><code>POST /api/contact</code> — send a message (JSON: from_name, email_id, message; 5 per IP per hour).</li>
+<li><code>POST /api/mcp</code> — MCP JSON-RPC 2.0 (tools: get_profile, get_skills, list_projects).</li>
+</ul>
+<h2>Examples</h2>
+<pre>curl https://vophuthinh.com/api/profile
+curl "https://vophuthinh.com/api/projects?category=llm"
+curl -X POST https://vophuthinh.com/api/mcp \
+  -H 'Content-Type: application/json' \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'</pre>
+<h2>Errors</h2>
+<p>Errors are JSON with the HTTP status set accordingly:</p>
+<pre>{"error":{"code":"not_found","message":"...","hint":"...","docs":"https://vophuthinh.com/docs"}}</pre>
+<p>Unknown paths return HTTP 404. Send <code>Accept: text/markdown</code> to get a Markdown error body.</p>
+</main>
+</body>
+</html>

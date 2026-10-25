@@ -49,7 +49,19 @@
       "Semantic Search",
       "Vector Databases",
       "Computer Vision",
-      "Transformer Architecture"
+      "Transformer Architecture",
+      "CNN",
+      "Transfer Learning",
+      "Fine-Tuning (LoRA)",
+      "Azure AI Services",
+      "Azure AI Search",
+      "Azure AI Foundry",
+      "Azure AI Agents",
+      "Microsoft Copilot Studio",
+      "Agent 365",
+      "Responsible AI & Governance",
+      "GitHub Copilot",
+      "Copilot Chat & Agent Mode"
     ],
     "frameworks": [
       "Python",
@@ -138,13 +150,13 @@
     {
       "title": "HPT D-DAY 2025 Chatbot",
       "category": "llm",
-      "summary": "RAG-powered AI chatbot grounded on official event data with zero hallucination.",
+      "summary": "RAG-powered AI chatbot grounded on official event data.",
       "problem": "Attendees and organizers needed instant, accurate answers for schedule, sessions, booths, and partners at HPT D-DAY 2025.",
-      "solution": "Built zero-hallucination RAG chatbot with GPT-4o + vector retrieval, powered by n8n and Google Sheets for real-time content updates.",
+      "solution": "Built RAG chatbot with GPT-4o + vector retrieval, powered by n8n and Google Sheets for real-time content updates.",
       "stack": ["n8n", "OpenAI", "JavaScript", "RAG", "Google Sheets", "Vector Store"],
       "impact": [
         { "label": "Volume", "value": "850+ questions handled" },
-        { "label": "Accuracy", "value": "Zero hallucination — grounded answers only" },
+        { "label": "Accuracy", "value": "Answers grounded in official event data" },
         { "label": "Coverage", "value": "Event info, 50+ booths & partners" }
       ],
       "results": "Operated stably throughout the event and significantly reduced onsite support workload.",

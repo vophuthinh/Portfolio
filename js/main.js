@@ -16,9 +16,7 @@ import { ScrollController } from "./modules/scroll.js";
 import { AppInitializer, initPreloaderAndAnimations } from "./modules/init.js";
 import { ResponsiveImagesController } from "./modules/responsive-images.js";
 import { initScrollReveal } from "./modules/scroll-reveal.js";
-import { initThreeLatentSpace } from "./modules/three-latent-space.js";
 import { initAISimulator } from "./modules/ai-simulator.js";
-import { initCardTilt, initCursorSpotlight } from "./modules/tilt.js";
 import { initRoiCalculator } from "./modules/roi-calculator.js";
 import { showToast } from "./utils.js";
 
@@ -77,11 +75,8 @@ document.addEventListener("DOMContentLoaded", function () {
   // Scroll reveal animations
   initScrollReveal();
 
-  // 3D WebGL Latent Space, AI Tech Lab Simulator, and 3D Card Tilt
-  const latentSpace = initThreeLatentSpace();
+  // AI Tech Lab simulator and ROI calculator
   const aiSimulator = initAISimulator();
-  const cardTilt = initCardTilt();
-  initCursorSpotlight();
   const roiCalculator = initRoiCalculator();
 
   // One-click clipboard copy for email with toast notification
@@ -90,7 +85,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Log successful initialization
   const logger = Logger;
 
-  logger.log("🚀 Portfolio application initialized successfully with 3D WebGL & AI Simulator");
+  logger.log("🚀 Portfolio application initialized");
 });
 
 function setupQuickEmailCopy() {

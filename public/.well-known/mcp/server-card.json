@@ -1,0 +1,11 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/mcp-server-card/v1.json",
+  "version": "1.0",
+  "protocolVersion": "2025-06-18",
+  "serverInfo": { "name": "vophuthinh-portfolio", "title": "Vo Phu Thinh Portfolio", "version": "1.0.0" },
+  "description": "Read-only MCP server with profile, skills and projects of Vo Phu Thinh, AI Engineer.",
+  "documentationUrl": "https://vophuthinh.com/docs",
+  "transport": { "type": "streamable-http", "endpoint": "/api/mcp" },
+  "capabilities": { "tools": { "listChanged": false } },
+  "authentication": { "required": false }
+}

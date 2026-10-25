@@ -38,6 +38,9 @@
     />
     <link rel="canonical" href="https://vophuthinh.com/" />
 
+    <link rel="service-desc" type="application/vnd.oai.openapi+json" href="/openapi.json" />
+    <link rel="service-doc" type="text/html" href="/docs" />
+    <link rel="alternate" type="text/markdown" href="/index.md" />
     <!-- AI / LLM Discovery (llmstxt.org) -->
     <link
       rel="alternate"
@@ -75,7 +78,7 @@
     />
     <meta
       property="og:image"
-      content="https://vophuthinh.com/assets/images/hero.png"
+      content="https://vophuthinh.com/assets/images/og-image.png"
     />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -102,7 +105,7 @@
     />
     <meta
       name="twitter:image"
-      content="https://vophuthinh.com/assets/images/hero.png"
+      content="https://vophuthinh.com/assets/images/og-image.png"
     />
     <meta
       name="twitter:image:alt"
@@ -122,13 +125,40 @@
             "inLanguage": ["en", "vi"]
           },
           {
+            "@type": "Organization",
+            "@id": "https://vophuthinh.com/#organization",
+            "name": "Vo Phu Thinh",
+            "url": "https://vophuthinh.com",
+            "logo": "https://vophuthinh.com/assets/favicon/android-icon-192x192.png",
+            "email": "vophuthinhcm@gmail.com",
+            "founder": { "@id": "https://vophuthinh.com/#person" },
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "contactType": "customer support",
+              "email": "vophuthinhcm@gmail.com",
+              "telephone": "+84868639882",
+              "availableLanguage": ["English", "Vietnamese"],
+              "url": "https://vophuthinh.com/contact"
+            },
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Ho Chi Minh City",
+              "addressRegion": "Ho Chi Minh",
+              "addressCountry": "VN"
+            },
+            "sameAs": [
+              "https://www.linkedin.com/in/vophuthinh",
+              "https://github.com/vophuthinh"
+            ]
+          },
+          {
             "@type": "ProfilePage",
             "@id": "https://vophuthinh.com/#profilepage",
             "url": "https://vophuthinh.com",
             "isPartOf": { "@id": "https://vophuthinh.com/#website" },
             "mainEntity": { "@id": "https://vophuthinh.com/#person" },
             "dateCreated": "2024-01-01T00:00:00+07:00",
-            "dateModified": "2026-05-01T00:00:00+07:00"
+            "dateModified": "2026-10-11T00:00:00+07:00"
           },
           {
             "@type": "Person",
@@ -195,6 +225,14 @@
               "Embeddings",
               "Computer Vision",
               "Transformer Architecture",
+              "Convolutional Neural Networks",
+              "Transfer Learning",
+              "Azure AI Services",
+              "Azure AI Search",
+              "Azure AI Foundry",
+              "Microsoft Copilot Studio",
+              "Power Platform",
+              "GitHub Copilot",
               "OpenAI",
               "Azure OpenAI",
               "LangChain",
@@ -238,10 +276,41 @@
                 "currency": "VND",
                 "name": "base"
               },
-              "skills": "LLM, RAG, AI Agent, Machine Learning, Python, PyTorch, LangChain, OpenAI, FastAPI, NLP, Deep Learning",
+              "skills": "LLM, RAG, AI Agent, Machine Learning, Python, PyTorch, LangChain, OpenAI, FastAPI, NLP, Deep Learning, CNN, Azure AI, GitHub Copilot, Microsoft Frontier Transformation",
               "responsibilities": "Build and deploy production AI solutions including LLM applications, RAG pipelines, AI Agents, and Machine Learning systems for enterprise clients"
             },
             "hasCredential": [
+              {
+                "@type": "EducationalOccupationalCredential",
+                "name": "Frontier Transformation Engineer Badge",
+                "credentialCategory": "Badge",
+                "recognizedBy": { "@type": "Organization", "name": "Microsoft" },
+                "url": "https://skillupwithlevelup.com/frontier"
+              },
+              {
+                "@type": "EducationalOccupationalCredential",
+                "name": "Microsoft Certified: Agentic AI Business Solutions Architect Expert",
+                "credentialCategory": "Certification",
+                "recognizedBy": { "@type": "Organization", "name": "Microsoft" }
+              },
+              {
+                "@type": "EducationalOccupationalCredential",
+                "name": "Microsoft Certified: Azure AI Apps and Agents Developer Associate",
+                "credentialCategory": "Certification",
+                "recognizedBy": { "@type": "Organization", "name": "Microsoft" }
+              },
+              {
+                "@type": "EducationalOccupationalCredential",
+                "name": "GitHub Copilot (GH-300)",
+                "credentialCategory": "Certification",
+                "recognizedBy": { "@type": "Organization", "name": "Microsoft" }
+              },
+              {
+                "@type": "EducationalOccupationalCredential",
+                "name": "Implement Agentic AI & Copilot; Observe, Govern & Secure AI Apps & Agents",
+                "credentialCategory": "Certificate",
+                "recognizedBy": { "@type": "Organization", "name": "Microsoft" }
+              },
               {
                 "@type": "EducationalOccupationalCredential",
                 "name": "Google AI Specialization",
@@ -365,7 +434,7 @@
             "name": "What AI projects has Vo Phu Thinh built?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Notable projects include: (1) HPT D-DAY 2025 Chatbot - a RAG-powered AI chatbot handling 850+ questions with zero hallucination; (2) Lyly - an enterprise AI assistant with real-time voice/text, hybrid search RAG, and multi-step reasoning (won 2nd Prize); (3) H.I.H - HotNews Intelligence Hub automating business intelligence for 76% of HPT employees (won 3rd Prize)."
+              "text": "Notable projects include: (1) HPT D-DAY 2025 Chatbot - a RAG-powered AI chatbot handling 850+ questions from official event data; (2) Lyly - an enterprise AI assistant with real-time voice/text, hybrid search RAG, and multi-step reasoning (won 2nd Prize); (3) H.I.H - HotNews Intelligence Hub automating business intelligence for 76% of HPT employees (won 3rd Prize)."
             }
           },
           {
@@ -527,7 +596,6 @@
     <a
       href="#main-content"
       class="skip-to-content"
-      aria-label="Skip to main content"
       >Skip to Content</a
     >
 
@@ -539,7 +607,7 @@
     <!-- Sticky Glass Header Start -->
     <header class="site-header" id="site-header">
       <div class="header-container">
-        <a href="#home" class="header-logo" aria-label="Vo Phu Thinh - Home">
+        <a href="#home" class="header-logo" aria-label="Vo Phu Thinh AI Engineer, home">
           <img
             src="./assets/favicon/apple-icon-180x180.png"
             alt="Vo Phu Thinh Logo"
@@ -612,8 +680,6 @@
       <main class="main-content" id="main-content">
         <!-- Home Section Start -->
         <section class="home active section" id="home">
-          <canvas id="neural-canvas"></canvas>
-          <div class="hero-ambient-glow" aria-hidden="true"></div>
           <div class="container">
             <div class="row hero-row">
               <div class="home-info padd-15">
@@ -622,27 +688,18 @@
                     <span class="beacon-pulse"></span>
                     <span class="beacon-dot"></span>
                   </span>
-                  <span class="status-title">Open to High-Impact AI Roles</span>
+                  <span class="status-title">Open to AI engineer roles</span>
                   <span class="status-sep">&bull;</span>
-                  <span class="status-org">AI CoE @ HPT Vietnam</span>
+                  <span class="status-org">HPT Vietnam, AI CoE</span>
                 </div>
 
                 <h1 class="hero-heading">
-                  Architecting Production <br />
-                  <span class="hero-accent">AI Agents &amp; RAG Systems</span>
+                  I build RAG chatbots <br />
+                  <span class="hero-accent">and AI agents for work</span>
                 </h1>
 
-                <div class="hero-subline">
-                  <span class="subline-intro">Hi, I'm</span>
-                  <strong class="hero-author-name">Vo Phu Thinh</strong>
-                  <span class="subline-bullet">&bull;</span>
-                  <span class="typing-container">
-                    <span class="typing">AI Engineer</span>
-                  </span>
-                </div>
-
                 <p class="hero-description">
-                  Production Agentic RAG, voice assistants and MCP tool-calling systems, grounded in source data and built to hit measurable business goals.
+                  AI engineer at HPT in Ho Chi Minh City. My chatbot answered 850+ questions in one day at HPT D-DAY 2025.
                 </p>
 
                 <div class="home-buttons">
@@ -659,39 +716,13 @@
                     class="btn btn-recruiter-brief"
                     id="openRecruiterBriefBtn"
                     data-modal-target="recruiterModal"
-                    aria-label="Open Recruiter Executive Summary"
+                    aria-label="Recruiter TL;DR, open executive summary"
                   >
                     <i class="fa-solid fa-bolt-lightning"></i>
                     <span>Recruiter TL;DR</span>
                   </button>
-                  <a href="#project" class="btn btn-outline-hero">
-                    <span>Explore Projects</span>
-                    <i class="fa-solid fa-arrow-down"></i>
-                  </a>
                 </div>
 
-                <!-- Credibility Metrics Strip -->
-                <div class="hero-metrics-strip">
-                  <div class="hero-metric-cell">
-                    <span class="metric-number">3<span class="metric-plus">+</span></span>
-                    <span class="metric-title">Production AI Shipped</span>
-                  </div>
-                  <div class="metric-divider" aria-hidden="true"></div>
-                  <div class="hero-metric-cell">
-                    <span class="metric-number">850<span class="metric-plus">+</span></span>
-                    <span class="metric-title">Live Q&amp;A / Day</span>
-                  </div>
-                  <div class="metric-divider" aria-hidden="true"></div>
-                  <div class="hero-metric-cell">
-                    <span class="metric-number">100<span class="metric-plus">%</span></span>
-                    <span class="metric-title">Grounded Accuracy</span>
-                  </div>
-                  <div class="metric-divider" aria-hidden="true"></div>
-                  <div class="hero-metric-cell">
-                    <span class="metric-number">2<span class="metric-plus">x</span></span>
-                    <span class="metric-title">Enterprise AI Awards</span>
-                  </div>
-                </div>
               </div>
 
               <div class="home-img padd-15">
@@ -771,28 +802,28 @@
               <div class="about-content padd-15">
                 <div class="row about-top-row">
                   <div class="about-text padd-15">
-                    <h3>Engineering Intelligence, <span>Not Just Prompts</span></h3>
+                    <h3>What I <span>work on</span></h3>
                     <p>
-                      I am an AI Engineer at <strong>HPT Vietnam Corporation (AI Center of Excellence)</strong>. My engineering focus is bridging the gap between fragile proof-of-concepts and <strong>deterministic, enterprise-grade AI systems</strong>.
+                      I'm an AI engineer at <strong>HPT Vietnam Corporation</strong>, in the AI Center of Excellence. I build chatbots and assistants that answer from a company's own documents.
                     </p>
                     <p style="margin-top: 10px; color: var(--text-black-700); line-height: 1.8;">
-                      I architect production systems that operate with mathematical grounding, sub-second streaming latencies, and zero-hallucination guarantees. My core toolkit centers on <strong>Agentic RAG</strong>, <strong>autonomous tool-routing via Model Context Protocol (MCP)</strong>, <strong>hybrid semantic search (Qdrant)</strong>, and <strong>low-latency voice/text pipelines</strong>. Rather than treating LLMs as magic black boxes, I design the robust distributed plumbing around them - deterministic routing, strategic embedding chunking, self-healing retrieval loops, and rigorous evaluation harnesses.
+                      Most of my work is RAG with Qdrant, tool calling through MCP, and voice or text chat over WebSockets. I spend as much time on retrieval, chunking and testing as on the model.
                     </p>
                     <h4 style="margin-top: 20px; margin-bottom: 12px">
-                      Key Milestones &amp; Production Track Record
+                      Highlights
                     </h4>
                     <ul class="about-bullet-list">
                       <li>
-                        <strong>Architected "Lyly" (Executive AI Assistant):</strong> Built a multimodal assistant with bi-directional voice &amp; text streaming via WebSockets, hybrid vector search (Qdrant), and dynamic contextual memory (<code style="color:var(--skin-color);font-size:0.9em;">mem0</code>). Awarded <strong>2nd Prize</strong> in HPT's Enterprise AI Competition.
+                        <strong>Lyly, an executive AI assistant:</strong> voice and text over WebSockets, hybrid search in Qdrant, memory with <code style="color:var(--skin-color);font-size:0.9em;">mem0</code>. 2nd prize at HPT's Enterprise AI Competition.
                       </li>
                       <li>
-                        <strong>Orchestrated HPT D-DAY 2025 RAG Chatbot:</strong> Deployed a high-throughput, zero-hallucination RAG chatbot handling <strong>850+ live executive queries in a single day</strong> at Pullman Hanoi with 100% grounded accuracy against official knowledge bases.
+                        <strong>HPT D-DAY 2025 chatbot:</strong> answered <strong>850+ attendee questions in one day</strong> at Pullman Hanoi, using the official event data.
                       </li>
                       <li>
-                        <strong>Co-engineered HIH ("S&oacute;c D&ograve; La"):</strong> Automated intelligence pipeline vectorizing and synthesizing industry trends into actionable executive briefings via Microsoft Viva Engage (8,500+ impressions, <strong>3rd Prize Winner</strong>).
+                        <strong>HIH ("S&oacute;c D&ograve; La"):</strong> a pipeline that summarizes industry news and posts it to Viva Engage. 8,500+ impressions, <strong>3rd prize</strong>.
                       </li>
                       <li>
-                        <strong>Enterprise Copilot &amp; Process Automation:</strong> Formulated advanced grounding and prompt optimization frameworks for Microsoft Copilot deployments, paired with 10+ production workflows (n8n, Power Platform) cutting manual cycles by ~60%.
+                        <strong>Copilot and automation:</strong> prompt and grounding work for Microsoft Copilot, plus 10+ workflows in n8n and Power Platform that cut manual work by about 60%.
                       </li>
                     </ul>
                     <p
@@ -802,7 +833,7 @@
                         line-height: 1.8;
                       "
                     >
-                      I thrive in fast-moving engineering environments that demand high velocity and architectural rigor. I'm currently open to AI Engineer and Agentic Systems Architect roles where I can own the complete lifecycle from research to scaled production.
+                      I'm open to AI engineer roles where I can own a project from prototype to production.
                     </p>
                   </div>
                   <div class="personal-info padd-15">
@@ -944,7 +975,7 @@
                               <i class="fa fa-calendar"></i> Nov 2024 - Present
                             </h3>
                             <h4 class="timeline-title">
-                              HPT Vietnam Corporation – AI Center of Excellence (CoE)
+                              HPT Vietnam Corporation - AI Center of Excellence (CoE)
                             </h4>
                             <p class="timeline-text">AI Engineer</p>
                             <ul class="timeline-details">
@@ -1078,7 +1109,7 @@
                   type="button"
                   class="filter-btn active"
                   data-filter="all"
-                  aria-label="Filter projects: Show all"
+                  aria-label="All projects"
                   aria-pressed="true"
                 >
                   All
@@ -1087,7 +1118,7 @@
                   type="button"
                   class="filter-btn"
                   data-filter="llm"
-                  aria-label="Filter projects: LLM Applications"
+                  aria-label="LLM / AI Agent projects"
                   aria-pressed="false"
                 >
                   LLM / AI Agent
@@ -1096,7 +1127,7 @@
                   type="button"
                   class="filter-btn"
                   data-filter="data"
-                  aria-label="Filter projects: Data & Analytics"
+                  aria-label="Data/Analytics projects"
                   aria-pressed="false"
                 >
                   Data/Analytics
@@ -1142,14 +1173,9 @@
           <div class="container">
             <div class="row">
               <div class="section-title padd-15">
-                <div class="section-eyebrow">
-                  <span class="eyebrow-pill">
-                    <i class="fa-solid fa-flask-vial"></i> Live Architecture Simulation
-                  </span>
-                </div>
                 <h2>AI Tech Lab &bull; Agent &amp; RAG Simulator</h2>
                 <p class="section-subtitle">
-                  Watch an Agentic RAG run end to end: MCP tool calling and zero-hallucination guardrails, step by step.
+                  Pick a trace and watch the pipeline route, retrieve, verify, or refuse.
                 </p>
               </div>
             </div>
@@ -1160,19 +1186,30 @@
                   <!-- Lab Header Control Bar -->
                   <div class="lab-chassis-header">
                     <div class="chassis-status">
-                      <span class="status-indicator-dot"></span>
                       <span class="chassis-title">AGENTIC EXECUTION ENVIRONMENT</span>
                                           </div>
                     <div class="lab-preset-bar">
                       <span class="preset-label">Preset Traces:</span>
                       <button type="button" class="sim-preset-chip active" data-preset="rag-policy">
-                        <i class="fa-solid fa-shield-halved"></i> Agentic RAG (Security Policy)
+                        <i class="fa-solid fa-shield-halved"></i> Security Policy RAG
                       </button>
                       <button type="button" class="sim-preset-chip" data-preset="mcp-agent">
-                        <i class="fa-solid fa-network-wired"></i> Multi-Agent MCP Execution
+                        <i class="fa-solid fa-network-wired"></i> MCP Multi-Agent
                       </button>
                       <button type="button" class="sim-preset-chip" data-preset="custom-prompt">
-                        <i class="fa-solid fa-terminal"></i> Enterprise Capabilities
+                        <i class="fa-solid fa-terminal"></i> Enterprise Fit
+                      </button>
+                      <button type="button" class="sim-preset-chip" data-preset="voice-agent">
+                        <i class="fa-solid fa-microphone-lines"></i> Voice Agent
+                      </button>
+                      <button type="button" class="sim-preset-chip" data-preset="self-heal">
+                        <i class="fa-solid fa-heart-pulse"></i> Self-Healing
+                      </button>
+                      <button type="button" class="sim-preset-chip" data-preset="compare">
+                        <i class="fa-solid fa-scale-balanced"></i> Naive vs Agentic
+                      </button>
+                      <button type="button" class="sim-preset-chip" data-preset="refuse">
+                        <i class="fa-solid fa-ban"></i> Guardrail Refusal
                       </button>
                     </div>
                   </div>
@@ -1184,7 +1221,9 @@
                       type="text"
                       id="sim-query-input"
                       class="sim-input-field"
-                      placeholder="Enter a prompt or select a preset trace above..."
+                      readonly
+                      aria-label="Selected prompt (choose a trace above)"
+                      placeholder="Pick a trace above..."
                       value="Tìm kiếm chính sách bảo mật dữ liệu &amp; quy định LLM nội bộ HPT 2026"
                     />
                     <button type="button" id="btn-run-sim" class="btn-execute-pipeline">
@@ -1222,8 +1261,7 @@
                     <div class="lab-pipeline-panel">
                       <div class="panel-header">
                         <span class="panel-title"><i class="fa-solid fa-diagram-project"></i> Pipeline Step Trace</span>
-                        <span class="panel-tag">DETERMINISTIC</span>
-                      </div>
+                                              </div>
                       <div id="sim-pipeline-steps" class="pipeline-steps-list">
                         <p class="pipeline-placeholder">Steps appear here when you run the pipeline.</p>
                       </div>
@@ -1233,7 +1271,7 @@
                     <div class="lab-terminal-panel">
                       <div class="panel-header">
                         <span class="panel-title"><i class="fa-solid fa-code"></i> Verified Output Stream</span>
-                        <span class="panel-tag tag-green">ZERO HALLUCINATION</span>
+                        <span class="panel-tag tag-green">GROUNDED OUTPUT</span>
                       </div>
                       <div class="terminal-body">
                         <pre id="sim-terminal-output" class="terminal-code-view">Click "Execute Pipeline" to trigger the Agentic workflow...</pre>
@@ -1259,7 +1297,7 @@
                         </div>
                         <div class="receipt-row">
                           <span class="receipt-label">Safety / Hallucination Target</span>
-                          <span class="receipt-val receipt-green" id="receipt-hallucination-val">ZERO-HALLUCINATION (100% GROUNDED)</span>
+                          <span class="receipt-val receipt-green" id="receipt-hallucination-val">ANSWER GROUNDED IN SOURCES</span>
                         </div>
                         <div class="receipt-row">
                           <span class="receipt-label">Compute Cost Burn</span>
@@ -1288,10 +1326,6 @@
                 <div class="ai-roi-calculator-card" id="ai-roi-calculator">
                   <div class="roi-card-header">
                     <div class="roi-header-info">
-                      <div class="roi-eyebrow">
-                        <span class="roi-pill"><i class="fa-solid fa-chart-line"></i> Business ROI Analysis</span>
-                        <span class="roi-badge">PRODUCTION TCO MODEL</span>
-                      </div>
                       <h3 class="roi-title">Enterprise LLM Cost &amp; ROI Calculator</h3>
                       <p class="roi-desc">
                         Simulates API spend with <strong>Semantic Caching (Qdrant)</strong>, <strong>Context Pruning (Reranker)</strong> and <strong>Self-hosted vLLM</strong> versus calling cloud frontier models directly.
@@ -1364,21 +1398,37 @@
                         </div>
                       </div>
 
-                      <!-- Technical levers explained -->
-                      <div class="roi-levers-list">
-                        <div class="roi-lever-item">
-                          <i class="fa-solid fa-circle-check"></i>
-                          <span><strong>Tier-1 Semantic Caching:</strong> Absorbs ~28% of repeated questions at zero token cost.</span>
-                        </div>
-                        <div class="roi-lever-item">
-                          <i class="fa-solid fa-circle-check"></i>
-                          <span><strong>BGE Cross-Encoder Reranker:</strong> Drops ~55% of irrelevant raw context before it reaches the LLM.</span>
-                        </div>
-                        <div class="roi-lever-item">
-                          <i class="fa-solid fa-circle-check"></i>
-                          <span><strong>Hybrid Routing &amp; vLLM:</strong> Routes ~70% of routing tasks to a cheaper local model.</span>
-                        </div>
-                      </div>
+                      <!-- Levers: each toggle changes the model, savings shown per step -->
+                      <fieldset class="roi-levers">
+                        <legend class="roi-levers-title">Optimization levers</legend>
+                        <label class="roi-lever">
+                          <input type="checkbox" class="roi-lever-input" data-lever="cache" checked />
+                          <span class="roi-lever-switch" aria-hidden="true"></span>
+                          <span class="roi-lever-text">
+                            <strong>Semantic caching</strong>
+                            <small>Repeated questions (~28%) never reach the LLM.</small>
+                          </span>
+                          <span class="roi-lever-saving" data-saving="cache">-$0</span>
+                        </label>
+                        <label class="roi-lever">
+                          <input type="checkbox" class="roi-lever-input" data-lever="prune" checked />
+                          <span class="roi-lever-switch" aria-hidden="true"></span>
+                          <span class="roi-lever-text">
+                            <strong>Reranker context pruning</strong>
+                            <small>Cross-encoder drops ~55% of irrelevant context.</small>
+                          </span>
+                          <span class="roi-lever-saving" data-saving="prune">-$0</span>
+                        </label>
+                        <label class="roi-lever">
+                          <input type="checkbox" class="roi-lever-input" data-lever="route" checked />
+                          <span class="roi-lever-switch" aria-hidden="true"></span>
+                          <span class="roi-lever-text">
+                            <strong>Hybrid routing + vLLM</strong>
+                            <small>~70% of traffic goes to a self-hosted model.</small>
+                          </span>
+                          <span class="roi-lever-saving" data-saving="route">-$0</span>
+                        </label>
+                      </fieldset>
                     </div>
 
                     <!-- Right: Quantitative ROI Display -->
@@ -1390,33 +1440,36 @@
                           <span class="savings-unit">/ month</span>
                         </div>
                         <div class="savings-tags">
-                          <span class="savings-tag-green" id="roi-savings-percent">-80% CHI PHÍ</span>
+                          <span class="savings-tag-green" id="roi-savings-percent">-80% COST</span>
                           <span class="savings-tag-annual" id="roi-savings-annual">Saves $64,800 / year</span>
                         </div>
                       </div>
 
-                      <!-- Visual Comparison Bars -->
-                      <div class="roi-comparison-section">
-                        <div class="roi-comp-row">
-                          <div class="comp-label-row">
-                            <span class="comp-name"><i class="fa-solid fa-cloud"></i> Unoptimized Cloud Frontier Model</span>
-                            <span class="comp-cost" id="roi-cost-standard">$6,750 / month</span>
-                          </div>
-                          <div class="comp-bar-track">
-                            <div class="comp-bar-fill bar-red" id="roi-bar-standard"></div>
-                          </div>
+                      <!-- Cost ladder: baseline, then each lever applied in order -->
+                      <div class="roi-ladder" aria-label="Monthly cost after each optimization">
+                        <div class="ladder-row">
+                          <span class="ladder-name">Cloud frontier baseline</span>
+                          <span class="ladder-cost" id="roi-cost-standard">$6,750 / month</span>
+                          <div class="ladder-bar"><div class="comp-bar-fill bar-red" id="roi-bar-standard"></div></div>
                         </div>
-
-                        <div class="roi-comp-row">
-                          <div class="comp-label-row">
-                            <span class="comp-name comp-highlight"><i class="fa-solid fa-shield-halved"></i> Optimized architecture (this portfolio)</span>
-                            <span class="comp-cost cost-green" id="roi-cost-optimized">$1,350 / month</span>
-                          </div>
-                          <div class="comp-bar-track">
-                            <div class="comp-bar-fill bar-green" id="roi-bar-optimized"></div>
-                          </div>
+                        <div class="ladder-row" data-step="cache">
+                          <span class="ladder-name">+ Semantic caching</span>
+                          <span class="ladder-cost" data-cost="cache"></span>
+                          <div class="ladder-bar"><div class="comp-bar-fill bar-mid" data-bar="cache"></div></div>
+                        </div>
+                        <div class="ladder-row" data-step="prune">
+                          <span class="ladder-name">+ Context pruning</span>
+                          <span class="ladder-cost" data-cost="prune"></span>
+                          <div class="ladder-bar"><div class="comp-bar-fill bar-mid" data-bar="prune"></div></div>
+                        </div>
+                        <div class="ladder-row ladder-final" data-step="route">
+                          <span class="ladder-name">+ Hybrid routing = this architecture</span>
+                          <span class="ladder-cost cost-green" id="roi-cost-optimized">$1,350 / month</span>
+                          <div class="ladder-bar"><div class="comp-bar-fill bar-green" id="roi-bar-optimized"></div></div>
                         </div>
                       </div>
+                      <p class="roi-per-k">Cost per 1,000 queries: <s id="roi-cpk-standard">$15.00</s> <strong id="roi-cpk-optimized">$3.00</strong></p>
+
                       <p class="roi-disclaimer">Illustrative model: assumes $2.50 / $10.00 per 1M input / output tokens for the cloud baseline, 28% cache hits, 55% context pruned and 70% local routing. Not measured production data.</p>
                     </div>
                   </div>
@@ -1444,16 +1497,11 @@
               <div class="skills-shell padd-15">
                 <div class="skills-overview reveal">
                   <div class="skills-overview-copy">
-                    <span class="skills-overview-kicker"
-                      >Where I create value</span
-                    >
                     <h3 class="skills-overview-title">
                       I build AI systems that make it past the prototype stage.
                     </h3>
                     <p class="skills-overview-text">
-                      My strongest work sits at the intersection of GenAI
-                      product thinking, backend delivery, and model-aware
-                      engineering for enterprise use cases.
+                      RAG, agents and backend work, mostly for company use cases.
                     </p>
                   </div>
                   <div
@@ -1481,7 +1529,6 @@
                     style="--cat-color: #8b5cf6"
                   >
                     <div class="skills-card-top">
-                      <span class="skills-card-kicker">Core strength</span>
                       <span class="skills-card-badge">Best fit</span>
                     </div>
                     <h3>
@@ -1489,13 +1536,7 @@
                       LLM, RAG & Agent Systems
                     </h3>
                     <p class="skills-card-description">
-                      I design and ship assistants, internal copilots, and
-                      workflow-driven AI products with strong retrieval,
-                      orchestration, and automation layers.
-                    </p>
-                    <p class="skills-card-highlight">
-                      Best suited for enterprise copilots, knowledge search, and
-                      process automation with real operational constraints.
+                      Assistants, internal copilots and workflow automation built on retrieval and tool calling.
                     </p>
                     <div class="skills-cluster-grid">
                       <div class="skills-cluster">
@@ -1653,7 +1694,6 @@
                     style="--cat-color: #3776ab"
                   >
                     <div class="skills-card-top">
-                      <span class="skills-card-kicker">Foundation</span>
                       <span class="skills-card-badge">Daily stack</span>
                     </div>
                     <h3>
@@ -1661,8 +1701,7 @@
                       Backend & Data Foundations
                     </h3>
                     <p class="skills-card-description">
-                      The Python and data layer I rely on for APIs, analytics,
-                      and the production plumbing behind AI applications.
+                      Python, APIs and databases behind the AI work.
                     </p>
                     <div class="skills-icons">
                       <div
@@ -1740,7 +1779,6 @@
                     style="--cat-color: #ee4c2c"
                   >
                     <div class="skills-card-top">
-                      <span class="skills-card-kicker">Applied ML</span>
                       <span class="skills-card-badge">Applied</span>
                     </div>
                     <h3>
@@ -1748,9 +1786,7 @@
                       Modeling & Evaluation
                     </h3>
                     <p class="skills-card-description">
-                      The modeling toolkit I use for experiments, training, and
-                      evaluation pipelines that are built with deployment in
-                      mind.
+                      What I use to train and evaluate models.
                     </p>
                     <div class="skills-icons">
                       <div
@@ -1804,6 +1840,46 @@
                         <i class="fa fa-rocket" aria-hidden="true"></i
                         ><span>Model Deploy</span>
                       </div>
+                      <div
+                        class="skill-icon"
+                        title="CNN - Convolutional Neural Networks"
+                        style="--skill-accent: #0ea5e9"
+                      >
+                        <i class="fa-solid fa-border-all" aria-hidden="true"></i
+                        ><span>CNN</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="Transformers & Attention"
+                        style="--skill-accent: #8b5cf6"
+                      >
+                        <i class="fa-solid fa-bolt" aria-hidden="true"></i
+                        ><span>Transformers</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="Computer Vision"
+                        style="--skill-accent: #22c55e"
+                      >
+                        <i class="fa-solid fa-eye" aria-hidden="true"></i
+                        ><span>Computer Vision</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="Transfer Learning & Fine-Tuning (LoRA)"
+                        style="--skill-accent: #f59e0b"
+                      >
+                        <i class="fa-solid fa-sliders" aria-hidden="true"></i
+                        ><span>Fine-Tuning</span>
+                      </div>
+                      <div
+                        class="skill-icon"
+                        title="Neural Network Training & Optimization"
+                        style="--skill-accent: #ec4899"
+                      >
+                        <i class="fa-solid fa-chart-line" aria-hidden="true"></i
+                        ><span>NN Training</span>
+                      </div>
                     </div>
                   </article>
 
@@ -1812,7 +1888,6 @@
                     style="--cat-color: #ff9900"
                   >
                     <div class="skills-card-top">
-                      <span class="skills-card-kicker">Delivery layer</span>
                       <span class="skills-card-badge">Working knowledge</span>
                     </div>
                     <h3>
@@ -1820,9 +1895,7 @@
                       Platform & Shipping
                     </h3>
                     <p class="skills-card-description">
-                      The cloud and developer tooling I use to containerize
-                      systems, collaborate cleanly, and move projects toward
-                      reliable deployment.
+                      Cloud, containers and Git for getting things deployed.
                     </p>
                     <div class="skills-icons">
                       <div
@@ -1885,11 +1958,149 @@
                   </article>
 
                   <article
+                    class="skills-card skills-card-certs skills-text"
+                    style="--cat-color: #0089d6"
+                  >
+                    <div class="skills-card-top">
+                      <span class="skills-card-badge">GH-300 - AI-103 - AB-100</span>
+                    </div>
+                    <h3>
+                      <i class="fa fa-award" aria-hidden="true"></i>
+                      Microsoft & GitHub Course Skills
+                    </h3>
+                    <p class="skills-card-description">
+                      What I learned in the courses behind the Frontier badge.
+                    </p>
+                    <div class="skills-cluster-grid">
+                      <div class="skills-cluster">
+                        <span class="skills-cluster-label">GH-300: GitHub Copilot</span>
+                        <div class="skills-icons">
+                          <div
+                            class="skill-icon"
+                            title="GitHub Copilot"
+                            style="--skill-accent: #6e5494"
+                          >
+                            <i class="fa-brands fa-github" aria-hidden="true"></i
+                            ><span>GitHub Copilot</span>
+                          </div>
+                          <div
+                            class="skill-icon"
+                            title="Copilot Chat & Agent Mode"
+                            style="--skill-accent: #10a37f"
+                          >
+                            <i class="fa-solid fa-message" aria-hidden="true"></i
+                            ><span>Copilot Chat</span>
+                          </div>
+                          <div
+                            class="skill-icon"
+                            title="Prompt Crafting & Context"
+                            style="--skill-accent: #7c3aed"
+                          >
+                            <i class="fa-solid fa-pen-nib" aria-hidden="true"></i
+                            ><span>Prompt Crafting</span>
+                          </div>
+                          <div
+                            class="skill-icon"
+                            title="Copilot Privacy, Security & Responsible AI"
+                            style="--skill-accent: #ef4444"
+                          >
+                            <i class="fa-solid fa-user-shield" aria-hidden="true"></i
+                            ><span>Copilot Security</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="skills-cluster">
+                        <span class="skills-cluster-label">AI-103: Develop AI apps and agents on Azure</span>
+                        <div class="skills-icons">
+                          <div
+                            class="skill-icon"
+                            title="Azure AI Services (Vision, Speech, Language)"
+                            style="--skill-accent: #0089d6"
+                          >
+                            <i class="fa-brands fa-microsoft" aria-hidden="true"></i
+                            ><span>Azure AI Services</span>
+                          </div>
+                          <div
+                            class="skill-icon"
+                            title="Azure AI Search - Knowledge Mining"
+                            style="--skill-accent: #0891b2"
+                          >
+                            <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i
+                            ><span>Azure AI Search</span>
+                          </div>
+                          <div
+                            class="skill-icon"
+                            title="Azure AI Foundry"
+                            style="--skill-accent: #2563eb"
+                          >
+                            <i class="fa-solid fa-flask" aria-hidden="true"></i
+                            ><span>Azure AI Foundry</span>
+                          </div>
+                          <div
+                            class="skill-icon"
+                            title="AI Agents on Azure"
+                            style="--skill-accent: #14b8a6"
+                          >
+                            <i class="fa-solid fa-comments" aria-hidden="true"></i
+                            ><span>Azure AI Agents</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="skills-cluster">
+                        <span class="skills-cluster-label">AB-100: Agentic AI Business Solutions Architect</span>
+                        <div class="skills-icons">
+                          <div
+                            class="skill-icon"
+                            title="Microsoft Copilot Studio"
+                            style="--skill-accent: #7c3aed"
+                          >
+                            <i class="fa-solid fa-robot" aria-hidden="true"></i
+                            ><span>Copilot Studio</span>
+                          </div>
+                          <div
+                            class="skill-icon"
+                            title="Power Platform - Low-code Automation"
+                            style="--skill-accent: #742774"
+                          >
+                            <i class="fa-solid fa-sitemap" aria-hidden="true"></i
+                            ><span>Power Platform</span>
+                          </div>
+                          <div
+                            class="skill-icon"
+                            title="Agent 365 - Agent Governance"
+                            style="--skill-accent: #d97706"
+                          >
+                            <i class="fa-solid fa-shield-halved" aria-hidden="true"></i
+                            ><span>Agent 365</span>
+                          </div>
+                          <div
+                            class="skill-icon"
+                            title="Responsible AI & Security"
+                            style="--skill-accent: #ef4444"
+                          >
+                            <i class="fa-solid fa-lock" aria-hidden="true"></i
+                            ><span>AI Governance</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="cert-journey">
+                      <span class="cert-journey-status">Earned</span>
+                      <div class="cert-journey-text">
+                        <strong>Frontier Transformation Engineer Badge</strong>
+                        <small>
+                          Microsoft credential on LevelUp, built on these three certifications.
+                          <a href="https://skillupwithlevelup.com/frontier" target="_blank" rel="noopener noreferrer">About the program</a>
+                        </small>
+                      </div>
+                    </div>
+                  </article>
+
+                  <article
                     class="skills-card skills-card-muted skills-card-wide skills-text"
                     style="--cat-color: #f59e0b"
                   >
                     <div class="skills-card-top">
-                      <span class="skills-card-kicker">Adjacent tools</span>
                       <span class="skills-card-badge">Support tools</span>
                     </div>
                     <h3>
@@ -1897,9 +2108,7 @@
                       Extended AI Stack
                     </h3>
                     <p class="skills-card-description">
-                      Tools I can step into when a project needs a wider model
-                      ecosystem, additional validation layers, or vector
-                      infrastructure beyond my core stack.
+                      Tools I have used less, but can pick up when a project needs them.
                     </p>
                     <div class="skills-icons">
                       <div
@@ -1982,7 +2191,6 @@
                     style="--cat-color: #7c3aed"
                   >
                     <div class="skills-card-top">
-                      <span class="skills-card-kicker">Next frontier</span>
                       <span class="skills-card-badge">In progress</span>
                     </div>
                     <h3>
@@ -1990,9 +2198,7 @@
                       Currently Leveling Up
                     </h3>
                     <p class="skills-card-description">
-                      Areas I am actively deepening to support self-hosted
-                      models, higher-throughput serving, and more mature
-                      infrastructure choices.
+                      Learning now: running models on my own hardware and serving them faster.
                     </p>
                     <div class="skills-icons">
                       <div
@@ -2107,6 +2313,111 @@
                     </div>
                     <div class="cert-view-hint">
                       <i class="fa fa-external-link-alt"></i> View Award
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="certification-item padd-15">
+                <a
+                  href="./assets/images/certifications/Agentic AI Business Solutions Architect Expert.webp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="cert-link"
+                >
+                  <div class="certification-box shadow-dark">
+                    <div class="cert-preview">
+                      <img
+                        src="./assets/images/certifications/Agentic AI Business Solutions Architect Expert.webp"
+                        alt="Microsoft Certified: Agentic AI Business Solutions Architect Expert"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="cert-header">
+                      <h3>Microsoft Certified: Agentic AI Business Solutions Architect Expert</h3>
+                      <span class="cert-type">Certificate</span>
+                    </div>
+                    <div class="cert-footer">
+                      <div class="cert-org">
+                        <i class="fa fa-building"></i>
+                        <span>Microsoft</span>
+                      </div>
+                      <div class="cert-date">
+                        <i class="fa fa-calendar"></i>
+                        <span>Oct 2026</span>
+                      </div>
+                    </div>
+                    <div class="cert-view-hint">
+                      <i class="fa fa-external-link-alt"></i> View Certificate
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="certification-item padd-15">
+                <a
+                  href="./assets/images/certifications/Azure AI Apps and Agents Developer Associate.webp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="cert-link"
+                >
+                  <div class="certification-box shadow-dark">
+                    <div class="cert-preview">
+                      <img
+                        src="./assets/images/certifications/Azure AI Apps and Agents Developer Associate.webp"
+                        alt="Microsoft Certified: Azure AI Apps and Agents Developer Associate"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="cert-header">
+                      <h3>Microsoft Certified: Azure AI Apps and Agents Developer Associate</h3>
+                      <span class="cert-type">Certificate</span>
+                    </div>
+                    <div class="cert-footer">
+                      <div class="cert-org">
+                        <i class="fa fa-building"></i>
+                        <span>Microsoft</span>
+                      </div>
+                      <div class="cert-date">
+                        <i class="fa fa-calendar"></i>
+                        <span>Oct 2026</span>
+                      </div>
+                    </div>
+                    <div class="cert-view-hint">
+                      <i class="fa fa-external-link-alt"></i> View Certificate
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <div class="certification-item padd-15">
+                <a
+                  href="./assets/images/certifications/GitHub Copilot.webp"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="cert-link"
+                >
+                  <div class="certification-box shadow-dark">
+                    <div class="cert-preview">
+                      <img
+                        src="./assets/images/certifications/GitHub Copilot.webp"
+                        alt="Microsoft Learn GitHub Copilot certification"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="cert-header">
+                      <h3>GitHub Copilot (GH-300)</h3>
+                      <span class="cert-type">Certificate</span>
+                    </div>
+                    <div class="cert-footer">
+                      <div class="cert-org">
+                        <i class="fa fa-building"></i>
+                        <span>Microsoft</span>
+                      </div>
+                      <div class="cert-date">
+                        <i class="fa fa-calendar"></i>
+                        <span>Oct 2026</span>
+                      </div>
+                    </div>
+                    <div class="cert-view-hint">
+                      <i class="fa fa-external-link-alt"></i> View Certificate
                     </div>
                   </div>
                 </a>
@@ -2578,7 +2889,7 @@
             Executive Profile // Vo Phu Thinh
           </h2>
           <p class="recruiter-subtitle">
-            AI Engineer specializing in Agentic RAG, Autonomous Tool-Calling (MCP), and Zero-Hallucination Production Architectures.
+            AI Engineer specializing in Agentic RAG, Autonomous Tool-Calling (MCP), and production RAG systems.
           </p>
         </div>
 
@@ -2609,10 +2920,10 @@
             <div class="pillar-card">
               <div class="pillar-header">
                 <i class="fa-solid fa-shield-halved"></i>
-                <h4>Zero-Hallucination RAG</h4>
+                <h4>Production RAG</h4>
               </div>
               <p>
-                Engineered production RAG with strict semantic chunking, HyDE retrieval, dynamic thresholding, and fallback routing. Handled <strong>850+ live enterprise queries</strong> with 100% grounded accuracy at HPT D-DAY 2025.
+                Engineered production RAG with strict semantic chunking, HyDE retrieval, dynamic thresholding, and fallback routing. Handled <strong>850+ live enterprise queries</strong> at HPT D-DAY 2025.
               </p>
             </div>
             <div class="pillar-card">
@@ -2695,6 +3006,15 @@
         </div>
       </div>
     </div>
+
+    <nav class="site-links" aria-label="Site and developer links">
+      <a href="/about">About</a>
+      <a href="/contact">Contact</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/docs">API docs</a>
+      <a href="/openapi.json">OpenAPI</a>
+      <a href="/llms.txt">llms.txt</a>
+    </nav>
 
     <!-- Load fonts and icons async to avoid render-blocking -->
     <script src="/js/font-loader.js" defer></script>

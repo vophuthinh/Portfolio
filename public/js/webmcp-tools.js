@@ -15,7 +15,7 @@
   }
 
   const mcp = new WebMCP({
-    color: "#ec1839",
+    color: "#d4183f",
     position: "bottom-right",
     size: "30px",
     padding: "20px",
