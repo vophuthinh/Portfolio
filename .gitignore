@@ -62,3 +62,4 @@ lighthouse-report*.json
 
 # Agent skills (local only)
 .agents/
+assets/images/certifications/*.pdf
