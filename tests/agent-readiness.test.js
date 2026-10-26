@@ -125,7 +125,7 @@ describe("openapi.json", () => {
     for (const [, ref] of read("public/openapi.json").matchAll(/"\$ref": "#\/([^"]+)"/g)) {
       expect(ref.split("/").reduce((o, k) => o?.[k], spec)).toBeDefined();
     }
-    for (const { path } of ops) expect(fs.existsSync(new URL(`..${path}.js`, import.meta.url))).toBe(true);
+    for (const { path } of ops) expect(fs.existsSync(new URL(`..${path.replace("/v1/", "/")}.js`, import.meta.url))).toBe(true);
   });
 });
 
