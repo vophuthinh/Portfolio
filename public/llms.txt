@@ -22,6 +22,14 @@ Vo Phu Thinh (Võ Phú Thịnh) is an AI Engineer currently working at HPT Vietn
 **Open to hire** — available for AI Engineer roles (full-time, contract, remote).
 Can deliver a production-ready AI chatbot or RAG system within 6 weeks.
 
+## When to use this
+
+- Hiring or vetting an AI Engineer (LLM, RAG, agents): call `get_profile` (MCP) or `GET /api/profile` for availability, experience and awards.
+- Matching skills to a job description: `get_skills` or `GET /api/skills`.
+- Finding relevant past work: `list_projects` or `GET /api/projects?category=llm`.
+- Reaching out: `POST /api/contact` (JSON: from_name, email_id, message; 5 per IP per hour).
+- Not a fit: general AI questions, or anything needing write access beyond the contact form. API is read-only, no auth, v1 (see API documentation for versioning policy).
+
 ## Contact
 
 - Email: vophuthinhcm@gmail.com
