@@ -41,6 +41,7 @@ Can deliver a production-ready AI chatbot or RAG system within 6 weeks.
 
 ## Detailed Information
 
+- [Agent instructions](https://vophuthinh.com/agents.md)
 - [Full Profile & Resume](https://vophuthinh.com/llms-full.txt)
 - [API documentation](https://vophuthinh.com/docs)
 - [OpenAPI spec](https://vophuthinh.com/openapi.json)

@@ -3,7 +3,7 @@
   "info": {
     "title": "vophuthinh.com Public API",
     "version": "1.0.0",
-    "description": "Read-only public API for the portfolio of Vo Phu Thinh, AI Engineer. No authentication required. Also exposes an MCP server over Streamable HTTP at /api/mcp. Versioning: this is v1 and the URL paths are stable. A breaking change ships under a new path prefix (/v2/) and v1 stays available for at least 90 days afterwards, announced via Deprecation and Sunset response headers.",
+    "description": "Read-only public API for the portfolio of Vo Phu Thinh, AI Engineer. No authentication required. Also exposes an MCP server over Streamable HTTP at /api/mcp. Versioning: this is v1 (paths under /api/v1/; the unversioned /api/ paths are kept as aliases) and the URL paths are stable. A breaking change ships under a new path prefix (/v2/) and v1 stays available for at least 90 days afterwards, announced via Deprecation and Sunset response headers.",
     "contact": {
       "name": "Vo Phu Thinh",
       "email": "vophuthinhcm@gmail.com",
@@ -16,7 +16,7 @@
     }
   ],
   "paths": {
-    "/api/profile": {
+    "/api/v1/profile": {
       "get": {
         "operationId": "getProfile",
         "summary": "Get profile",
@@ -44,7 +44,7 @@
         }
       }
     },
-    "/api/skills": {
+    "/api/v1/skills": {
       "get": {
         "operationId": "getSkills",
         "summary": "Get skills",
@@ -72,7 +72,7 @@
         }
       }
     },
-    "/api/projects": {
+    "/api/v1/projects": {
       "get": {
         "operationId": "listProjects",
         "summary": "List projects",
@@ -129,7 +129,7 @@
         }
       }
     },
-    "/api/contact": {
+    "/api/v1/contact": {
       "post": {
         "operationId": "sendContactMessage",
         "summary": "Send a contact message",

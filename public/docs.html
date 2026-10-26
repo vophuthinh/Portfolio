@@ -21,32 +21,32 @@ nav a{margin-right:1rem}pre{overflow-x:auto;background:rgba(127,127,127,.15);pad
 <p>None. All GET endpoints are public. CORS allows any origin.</p>
 <h2>Endpoints</h2>
 <ul>
-<li><code>GET /api/profile</code> — profile, contact, awards, experience.</li>
-<li><code>GET /api/skills</code> — skills grouped by area.</li>
-<li><code>GET /api/projects?category=llm</code> — projects, optional category filter.</li>
-<li><code>POST /api/contact</code> — send a message (JSON: from_name, email_id, message; 5 per IP per hour).</li>
+<li><code>GET /api/v1/profile</code> — profile, contact, awards, experience.</li>
+<li><code>GET /api/v1/skills</code> — skills grouped by area.</li>
+<li><code>GET /api/v1/projects?category=llm</code> — projects, optional category filter.</li>
+<li><code>POST /api/v1/contact</code> — send a message (JSON: from_name, email_id, message; 5 per IP per hour).</li>
 <li><code>POST /api/mcp</code> — MCP JSON-RPC 2.0 (tools: get_profile, get_skills, list_projects).</li>
 </ul>
 <h2>Versioning and deprecation</h2>
-<p>Current version: v1. Paths under <code>/api/</code> are stable. A breaking change ships under a new prefix (<code>/v2/</code>) and v1 stays available for at least 90 days, announced with <code>Deprecation</code> and <code>Sunset</code> response headers.</p>
+<p>Current version: v1, served at <code>/api/v1/*</code> (unversioned <code>/api/*</code> stays as an alias). A breaking change ships under a new prefix (<code>/v2/</code>) and v1 stays available for at least 90 days, announced with <code>Deprecation</code> and <code>Sunset</code> response headers.</p>
 <h2>Request and response shapes</h2>
 <ul>
-<li><code>GET /api/profile</code> returns <code>{name, title, company, location, email, website, availability, summary, awards[], languages[], experience[]}</code>.</li>
-<li><code>GET /api/skills</code> returns <code>{ai_ml[], frameworks[], data[], infrastructure[], web[]}</code>, each an array of strings.</li>
-<li><code>GET /api/projects</code> returns <code>{count, projects[{title, category, summary, problem, solution, stack[]}]}</code>.</li>
-<li><code>POST /api/contact</code> takes <code>{from_name, email_id, message (max 1000 chars)}</code> and returns <code>{success, message}</code>. Status 400 invalid input, 415 wrong content type, 429 rate limited.</li>
+<li><code>GET /api/v1/profile</code> returns <code>{name, title, company, location, email, website, availability, summary, awards[], languages[], experience[]}</code>.</li>
+<li><code>GET /api/v1/skills</code> returns <code>{ai_ml[], frameworks[], data[], infrastructure[], web[]}</code>, each an array of strings.</li>
+<li><code>GET /api/v1/projects</code> returns <code>{count, projects[{title, category, summary, problem, solution, stack[]}]}</code>.</li>
+<li><code>POST /api/v1/contact</code> takes <code>{from_name, email_id, message (max 1000 chars)}</code> and returns <code>{success, message}</code>. Status 400 invalid input, 415 wrong content type, 429 rate limited.</li>
 <li><code>POST /api/mcp</code> takes one JSON-RPC 2.0 message per request: <code>initialize</code>, <code>ping</code>, <code>tools/list</code>, <code>tools/call</code> with <code>params: {name, arguments}</code>.</li>
 </ul>
 <h2>Examples</h2>
-<pre>curl https://vophuthinh.com/api/profile
-curl "https://vophuthinh.com/api/projects?category=llm"
+<pre>curl https://vophuthinh.com/api/v1/profile
+curl "https://vophuthinh.com/api/v1/projects?category=llm"
 curl -X POST https://vophuthinh.com/api/mcp \
   -H 'Content-Type: application/json' \
   -d '{"jsonrpc":"2.0","id":1,"method":"tools/list"}'
 curl -X POST https://vophuthinh.com/api/mcp \
   -H 'Content-Type: application/json' \
   -d '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"list_projects","arguments":{"category":"llm"}}}'
-curl -X POST https://vophuthinh.com/api/contact \
+curl -X POST https://vophuthinh.com/api/v1/contact \
   -H 'Content-Type: application/json' \
   -d '{"from_name":"Ada","email_id":"ada@example.com","message":"Hello"}'</pre>
 <h2>Errors</h2>

@@ -54,6 +54,10 @@
       "continue": true
     },
     {
+      "src": "/api/v1/(.*)",
+      "dest": "/api/$1"
+    },
+    {
       "handle": "filesystem"
     },
     {
