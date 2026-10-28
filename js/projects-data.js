@@ -50,7 +50,7 @@ const projectsData = [
   },
   {
     id: 6,
-    title: "Mệnh Bàn: Tử Vi Đẩu Số Chart Website",
+    title: "Mệnh Bàn: Tử Vi Đẩu Số",
     category: "web",
     summary:
       "Full-stack Vietnamese website that builds Tử Vi Đẩu Số (Purple Star Astrology) charts online: 12 palaces, 14 main stars, 23+ classical patterns, yearly cycles, a 100-year Life K-Line and a two-chart compatibility score. I designed and built it alone in 6 months, with 247 automated tests.",

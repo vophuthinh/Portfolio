@@ -165,7 +165,7 @@
       "github": null
     },
     {
-      "title": "Mệnh Bàn: Tử Vi Đẩu Số Chart Website",
+      "title": "Mệnh Bàn: Tử Vi Đẩu Số",
       "category": "web",
       "summary": "Full-stack Vietnamese Tử Vi Đẩu Số (Purple Star Astrology) chart website, designed and built by Vo Phu Thinh alone in about six months, with 247 automated tests.",
       "problem": "Reading a chart by hand takes years of study, and small input mistakes change the whole chart: the Vietnamese and Chinese lunar calendars differ on some days, and clock time differs from solar time by birthplace.",

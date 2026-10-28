@@ -121,7 +121,7 @@ Official bilingual (Vietnamese and English) website for HPT D-DAY 2026, the annu
 - Stack: WordPress, Bilingual VI/EN, Responsive, SEO
 - Live: https://d-day.hpt.vn/
 
-### 6. Mệnh Bàn: Tử Vi Đẩu Số Chart Website
+### 6. Mệnh Bàn: Tử Vi Đẩu Số
 Full-stack Vietnamese website that builds Tử Vi Đẩu Số (Purple Star Astrology) charts online, designed and built by Vo Phu Thinh alone in about six months (12 April to 27 October 2026, 143 commits, 247 automated tests). Features: a Vietnamese lunar calendar, true solar time correction for 63 provinces, a rule engine for Tứ Hóa and 23+ classical patterns, star synergies, a two-chart compatibility engine, a 100-year Life K-Line chart, a daily card and image/PDF export. Readings are rule-based and call no AI model. The product includes accounts with saved charts, paid plans with per-chart unlocking and server-side access checks covered by tests. For search it generates 22 static pages (8 guides, 14 star pages) with FAQ structured data, and the main bundle is about 76% smaller.
 - Stack: Full-stack web app, Custom rule engine, Vietnamese lunar calendar, Secure payments, SEO
 - Live: https://menhban.io.vn/
