@@ -116,6 +116,11 @@ Multi-vendor e-commerce platform with AI-powered sentiment analysis using Huggin
 - Stack: React, Node.js, Express.js, MySQL, Socket.io, Hugging Face
 - GitHub: https://github.com/vophuthinh/E-Commerce-Website-With-Sentiment-Analysis-For-Reviews
 
+### 5. HPT D-DAY 2026 Official Event Website
+Official bilingual (Vietnamese and English) website for HPT D-DAY 2026, the annual technology event of HPT Vietnam Corporation held on 15 October 2026 at GEM Center, Ho Chi Minh City (theme R3: Real Technology, Real Operation, Real Result). Built by Vo Phu Thinh on WordPress, with pages for About, Program, Schedule, Post-event information, Partners and Contact. It is the second year in a row he built a digital product for the event, after the HPT D-DAY 2025 chatbot.
+- Stack: WordPress, Bilingual VI/EN, Responsive, SEO
+- Live: https://d-day.hpt.vn/
+
 ## Awards
 
 - 2nd Prize — AI in Business Competition (HPT, 2025) — Lyly AI Assistant

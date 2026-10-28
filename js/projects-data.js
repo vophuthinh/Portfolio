@@ -2,6 +2,28 @@
 
 const projectsData = [
   {
+    id: 5,
+    title: "HPT D-DAY 2026 Official Event Website",
+    category: "web",
+    summary:
+      "Official bilingual website for HPT D-DAY 2026, the annual technology event of HPT Vietnam Corporation on 15 October 2026 in Ho Chi Minh City. I built it: program, schedule, partners and post-event information in Vietnamese and English.",
+    problem:
+      "HPT D-DAY 2026 (theme R3: Real Technology, Real Operation, Real Result) is the annual technology event of HPT Vietnam Corporation, held on 15 October 2026 at GEM Center in Ho Chi Minh City. It covers AI, Cloud, Security and digital transformation. Attendees, partners and businesses needed one official place to check the program, the schedule and the venue before the event and to read updates after it, in both Vietnamese and English.",
+    solution:
+      "I built the official website at d-day.hpt.vn on WordPress. It has a Vietnamese version and an English version, a landing page that carries the R3 key visual with the date and the venue, and separate pages for About, Program, Schedule, Post-event information, Partners and Contact. Page titles, descriptions and Open Graph tags are set so that a shared link shows the event name and key visual, and social links to Facebook, Messenger, LinkedIn and YouTube sit on the page.",
+    stack: ["WordPress", "Bilingual VI/EN", "Responsive", "SEO"],
+    impact: [
+      { label: "Event", value: "15 Oct 2026, GEM Center, Ho Chi Minh City" },
+      { label: "Languages", value: "Vietnamese and English" },
+      { label: "Role", value: "Built the website" },
+    ],
+    results:
+      "d-day.hpt.vn is the official source of information for HPT D-DAY 2026. Together with the HPT D-DAY 2025 chatbot, it is the second year in a row that I built a digital product for the event.",
+    link: "https://d-day.hpt.vn/",
+    github: null,
+    image: "./assets/images/portfolio/HPT D-DAY 2026 Website.webp",
+  },
+  {
     id: 1,
     title: "HPT D-DAY 2025 Chatbot",
     category: "llm",

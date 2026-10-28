@@ -7,6 +7,7 @@ AI Engineer in Ho Chi Minh City, Vietnam, at HPT Vietnam Corporation's AI Center
 - **HPT D-DAY 2025 Chatbot** — RAG chatbot grounded on official event data; handled 850+ attendee questions.
 - **Lyly AI Assistant** — enterprise assistant with real-time voice/text, hybrid-search RAG and multi-step reasoning (2nd prize).
 - **H.I.H HotNews Intelligence Hub** — automated business intelligence for 76% of HPT employees (3rd prize).
+- **HPT D-DAY 2026 Official Event Website** — official bilingual (VI/EN) website for HPT's annual technology event (15 Oct 2026, Ho Chi Minh City), built by me: https://d-day.hpt.vn/
 
 ## Skills
 

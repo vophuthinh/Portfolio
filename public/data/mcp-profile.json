@@ -148,6 +148,22 @@
   ],
   "projects_fallback": [
     {
+      "title": "HPT D-DAY 2026 Official Event Website",
+      "category": "web",
+      "summary": "Official bilingual website for HPT D-DAY 2026, the annual technology event of HPT Vietnam Corporation on 15 October 2026 in Ho Chi Minh City, built by Vo Phu Thinh.",
+      "problem": "Attendees, partners and businesses needed one official place for the program, schedule and venue, in Vietnamese and English.",
+      "solution": "Built the official website on WordPress with a Vietnamese and an English version and separate pages for About, Program, Schedule, Post-event information, Partners and Contact.",
+      "stack": ["WordPress", "Bilingual VI/EN", "Responsive", "SEO"],
+      "impact": [
+        { "label": "Event", "value": "15 Oct 2026, GEM Center, Ho Chi Minh City" },
+        { "label": "Languages", "value": "Vietnamese and English" },
+        { "label": "Role", "value": "Built the website" }
+      ],
+      "results": "Official source of information for HPT D-DAY 2026. Second year in a row building a digital product for the event, after the 2025 chatbot.",
+      "link": "https://d-day.hpt.vn/",
+      "github": null
+    },
+    {
       "title": "HPT D-DAY 2025 Chatbot",
       "category": "llm",
       "summary": "RAG-powered AI chatbot grounded on official event data.",
