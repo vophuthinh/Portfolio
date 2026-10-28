@@ -7693,7 +7693,7 @@ body:not(.dark) .about-profile-img img {
     var(--bg-black-100) 70%
   );
   border: 1px solid
-    color-mix(in srgb, var(--skill-accent) 14%, var(--bg-black-50));
+    color-mix(in srgb, var(--skill-accent) 50%, var(--bg-black-50));
   box-shadow: none;
 }
 
@@ -7703,8 +7703,9 @@ body:not(.dark) .about-profile-img img {
   min-width: 28px;
   border-radius: 999px;
   font-size: 14px;
-  background: color-mix(in srgb, var(--skill-accent) 16%, transparent);
-  box-shadow: none;
+  background: color-mix(in srgb, var(--skill-accent) 40%, transparent);
+  box-shadow: inset 0 0 0 1px
+    color-mix(in srgb, var(--skill-accent) 70%, transparent);
 }
 
 .skills .skills-shell .skill-icon span {
@@ -7778,8 +7779,14 @@ body:not(.dark) .skills .skills-cluster {
 }
 
 body:not(.dark) .skills .skills-shell .skill-icon {
-  background: #ffffff;
-  border-color: rgba(148, 163, 184, 0.24);
+  background: color-mix(in srgb, var(--skill-accent) 8%, #ffffff);
+  border-color: color-mix(in srgb, var(--skill-accent) 52%, #e2e8f0);
+}
+
+body:not(.dark) .skills .skills-shell .skill-icon i {
+  background: color-mix(in srgb, var(--skill-accent) 30%, #ffffff);
+  box-shadow: inset 0 0 0 1px
+    color-mix(in srgb, var(--skill-accent) 60%, #ffffff);
 }
 
 body:not(.dark) .skills .skills-shell .skill-icon:hover {
@@ -9564,22 +9571,15 @@ body:not(.dark) .about .about-content .about-text code {
   border-radius: 16px;
 }
 
-/* Skill chips: one neutral color instead of a rainbow of accents */
+/* Skill chips: per-skill accent color */
 .skill-icon i {
-  background: transparent;
-  box-shadow: none;
-  color: var(--text-black-700);
-  width: 22px;
-  height: 22px;
+  color: var(--skill-accent);
+  width: 28px;
+  height: 28px;
   font-size: 16px;
 }
 .skill-icon {
   border-width: 1px;
-}
-.skills .skill-icon i {
-  background: transparent !important;
-  box-shadow: none !important;
-  color: var(--text-black-700) !important;
 }
 
 /* Footer links for crawlers and agents */
