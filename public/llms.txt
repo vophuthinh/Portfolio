@@ -14,7 +14,7 @@ Vo Phu Thinh (Võ Phú Thịnh) is an AI Engineer currently working at HPT Vietn
 - GH-300 GitHub Copilot: Copilot Chat, Agent Mode, prompt crafting
 - AI-103 Develop AI apps and agents on Azure: Azure AI Services, Azure AI Search, Azure AI Foundry, Azure AI Agents
 - AB-100 Agentic AI Business Solutions Architect: Microsoft Copilot Studio, Power Platform, Agent 365
-- Microsoft Certified: Agentic AI Business Solutions Architect Expert (Oct 2026), Azure AI Apps and Agents Developer Associate (Oct 2026), GitHub Copilot (Oct 2026)
+- Microsoft Certified: Agentic AI Business Solutions Architect Expert (Oct 2026), Azure AI Apps and Agents Developer Associate (Oct 2026), GitHub Copilot (Oct 2026); Machine Learning Specialization, DeepLearning.AI (Oct 2026)
 - Credential: Frontier Transformation Engineer Badge (Microsoft, via LevelUp)
 
 ## Availability
