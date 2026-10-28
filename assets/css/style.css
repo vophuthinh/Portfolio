@@ -9638,6 +9638,73 @@ body:not(.dark) .about .about-content .about-text code {
   border-width: 1px;
 }
 
+/* Skills polish: cluster accents, readable chips, balanced text */
+.skills .skills-overview-title {
+  max-width: 24ch;
+  text-wrap: balance;
+}
+.skills .skills-shell .skills-card h3 {
+  text-wrap: balance;
+}
+.skills .skills-card-description {
+  max-width: 52ch;
+  text-wrap: pretty;
+}
+.skills .skills-card-top {
+  margin-bottom: 10px;
+}
+.skills .skills-cluster {
+  padding: 16px 16px 18px;
+  border-top: 2px solid color-mix(in srgb, var(--cat-color) 65%, transparent);
+  background: color-mix(in srgb, var(--cat-color) 10%, transparent);
+}
+.skills .skills-cluster-label {
+  color: color-mix(in srgb, var(--cat-color) 70%, var(--text-black-900));
+}
+.skills .skills-shell .skill-icon {
+  min-height: 44px;
+  background: color-mix(in srgb, var(--skill-accent) 9%, var(--bg-black-100));
+}
+.skills .skills-shell .skill-icon span {
+  font-size: 13px;
+}
+.skills .skills-shell .skill-icon i {
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
+}
+body:not(.dark) .skills .skills-cluster {
+  background: color-mix(in srgb, var(--cat-color) 8%, #ffffff);
+}
+@media (prefers-reduced-motion: reduce) {
+  .skills .skills-shell .skills-card.skills-text:hover,
+  .skills .skills-shell .skill-icon:hover {
+    transform: none;
+  }
+}
+
+/* Align badge, title, description and chips across the three-card row */
+@media (min-width: 992px) {
+  .skills .skills-shell .skills-card-foundation.skills-text,
+  .skills .skills-shell .skills-card-modeling.skills-text,
+  .skills .skills-shell .skills-card-platform.skills-text {
+    display: grid;
+    grid-template-rows: subgrid;
+    grid-row: span 4;
+    row-gap: 0;
+  }
+  .skills .skills-shell .skills-card-foundation h3,
+  .skills .skills-shell .skills-card-modeling h3,
+  .skills .skills-shell .skills-card-platform h3 {
+    align-self: start;
+  }
+  .skills .skills-shell .skills-card-foundation .skills-icons,
+  .skills .skills-shell .skills-card-modeling .skills-icons,
+  .skills .skills-shell .skills-card-platform .skills-icons {
+    align-content: start;
+  }
+}
+
 /* Footer links for crawlers and agents */
 .site-links{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;padding:1.5rem 1rem;font-size:.85rem}
 .site-links a{color:inherit;opacity:.7;text-decoration:none}
