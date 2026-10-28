@@ -148,6 +148,40 @@
   ],
   "projects_fallback": [
     {
+      "title": "HPT D-DAY 2026 AI Chatbot",
+      "category": "llm",
+      "summary": "Bilingual AI chatbot for HPT D-DAY 2026 that answered 141 questions during the one-day event on 15 October 2026: a Google Gemini agent with live Google Sheets tools, grounded answers and suggested follow-up questions, built in n8n by Vo Phu Thinh.",
+      "problem": "Attendees needed instant, correct answers about the event, agenda, speakers and booths in Vietnamese or English, and organizers needed to update content without code.",
+      "solution": "Rebuilt the 2025 chatbot as a tool-calling n8n agent: Gemini reads the event data from Google Sheets as live tools, answers only from event data, detects language, returns structured replies with follow-up questions, keeps a 10-message memory per visitor and guards empty input.",
+      "stack": ["n8n", "Google Gemini", "Google Sheets", "AI Agent", "Tool Calling", "Structured Output"],
+      "impact": [
+        { "label": "Volume", "value": "141 questions answered on event day" },
+        { "label": "Grounding", "value": "Answers only from event data" },
+        { "label": "Languages", "value": "Vietnamese and English, never mixed" },
+        { "label": "Ops", "value": "Content updated in Google Sheets, no code" }
+      ],
+      "results": "Answered 141 questions during the one-day event on 15 October 2026 in Ho Chi Minh City. The 2025 edition was held in Hanoi and its chatbot handled 850+ questions, so the two numbers come from different events in different cities. n8n workflow locked to the D-DAY website origin.",
+      "link": null,
+      "github": null
+    },
+    {
+      "title": "Mệnh Bàn: Tử Vi Đẩu Số Chart Website",
+      "category": "web",
+      "summary": "Full-stack Vietnamese Tử Vi Đẩu Số (Purple Star Astrology) chart website, designed and built by Vo Phu Thinh alone in about six months, with 247 automated tests.",
+      "problem": "Reading a chart by hand takes years of study, and small input mistakes change the whole chart: the Vietnamese and Chinese lunar calendars differ on some days, and clock time differs from solar time by birthplace.",
+      "solution": "Vite front end and Express API; iztro for chart placement; custom Vietnamese lunar calendar, true solar time for 63 provinces, rule engine for Tứ Hóa and 23+ patterns, compatibility engine, Life K-Line in ECharts; rule-based readings with no LLM; Supabase accounts; SePay paid plans with server-side tier checks; 22 static SEO pages.",
+      "stack": ["JavaScript", "Vite", "Express", "Supabase", "iztro", "ECharts", "SePay"],
+      "impact": [
+        { "label": "Engine", "value": "12 palaces, 14 main stars, 23+ patterns, Tứ Hóa" },
+        { "label": "Accuracy", "value": "Vietnamese lunar calendar, true solar time for 63 provinces" },
+        { "label": "Quality", "value": "247 tests, 143 commits in 6 months" },
+        { "label": "Search", "value": "22 static pages with FAQPage structured data" }
+      ],
+      "results": "Live at menhban.io.vn. Entry bundle cut from 328KB to 79KB gzip.",
+      "link": "https://menhban.io.vn/",
+      "github": null
+    },
+    {
       "title": "HPT D-DAY 2026 Official Event Website",
       "category": "web",
       "summary": "Official bilingual website for HPT D-DAY 2026, the annual technology event of HPT Vietnam Corporation on 15 October 2026 in Ho Chi Minh City, built by Vo Phu Thinh.",

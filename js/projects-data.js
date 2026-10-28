@@ -2,6 +2,85 @@
 
 const projectsData = [
   {
+    id: 7,
+    title: "HPT D-DAY 2026 AI Chatbot",
+    category: "llm",
+    summary:
+      "Bilingual (Vietnamese and English) AI chatbot for HPT D-DAY 2026 that answered 141 questions during the one-day event on 15 October 2026 in Ho Chi Minh City. A Google Gemini agent queries live Google Sheets tools, answers only from official event data and suggests follow-up questions. I designed and built it in n8n.",
+    problem:
+      "Attendees of HPT D-DAY 2026 needed instant, correct answers about the event overview, the agenda, the speakers and the booths, in Vietnamese or English. A wrong answer would damage the event experience, and the organizers needed to change content during the event without touching code. The 2025 chatbot solved this with a vector store; the 2026 version needed to be easier to update, easier to guide and more helpful per answer.",
+    solution:
+      "I rebuilt the chatbot as a tool-calling agent in n8n. A Google Gemini model reads the event data from Google Sheets as live tools, so organizers edit a sheet and the bot answers with the new data at once. The prompt enforces grounding: the agent answers only from that data and says it has no information when data is missing. It detects the visitor's language, uses only the matching Vietnamese or English columns and never mixes them. It matches queries without diacritics and with Vietnamese and English aliases (agenda, schedule, session; booth, exhibitor, partner), and it receives the current date and time with every request. Each reply is structured JSON with an answer and two to four suggested follow-up questions in the same language. A memory window keeps the last 10 messages for each visitor, an input guard answers empty messages without calling the model, and the webhook accepts requests only from the event website.",
+    heroMetric: { value: "141", label: "Questions on Event Day" },
+    stack: [
+      "n8n",
+      "Google Gemini",
+      "Google Sheets",
+      "AI Agent",
+      "Tool Calling",
+      "Structured Output",
+    ],
+    impact: [
+      { label: "Volume", value: "141 questions answered on event day" },
+      {
+        label: "Grounding",
+        value: "Answers only from event data, says so when data is missing",
+      },
+      { label: "Languages", value: "Vietnamese and English, never mixed" },
+      { label: "UX", value: "2 to 4 suggested follow-up questions per answer" },
+      { label: "Ops", value: "Content updated in Google Sheets, no code" },
+    ],
+    results:
+      "It answered 141 questions during the one-day event on 15 October 2026 in Ho Chi Minh City. For context, the 2025 edition was held in Hanoi and its chatbot handled 850+ questions, so the two numbers come from different events in different cities. The workflow is locked to the D-DAY website origin. Compared with the 2025 chatbot, it removes the vector store, reads live sheet data, replies in a structured format with follow-up suggestions, and remembers the conversation per visitor.",
+    link: null,
+    github: null,
+    image: "./assets/images/portfolio/Chatbot D-Day 2026.webp",
+    architecture: {
+      description:
+        "Visitor → Chat Widget → Input Guard → Gemini Agent (memory + Google Sheets) → Structured Reply (answer + follow-up questions)",
+      nodes: [
+        "Chat Widget",
+        "Input Guard",
+        "Gemini Agent",
+        "Session Memory",
+        "Google Sheets",
+        "Structured Reply",
+      ],
+    },
+  },
+  {
+    id: 6,
+    title: "Mệnh Bàn: Tử Vi Đẩu Số Chart Website",
+    category: "web",
+    summary:
+      "Full-stack Vietnamese website that builds Tử Vi Đẩu Số (Purple Star Astrology) charts online: 12 palaces, 14 main stars, 23+ classical patterns, yearly cycles, a 100-year Life K-Line and a two-chart compatibility score. I designed and built it alone in 6 months, with 247 automated tests.",
+    problem:
+      "Tử Vi Đẩu Số is a traditional system that places stars across 12 palaces from a person's birth date and hour. Reading a chart by hand takes years of study, and small input mistakes change the whole chart: the Vietnamese lunar calendar differs from the Chinese one on some days, and clock time differs from solar time depending on the longitude of the birthplace. Vietnamese users needed a correct chart explained in plain Vietnamese, and I needed a product that could charge for deeper readings safely.",
+    solution:
+      "I built menhban.io.vn as a full-stack app: a Vite front end and an Express API. Chart placement uses the iztro library. I wrote the rest myself: a Vietnamese lunar calendar module, a true solar time correction for 63 provinces, a rule engine for Tứ Hóa and 23+ classical patterns (cách cục), star synergies, a compatibility engine for two charts, a Life K-Line chart in ECharts, a daily card and PNG and PDF export. The readings are rule-based and do not call any LLM. Accounts and saved charts run on Supabase. Paid plans use SePay bank payments with a signed webhook, per-chart unlocking, a one-time birth data correction in the first 24 hours and upgrade credits. Tier checks run on the server, with rate limiting, helmet and tests for bypass attempts. For search, the build generates 22 static pages (8 guides and 14 star pages) with FAQPage structured data and self-hosted fonts, and lazy-loaded renderers cut the entry bundle from 328KB to 79KB gzip.",
+    heroMetric: { value: "247", label: "Automated Tests Passing" },
+    stack: [
+      "JavaScript",
+      "Vite",
+      "Express",
+      "Supabase",
+      "iztro",
+      "ECharts",
+      "SePay",
+    ],
+    impact: [
+      { label: "Engine", value: "12 palaces, 14 main stars, 23+ patterns, Tứ Hóa" },
+      { label: "Accuracy", value: "Vietnamese lunar calendar, true solar time for 63 provinces" },
+      { label: "Quality", value: "247 tests, 143 commits in 6 months" },
+      { label: "Search", value: "22 static pages with FAQPage structured data" },
+    ],
+    results:
+      "Live at menhban.io.vn. One person shipped the chart engine, accounts, paid plans, security checks and SEO in about six months (12 April to 27 October 2026). The entry bundle dropped from 328KB to 79KB gzip.",
+    link: "https://menhban.io.vn/",
+    github: null,
+    image: "./assets/images/portfolio/Menh Ban Tu Vi.webp",
+  },
+  {
     id: 5,
     title: "HPT D-DAY 2026 Official Event Website",
     category: "web",

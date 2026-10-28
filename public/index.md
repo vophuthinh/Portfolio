@@ -4,10 +4,12 @@ AI Engineer in Ho Chi Minh City, Vietnam, at HPT Vietnam Corporation's AI Center
 
 ## Projects
 
+- **HPT D-DAY 2026 AI Chatbot** — answered 141 questions during the one-day event on 15 October 2026; bilingual n8n chatbot: a Gemini agent reading live Google Sheets tools, grounded answers and suggested follow-up questions.
 - **HPT D-DAY 2025 Chatbot** — RAG chatbot grounded on official event data; handled 850+ attendee questions.
 - **Lyly AI Assistant** — enterprise assistant with real-time voice/text, hybrid-search RAG and multi-step reasoning (2nd prize).
 - **H.I.H HotNews Intelligence Hub** — automated business intelligence for 76% of HPT employees (3rd prize).
 - **HPT D-DAY 2026 Official Event Website** — official bilingual (VI/EN) website for HPT's annual technology event (15 Oct 2026, Ho Chi Minh City), built by me: https://d-day.hpt.vn/
+- **Mệnh Bàn** — full-stack Tử Vi Đẩu Số (Purple Star Astrology) chart website I built alone in six months: custom engine, accounts, paid plans, 247 tests, 22 SEO pages: https://menhban.io.vn/
 
 ## Skills
 
