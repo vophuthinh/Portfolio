@@ -9663,7 +9663,7 @@ body:not(.dark) .about .about-content .about-text code {
 }
 .skills .skills-shell .skill-icon {
   min-height: 44px;
-  background: color-mix(in srgb, var(--skill-accent) 9%, var(--bg-black-100));
+  background: color-mix(in srgb, var(--skill-accent) 4%, var(--bg-black-100));
 }
 .skills .skills-shell .skill-icon span {
   font-size: 13px;
@@ -9672,6 +9672,14 @@ body:not(.dark) .about .about-content .about-text code {
   width: 30px;
   height: 30px;
   min-width: 30px;
+  color: #ffffff;
+  background: color-mix(in srgb, var(--skill-accent) 72%, #000000);
+  box-shadow: 0 2px 6px color-mix(in srgb, var(--skill-accent) 40%, transparent);
+}
+body:not(.dark) .skills .skills-shell .skill-icon i {
+  color: #ffffff;
+  background: color-mix(in srgb, var(--skill-accent) 72%, #000000);
+  box-shadow: 0 2px 6px color-mix(in srgb, var(--skill-accent) 35%, transparent);
 }
 body:not(.dark) .skills .skills-cluster {
   background: color-mix(in srgb, var(--cat-color) 8%, #ffffff);
