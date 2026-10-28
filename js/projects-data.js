@@ -75,7 +75,7 @@ const projectsData = [
       "Live at menhban.io.vn. One person shipped the chart engine, accounts, paid plans, security checks and SEO in about six months (12 April to 27 October 2026). The main bundle is about 76% smaller.",
     link: "https://menhban.io.vn/",
     github: null,
-    image: "./assets/images/portfolio/Menh Ban Tu Vi.webp",
+    image: "./assets/images/portfolio/Menh Ban Thumbnail.webp",
   },
   {
     id: 5,
