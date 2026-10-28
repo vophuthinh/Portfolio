@@ -15,7 +15,7 @@ Vo Phu Thinh (Võ Phú Thịnh) is an AI Engineer currently working at HPT Vietn
 - AI-103 Develop AI apps and agents on Azure: Azure AI Services, Azure AI Search, Azure AI Foundry, Azure AI Agents
 - AB-100 Agentic AI Business Solutions Architect: Microsoft Copilot Studio, Power Platform, Agent 365
 - Microsoft Certified: Agentic AI Business Solutions Architect Expert (Oct 2026), Azure AI Apps and Agents Developer Associate (Oct 2026), GitHub Copilot (Oct 2026); Machine Learning Specialization, DeepLearning.AI (Oct 2026)
-- Credential: Frontier Transformation Engineer Badge (Microsoft, via LevelUp)
+- Credential: Frontier Transformation Engineer Badge (Microsoft, via LevelUp) — https://www.credly.com/badges/e9df4ef4-fe8a-47a1-91e8-d62aa762f92d/public_url
 
 ## Availability
 
