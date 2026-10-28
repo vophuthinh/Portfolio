@@ -9452,49 +9452,105 @@ body:not(.dark) .roi-ladder {
   }
 }
 
-/* Frontier badge journey (flip .cert-journey-status text to "Earned" when awarded) */
-.skills .cert-journey {
-  display: flex;
+/* Frontier badge: verified credential panel */
+.skills .frontier-badge {
+  display: grid;
+  grid-template-columns: auto 1fr;
   align-items: center;
-  gap: 14px;
+  gap: 28px;
   margin-top: 18px;
-  padding: 14px 18px;
-  border-radius: 14px;
-  border: 1px dashed color-mix(in srgb, var(--cat-color) 45%, transparent);
+  padding: 22px 28px;
+  border-radius: 16px;
+  border: 1px solid color-mix(in srgb, var(--cat-color) 45%, transparent);
+  background: color-mix(in srgb, var(--cat-color) 10%, var(--bg-black-100));
 }
-.skills .cert-journey-status {
-  flex-shrink: 0;
-  padding: 4px 10px;
+.skills .frontier-badge-art {
+  display: block;
+  line-height: 0;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.skills .frontier-badge-art img {
+  height: 148px;
+  width: auto;
+  filter: drop-shadow(0 10px 18px color-mix(in srgb, var(--cat-color) 35%, transparent));
+}
+.skills .frontier-badge-art:hover {
+  transform: translateY(-3px);
+}
+.skills .frontier-badge-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+  min-width: 0;
+}
+.skills .frontier-badge-kicker {
+  padding: 3px 10px;
   border-radius: 999px;
   font-size: 11px;
   font-weight: 700;
   color: var(--cat-color);
-  border: 1px solid color-mix(in srgb, var(--cat-color) 50%, transparent);
+  border: 1px solid color-mix(in srgb, var(--cat-color) 55%, transparent);
 }
-.skills .cert-journey-text {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-  min-width: 0;
-}
-.skills .cert-journey-text strong {
-  font-size: 14px;
+.skills .frontier-badge-body h4 {
+  margin: 4px 0 0;
+  font-size: 22px;
+  line-height: 1.2;
   color: var(--text-black-900);
 }
-.skills .cert-journey-text small {
-  font-size: 12px;
-  line-height: 1.5;
+.skills .frontier-badge-body p {
+  margin: 0;
+  max-width: 52ch;
+  font-size: 14px;
+  line-height: 1.6;
   color: var(--text-black-700);
 }
-.skills .cert-journey-text a {
-  color: var(--cat-color);
+.skills .frontier-badge-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 18px;
+  margin-top: 10px;
+}
+.skills .frontier-badge-verify {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 16px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  background: #0b6bcb;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+.skills .frontier-badge-verify:hover {
+  background: #0a5cae;
+  transform: translateY(-1px);
+}
+.skills .frontier-badge-verify:active {
+  transform: scale(0.98);
+}
+.skills .frontier-badge-link {
+  font-size: 13px;
+  color: var(--text-black-700);
   text-decoration: underline;
-  text-underline-offset: 2px;
+  text-underline-offset: 3px;
+}
+.skills .frontier-badge-link:hover {
+  color: var(--text-black-900);
+}
+body:not(.dark) .skills .frontier-badge {
+  background: color-mix(in srgb, var(--cat-color) 7%, #ffffff);
 }
 @media (max-width: 575.98px) {
-  .skills .cert-journey {
-    flex-direction: column;
-    align-items: flex-start;
+  .skills .frontier-badge {
+    grid-template-columns: 1fr;
+    justify-items: start;
+    padding: 20px;
+  }
+  .skills .frontier-badge-art img {
+    height: 120px;
   }
 }
 
