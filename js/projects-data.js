@@ -57,16 +57,13 @@ const projectsData = [
     problem:
       "Tử Vi Đẩu Số is a traditional system that places stars across 12 palaces from a person's birth date and hour. Reading a chart by hand takes years of study, and small input mistakes change the whole chart: the Vietnamese lunar calendar differs from the Chinese one on some days, and clock time differs from solar time depending on the longitude of the birthplace. Vietnamese users needed a correct chart explained in plain Vietnamese, and I needed a product that could charge for deeper readings safely.",
     solution:
-      "I built menhban.io.vn as a full-stack app: a Vite front end and an Express API. Chart placement uses the iztro library. I wrote the rest myself: a Vietnamese lunar calendar module, a true solar time correction for 63 provinces, a rule engine for Tứ Hóa and 23+ classical patterns (cách cục), star synergies, a compatibility engine for two charts, a Life K-Line chart in ECharts, a daily card and PNG and PDF export. The readings are rule-based and do not call any LLM. Accounts and saved charts run on Supabase. Paid plans use SePay bank payments with a signed webhook, per-chart unlocking, a one-time birth data correction in the first 24 hours and upgrade credits. Tier checks run on the server, with rate limiting, helmet and tests for bypass attempts. For search, the build generates 22 static pages (8 guides and 14 star pages) with FAQPage structured data and self-hosted fonts, and lazy-loaded renderers cut the entry bundle from 328KB to 79KB gzip.",
-    heroMetric: { value: "247", label: "Automated Tests Passing" },
+      "I designed and built menhban.io.vn end to end as a full-stack web app. Star placement builds on an open-source engine; the rest is my own work: a Vietnamese lunar calendar, a true solar time correction for 63 provinces, a rule engine for Tứ Hóa and 23+ classical patterns (cách cục), star synergies, a compatibility engine for two charts, a 100-year Life K-Line, a daily card and image and PDF export. Readings are rule-based and call no AI model, so the same chart always gives the same reading. The product side covers user accounts with saved charts, paid plans with per-chart unlocking, a one-time birth data correction in the first 24 hours, upgrade credits and online bank payments. Access rules are enforced on the server and covered by tests, including attempts to bypass them. For search, the build generates 22 static pages (8 guides and 14 star pages) with FAQ structured data, and a faster first load cut the main bundle by about 76%.",
     stack: [
-      "JavaScript",
-      "Vite",
-      "Express",
-      "Supabase",
-      "iztro",
-      "ECharts",
-      "SePay",
+      "Full-stack web app",
+      "Custom rule engine",
+      "Vietnamese lunar calendar",
+      "Secure payments",
+      "SEO",
     ],
     impact: [
       { label: "Engine", value: "12 palaces, 14 main stars, 23+ patterns, Tứ Hóa" },
@@ -75,7 +72,7 @@ const projectsData = [
       { label: "Search", value: "22 static pages with FAQPage structured data" },
     ],
     results:
-      "Live at menhban.io.vn. One person shipped the chart engine, accounts, paid plans, security checks and SEO in about six months (12 April to 27 October 2026). The entry bundle dropped from 328KB to 79KB gzip.",
+      "Live at menhban.io.vn. One person shipped the chart engine, accounts, paid plans, security checks and SEO in about six months (12 April to 27 October 2026). The main bundle is about 76% smaller.",
     link: "https://menhban.io.vn/",
     github: null,
     image: "./assets/images/portfolio/Menh Ban Tu Vi.webp",

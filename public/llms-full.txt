@@ -122,8 +122,8 @@ Official bilingual (Vietnamese and English) website for HPT D-DAY 2026, the annu
 - Live: https://d-day.hpt.vn/
 
 ### 6. Mệnh Bàn: Tử Vi Đẩu Số Chart Website
-Full-stack Vietnamese website that builds Tử Vi Đẩu Số (Purple Star Astrology) charts online, designed and built by Vo Phu Thinh alone in about six months (12 April to 27 October 2026, 143 commits, 247 automated tests). Chart placement uses the iztro library; the rest is custom: a Vietnamese lunar calendar module, true solar time correction for 63 provinces, a rule engine for Tứ Hóa and 23+ classical patterns, star synergies, a two-chart compatibility engine, a 100-year Life K-Line chart (ECharts), a daily card and image/PDF export. Readings are rule-based and call no LLM. Accounts and saved charts run on Supabase; paid plans use SePay payments with a signed webhook, per-chart unlocking and server-side tier checks, rate limiting and bypass tests. For search it generates 22 static pages (8 guides, 14 star pages) with FAQPage structured data and cut the entry bundle from 328KB to 79KB gzip.
-- Stack: JavaScript, Vite, Express, Supabase, iztro, ECharts, SePay
+Full-stack Vietnamese website that builds Tử Vi Đẩu Số (Purple Star Astrology) charts online, designed and built by Vo Phu Thinh alone in about six months (12 April to 27 October 2026, 143 commits, 247 automated tests). Features: a Vietnamese lunar calendar, true solar time correction for 63 provinces, a rule engine for Tứ Hóa and 23+ classical patterns, star synergies, a two-chart compatibility engine, a 100-year Life K-Line chart, a daily card and image/PDF export. Readings are rule-based and call no AI model. The product includes accounts with saved charts, paid plans with per-chart unlocking and server-side access checks covered by tests. For search it generates 22 static pages (8 guides, 14 star pages) with FAQ structured data, and the main bundle is about 76% smaller.
+- Stack: Full-stack web app, Custom rule engine, Vietnamese lunar calendar, Secure payments, SEO
 - Live: https://menhban.io.vn/
 
 ### 7. HPT D-DAY 2026 AI Chatbot
