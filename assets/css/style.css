@@ -9713,6 +9713,30 @@ body:not(.dark) .skills .skills-cluster {
   }
 }
 
+/* Skip link: hidden until keyboard focus */
+.skip-to-content {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 10000;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  background: #be123c;
+  transform: translateY(-200%);
+  transition: transform 0.2s ease;
+}
+.skip-to-content:focus {
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .skip-to-content {
+    transition: none;
+  }
+}
+
 /* Footer links for crawlers and agents */
 .site-links{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;padding:1.5rem 1rem;font-size:.85rem}
 .site-links a{color:inherit;opacity:.7;text-decoration:none}
