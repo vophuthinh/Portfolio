@@ -1,6 +1,6 @@
 # Vo Phu Thinh — AI Engineer (vophuthinh)
 
-AI Engineer in Ho Chi Minh City, Vietnam, at HPT Vietnam Corporation's AI Center of Excellence. Builds production LLM, RAG, AI Agent and Machine Learning systems. Shipped 3 AI products in his first year and won 2 awards in the HPT AI in Business competition (2025). Open to hire: full-time, contract and remote.
+AI Engineer in Ho Chi Minh City, Vietnam, at HPT Vietnam Corporation's AI Center of Excellence. Builds production AI agents, LLM applications, RAG and Machine Learning systems. Shipped 3 AI products in his first year and won 2 awards in the HPT AI in Business competition (2025). Open to hire: full-time, contract and remote.
 
 ## Projects
 

@@ -1,7 +1,7 @@
 # Vo Phu Thinh — AI Engineer CV & Portfolio
 
 > AI Engineer based in Ho Chi Minh City, Vietnam. Open to new opportunities.
-> Specializing in LLM, RAG, AI Agents, and Machine Learning.
+> Specializing in AI Agents, context engineering, LLM, RAG, and Machine Learning.
 > 3 AI products shipped to production in first year. 2 awards.
 
 ## About
@@ -10,6 +10,8 @@ Vo Phu Thinh (Võ Phú Thịnh) is an AI Engineer currently working at HPT Vietn
 
 ## Key Skills
 
+- AI Agents & Orchestration: MCP, LangGraph, LangChain, tool calling, multi-agent
+- Context & Cost: RAG, embeddings, vector DB, reranking, semantic caching, context pruning
 - Deep Learning: CNN, Transformers, Transfer Learning, Fine-Tuning (LoRA), PyTorch, TensorFlow
 - GH-300 GitHub Copilot: Copilot Chat, Agent Mode, prompt crafting
 - AI-103 Develop AI apps and agents on Azure: Azure AI Services, Azure AI Search, Azure AI Foundry, Azure AI Agents
