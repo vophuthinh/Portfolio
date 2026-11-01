@@ -2,7 +2,7 @@
 
 > AI Engineer based in Ho Chi Minh City, Vietnam. Open to new opportunities.
 > Specializing in AI Agents, context engineering, LLM, RAG, and Machine Learning.
-> 3 AI products shipped to production. 2 enterprise AI awards.
+> 3 AI products shipped to production. 3 awards (2 enterprise AI, 1 hackathon).
 
 ## Hiring Summary
 
@@ -130,10 +130,16 @@ Full-stack Vietnamese website that builds Tử Vi Đẩu Số (Purple Star Astro
 Bilingual (Vietnamese and English) AI chatbot for HPT D-DAY 2026, built by Vo Phu Thinh in n8n. It answered 141 questions during the one-day event on 15 October 2026 in Ho Chi Minh City. A Google Gemini agent reads the event data from Google Sheets as live tools, answers only from official event data and says so when data is missing, detects the visitor's language, and returns a structured reply with 2 to 4 suggested follow-up questions. It keeps a 10-message memory per visitor, guards against empty input and accepts requests only from the event website. For context, the 2025 edition was held in Hanoi and its chatbot handled 850+ questions, so the two numbers come from different events in different cities. Compared with the 2025 chatbot it replaces the vector store with live sheet tools.
 - Stack: n8n, Google Gemini, Google Sheets, AI Agent, Tool Calling, Structured Output
 
+### 8. Wealify Smart Finance (Potential Impact Award)
+AI dashboard for spending management and transaction safety for cross-border e-commerce sellers, built in a team in 48 hours at the Cross-Border AI Innovation Summit 2026 (aiglobal.dev) in Hanoi, 21-22 August 2026, for challenge WLF-01 (Wealify). A pipeline of 7 AI agents reads bank statements, matches receipt emails, reconciles three data sources, detects anomalies, generates reports, drafts emails and scores risk from 0 to 100, behind a chat-first interface, on real data from Wealify and the Gmail API. Vo Phu Thinh built the backend, the agents and the processing logic. Won the Potential Impact Award (prize: 2,000,000 VND).
+- Stack: Python, FastAPI, BytePlus ModelArk (DeepSeek V4 Flash)
+- GitHub: https://github.com/vophuthinh/Thi-CrossBorder
+
 ## Awards
 
 - 2nd Prize — AI in Business Competition (HPT, 2025) — Lyly AI Assistant
 - 3rd Prize — AI in Business Competition (HPT, 2025) — HotNews Intelligence Hub
+- Potential Impact Award — Cross-Border AI Innovation Summit 2026 (aiglobal.dev, Hanoi, 21-22 Aug 2026) — Wealify Smart Finance
 
 ## Languages
 

@@ -14,7 +14,7 @@
     "cv_download": "https://vophuthinh.com/CV-VoPhuThinh.pdf",
     "availability": "Open to hire — full-time, contract, freelance, and remote opportunities",
     "key_strength": "Ships production AI fast — 3 products in first year",
-    "summary": "AI Engineer specializing in LLM, RAG, AI Agents, and Machine Learning. Shipped 3 AI products to production in first year. Won 2 awards in enterprise AI competition at HPT Vietnam.",
+    "summary": "AI Engineer specializing in LLM, RAG, AI Agents, and Machine Learning. Shipped 3 AI products to production in first year. Won 3 awards: 2 in the enterprise AI competition at HPT Vietnam and the Potential Impact Award at the Cross-Border AI Innovation Summit 2026.",
     "education": "Bachelor's degree, Information Technology — HUTECH & Open University Malaysia (2021–2025)",
     "what_can_deliver_90_days": [
       "Weeks 1–2: Analyze business workflows, data sources, and pain points to identify highest-impact AI use cases",
@@ -24,7 +24,8 @@
     ],
     "awards": [
       "2nd Prize — AI in Business Competition (HPT, 2025) — Lyly AI Assistant",
-      "3rd Prize — AI in Business Competition (HPT, 2025) — HotNews Intelligence Hub"
+      "3rd Prize — AI in Business Competition (HPT, 2025) — HotNews Intelligence Hub",
+      "Potential Impact Award — Cross-Border AI Innovation Summit 2026 (aiglobal.dev, Hanoi) — Wealify Smart Finance"
     ],
     "languages": [
       "Vietnamese (native)",
@@ -147,6 +148,23 @@
     }
   ],
   "projects_fallback": [
+    {
+      "title": "Wealify Smart Finance (Potential Impact Award)",
+      "category": "llm",
+      "summary": "AI dashboard for cross-border e-commerce sellers, built in 48 hours at the Cross-Border AI Innovation Summit 2026 in Hanoi (21-22 August 2026): a 7-agent pipeline on real Wealify and Gmail data. Vo Phu Thinh built the backend, the agents and the processing logic, in a team.",
+      "problem": "Challenge WLF-01 from Wealify: cross-border e-commerce sellers need to manage spending and keep transactions safe, but statements, receipt emails and payment records sit in separate places.",
+      "solution": "7 AI agents behind a chat-first interface: read bank statements, match receipt emails, reconcile three sources, detect anomalies, generate reports, draft emails and score risk from 0 to 100. Python, FastAPI, BytePlus ModelArk (DeepSeek V4 Flash).",
+      "stack": ["Python", "FastAPI", "BytePlus ModelArk", "DeepSeek V4 Flash", "Multi-agent", "Gmail API"],
+      "impact": [
+        { "label": "Award", "value": "Potential Impact Award" },
+        { "label": "Agents", "value": "7-agent pipeline, risk score 0-100" },
+        { "label": "Time", "value": "Built in 48 hours" },
+        { "label": "Data", "value": "Real data from Wealify and Gmail API" }
+      ],
+      "results": "Won the Potential Impact Award at the Cross-Border AI Innovation Summit 2026 (aiglobal.dev), challenge WLF-01 (Wealify). Prize: 2,000,000 VND.",
+      "link": null,
+      "github": "https://github.com/vophuthinh/Thi-CrossBorder"
+    },
     {
       "title": "HPT D-DAY 2026 AI Chatbot",
       "category": "llm",

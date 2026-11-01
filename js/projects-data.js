@@ -2,6 +2,50 @@
 
 const projectsData = [
   {
+    id: 8,
+    title: "Wealify Smart Finance (Potential Impact Award)",
+    category: "llm",
+    summary:
+      "AI dashboard for cross-border e-commerce sellers, built in 48 hours at the Cross-Border AI Innovation Summit 2026 in Hanoi (21-22 August 2026). A pipeline of 7 AI agents checks spending and transaction safety on real Wealify and Gmail data. Won the Potential Impact Award. I built the backend, the agents and the processing logic, in a team.",
+    problem:
+      "Challenge WLF-01 from Wealify: cross-border e-commerce sellers need to manage spending and keep transactions safe. Statements, receipt emails and payment records sit in separate places, so mismatches and unusual transactions are easy to miss.",
+    solution:
+      "A pipeline of 7 AI agents behind a chat-first interface. The agents read bank statements, match receipt emails, reconcile three data sources, detect anomalies, generate reports, draft emails and score risk from 0 to 100. The system runs on real data from Wealify and the Gmail API. I built the backend, the agents and the processing logic with Python and FastAPI, on BytePlus ModelArk (DeepSeek V4 Flash). The work was done in a team.",
+    heroMetric: { value: "7", label: "AI Agents" },
+    stack: [
+      "Python",
+      "FastAPI",
+      "BytePlus ModelArk",
+      "DeepSeek V4 Flash",
+      "Multi-agent",
+      "Gmail API",
+    ],
+    impact: [
+      { label: "Award", value: "Potential Impact Award" },
+      { label: "Agents", value: "7-agent pipeline, risk score 0-100" },
+      { label: "Time", value: "Built in 48 hours" },
+      { label: "Data", value: "Real data from Wealify and Gmail API" },
+    ],
+    results:
+      "Won the Potential Impact Award at the Cross-Border AI Innovation Summit 2026 (aiglobal.dev), a 48-hour hackathon in Hanoi on 21-22 August 2026, for challenge WLF-01 (Wealify). The prize is 2,000,000 VND.",
+    link: null,
+    github: "https://github.com/vophuthinh/Thi-CrossBorder",
+    image: "./assets/images/portfolio/Wealify Smart Finance.webp",
+    architecture: {
+      description:
+        "Statements + Gmail receipts + Wealify data → 7 AI Agents (extract, match, reconcile, detect anomalies, report, draft email, score risk) → Chat Dashboard",
+      nodes: [
+        "Statement Reader",
+        "Receipt Matcher",
+        "3-Source Reconciler",
+        "Anomaly Detector",
+        "Report Generator",
+        "Email Drafter",
+        "Risk Scorer",
+      ],
+    },
+  },
+  {
     id: 7,
     title: "HPT D-DAY 2026 AI Chatbot",
     category: "llm",

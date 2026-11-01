@@ -1,9 +1,10 @@
 # Vo Phu Thinh — AI Engineer (vophuthinh)
 
-AI Engineer in Ho Chi Minh City, Vietnam, at HPT Vietnam Corporation's AI Center of Excellence. Builds production AI agents, LLM applications, RAG and Machine Learning systems. Shipped 3 AI products in his first year and won 2 awards in the HPT AI in Business competition (2025). Open to hire: full-time, contract and remote.
+AI Engineer in Ho Chi Minh City, Vietnam, at HPT Vietnam Corporation's AI Center of Excellence. Builds production AI agents, LLM applications, RAG and Machine Learning systems. Shipped 3 AI products in his first year and won 2 awards in the HPT AI in Business competition (2025). Also won the Potential Impact Award at the Cross-Border AI Innovation Summit 2026 (3 awards in total). Open to hire: full-time, contract and remote.
 
 ## Projects
 
+- **Wealify Smart Finance** — AI dashboard for cross-border e-commerce sellers, built in 48 hours with a team at the Cross-Border AI Innovation Summit 2026 (Hanoi): 7-agent pipeline on real Wealify and Gmail data; I built the backend and agents; Potential Impact Award: https://github.com/vophuthinh/Thi-CrossBorder
 - **HPT D-DAY 2026 AI Chatbot** — answered 141 questions during the one-day event on 15 October 2026; bilingual n8n chatbot: a Gemini agent reading live Google Sheets tools, grounded answers and suggested follow-up questions.
 - **HPT D-DAY 2025 Chatbot** — RAG chatbot grounded on official event data; handled 850+ attendee questions.
 - **Lyly AI Assistant** — enterprise assistant with real-time voice/text, hybrid-search RAG and multi-step reasoning (2nd prize).

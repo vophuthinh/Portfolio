@@ -2,7 +2,7 @@
 
 > AI Engineer based in Ho Chi Minh City, Vietnam. Open to new opportunities.
 > Specializing in AI Agents, context engineering, LLM, RAG, and Machine Learning.
-> 3 AI products shipped to production in first year. 2 awards.
+> 3 AI products shipped to production in first year. 3 awards.
 
 ## About
 
