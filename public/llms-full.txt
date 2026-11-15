@@ -82,7 +82,7 @@ Vo Phu Thinh is an AI Engineer at HPT Vietnam Corporation's AI Center of Excelle
 - Python, FastAPI, PyTorch, TensorFlow, scikit-learn
 - LangChain, LangGraph, Hugging Face
 - OpenAI, Azure OpenAI, Google AI (Gemini)
-- NumPy, Pandas, SQL, MySQL, SQL Server, Power BI
+- NumPy, Pandas, SQL, MySQL, SQL Server, Power BI, Microsoft Fabric
 - n8n, UiPath, Power Platform
 
 ### Infrastructure & DevOps

@@ -86,7 +86,8 @@
       "SQL",
       "MySQL",
       "SQL Server",
-      "Power BI"
+      "Power BI",
+      "Microsoft Fabric"
     ],
     "infrastructure": [
       "Docker",
