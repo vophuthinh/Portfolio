@@ -86,6 +86,9 @@
       "SQL",
       "MySQL",
       "SQL Server",
+      "MongoDB",
+      "Qdrant",
+      "Supabase",
       "Power BI",
       "Microsoft Fabric"
     ],
